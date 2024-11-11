@@ -1,6 +1,6 @@
 "use client"
 
-import HomePageClient from "./component/homepageclient";
+import HomePageClient from "./component/homepageClient";
 
 
 export default function home() {
