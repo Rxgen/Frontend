@@ -8,8 +8,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 
-export default  function Homebanner ({bannersdata }){
-    /* const banners = [
+export default  function Homebanner ({ banners = [] }){
+  if (!banners.length) {
+    return <div>No banner data available.</div>;
+  }
+     /* const banners = [
         {
           id: 1,
           banner_image: {
@@ -41,11 +44,14 @@ export default  function Homebanner ({bannersdata }){
           link: "/page3"
         }
       ];
-
  */
+
     
     return (
-<section data-section="home_banner" className="home_banner">
+      <div>
+        <h1>Test</h1>
+      </div>
+/* <section data-section="home_banner" className="home_banner">
           <Swiper
             modules={[Navigation, Pagination, Autoplay, A11y]}
             slidesPerView={1}
@@ -69,7 +75,8 @@ export default  function Homebanner ({bannersdata }){
                       className="banner_img"
                       width={1920}
                       height={943}
-                       />
+                      
+                    />
                   </picture>
                   <div className="banner_container">
                     <div className="subtitle_66">{banner.banner_subheading}</div>
@@ -87,6 +94,6 @@ export default  function Homebanner ({bannersdata }){
           </Swiper>
           <div className="swiper-pagination"></div>
           <div className="swiper_animation"></div>
-        </section>
+        </section> */
     );
 }
