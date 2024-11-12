@@ -1,14 +1,15 @@
+ "use client";
 import Image from "next/image";
 import Link from "next/link";
-
 import { Navigation, Pagination, Autoplay, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-export default function Homebanner (){
-    const banners = [
+
+export default  function Homebanner ({bannersdata }){
+    /* const banners = [
         {
           id: 1,
           banner_image: {
@@ -40,6 +41,8 @@ export default function Homebanner (){
           link: "/page3"
         }
       ];
+
+ */
     
     return (
 <section data-section="home_banner" className="home_banner">
