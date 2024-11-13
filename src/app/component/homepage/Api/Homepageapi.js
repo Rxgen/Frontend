@@ -1,9 +1,9 @@
 
 export async function bannerdata() {
-    const token = "95ff7f76f685a9145673b6a06036e9a7546e6241d669e5ba1bb8734880871e8d80a1c3b93c6afb94287d47ca32784739f9e7072f79b1fe0e2471458f7710995b2c03af3a8ded4aeb64ec1bd3a014bf64bf85d948b739852e9c7525460c36ae90c3a28601dc7e3d8243eec69de161502a0ebb03f285855cad0c49e3937ac2715a";
+    const token = "d594385bcdf3987e320aa778021b590d8e4349d15d942be6270189e35f6a22b396e83259481b1909cbf746965de3480770887383b762e46ce9caa7ba8ca3c8ebcc3342f8825e2c06a3e513090f7cee8f46167ab8ee82d8bdd95d6d8b44bdf920f8e54ef3d4999bd6a1d44c25bd4a4a2350019441e53c03d53acb56d49f42e2d7";
 
     try {
-        const response = await fetch("http://127.0.0.1:1337/api/homepage?populate=*", {
+        const response = await fetch("http://127.0.0.1:1337/api/homepage?populate=Banner.banner_desktop_image", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`

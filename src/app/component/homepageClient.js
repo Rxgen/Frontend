@@ -13,22 +13,19 @@ export default function HomePageClient() {
   const [bannersData, setBannersData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     async function fetchData() {
       try {
         const data = await bannerdata();
-        console.log('Fetched Banners Data:', data); 
-        if (data && Array.isArray(data)) {
-          setBannersData(data);
-        } else {
-          console.error("Unexpected data structure:", data);
-        }
+        console.log('Fetched Banners Data:', data); // Log the full response
+  
+        // Directly set the bannersData if it exists
+        setBannersData(data.Banner || []); // Use empty array as fallback if Banner is undefined or null
       } catch (err) {
         console.error("Error fetching data:", err);
         setError(err);
       } finally {
-        setLoading(false); 
+        setLoading(false); // End loading state
       }
     }
     fetchData();
