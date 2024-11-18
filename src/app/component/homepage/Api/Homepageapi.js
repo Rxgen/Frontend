@@ -1,13 +1,10 @@
 
-export async function bannerdata() {
-    const token = "d594385bcdf3987e320aa778021b590d8e4349d15d942be6270189e35f6a22b396e83259481b1909cbf746965de3480770887383b762e46ce9caa7ba8ca3c8ebcc3342f8825e2c06a3e513090f7cee8f46167ab8ee82d8bdd95d6d8b44bdf920f8e54ef3d4999bd6a1d44c25bd4a4a2350019441e53c03d53acb56d49f42e2d7";
+export async function fetchHomepageData(segment) {
+    
 
     try {
-        const response = await fetch("http://127.0.0.1:1337/api/homepage?populate=Banner.banner_desktop_image", {
+        const response = await fetch(`https://lupinus-cms.devmaffia.in/api/homepage?populate[${segment}][populate]=*`, {
             method: "GET",
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
         });
 
         if (!response.ok) {
