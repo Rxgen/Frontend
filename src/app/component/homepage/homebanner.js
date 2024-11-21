@@ -87,7 +87,7 @@ export default function Homebanner({ banners }) {
                   <a href={banner.cta.cta_url} className="circle_cta">
                     <span>{banner.cta.cta_text}</span>
                     <Image
-                      src="/assets/images/icons/white_arrow.webp"
+                      src="/images/icons/white_arrow.webp"
                       alt="arrow"
                       width="20"
                       height="14"

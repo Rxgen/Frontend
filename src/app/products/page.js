@@ -1,5 +1,36 @@
+"use client";
+
+import Filter from "../component/product/filter";
+
+import { fetchproduct } from "../component/homepage/Api/fetchProduct";
+
+import { useState,useEffect } from "react";
+
+import Link from "next/link";
+
+
 export default function products(){
+
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        async function loadProducts() {
+            setLoading(true);
+            const productData = await fetchproduct();
+            setProducts(productData);
+            setLoading(false);
+        }
+
+        loadProducts();
+    }, []);
+
+    if (loading) {
+        return <div>Loading products...</div>;
+    }
     return (
+    <div>
+      <Filter />
         <section data-section="product_listing" className="product_listing" id="product_listing">
     <div className="product_nav">
         <div className="product_text">
@@ -19,113 +50,62 @@ export default function products(){
         </div>
     </div>
 
-    <div className="product_item_container">
-        <div className="product_item">
-            <div className="product_box">
-                <img src="assets/images/product-listing/items/product_1.webp" alt="" width="543" height="460" />
-                <a href="" className="view_cta">VIEW MORE</a>
-            </div>
-            <div className="product_detail">
-                <div className="subtitle_35">
-                    Albuterol
-                    Sulfate Inhalation
-                    Aerosol
-                </div>
-                <div className="product_pdf">
-                    <a href="" className="pdf_link">DOWNLOAD SAFETY DATA SHEET</a>
-                    <a href="" className="pdf_link">PACKAGE INSERT</a>
-                    <a href="" className="pdf_link">MEDICATION GUIDE</a>
-                </div>
-            </div>
-        </div>
-        <div className="product_item">
-            <div className="product_box">
-                <img src="assets/images/product-listing/items/product_2.webp" alt="" width="543" height="460" />
-                <a href="" className="view_cta">VIEW MORE</a>
-            </div>
-            <div className="product_detail">
-                <div className="subtitle_35">
-                    Cefprozil for
-                    Oral Suspension
-                    USP
-                </div>
-                <div className="product_pdf">
-                    <a href="" className="pdf_link">DOWNLOAD SAFETY DATA SHEET</a>
-                    <a href="" className="pdf_link">PACKAGE INSERT</a>
-                    <a href="" className="pdf_link">MEDICATION GUIDE</a>
-                </div>
-            </div>
-        </div>
-        <div className="product_item">
-            <div className="product_box">
-                <img src="assets/images/product-listing/items/product_3.webp" alt="" width="543" height="460" />
-                <a href="" className="view_cta">VIEW MORE</a>
-            </div>
-            <div className="product_detail">
-                <div className="subtitle_35">
-                    Clobazam
-                    Oral Suspension
-                </div>
-                <div className="product_pdf">
-                    <a href="" className="pdf_link">DOWNLOAD SAFETY DATA SHEET</a>
-                    <a href="" className="pdf_link">PACKAGE INSERT</a>
-                    <a href="" className="pdf_link">MEDICATION GUIDE</a>
-                </div>
-            </div>
-        </div>
-        <div className="product_item">
-            <div className="product_box">
-                <img src="assets/images/product-listing/items/product_4.webp" alt="" width="543" height="460" />
-                <a href="" className="view_cta">VIEW MORE</a>
-            </div>
-            <div className="product_detail">
-                <div className="subtitle_35">
-                    Cephalexin
-                    Capsules USP
-                </div>
-                <div className="product_pdf">
-                    <a href="" className="pdf_link">DOWNLOAD SAFETY DATA SHEET</a>
-                    <a href="" className="pdf_link">PACKAGE INSERT</a>
-                    <a href="" className="pdf_link">MEDICATION GUIDE</a>
-                </div>
+    return (
+        <div>
+            <h1>Product Listing</h1>
+            <div className="product_item_container">
+                {products.map((product) => {
+                    // Get product image URL
+                    const imageUrl = product.product_images?.[0]?.id
+                        ? `https://lupinus-cms.devmaffia.in/uploads/product_${product.product_images[0].id}.webp`
+                        : "assets/images/placeholder.webp"; // Fallback image if none available
+
+                    return (
+                        <div className="product_item" key={product.id}>
+                            {/* Product Image */}
+                            <div className="product_box">
+                                <img
+                                    src={imageUrl}
+                                    alt={product.product_name.trim()}
+                                    width="543"
+                                    height="460"
+                                />
+                               <Link href={`/products/${product.slug}`} className="view_cta">
+                                VIEW MORE
+                            </Link>
+                            </div>
+
+                            {/* Product Details */}
+                            <div className="product_detail">
+                                <div className="subtitle_35">{product.product_name.trim()}</div>
+
+                                {/* PDF Files */}
+                                <div className="product_pdf">
+                                    {product.pdf_files.map((pdf) =>
+                                        pdf.boolean ? (
+                                            <a
+                                                href={`https://lupinus-cms.devmaffia.in/uploads/${pdf.name
+                                                    .toLowerCase()
+                                                    .replace(/ /g, "_")}.pdf`}
+                                                key={pdf.id}
+                                                className="pdf_link"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                {pdf.name.toUpperCase()}
+                                            </a>
+                                        ) : null
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
-        <div className="product_item">
-            <div className="product_box">
-                <img src="assets/images/product-listing/items/product_5.webp" alt="" width="543" height="460" />
-                <a href="" className="view_cta">VIEW MORE</a>
-            </div>
-            <div className="product_detail">
-                <div className="subtitle_35">
-                    Bromfenac
-                    Ophthalmic Solution
-                    0.09%
-                </div>
-                <div className="product_pdf">
-                    <a href="" className="pdf_link">DOWNLOAD SAFETY DATA SHEET</a>
-                    <a href="" className="pdf_link">PACKAGE INSERT</a>
-                    <a href="" className="pdf_link">MEDICATION GUIDE</a>
-                </div>
-            </div>
-        </div>
-        <div className="product_item">
-            <div className="product_box">
-                <img src="assets/images/product-listing/items/product_6.webp" alt="" width="543" height="460" />
-                <a href="" className="view_cta">VIEW MORE</a>
-            </div>
-            <div className="product_detail">
-                <div className="subtitle_35">
-                    Cefixime
-                    Capsules
-                </div>
-                <div className="product_pdf">
-                    <a href="" className="pdf_link">DOWNLOAD SAFETY DATA SHEET</a>
-                    <a href="" className="pdf_link">PACKAGE INSERT</a>
-                    <a href="" className="pdf_link">MEDICATION GUIDE</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    );
 </section>
+    </div>    
+   
     )
 }

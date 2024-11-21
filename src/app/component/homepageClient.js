@@ -22,7 +22,7 @@ export default function HomePageClient() {
         console.log('Fetched Banners Data:', data);    
         setBannersData(data.Banner || []); 
 
-        const corporateResponse = await fetchHomepageData("Corporate_Overview");
+        const corporateResponse = await fetchHomepageData("Corporate");
         setCorporateData(corporateResponse || {});
 
         const aboutResponse = await fetchHomepageData("About_Us");
@@ -32,7 +32,7 @@ export default function HomePageClient() {
         console.error("Error fetching data:", err);
         setError(err);
       } finally {
-        setLoading(false); // End loading state
+        setLoading(false); 
       }
     }
     fetchData();
