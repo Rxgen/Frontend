@@ -22,8 +22,8 @@ export async function fetchProducts(letter = "") {
 
   export async function fetchProductBySlug(slug) {
     try {
-      const url = `https://lupinus-cms.devmaffia.in/api/products?filters[slug][$eq]=${slug}&populate=*`;
-  
+      const url = `https://lupinus-cms.devmaffia.in/api/products?filters[slug][$eq]=${slug}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf`;
+
       const response = await fetch(url, { method: "GET" });
       console.log(url);
   
