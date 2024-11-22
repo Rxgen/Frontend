@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { Navigation, Pagination, Autoplay, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,10 +8,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export default function Homebanner({ banners }) {
-  console.log("Homepage banner ", banners);
-  if (!banners.length) {
-    return <div>No banner data available.</div>;
+  if (!banners || banners.length === 0) {
+    return null; // Gracefully handle empty banners
   }
+
+  const getMediaUrl = (url) =>
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
 
   return (
     <section data-section="home_banner" className="home_banner">
@@ -40,17 +43,11 @@ export default function Homebanner({ banners }) {
                   className="banner_video"
                 >
                   <source
-                    src={
-                      process.env.NEXT_PUBLIC_STRAPI_API_URL +
-                      banner.banner_desktop_image.url
-                    }
+                    src={getMediaUrl(banner.banner_desktop_image.url)}
                     type="video/mp4"
                   />
                   <source
-                    src={
-                      process.env.NEXT_PUBLIC_STRAPI_API_URL +
-                      banner.banner_mobile_image.url
-                    }
+                    src={getMediaUrl(banner.banner_mobile_image.url)}
                     type="video/mp4"
                     media="(max-width: 767px)"
                   />
@@ -60,16 +57,16 @@ export default function Homebanner({ banners }) {
                 <picture>
                   <source
                     media="(max-width: 540px)"
-                    src={
-                      process.env.NEXT_PUBLIC_STRAPI_API_URL +
-                      banner.banner_mobile_image.formats.small.url
-                    }
+                    srcSet={getMediaUrl(
+                      banner.banner_mobile_image.formats?.small?.url ||
+                        banner.banner_mobile_image.url
+                    )}
                   />
                   <img
-                    src={
-                      process.env.NEXT_PUBLIC_STRAPI_API_URL +
-                      banner.banner_desktop_image.formats.large.url
-                    }
+                    src={getMediaUrl(
+                      banner.banner_desktop_image.formats?.large?.url ||
+                        banner.banner_desktop_image.url
+                    )}
                     alt={
                       banner.banner_desktop_image.alternativeText || "Banner"
                     }
@@ -84,15 +81,17 @@ export default function Homebanner({ banners }) {
                 <div className="subtitle_66">{banner.banner_heading}</div>
                 <div className="banner_detail">
                   <p className="para">{banner.banner_sub_heading}</p>
-                  <a href={banner.cta.cta_url} className="circle_cta">
-                    <span>{banner.cta.cta_text}</span>
-                    <Image
-                      src="/images/icons/white_arrow.webp"
-                      alt="arrow"
-                      width="20"
-                      height="14"
-                    />
-                  </a>
+                  {banner.cta && (
+                    <a href={banner.cta.cta_url} className="circle_cta">
+                      <span>{banner.cta.cta_text}</span>
+                      <Image
+                        src="/images/icons/white_arrow.webp"
+                        alt="arrow"
+                        width="20"
+                        height="14"
+                      />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

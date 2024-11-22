@@ -1,135 +1,194 @@
 "use client";
+
 import { useState, useEffect } from "react";
-import { fetchNewProducts } from "../homepage/Api/fetchfilternew";
 import Link from "next/link";
 
-export default function Productlist({ letter }) {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
-    console.log(letter);
+export default function Products({ productdata = [] }) {
+  // Initialize state
+  const [products, setProducts] = useState(productdata); // Initial products from props
+  const [filteredProducts, setFilteredProducts] = useState(productdata); // Filtered products
+  const [loading, setLoading] = useState(false);
+  const [gridView, setGridView] = useState("two_grid"); // Default grid view is 2-grid
 
-    useEffect(() => {
-        async function loadProducts() {
-            setLoading(true);
-            const productData = await fetchNewProducts(letter);
-            setProducts(productData);
-            setLoading(false);
-        }
+  console.log("Products data ", productdata);
 
-        loadProducts();
-    }, [letter]); // Re-run when the `letter` prop changes
+  // Helper function to construct full media URL
+  const getMediaUrl = (url) => {
+    return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+  };
 
-    if (loading) {
-        return <div>Loading products...</div>;
-    }
+  // Handle filtering (placeholder for future filter logic)
+  const handleFilter = (filterData) => {
+    setLoading(true);
+    setFilteredProducts(filterData); // Set filtered products
+    setLoading(false);
+  };
 
-    if (products.length === 0) {
-        return <div>No products found for "{letter}"</div>;
-    }
+  // Handle grid view toggle
+  const handleGridView = (viewType) => {
+    setGridView(viewType);
+  };
 
+  if (productdata.length === 0) {
     return (
-        <div>
-            <section
-                data-section="product_listing"
-                className="product_listing"
-                id="product_listing"
-            >
-                <div className="product_nav">
-                    <div className="product_text">
-                        <span id="product_number" className="product_number">
-                            {products.length}
-                        </span>{" "}
-                        ITEMS FOUND
-                    </div>
-                    <div className="product_grid">
-                        <div className="grid_text">GRID</div>
-                        <button className="grid_button two_grid active">
-                            <img
-                                src="assets/images/icons/grid_1.webp"
-                                alt=""
-                                width="16"
-                                height="16"
-                            />
-                        </button>
-                        <button className="grid_button three_grid">
-                            <img
-                                src="assets/images/icons/grid_2.webp"
-                                alt=""
-                                width="25"
-                                height="16"
-                            />
-                        </button>
-                    </div>
-                    <div className="product_select">
-                        <select name="" id="">
-                            <option value="">ANTI-INFLAMMATORY</option>
-                            <option value="">ANTI-INFLAMMATORY</option>
-                            <option value="">ANTI-INFLAMMATORY</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <h1>Product Listing</h1>
-                    <div className="product_item_container">
-                        {products.map((product) => {
-                            // Get product image URL
-                            const imageUrl = product.product_images?.[0]?.id
-                                ? `https://lupinus-cms.devmaffia.in/uploads/product_${product.product_images[0].id}.webp`
-                                : "assets/images/placeholder.webp"; // Fallback image if none available
-
-                            return (
-                                <div className="product_item" key={product.id}>
-                                    {/* Product Image */}
-                                    <div className="product_box">
-                                        <img
-                                            src={imageUrl}
-                                            alt={product.product_name.trim()}
-                                            width="543"
-                                            height="460"
-                                        />
-                                        <Link
-                                            href={`/products/${product.slug}`}
-                                            className="view_cta"
-                                        >
-                                            VIEW MORE
-                                        </Link>
-                                    </div>
-
-                                    {/* Product Details */}
-                                    <div className="product_detail">
-                                        <div className="subtitle_35">
-                                            {product.product_name.trim()}
-                                        </div>
-
-                                        {/* PDF Files */}
-                                        <div className="product_pdf">
-                                            {product.pdf_files.map((pdf) =>
-                                                pdf.boolean ? (
-                                                    <a
-                                                        href={`https://lupinus-cms.devmaffia.in/uploads/${pdf.name
-                                                            .toLowerCase()
-                                                            .replace(
-                                                                / /g,
-                                                                "_"
-                                                            )}.pdf`}
-                                                        key={pdf.id}
-                                                        className="pdf_link"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        {pdf.name.toUpperCase()}
-                                                    </a>
-                                                ) : null
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
-        </div>
+      <div>
+        <section
+          data-section="product_listing"
+          className="product_listing"
+          id="product_listing"
+        >
+          <div className="no_products_found">
+            <h2>No products found</h2>
+          </div>
+        </section>
+      </div>
     );
+  }
+
+  return (
+    <section
+      data-section="product_listing"
+      className="product_listing"
+      id="product_listing"
+    >
+      {/* Product Navigation */}
+      <div className="product_nav">
+        <div className="product_text">
+          <span id="product_number" className="product_number">
+            {filteredProducts.length}
+          </span>{" "}
+          ITEMS FOUND
+        </div>
+
+        {/* Grid View Options */}
+        <div className="product_grid">
+          <div className="grid_text">GRID</div>
+          <button
+            className={`grid_button one_grid ${gridView === "one_grid" ? "active" : ""}`}
+            onClick={() => handleGridView("one_grid")}
+          >
+            <img
+              src="/images/icons/grid_3.webp"
+              alt="One Grid View"
+              width="7"
+              height="16"
+            />
+          </button>
+          <button
+            className={`grid_button two_grid ${gridView === "two_grid" ? "active" : ""}`}
+            onClick={() => handleGridView("two_grid")}
+          >
+            <img
+              src="/images/icons/grid_1.webp"
+              alt="Two Grid View"
+              width="16"
+              height="16"
+            />
+          </button>
+          <button
+            className={`grid_button three_grid ${gridView === "three_grid" ? "active" : ""}`}
+            onClick={() => handleGridView("three_grid")}
+          >
+            <img
+              src="/images/icons/grid_2.webp"
+              alt="Three Grid View"
+              width="25"
+              height="16"
+            />
+          </button>
+        </div>
+
+        {/* Category Filter */}
+        <div className="product_select">
+          <select name="category" id="category-select">
+            <option value="">Select Category</option>
+            {products.map((product) =>
+              product.category?.name ? (
+                <option key={product.category.id} value={product.category.name}>
+                  {product.category.name}
+                </option>
+              ) : null
+            )}
+          </select>
+        </div>
+      </div>
+
+      {/* Loading State */}
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          {/* Check if there are no filtered products */}
+          {filteredProducts.length === 0 ? (
+            <div className="no_products_found">
+              <h2>No products found</h2>
+            </div>
+          ) : (
+            <>
+              {/* Product Items */}
+              <div className={`product_item_container ${gridView}`}>
+                {filteredProducts.map((product) => {
+                  // Safe access for product fields
+                  const {
+                    id,
+                    product_name = "Unnamed Product",
+                    slug = "#",
+                    pdf_files = [],
+                    product_images = [],
+                  } = product;
+
+                  // Get image URL or fallback image
+                  const imageUrl =
+                    product_images[0]?.slide?.url
+                      ? getMediaUrl(product_images[0].slide.url)
+                      : "/assets/images/placeholder.webp"; // Fallback image
+
+                  return (
+                    <div className="product_item" key={id}>
+                      {/* Product Image */}
+                      <div className="product_box">
+                        <img
+                          src={imageUrl}
+                          alt={product_name.trim()}
+                          width="543"
+                          height="460"
+                        />
+                        <Link href={`/products/${slug}`} className="view_cta">
+                          VIEW MORE
+                        </Link>
+                      </div>
+
+                      {/* Product Name */}
+                      <div className="product_detail">
+                        <div className="subtitle_35">{product_name.trim()}</div>
+
+                        {/* PDF Files */}
+                        <div className="product_pdf">
+                          {pdf_files.map((pdf) =>
+                            pdf.boolean ? (
+                              <a
+                                key={pdf.id}
+                                href={getMediaUrl(pdf.pdf.url)} 
+                                className="pdf_link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {pdf.name}
+                              </a>
+                            ) : null
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          )}
+        </>
+      )}
+    </section>
+  );
 }
+
+
