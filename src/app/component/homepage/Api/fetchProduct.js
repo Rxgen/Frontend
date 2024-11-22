@@ -2,7 +2,7 @@
 export async function fetchProducts(letter = "") {
     try {
       const url = letter
-        ? `https://lupinus-cms.devmaffia.in/api/products?filters[product_name][$startsWith]=${letter}&populate=*`
+        ? `https://lupinus-cms.devmaffia.in/api/products?filters[product_name][$startsWith]=${letter}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf`
         : `https://lupinus-cms.devmaffia.in/api/products?populate[0]=product_images.slide&populate[1]=pdf_files.pdf`;
   
       const response = await fetch(url, { method: "GET" });

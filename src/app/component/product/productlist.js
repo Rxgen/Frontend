@@ -6,11 +6,17 @@ import Link from "next/link";
 export default function Products({ productdata = [] }) {
   // Initialize state
   const [products, setProducts] = useState(productdata); // Initial products from props
-  const [filteredProducts, setFilteredProducts] = useState(productdata); // Filtered products
+  //const [filteredProducts, setFilteredProducts] = useState(productdata); // Filtered products
   const [loading, setLoading] = useState(false);
   const [gridView, setGridView] = useState("two_grid"); // Default grid view is 2-grid
 
   console.log("Products data ", productdata);
+
+  useEffect(() => {
+    setProducts(productdata);
+  }, [productdata]);
+  
+
 
   // Helper function to construct full media URL
   const getMediaUrl = (url) => {
@@ -18,11 +24,7 @@ export default function Products({ productdata = [] }) {
   };
 
   // Handle filtering (placeholder for future filter logic)
-  const handleFilter = (filterData) => {
-    setLoading(true);
-    setFilteredProducts(filterData); // Set filtered products
-    setLoading(false);
-  };
+  
 
   // Handle grid view toggle
   const handleGridView = (viewType) => {
@@ -55,7 +57,7 @@ export default function Products({ productdata = [] }) {
       <div className="product_nav">
         <div className="product_text">
           <span id="product_number" className="product_number">
-            {filteredProducts.length}
+            {products.length}
           </span>{" "}
           ITEMS FOUND
         </div>
@@ -119,7 +121,7 @@ export default function Products({ productdata = [] }) {
       ) : (
         <>
           {/* Check if there are no filtered products */}
-          {filteredProducts.length === 0 ? (
+          {products.length === 0 ? (
             <div className="no_products_found">
               <h2>No products found</h2>
             </div>
@@ -127,7 +129,7 @@ export default function Products({ productdata = [] }) {
             <>
               {/* Product Items */}
               <div className={`product_item_container ${gridView}`}>
-                {filteredProducts.map((product) => {
+                {products.map((product) => {
                   // Safe access for product fields
                   const {
                     id,
