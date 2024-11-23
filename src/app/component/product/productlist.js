@@ -3,18 +3,24 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function Products({ productdata = [] }) {
+export default function Products({ productdata = [], totalPages, currentPage }) {
   // Initialize state
   const [products, setProducts] = useState(productdata); // Initial products from props
   //const [filteredProducts, setFilteredProducts] = useState(productdata); // Filtered products
   const [loading, setLoading] = useState(false);
   const [gridView, setGridView] = useState("two_grid"); // Default grid view is 2-grid
 
-  console.log("Products data ", productdata);
+  const handlePageChange = (page) => {
+    // Update the page in the URL (for server-side fetching)
+    const params = new URLSearchParams(window.location.search);
+    params.set("page", page);
+    window.location.search = params.toString(); // This triggers a page reload with updated searchParams
+  };
 
-  useEffect(() => {
-    setProducts(productdata);
-  }, [productdata]);
+  console.log("Products data ", productdata);
+  console.log("length",productdata.length);
+
+  
   
 
 
@@ -57,7 +63,7 @@ export default function Products({ productdata = [] }) {
       <div className="product_nav">
         <div className="product_text">
           <span id="product_number" className="product_number">
-            {products.length}
+            {productdata.length}
           </span>{" "}
           ITEMS FOUND
         </div>
@@ -104,7 +110,7 @@ export default function Products({ productdata = [] }) {
         <div className="product_select">
           <select name="category" id="category-select">
             <option value="">Select Category</option>
-            {products.map((product) =>
+            {productdata.map((product) =>
               product.category?.name ? (
                 <option key={product.category.id} value={product.category.name}>
                   {product.category.name}
@@ -121,7 +127,7 @@ export default function Products({ productdata = [] }) {
       ) : (
         <>
           {/* Check if there are no filtered products */}
-          {products.length === 0 ? (
+          {productdata.length === 0 ? (
             <div className="no_products_found">
               <h2>No products found</h2>
             </div>
@@ -129,7 +135,7 @@ export default function Products({ productdata = [] }) {
             <>
               {/* Product Items */}
               <div className={`product_item_container ${gridView}`}>
-                {products.map((product) => {
+                {productdata.map((product) => {
                   // Safe access for product fields
                   const {
                     id,
@@ -189,7 +195,43 @@ export default function Products({ productdata = [] }) {
           )}
         </>
       )}
+      <div className="pagination">
+  {/* Previous Button */}
+  <button type="button" className="keyboard_btn"
+    onClick={() => handlePageChange(currentPage - 1)}
+    disabled={currentPage === 1}
+  >
+    Previous
+  </button>
+
+  {/* Numbered Page Links */}
+  {[...Array(totalPages)].map((_, index) => {
+    const page = index + 1;
+    return (
+      <button
+        key={page}
+        type="button"
+        onClick={() => handlePageChange(page)}
+        className="keyboard_btn" 
+        disabled={currentPage === page}
+      >
+        {page}
+      </button>
+    );
+  })}
+
+  {/* Next Button */}
+  <button type="button"
+    onClick={() => handlePageChange(currentPage + 1)}
+    disabled={currentPage === totalPages}
+  >
+    Next
+  </button>
+</div>
+
+
     </section>
+    
   );
 }
 

@@ -1,11 +1,13 @@
 
-export async function fetchProducts(letter = "") {
+export async function fetchProducts(letter = "", page = 1, pageSize = 5) {
     try {
       const url = letter
-        ? `https://lupinus-cms.devmaffia.in/api/products?filters[product_name][$startsWith]=${letter}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf`
-        : `https://lupinus-cms.devmaffia.in/api/products?populate[0]=product_images.slide&populate[1]=pdf_files.pdf`;
+      ? `https://lupinus-cms.devmaffia.in/api/products?filters[product_name][$startsWith]=${letter}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+      : `https://lupinus-cms.devmaffia.in/api/products?populate[0]=product_images.slide&populate[1]=pdf_files.pdf&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
   
       const response = await fetch(url, { method: "GET" });
+
+      console.log(url);
   
       if (!response.ok) {
         console.error(`Failed to fetch product data: ${response.status} ${response.statusText}`);
@@ -13,7 +15,14 @@ export async function fetchProducts(letter = "") {
       }
   
       const data = await response.json();
-      return data.data || [];
+      console.log("API Response Data:", data);
+  
+      const { pagination } = data.meta || {};
+  
+      return {
+        products: data.data || [],
+        totalPages: pagination?.pageCount || 1, // Default to 1 if not provided
+      };
     } catch (error) {
       console.error("Error fetching product data:", error);
       return [];
