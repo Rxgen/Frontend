@@ -1,7 +1,7 @@
     "use client";
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+
 
 const Mainmenu = ({ isMenuOpen, toggleMenu }) => {
   const [activeLink, setActiveLink] = useState(1); // Controls active submenu on hover

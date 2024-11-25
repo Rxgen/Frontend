@@ -3,12 +3,26 @@ export async function fetchHomepageData(segment) {
     
 
     try {
-        const response = await fetch(`https://lupinus-cms.devmaffia.in/api/homepage?populate[${segment}][populate]=*`, {
-            method: "GET",
-        });
+       // Determine if the section has a `content_block` to populate
+       const sectionsWithContentBlock = ["people","our_offering","sustainability"]; // Add sections that have `content_block` here
+       const populateQuery = sectionsWithContentBlock.includes(segment)
+           ? `?populate[${segment}][populate][content_block][populate]=image`
+           : `?populate[${segment}][populate]=*`;
+
+      // const url = `https://lupinus-cms.devmaffia.in/api/homepage?populate[${segment}][populate]=*`;
+
+      const url =`https://lupinus-cms.devmaffia.in/api/homepage${populateQuery}`
+       
+       console.log("API Url:", url);
+
+       const response = await fetch(url, {
+           method: "GET",
+       });
+
+        
 
         if (!response.ok) {
-            console.error(`Failed to fetch banner data: ${response.status} ${response.statusText}`);
+            console.error(`Failed to fetch ${segment} data: ${response.status} ${response.statusText}`);
             return [];
         }
 

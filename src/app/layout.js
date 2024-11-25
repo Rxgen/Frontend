@@ -2,6 +2,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";  
 import Header from "./component/layout/header";
 import Footer from "./component/layout/footer";
+import Popup from "./component/layout/popup";
+import Sticky from "./component/layout/sticky";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,6 +20,8 @@ export default function RootLayout({ children }) {
        <Header />
     
         {children}
+        <Popup />
+        <Sticky />
         <Footer />
         </body>
     </html>

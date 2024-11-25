@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function About ({ aboutData }){
     if (!aboutData) return null;
-    console.log("About us Data " ,aboutData.About_Us);
+    console.log("About us Data " ,aboutData);
     const { heading, video, cta, About_Us_Link } = aboutData;
     return (
 
