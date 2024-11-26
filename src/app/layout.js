@@ -9,8 +9,8 @@ import Sticky from "./component/layout/sticky";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Advanced Floor Tiles & Flooring Solutions - Welspun Flooring",
-  description: "Find the complete flooring solutions at Welspun flooring. choose from the best designer &amp; modern floor tiles collections inspired by various elements of everyday life.",
+  title: "Lupin U.S. | Branded + Generic Pharmaceutical Company",
+  description: "We are an innovative, transnational pharmaceutical company with a legacy of excellence in the U.S. and extensive experience in product development and R&D.",
 };
 
 export default function RootLayout({ children }) {

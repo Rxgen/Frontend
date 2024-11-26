@@ -4,6 +4,7 @@ import React from "react";
 export default function ProductDetails({ productdata }) {
   const product = productdata[0];
   console.log("Product after Destructuring:", productdata);
+  console.log("Product Brand after Destructuring:", product.brand);
 
   const ndcList = product.ndc && typeof product.ndc === "string"
     ? product.ndc.split(",").map((ndc) => ndc.trim())
@@ -52,16 +53,24 @@ export default function ProductDetails({ productdata }) {
           </div>
 
           <div className="info_item">
+            <div className="info_title"> RLD/Brand Name </div>
+            <span>:</span>
+            <div className="info_detail">
+              {product.brand && product.brand.name ? product.brand.name : "N/A"}
+            </div>
+          </div>
+
+          <div className="info_item">
             <div className="info_title">TE Rating</div>
             <span>:</span>
             <div className="info_detail">{product.te_rating || "N/A"}</div>
           </div>
 
           <div className="info_item">
-            <div className="info_title">Brand Name</div>
+            <div className="info_title">Therapeutic Category</div>
             <span>:</span>
             <div className="info_detail">
-              {product.brand && product.brand.name ? product.brand.name : "N/A"}
+              {product.category && product.category.name ? product.category.name : "N/A"}
             </div>
           </div>
         </div>

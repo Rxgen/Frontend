@@ -11,7 +11,6 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
   const [gridView, setGridView] = useState("two_grid"); // Default grid view is 2-grid
 
   const handlePageChange = (page) => {
-    // Update the page in the URL (for server-side fetching)
     const params = new URLSearchParams(window.location.search);
     params.set("page", page);
     window.location.search = params.toString(); // This triggers a page reload with updated searchParams
@@ -37,21 +36,6 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
     setGridView(viewType);
   };
 
-  if (productdata.length === 0) {
-    return (
-      <div>
-        <section
-          data-section="product_listing"
-          className="product_listing"
-          id="product_listing"
-        >
-          <div className="no_products_found">
-            <h2>No products found</h2>
-          </div>
-        </section>
-      </div>
-    );
-  }
 
   return (
     <section
@@ -63,7 +47,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
       <div className="product_nav">
         <div className="product_text">
           <span id="product_number" className="product_number">
-            {productdata.length}
+          {productdata.length * totalPages}
           </span>{" "}
           ITEMS FOUND
         </div>
@@ -128,13 +112,23 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
         <>
           {/* Check if there are no filtered products */}
           {productdata.length === 0 ? (
-            <div className="no_products_found">
-              <h2>No products found</h2>
-            </div>
+            <div>
+            <section
+              data-section="product_listing"
+              className="product_listing"
+              id="product_listing"
+            >
+              <div className="no_products_found">
+                No products found
+              </div>
+            </section>
+          </div>
           ) : (
             <>
               {/* Product Items */}
-              <div className={`product_item_container ${gridView}`}>
+              <div className={`product_item_container ${
+          gridView === "three_grid" ? "active" : " "
+        } ${gridView}`}>
                 {productdata.map((product) => {
                   // Safe access for product fields
                   const {
@@ -195,16 +189,14 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
           )}
         </>
       )}
-      <div className="pagination">
-  {/* Previous Button */}
-  <button type="button" className="keyboard_btn"
+      <div className="product_pagination">
+ 
+  <button type="button" className="keyboard_btn product_prev"
     onClick={() => handlePageChange(currentPage - 1)}
     disabled={currentPage === 1}
   >
-    Previous
+    <img src="/images/icons/green_arrow.webp" width={8} height={13} />
   </button>
-
-  {/* Numbered Page Links */}
   {[...Array(totalPages)].map((_, index) => {
     const page = index + 1;
     return (
@@ -212,20 +204,20 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
         key={page}
         type="button"
         onClick={() => handlePageChange(page)}
-        className="keyboard_btn" 
+        className="pagination_number" 
         disabled={currentPage === page}
       >
-        {page}
+        <span>{page}</span>
       </button>
     );
   })}
 
   {/* Next Button */}
-  <button type="button"
+  <button type="button" className="keyboard_btn product_next"
     onClick={() => handlePageChange(currentPage + 1)}
     disabled={currentPage === totalPages}
   >
-    Next
+   <img src="/images/icons/green_arrow.webp" width={8} height={13} />
   </button>
 </div>
 
