@@ -27,22 +27,9 @@ export async function fetchProducts(letter = "", page = 1,category = "",brand=""
 
   /*https://lupinus-cms.devmaffia.in/api/products?populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=1&pagination[pageSize]=5 */
 
-
- /* https://lupinus-cms.devmaffia.in/api/products?populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=1&pagination[page]=1&pagination[pageSize]=12 */
-
-      /*https://lupinus-cms.devmaffia.in/api/products?sort[0]=createdAt:desc&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&pagination[page]=1&pagination[pageSize]=10 */
-
-      /*https://lupinus-cms.devmaffia.in/api/products?filters[brand][name][$eq]=Lotrel®&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&pagination[page]=1&pagination[pageSize]=10 */
-
       
       /* https://lupinus-cms.devmaffia.in/api/products?filters[category][name][$eq]=Bronchodilator&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&pagination[page]=1&pagination[pageSize]=10      */
 
-      /* https://lupinus-cms.devmaffia.in/api/products?filters[ndc][$contains]=68180-755-01&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&pagination[page]=1&pagination[pageSize]=10 */
-
-      
-
-      
-  
       const response = await fetch(url, { method: "GET" });
 
       console.log("API Url",url);

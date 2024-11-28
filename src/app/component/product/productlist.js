@@ -100,6 +100,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
                   {product.category.name}
                 </option>
               ) : null
+              
             )}
           </select>
         </div>
@@ -166,19 +167,21 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
 
                         {/* PDF Files */}
                         <div className="product_pdf">
-                          {pdf_files.map((pdf) =>
-                            pdf.boolean ? (
-                              <a
-                                key={pdf.id}
-                                href={getMediaUrl(pdf.pdf.url)} 
-                                className="pdf_link"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {pdf.name}
-                              </a>
-                            ) : null
-                          )}
+                        {pdf_files.map((pdf) =>
+                         pdf.pdf && pdf.pdf.url ? (
+                        <a
+                            key={pdf.id}
+                            href={getMediaUrl(pdf.pdf.url)} 
+                            className="pdf_link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {pdf.name}
+                          </a>
+                        ) : (
+                          <span key={pdf.id}>No PDF available</span> // Show message when no PDF is available
+                        )
+                      )}
                         </div>
                       </div>
                     </div>

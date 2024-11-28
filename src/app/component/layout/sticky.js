@@ -1,6 +1,6 @@
 "use client"
 
-import popup from "./popup"
+import popup from "./smartguide"
 import { useEffect,useState } from "react";
 
 export default function Sticky(){
