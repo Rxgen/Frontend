@@ -1,7 +1,7 @@
 "use client"
 
 export default function TopBanner({ topbannerdata }) {
-    console.log("Banner Data DIsplay",topbannerdata);
+    console.log("Banner Data Display",topbannerdata);
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
   
     const desktopImageUrl = topbannerdata?.desktop_image?.url
@@ -13,11 +13,11 @@ export default function TopBanner({ topbannerdata }) {
       : "assets/images/about/mob_banner.webp";
   
       
-    const bannerText = topbannerdata?.banner_text || "Cotact Us";
+    const bannerText = topbannerdata?.banner_text || "Corporate Overview";
   
     return (
         
-<section data-section="contact_banner" className="product_listing_banner inner_banner">
+<section data-section="corporate_banner" className="corporate_banner inner_banner" id="corporate_banner">
         <picture>
           <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
           <img

@@ -1,23 +1,33 @@
-import Image from "next/image" ;
-import Link from "next/link";
+import { fetchCorporatetData } from "../component/homepage/Api/fetchPageData";
+import TopBanner from "../component/corporate/top-banner";
+import CorporateAboutData from "../component/corporate/about";
+import Generic from "../component/corporate/generic";
+import Innovation from "../component/corporate/innovative";
+import Sustainable from "../component/corporate/sustainable";
 
 
-const Corporate = ({}) => {
-    return (
-        <section data-section="corporate_banner" className="corporate_banner inner_banner" id="corporate_banner">
-        <picture>
-            <source media="(max-width: 540px)" srcSet="images/homepage/banner/mobile/banner_bg_1.webp" />
-    <Image
-      src="/images/corporate/banner.webp"
-      alt=""
-      className="banner_img"
-      width="1920"
-      height="771"
-    />
-  </picture>
-  <h1 className="subtitle_66">Corporate Overview</h1>
-</section>
-    );
-  };
-  
-  export default Corporate;
+export default async function () {
+  const data = await fetchCorporatetData("top_banner");
+  const topbannerdata=data.top_banner;
+  const about = await fetchCorporatetData("section_content_1");
+  const aboutdata=about.section_content_1;
+  const generic = await fetchCorporatetData("section_content_2");
+  const genericdata=generic.section_content_2;
+  const innovative = await fetchCorporatetData("section_content_3");
+  const innovativedata=innovative.section_content_3;
+  const sustainable = await fetchCorporatetData("section_content_4");
+  const sustainabledata=sustainable.section_content_4;
+
+
+  return (
+    <div>
+        <TopBanner topbannerdata={topbannerdata} />
+        <CorporateAboutData  aboutdata={aboutdata}/>
+        <Generic genericdata={genericdata} />
+        <Innovation innovativedata ={innovativedata} />
+        <Sustainable sustainabledata ={sustainabledata} />
+    </div>
+        
+
+  )
+}

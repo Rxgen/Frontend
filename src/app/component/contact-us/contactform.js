@@ -12,6 +12,50 @@ export default function ContactForm() {
     acceptedTerms: false,
   });
 
+  const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false);
+
+  // Validation function
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+        newErrors.name = ' Name is required';
+    }
+
+    if (!formData.organization.trim()) {
+        newErrors.organization = 'Organization is required';
+    }
+
+    if (!formData.contact.trim()) {
+        newErrors.contact = 'Contact Number is required';
+    } else if (!/^\d{10}$/.test(formData.contact)) {
+        newErrors.contact = 'Contact Number must be 10 digits';
+    }
+
+    if (!formData.email.trim()) {
+        newErrors.email = 'Email is required';
+    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
+        newErrors.email = 'Invalid email format';
+    }
+
+    if (!formData.subject.trim()) {
+        newErrors.subject = 'Subject is required';
+    }
+
+    if (!formData.query.trim()) {
+        newErrors.query = 'Message is required';
+    }
+
+    if (!formData.acceptedTerms) {
+      newErrors.acceptedTerms = 'You must accept the terms and conditions';
+    }
+
+    setErrors(newErrors);
+    console.log('Validation Errors:', newErrors); 
+    return Object.keys(newErrors).length === 0;
+};
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevState) => ({
@@ -22,11 +66,13 @@ export default function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSuccess(false);
 
-    if (!formData.acceptedTerms) {
-      alert("You must accept the terms to submit the form.");
-      return;
+    if (!validateForm()) {
+      console.log('Form is invalid'); 
+      return; 
     }
+    console.log('Form is valid');
 
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}api/contact-forms`, {
@@ -47,11 +93,10 @@ export default function ContactForm() {
         }),
       });
 
+console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_URL}api/contact-forms`)
       if (response.ok) {
-        const result = await response.json();
-        console.log("Form submitted successfully:", result);
-        // Optionally show a success message or reset the form
-        alert("Your submission has been successfully sent!");
+        console.log("responce is okay");
+        setSuccess(true);
         setFormData({
           name: "",
           organization: "",
@@ -61,8 +106,10 @@ export default function ContactForm() {
           query: "",
           acceptedTerms: false,
         });
-      } else {
-        throw new Error("Failed to submit the form.");
+        setErrors({});
+    } else {
+      const result = await response.json();
+      setErrors({ form: result?.error?.message || 'Submission failed' });
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -82,6 +129,7 @@ export default function ContactForm() {
               value={formData.name}
               onChange={handleChange}
             />
+            {errors.name && <span className="form_error">{errors.name}</span>}
           </label>
           <label className="form_label">
             <input
@@ -91,6 +139,7 @@ export default function ContactForm() {
               value={formData.organization}
               onChange={handleChange}
             />
+            {errors.organization && <span className="form_error">{errors.organization}</span>}
           </label>
           <label className="form_label">
             <input
@@ -100,6 +149,7 @@ export default function ContactForm() {
               value={formData.email}
               onChange={handleChange}
             />
+            {errors.email && <span className="form_error">{errors.email}</span>}
           </label>
           <label className="form_label">
             <input
@@ -109,6 +159,7 @@ export default function ContactForm() {
               value={formData.contact}
               onChange={handleChange}
             />
+            {errors.contact && <span className="form_error">{errors.contact}</span>}
           </label>
           <label className="form_label form_select">
             <select
@@ -123,6 +174,7 @@ export default function ContactForm() {
               <option value="subject2">Subject Line 2</option>
               <option value="subject3">Subject Line 3</option>
             </select>
+            {errors.subject && <span className="form_error">{errors.subject}</span>}
           </label>
           <label className="form_label form_textarea">
             <textarea
@@ -133,6 +185,7 @@ export default function ContactForm() {
               rows="10"
               placeholder="POST YOUR QUERY"
             ></textarea>
+          {errors.query && <span className="form_error">{errors.query}</span>}
           </label>
         </div>
         <button type="submit" className="green_cta">
@@ -157,7 +210,10 @@ export default function ContactForm() {
             checked={formData.acceptedTerms}
             onChange={handleChange}
           />
+          {errors.acceptedTerms && <span className="form_error">{errors.acceptedTerms}</span>}
         </div>
+        {errors.form && <p className="form_error">{errors.form}</p>}
+        {success && <p className="form_success">Thank you! Your message has been sent successfully.</p>}
       </form>
     </section>
   );
