@@ -1,10 +1,23 @@
 "use client";
 
-export default function Community(){
+export default function Community( {communitydata}){
+
+    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+
+    const ImageUrl = communitydata?.image?.url
+    ? getMediaUrl(communitydata.image.formats.small.url)
+    : "assets/images/about/banner.webp";
     return (
-        <div>
-            
-        </div>
+        <section data-section="community_section" className="community_section">
+    <img src={ImageUrl} alt="" className="" width="646" height="590" />
+    <div className="community_container">
+        <h2 className="subtitle_60">{communitydata.heading}</h2>
+        <p className="para">
+           {communitydata.description}
+        </p>
+    </div>
+    <img src="/images/flower_bg.webp" alt="Flower Big " className="flower_bg_img" width="895" height="851" />
+</section>
     )
 
 }
