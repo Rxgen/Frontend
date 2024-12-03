@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Offering ({offeringData}){
 
     const getMediaUrl = (url) =>
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+        `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
     return (
 <section data-section="our_offers" className="our_offers">

@@ -3,7 +3,7 @@
 export default function Environmental ( { environmentaldata}){
 
     const getMediaUrl = (url) =>
-        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+        `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
     return (
         <section

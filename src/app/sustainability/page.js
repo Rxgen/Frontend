@@ -2,6 +2,8 @@ import { fetchSustainabletData } from "../component/homepage/Api/fetchPageData";
 import Topbanner from "../component/sustainable/topbanner";
 import Community from "../component/sustainable/community";
 import Environmental from "../component/sustainable/environmental";
+import Empower from "../component/sustainable/empower";
+import Transparency from "../component/sustainable/transparency";
 
 
 export default async function SustainablePage() {
@@ -11,6 +13,10 @@ export default async function SustainablePage() {
     const communitydata=community.section_content_1;
     const environmental = await fetchSustainabletData("environmental");
     const environmentaldata=environmental.environmental;
+    const empower=await fetchSustainabletData("sustain_empower");
+    const empowerdata = empower.sustain_empower;
+    const transparency=await fetchSustainabletData("transparency_slider");
+    const transparencydata = transparency.transparency_slider;
 
 
     return  (
@@ -18,6 +24,8 @@ export default async function SustainablePage() {
             <Topbanner topbannerdata={topbannerdata}/>
             <Community communitydata = {communitydata}/>
             <Environmental environmentaldata={environmentaldata} />
+            <Empower empowerdata ={empowerdata} />
+            <Transparency transparencydata ={transparencydata} />
         </div>
     )
 }

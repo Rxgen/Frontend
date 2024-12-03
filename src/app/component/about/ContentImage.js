@@ -5,7 +5,7 @@ import React from 'react';
 export default function ContentImage({ contentdata }) {
   const [activeLink, setActiveLink] = React.useState(0);
 
-  const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+  const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
   return (
     <div>
@@ -22,7 +22,7 @@ export default function ContentImage({ contentdata }) {
               srcSet={getMediaUrl(item.mobile_image.formats.small.url)}
             />
             <img
-              src={getMediaUrl(item.desktop_image.formats.small.url)}
+              src={getMediaUrl(item.desktop_image.formats.large.url)}
               alt={item.desktop_image.alternativeText || ""}
               width={item.desktop_image.width}
               height={item.desktop_image.height}

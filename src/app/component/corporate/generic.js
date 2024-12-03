@@ -2,7 +2,7 @@
 
 export default function Generic( { genericdata } ){
     
-    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
   
     const desktopImageUrl = genericdata?.desktop_image?.url
     ? getMediaUrl(genericdata.desktop_image.formats.large.url)

@@ -15,7 +15,7 @@ export default function About ({ aboutData }){
         <div className="home_about_img">
           
             <video width="960" height="968" autoPlay muted loop>
-              <source src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${aboutData.About_Us.video.url}`} type={aboutData.About_Us.video.mime || "video/mp4"} />
+              <source src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${aboutData.About_Us.video.url}`} type={aboutData.About_Us.video.mime || "video/mp4"} />
               Your browser does not support the video tag.
             </video>
         </div>

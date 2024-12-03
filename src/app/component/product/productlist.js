@@ -25,7 +25,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
 
   // Helper function to construct full media URL
   const getMediaUrl = (url) => {
-    return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+    return `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
   };
 
   // Handle filtering (placeholder for future filter logic)

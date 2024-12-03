@@ -7,7 +7,7 @@ export default function Leadershipdetails ({ leadershipdetaildata }) {
     const leadership=leadershipdetaildata[0].leadership_details;
     console.log("Single Details",leadership[0])
     
-    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
     
     

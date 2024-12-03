@@ -3,15 +3,19 @@ export async function fetchHomepageData(segment) {
     
 
     try {
-       // Determine if the section has a `content_block` to populate
+
        const sectionsWithContentBlock = ["people","our_offering","sustainability"]; // Add sections that have `content_block` here
        const populateQuery = sectionsWithContentBlock.includes(segment)
-           ? `?populate[${segment}][populate][content_block][populate]=image`
+           ? `?populate[${segment}][populate][content_block][populate]=image&populate[${segment}][populate][cta][populate]=*`
            : `?populate[${segment}][populate]=*`;
 
       // const url = `https://lupinus-cms.devmaffia.in/api/homepage?populate[${segment}][populate]=*`;
 
-      const url =`https://lupinus-cms.devmaffia.in/api/homepage${populateQuery}`
+    /*  https://lupinus-cms.devmaffia.in/api/homepage?populate[people][populate][content_block][populate]=image&populate[people][populate][cta][populate]=*  */
+
+    //https://lupinus-cms.devmaffia.in/api/about?populate[image_content][populate]=*
+
+      const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/homepage${populateQuery}`
        
        console.log("API Url:", url);
 

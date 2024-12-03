@@ -5,7 +5,7 @@ export default function Leadership({ leadershipdata }) {
     
     const slug=leadershipdata[0].slug;
     const data=leadershipdata[0].leadership_details
-    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
     return (
       <section data-section="our_leaders" className="our_leaders">
         <div className="leaders_container">

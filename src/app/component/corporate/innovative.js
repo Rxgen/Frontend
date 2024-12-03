@@ -2,7 +2,7 @@
 
 export default function Innovation( { innovativedata } ){
 
-    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
     const ImageUrl = innovativedata?.image?.url
     ? getMediaUrl(innovativedata.image.formats.medium.url)

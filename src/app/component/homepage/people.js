@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function People( {peopleData} ) {
 
   const getMediaUrl = (url) =>
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+    `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
     return (
       <section data-section="home_our_team" className="home_our_team">
       <div className="team_container">
@@ -31,7 +31,7 @@ export default function People( {peopleData} ) {
       </div>
 
       {peopleData.cta && (
-        <Link href={peopleData.cta.url} className="circle_cta">
+        <Link href="#" className="circle_cta">
           <span>{peopleData.cta.text}</span>
           <img
             src={getMediaUrl(peopleData.cta.icon)}

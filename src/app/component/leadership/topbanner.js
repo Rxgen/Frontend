@@ -3,7 +3,7 @@
 export default function Topbanner({ topbannerdata }) {
 
     console.log("Banner Data Leadesrship Display", topbannerdata);
-    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
     const desktopImageUrl = topbannerdata?.desktop_image?.url
         ? getMediaUrl(topbannerdata.desktop_image.formats.large.url)

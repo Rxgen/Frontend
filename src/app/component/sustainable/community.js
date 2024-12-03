@@ -2,7 +2,7 @@
 
 export default function Community( {communitydata}){
 
-    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
     const ImageUrl = communitydata?.image?.url
     ? getMediaUrl(communitydata.image.formats.small.url)

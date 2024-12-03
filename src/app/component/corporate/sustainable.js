@@ -3,7 +3,7 @@
 export default function Sustainable ( { sustainabledata } ) {
 
 
-    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
     return (
         <section
         data-section="sustainable_coprporate"

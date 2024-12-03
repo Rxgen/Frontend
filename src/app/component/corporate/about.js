@@ -3,7 +3,7 @@ import React from "react";
 
 export default function CorporateAboutData( { aboutdata } ) {
     console.log("Corporate About Data Display",aboutdata);
-    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
+    const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
     const ImageUrl = aboutdata?.image?.url
     ? getMediaUrl(aboutdata.image.formats.medium.url)
