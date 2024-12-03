@@ -28,7 +28,7 @@ const Mainmenu = ({ isMenuOpen, toggleMenu }) => {
                 <span className="sub_menu_link"><Link href="#">Our History</Link></span>
                 <span className="sub_menu_link"><Link href="#" >Our Values</Link></span>
                 <span className="sub_menu_link"><Link href="/science-and-innovation" >Science & Innovation</Link></span>
-                <span className="sub_menu_link"><Link href="#" className="link_item">Compliance & Ethics Program</Link></span>
+                <span className="sub_menu_link"><Link href="#">Compliance & Ethics Program</Link></span>
               </div>
             </div>
           </span>

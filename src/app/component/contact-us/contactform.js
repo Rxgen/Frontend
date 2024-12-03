@@ -74,23 +74,13 @@ export default function ContactForm() {
     }
     console.log('Form is valid');
 
-    try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/contact-forms`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          data: {
-            name: formData.name,
-            organization: formData.organization,
-            email: formData.email,
-            contact: formData.contact,
-            subject: formData.subject,
-            query: formData.query,
-            acceptedTerms: formData.acceptedTerms,
-          },
-        }),
+    
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contact-forms`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ data: formData }),
       });
 
 console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/contact-forms`)
@@ -112,11 +102,7 @@ console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_UR
        console.error('Error response:', result);
        setErrors({ form: result?.error?.message || 'Submission failed' });
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("There was an error submitting your form. Please try again later.");
-    }
-  };
+    };  
 
   return (
     <section data-section="contact_form" className="contact_form">
