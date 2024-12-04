@@ -278,7 +278,7 @@ export async function fetchPeopleData(segment) {
             method: "GET",
         });
 
-        console.log("Career",url);
+        console.log("People",url);
 
         if (!response.ok) {
             console.error(`Failed to fetch People data: ${response.status} ${response.statusText}`);
