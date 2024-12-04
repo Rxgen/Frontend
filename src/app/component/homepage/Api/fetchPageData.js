@@ -244,14 +244,44 @@ export async function fetchCoreValueData(segment) {
 export async function fetchCareerData(segment) {
     try {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/career?populate[${segment}][populate]=*`;
-        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/core-value?populate[${segment}][populate]=*`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/career?populate[${segment}][populate]=*`, {
             method: "GET",
         });
 
-        console.log("Innovative Medicine",url);
+        console.log("Career",url);
 
         if (!response.ok) {
-            console.error(`Failed to fetch banner data: ${response.status} ${response.statusText}`);
+            console.error(`Failed to fetch career data: ${response.status} ${response.statusText}`);
+            return [];
+        }
+
+        const data = await response.json();
+        console.log("Full Response:", data);
+
+        if (data && data.data) {
+            console.log("Response Data: For API CAll Leadrship Data", data.data);
+            return data.data;
+        } else {
+            console.error("API response does not contain expected `data` property. Received:", data);
+            return [];
+        }
+    } catch (error) {
+        console.error("Error fetching banner data:", error);
+        return [];
+    }
+}
+
+export async function fetchPeopleData(segment) {
+    try {
+        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/people-page?populate[${segment}][populate]=*`;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/people-page?populate[${segment}][populate]=*`, {
+            method: "GET",
+        });
+
+        console.log("Career",url);
+
+        if (!response.ok) {
+            console.error(`Failed to fetch People data: ${response.status} ${response.statusText}`);
             return [];
         }
 
