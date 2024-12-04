@@ -13,7 +13,7 @@ export default function Generic( { genericdata } ){
     : "/assets/images/about/mob_banner.webp";
 
     return (
-        <section data-section="generic_coprporate" className="generic_coprporate">
+        <section data-section="generic_corporate" className="generic_corporate">
       <picture>
         <source
           media="(max-width: 540px)"
