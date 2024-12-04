@@ -23,10 +23,10 @@ const Mainmenu = ({ isMenuOpen, toggleMenu }) => {
             <Link href="#" className="link_item">About Us</Link>
             <div className="menu_sub_nav">
               <div className={`sub_menu ${activeLink === 1 ? "active" : ""}`}>
-                <span className="sub_menu_link"><Link href="/corporate">Corporate Overview</Link></span>
+                <span className="sub_menu_link"><Link href="/corporate-overview">Corporate Overview</Link></span>
                 <span className="sub_menu_link"><Link href="/leadership">Our Leadership</Link></span>
                 <span className="sub_menu_link"><Link href="#">Our History</Link></span>
-                <span className="sub_menu_link"><Link href="#" >Our Values</Link></span>
+                <span className="sub_menu_link"><Link href="/core-value" >Our Values</Link></span>
                 <span className="sub_menu_link"><Link href="/science-and-innovation" >Science & Innovation</Link></span>
                 <span className="sub_menu_link"><Link href="#">Compliance & Ethics Program</Link></span>
               </div>
@@ -56,8 +56,8 @@ const Mainmenu = ({ isMenuOpen, toggleMenu }) => {
               <div className={`sub_menu ${activeLink === 1 ? "active" : ""}`}>
                 <span className="sub_menu_link"><Link href="/generic-medicine" >Generic / Complex Generics</Link></span>
                 <span className="sub_menu_link"><Link href="/innovative-medicine" >Innovative Medicines</Link></span>
-                <span className="sub_menu_link"><Link href="/product-listing" >Product Listing</Link></span>
-                <span className="sub_menu_link"><Link href="/product-detail">Product Detail</Link></span>
+                <span className="sub_menu_link"><Link href="/products" >Product Listing</Link></span>
+                <span className="sub_menu_link"><Link href="/products">Product Detail</Link></span>
               </div>
             </div>
           </span>
@@ -71,7 +71,7 @@ const Mainmenu = ({ isMenuOpen, toggleMenu }) => {
             <div className="menu_sub_nav">
               <div className={`sub_menu ${activeLink === 1 ? "active" : ""}`}>
                 <span className="sub_menu_link"><Link href="#" >Our Culture</Link></span>
-                <span className="sub_menu_link"><Link href="#" >Career</Link></span>
+                <span className="sub_menu_link"><Link href="/career" >Career</Link></span>
               </div>
             </div>
           </span>
