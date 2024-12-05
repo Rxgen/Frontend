@@ -13,7 +13,7 @@ export default function Patient ({ patientdata}) {
     : "/assets/images/about/mob_banner.webp";
 
     return (
-        <section data-section="innovative_medical" className="innovative_medical generic_coprporate">
+        <section data-section="innovative_medical" className="innovative_medical generic_corporate">
       <picture>
         <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
         

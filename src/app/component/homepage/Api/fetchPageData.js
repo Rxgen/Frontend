@@ -362,6 +362,38 @@ export async function fetchSciencInnovationData(segment) {
 }
 
 
+export async function fetchGenericMedicineData(segment) {
+    try {
+        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/generic-medicine?populate[${segment}][populate]=*`;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/generic-medicine?populate[${segment}][populate]=*`, {
+            method: "GET",
+        });
+
+        console.log("Science Innovation",url);
+
+        if (!response.ok) {
+            console.error(`Failed to fetch Our Offering data: ${response.status} ${response.statusText}`);
+            return [];
+        }
+
+        const data = await response.json();
+        console.log("Full Response:", data);
+
+        if (data && data.data) {
+            console.log("Response Data: For API CAll Leadrship Data", data.data);
+            return data.data;
+        } else {
+            console.error("API response does not contain expected `data` property. Received:", data);
+            return [];
+        }
+    } catch (error) {
+        console.error("Error fetching banner data:", error);
+        return [];
+    }
+}
+
+
+
 
 
 
