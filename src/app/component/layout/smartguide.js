@@ -71,7 +71,7 @@ const SmartGuide = () => {
     } else {
       setProducts([]);
     }
-  }, [productName, ndc, brandName]);
+  }, [productName, ndc, brandName, populateFields]);
 
   const togglePopup = () => {
     setIsPopupActive((prevState) => !prevState);

@@ -66,7 +66,7 @@ export async function fetchContactData(segment) {
     }
 }
 
-export async function fetchLeadershiptData(segment) {
+/* export async function fetchLeadershiptData(segment) {
     
 
     try {
@@ -96,9 +96,9 @@ export async function fetchLeadershiptData(segment) {
         console.error("Error fetching banner data:", error);
         return [];
     }
-}
+} */
 
-export async function fetchLeadershipdetails(slug) {
+/* export async function fetchLeadershipdetails(slug) {
     try {
       const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?filters[slug][$eq]=${slug}&populate[0]=leadership_details.image&populate[1]=top_banner.desktop_image&populate[2]=top_banner.mobile_image`;
 
@@ -118,7 +118,7 @@ export async function fetchLeadershipdetails(slug) {
       console.error("Error fetching product data:", error);
       return [];
     }
-  }
+  } */
 
   export async function fetchCorporatetData(segment) {
     try {

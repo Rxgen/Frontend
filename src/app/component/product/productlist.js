@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Products({ productdata = [], totalPages, currentPage }) {
-  // Initialize state
   const [products, setProducts] = useState(productdata); // Initial products from props
   //const [filteredProducts, setFilteredProducts] = useState(productdata); // Filtered products
   const [loading, setLoading] = useState(false);
@@ -20,17 +19,10 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
   console.log("Products data ", productdata);
   console.log("length",productdata.length);
 
-  
-  
-
-
-  // Helper function to construct full media URL
   const getMediaUrl = (url) => {
     return `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
   };
 
-  // Handle filtering (placeholder for future filter logic)
-  
 
   // Handle grid view toggle
   const handleGridView = (viewType) => {
@@ -153,7 +145,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
                       <div className="product_box">
                         <Image
                           src={imageUrl}
-                          alt={product_name.trim()}
+                          alt={product_name.trim() || "Product image"}
                           width="543"
                           height="460"
                         />
@@ -199,7 +191,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
     onClick={() => handlePageChange(currentPage - 1)}
     disabled={currentPage === 1}
   >
-    <Image src="/images/icons/green_arrow.webp" width={8} height={13} />
+    <Image src="/images/icons/green_arrow.webp" alt="Green Arrow" width={8} height={13} />
   </button>
   {[...Array(totalPages)].map((_, index) => {
     const page = index + 1;
@@ -221,12 +213,10 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
     onClick={() => handlePageChange(currentPage + 1)}
     disabled={currentPage === totalPages}
   >
-   <Image src="/images/icons/green_arrow.webp" width={8} height={13} />
+   <Image src="/images/icons/green_arrow.webp" alt="Green Arrow for pagination" width={8} height={13} />
   </button>
 </div>
-
-
-    </section>
+</section>
     
   );
 }

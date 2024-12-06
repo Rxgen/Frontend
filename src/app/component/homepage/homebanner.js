@@ -15,6 +15,8 @@ export default function Homebanner({ banners }) {
   const getMediaUrl = (url) =>
     `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
+  console.log("Image url ",getMediaUrl);
+
   return (
     <section data-section="home_banner" className="home_banner">
       <Swiper

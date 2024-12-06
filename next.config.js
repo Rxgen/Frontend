@@ -1,16 +1,13 @@
-const nextConfig = {
+// next.config.js
+module.exports = {
     images: {
       remotePatterns: [
         {
           protocol: 'https',
           hostname: 'lupinus-cms.devmaffia.in',
-          port: ' ', 
-          pathname: '/uploads/**',
+          port: '', 
+          pathname: '/uploads/**', 
         },
       ],
     },
   };
-  
-  export default nextConfig; 
-
-
