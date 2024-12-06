@@ -1,5 +1,6 @@
 "use client" ;
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Innovative({innovativedata}){
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
@@ -16,7 +17,7 @@ export default function Innovative({innovativedata}){
         <section data-section="innovative_offer" className="innovative_offer generic_corporate">
     <picture>
         <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
-        <img src={desktopImageUrl} alt="Mobile Image" className="generic_img" width="1920" height="969" />
+        <Image src={desktopImageUrl} alt="Mobile Image" className="generic_img" width="1920" height="969" />
     </picture>
     <div className="generic_container">
         <h2 className="subtitle_60">
@@ -28,7 +29,7 @@ export default function Innovative({innovativedata}){
         <Link href="/innovative-medicine" className="black_cta">
             <div className="cta_container">
                 <span>Know more</span>
-                <img src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
+                <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
             </div>
         </Link>
     </div>

@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 
 export default function Homebanner({ banners }) {
   if (!banners || banners.length === 0) {
-    return null; // Gracefully handle empty banners
+    return null; 
   }
 
   const getMediaUrl = (url) =>
@@ -62,7 +62,7 @@ export default function Homebanner({ banners }) {
                         banner.banner_mobile_image.url
                     )}
                   />
-                  <img
+                  <Image
                     src={getMediaUrl(
                       banner.banner_desktop_image.formats?.large?.url ||
                         banner.banner_desktop_image.url

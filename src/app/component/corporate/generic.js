@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export default function Generic( { genericdata } ){
     
@@ -19,9 +20,9 @@ export default function Generic( { genericdata } ){
           media="(max-width: 540px)"
           srcSet={mobileImageUrl}
         />
-        <img
+        <Image
           src={desktopImageUrl}
-          alt=""
+          alt="Banner"
           className="generic_img"
           width={1920}
           height={969}

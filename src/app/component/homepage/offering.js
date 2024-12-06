@@ -16,7 +16,7 @@ export default function Offering ({offeringData}){
         <div className="offers_detail">
           {offeringData.content_block.map((block, index) => (
             <div key={block.id} className="offers_item">
-              <img
+              <Image
                 src={getMediaUrl(block.image.url)}
                 alt={block.heading || "Offering Image"}
                 width={block.image.width || 379}
@@ -27,16 +27,16 @@ export default function Offering ({offeringData}){
           ))}
         </div>
 
-        {/* Add CTA if required */}
-        <a href="#" className="circle_cta">
-          <span>Know More</span>
-          <img
-            src="/images/icons/white_arrow.webp" // Replace with a dynamic icon if available in data
-            alt="Know More"
-            width={20}
-            height={14}
-          />
-        </a>
+        
+              <Link href="#" className="circle_cta">
+              <span>Know More</span>
+        <Image
+          src="/images/icons/white_arrow.webp" 
+          alt="White Arrow"
+          width={20}
+          height={14}
+        />
+      </Link>
       </div>
     </section>
     );

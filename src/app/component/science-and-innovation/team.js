@@ -1,9 +1,10 @@
-"use client"
+"use client";
+import Image from "next/image";
 
 export default function Team() {
     return (
         <section data-section="science_team" className="science_team patient_container">
-    <img src="/images/science/team.webp" alt="Team Image" className="team_img" width="602" height="655" />
+    <Image src="/images/science/team.webp" alt="Team Image" className="team_img" width="602" height="655" />
     <div className="team_container">
         <div className="team_content">
             <h2 className="subtitle_30">Diversified Product Portfolio</h2>
@@ -36,7 +37,7 @@ export default function Team() {
     </div>
     <div className="flower_bg_container">
         <div className="flower_bg">
-            <img src="/images/flower_bg.webp" alt="Big Flower" width="1500" height="1500" />
+            <Image src="/images/flower_bg.webp" alt="Big Flower" width="1500" height="1500" />
         </div>
     </div>
 </section>

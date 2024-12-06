@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -32,7 +33,7 @@ export default function MedicalTech({Medicaldata}) {
           <SwiperSlide key={item.id}>
             <picture>
               <source media="(max-width: 540px)" srcSet={getMediaUrl(item.mobile_image.url)} />
-              <img
+              <Image
                 src={getMediaUrl(item.desktop_image.url)}
                 alt={item.desktop_image.name}
                 className="medical_tech_img"

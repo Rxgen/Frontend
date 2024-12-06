@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Products({ productdata = [], totalPages, currentPage }) {
   // Initialize state
@@ -59,7 +60,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
             className={`grid_button one_grid ${gridView === "one_grid" ? "active" : ""}`}
             onClick={() => handleGridView("one_grid")}
           >
-            <img
+            <Image
               src="/images/icons/grid_3.webp"
               alt="One Grid View"
               width="7"
@@ -70,7 +71,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
             className={`grid_button two_grid ${gridView === "two_grid" ? "active" : ""}`}
             onClick={() => handleGridView("two_grid")}
           >
-            <img
+            <Image
               src="/images/icons/grid_1.webp"
               alt="Two Grid View"
               width="16"
@@ -81,7 +82,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
             className={`grid_button three_grid ${gridView === "three_grid" ? "active" : ""}`}
             onClick={() => handleGridView("three_grid")}
           >
-            <img
+            <Image
               src="/images/icons/grid_2.webp"
               alt="Three Grid View"
               width="25"
@@ -150,7 +151,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
                     <div className="product_item" key={id}>
                       {/* Product Image */}
                       <div className="product_box">
-                        <img
+                        <Image
                           src={imageUrl}
                           alt={product_name.trim()}
                           width="543"
@@ -198,7 +199,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
     onClick={() => handlePageChange(currentPage - 1)}
     disabled={currentPage === 1}
   >
-    <img src="/images/icons/green_arrow.webp" width={8} height={13} />
+    <Image src="/images/icons/green_arrow.webp" width={8} height={13} />
   </button>
   {[...Array(totalPages)].map((_, index) => {
     const page = index + 1;
@@ -220,7 +221,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
     onClick={() => handlePageChange(currentPage + 1)}
     disabled={currentPage === totalPages}
   >
-   <img src="/images/icons/green_arrow.webp" width={8} height={13} />
+   <Image src="/images/icons/green_arrow.webp" width={8} height={13} />
   </button>
 </div>
 

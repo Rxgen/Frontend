@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import React from 'react';
+import Image from 'next/image';
 
 export default function ContentImage({ contentdata }) {
   const [activeLink, setActiveLink] = React.useState(0);
@@ -21,7 +22,7 @@ export default function ContentImage({ contentdata }) {
               media="(max-width:540px)"
               srcSet={getMediaUrl(item.mobile_image.formats.small.url)}
             />
-            <img
+            <Image
               src={getMediaUrl(item.desktop_image.formats.large.url)}
               alt={item.desktop_image.alternativeText || ""}
               width={item.desktop_image.width}
@@ -55,7 +56,7 @@ export default function ContentImage({ contentdata }) {
                   <a href={item.cta.cta_url} className="green_cta">
                     <div className="cta_container">
                       <span>{item.cta.cta_text}</span>
-                      <img
+                      <Image
                         src="/images/icons/white_arrow.webp"
                         alt="arrow"
                         width="20"
@@ -74,7 +75,7 @@ export default function ContentImage({ contentdata }) {
     <section data-section="about_brand" className="innovative_brand about_brand">
       <div className="brand_container">
         <a href="">
-          <img 
+          <Image
             src="/images/about/declaration.webp" 
             alt="Brand Declaration"
             width={589}

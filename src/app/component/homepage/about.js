@@ -11,7 +11,7 @@ export default function About ({ aboutData }){
 
 <section data-section="home_about" className="home_about">
       <div className="home_about_container">
-        {/* Dynamic Video */}
+        
         <div className="home_about_img">
           
             <video width="960" height="968" autoPlay muted loop>

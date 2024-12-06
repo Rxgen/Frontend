@@ -1,6 +1,7 @@
 "use client" ;
 
 import Link from "next/link";
+import Image from "next/image";
 
 
 export default function Product({productdata}){
@@ -15,7 +16,7 @@ export default function Product({productdata}){
       <div className="black_cta">
         <div className="cta_container">
           <span>Search our products</span>
-          <img src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
+          <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
         </div>
       </div>
     </Link>
@@ -24,7 +25,7 @@ export default function Product({productdata}){
     {productdata.map((product) => {
         return (
           <div key={product.id} className="generic_product_items">
-            <img
+            <Image
               src={getMediaUrl(product.image.url)}
               alt={product.description}
               width={product.image.width}

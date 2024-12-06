@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const SmartGuide = () => {
   const [isPopupActive, setIsPopupActive] = useState(false);
@@ -132,7 +133,7 @@ const SmartGuide = () => {
                 closePopup();
               }}
             >
-              <img
+              <Image
                 src="/images/icons/close_popup.webp"
                 alt="Close"
                 width="14"
@@ -251,9 +252,9 @@ const SmartGuide = () => {
                 <button type="submit" className="black_cta">
                   <div className="cta_container">
                     <span>Submit</span>
-                    <img
+                    <Image
                       src="/images/icons/white_arrow.webp"
-                      alt=""
+                      alt="White Arrow"
                       width="20"
                       height="14"
                     />
@@ -274,9 +275,9 @@ const SmartGuide = () => {
               </div>
             </form>
           </div>
-          <img
+          <Image
             src="/images/guide_bg.webp"
-            alt=""
+            alt="Guide"
             className="guide_bg"
             width="1574"
             height="658"

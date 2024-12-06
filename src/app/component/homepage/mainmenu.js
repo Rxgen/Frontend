@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Mainmenu = ({ isMenuOpen, toggleMenu }) => {
   
@@ -79,8 +80,15 @@ const Mainmenu = ({ isMenuOpen, toggleMenu }) => {
 
         {/* Social Links */}
         <div className="nav_social">
-          <a href="#"><img src="/images/icons/linked_in_black.webp" alt="LinkedIn" width="79" height="79" /></a>
-        </div>
+        <Link href="/linkdin">
+           <Image 
+              src="/images/icons/linked_in_black.webp" 
+              alt="LinkedIn" 
+              width={79} 
+              height={79} 
+           />
+      </Link>
+    </div>
       </div>
     </div>
   );

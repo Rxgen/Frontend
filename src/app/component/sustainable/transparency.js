@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
+import Image from "next/image";
 
 
 export default function Transparency( { transparencydata } ) {
@@ -35,7 +36,7 @@ export default function Transparency( { transparencydata } ) {
 
           return (
             <SwiperSlide key={item.id}>
-              <img
+              <Image
                 src={imageUrl}
                 className="transparency_img"
                 width={image.formats?.thumbnail?.width || 718}

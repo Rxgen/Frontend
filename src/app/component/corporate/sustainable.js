@@ -1,4 +1,5 @@
-"use client" 
+"use client" ;
+import Image from "next/image";
 
 export default function Sustainable ( { sustainabledata } ) {
 
@@ -20,7 +21,7 @@ export default function Sustainable ( { sustainabledata } ) {
             return (
               <div key={index} className="sustainable_item">
                 <div className="front">
-                  <img
+                  <Image
                     src={imageUrl}
                     alt={item?.heading}
                     width={491}

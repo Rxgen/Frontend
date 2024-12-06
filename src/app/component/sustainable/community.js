@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export default function Community( {communitydata}){
 
@@ -9,7 +10,7 @@ export default function Community( {communitydata}){
     : "assets/images/about/banner.webp";
     return (
         <section data-section="community_section" className="community_section">
-    <img src={ImageUrl} alt="" className="" width="646" height="590" />
+    <Image src={ImageUrl} alt="Community" className="" width="646" height="590" />
     <div className="community_container">
         <h2 className="subtitle_60">{communitydata.heading}</h2>
         <p className="para">
@@ -17,7 +18,7 @@ export default function Community( {communitydata}){
         </p>
     </div>
     <div class="flower_bg">
-        <img src="/images/flower_bg.webp" alt="Big flower " width="1500" height="1500" />
+        <Image src="/images/flower_bg.webp" alt="Big flower " width="1500" height="1500" />
     </div>
 </section>
     )

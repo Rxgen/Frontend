@@ -1,6 +1,6 @@
 import { fetchCareerData } from "../component/homepage/Api/fetchPageData";
 import Topbanner from "../component/career/topbanner";
-import Image from "../component/career/image";
+import CustomImage from "../component/career/customimage";
 
 
 export default async function CareerPage () {
@@ -11,7 +11,7 @@ export default async function CareerPage () {
     return (
         <div>
             <Topbanner topbannerdata={topbannerdata}/>
-            <Image imagedata={imagedata}/>
+            <CustomImage imagedata={imagedata}/>
         </div>
     )
 }

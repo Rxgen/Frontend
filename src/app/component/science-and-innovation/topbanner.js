@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export default function Topbanner ( {topbannerdata}){
     console.log("Banner Data Display",topbannerdata);
@@ -20,7 +21,7 @@ export default function Topbanner ( {topbannerdata}){
 <section data-section="science_banner" className="science_banner inner_banner">
         <picture>
           <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
-          <img
+          <Image
             src={desktopImageUrl}
             alt={bannerText}
             className="banner_img"

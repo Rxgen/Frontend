@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 
 export default function Innovation( { innovativedata } ){
 
@@ -15,7 +16,7 @@ export default function Innovation( { innovativedata } ){
         { innovativedata.description }
         </p>
       </div>
-      <img
+      <Image
         src={ImageUrl}
         alt="Driving Innovation"
         width={886}

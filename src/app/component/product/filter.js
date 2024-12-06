@@ -1,6 +1,7 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Filter({ selectedLetter,selectedCategory }) {
   const [brandName, setBrandName] = useState("");
@@ -66,7 +67,7 @@ export default function Filter({ selectedLetter,selectedCategory }) {
       <button type="submit" className="product_btn black_cta">
         <div className="cta_container">
           <span>Submit</span>
-          <img
+          <Image
             src="/images/icons/white_arrow.webp"
             alt=""
             width="20"
@@ -81,9 +82,9 @@ export default function Filter({ selectedLetter,selectedCategory }) {
       >
         <div className="cta_container">
           <span>Clear</span>
-          <img
+          <Image
             src="/images/icons/white_arrow.webp"
-            alt=""
+            alt="White Arrow"
             width="20"
             height="14"
           />

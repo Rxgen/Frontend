@@ -1,5 +1,6 @@
 "use client" ;
 import CountUp from "react-countup";
+import Image from "next/image";
 
 export default function Growth ( {growthdata} ){
     return (
@@ -21,7 +22,7 @@ export default function Growth ( {growthdata} ){
       ))}
     </div>
     <div className="growth_container">
-        <img src="/images/generic/growth_product.webp" alt="" width="646" height="590" />
+        <Image src="/images/generic/growth_product.webp" alt="" width="646" height="590" />
         <div className="growth_content">
             <h2 className="subtitle_60">Sustaining growth by evolving our product offering</h2>
             <p className="para">

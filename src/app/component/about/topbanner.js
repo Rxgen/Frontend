@@ -1,5 +1,8 @@
 "use client"
 
+import Image from "next/image";
+
+
 export default function TopBanner({ topbannerdata }) {
     console.log("Banner Data DIsplay",topbannerdata);
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
@@ -20,7 +23,7 @@ export default function TopBanner({ topbannerdata }) {
 <section data-section="about_banner" className="about_banner inner_banner" id="about_banner">
         <picture>
           <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
-          <img
+          <Image
             src={desktopImageUrl}
             alt={bannerText}
             className="banner_img"
@@ -35,7 +38,7 @@ export default function TopBanner({ topbannerdata }) {
   data-section="about_founder"
   className="about_founder patient_container"
 >
-  <img
+  <Image
     src="/images/about/founder.webp"
     alt=""
     className="founder_img"
@@ -52,7 +55,7 @@ export default function TopBanner({ topbannerdata }) {
   </div>
   <div className="flower_bg_container">
     <div className="flower_bg">
-      <img
+      <Image
         src="/images/flower_bg.webp"
         alt=""
         width="895"

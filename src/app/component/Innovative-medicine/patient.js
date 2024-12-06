@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export default function Patient ({ patientdata}) {
 
@@ -17,7 +18,7 @@ export default function Patient ({ patientdata}) {
       <picture>
         <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
         
-        <img
+        <Image
           src={desktopImageUrl}
           alt={patientdata?.desktop_image?.alternativeText}
           className="generic_img"

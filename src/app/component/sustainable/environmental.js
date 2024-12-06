@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import Image from "next/image";
 
 export default function Environmental ( { environmentaldata}){
 
@@ -22,7 +23,7 @@ export default function Environmental ( { environmentaldata}){
             return (
               <div key={index} className="environment_content">
                 <div className="front_page">
-                  <img
+                  <Image
                     src={imageUrl}
                     alt={item.heading}
                     className="environment_img"

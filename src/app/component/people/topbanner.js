@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export default function Topbanner ({ topbannerdata}) {
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
@@ -17,7 +18,7 @@ export default function Topbanner ({ topbannerdata}) {
         <section data-section="contact_banner" className="product_listing_banner inner_banner">
         <picture>
           <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
-          <img
+          <Image
             src={desktopImageUrl}
             alt={bannerText}
             className="banner_img"

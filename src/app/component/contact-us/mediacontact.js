@@ -1,4 +1,7 @@
 "use client ";
+import Link from "next/link";
+import Image from "next/image";
+
 
 export default function Mediacontact (){
     return (
@@ -13,12 +16,12 @@ export default function Mediacontact (){
         <span className="contact_mail">
             <a href="mailto:rajalakshmiazariah@lupin.com">rajalakshmiazariah@lupin.com</a>
         </span>
-        <a href="" className="black_cta">
-            <div className="cta_container">
-                <span>See current role openings</span>
-                <img src="/images/icons/white_arrow.webp" alt="" width="20" height="14" />
-            </div>
-        </a>
+        <Link href="" className="black_cta">
+             <div className="cta_container">
+              <span>See current role openings</span>
+                <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
+           </div>
+       </Link>
     </div>
 </section>
     )

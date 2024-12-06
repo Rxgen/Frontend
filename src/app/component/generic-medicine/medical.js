@@ -1,4 +1,5 @@
 "use client ";
+import Image from "next/image";
 
 export default function Medical ({medicaldata}){
 
@@ -15,7 +16,7 @@ export default function Medical ({medicaldata}){
 <section data-section="generic_medicine" className="generic_medicine" id="generic_medicine">
     <picture>
         <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
-        <img src={desktopImageUrl} alt="Image" width="1920" height="969"/>
+        <Image src={desktopImageUrl} alt="Image" width="1920" height="969"/>
     </picture>
     <div className="medicine_container">
         <h2 className="subtitle_60">{medicaldata.heading}</h2>

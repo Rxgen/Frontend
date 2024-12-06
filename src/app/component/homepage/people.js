@@ -19,7 +19,7 @@ export default function People( {peopleData} ) {
         {peopleData.content_block &&
           peopleData.content_block.map((block, index) => (
             <div key={block.id} className="team_item">
-              <img
+              <Image
                 src={getMediaUrl(block.image.url)}
                 alt={block.heading || "Team Image"}
                 width={block.image.width || 452}
@@ -33,7 +33,7 @@ export default function People( {peopleData} ) {
       {peopleData.cta && (
         <Link href="#" className="circle_cta">
           <span>{peopleData.cta.text}</span>
-          <img
+          <Image
             src={getMediaUrl(peopleData.cta.icon)}
             alt={peopleData.cta.icon_alt || "CTA Icon"}
             width={20}

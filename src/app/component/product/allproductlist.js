@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Filter from "../component/product/filter";
+import Image from "next/image";
 
 export default function Products({ productdata = [] }) {
     
@@ -44,7 +45,7 @@ export default function Products({ productdata = [] }) {
               <div className="product_grid">
                 <div className="grid_text">GRID</div>
                 <button className="grid_button two_grid active">
-                  <img
+                  <Image
                     src="assets/images/icons/grid_1.webp"
                     alt=""
                     width="16"
@@ -52,7 +53,7 @@ export default function Products({ productdata = [] }) {
                   />
                 </button>
                 <button className="grid_button three_grid">
-                  <img
+                  <Image
                     src="assets/images/icons/grid_2.webp"
                     alt=""
                     width="25"
@@ -79,7 +80,7 @@ export default function Products({ productdata = [] }) {
                 return (
                   <div className="product_item" key={product.id}>
                     <div className="product_box">
-                      <img
+                      <Image
                         src={imageUrl}
                         alt={product.product_name.trim()}
                         width="543"

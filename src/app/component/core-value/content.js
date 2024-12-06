@@ -1,5 +1,7 @@
 "use client" ;
 
+import Image from "next/image";
+
 export default function Content({contentdata}){
 
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
@@ -19,7 +21,7 @@ export default function Content({contentdata}){
             <div key={value.id} className="core_value_box">
               <div className="value_detail">
                 <div className="front_value">
-                  <img
+                  <Image
                     src={getMediaUrl(value.image.formats.thumbnail.url)} 
                     alt={value.image.alt || "Core value image"}
                     className="value_img"
@@ -28,7 +30,7 @@ export default function Content({contentdata}){
                   />
                 </div>
                 <div className="back_value">
-                  <img
+                  <Image
                     src="/images/value/flower.webp"
                     alt="Flower Image"
                     className="flower_img"

@@ -3,15 +3,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
+import Image from "next/image";
 
-export default function Image( {imagedata} ){
+export default function CustomImage( {imagedata} ){
     console.log("Carrer Page Image Data " ,imagedata)
 
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
     return (
         <div>
 <section data-section="opening_section" className="opening_section">
-    <img src="/images/career/role.webp" alt="" className="role_img" width="646" height="590" />
+    <Image src="/images/career/role.webp" alt="Role" className="role_img" width="646" height="590" />
     <div className="role_container">
         <div className="role_content">
             <h2 className="subtitle_60">Current Openings</h2>
@@ -24,7 +25,7 @@ export default function Image( {imagedata} ){
             <a href="corporate.php" className="black_cta">
                 <div className="cta_container">
                     <span>See current role openings</span>
-                    <img src="/images/icons/white_arrow.webp" alt="" width="20" height="14" />
+                    <Image src="/images/icons/white_arrow.webp" alt="" width="20" height="14" />
                 </div>
             </a>
         </div>
@@ -66,7 +67,7 @@ export default function Image( {imagedata} ){
             >
                 {imagedata.map((image, index) => (
                     <SwiperSlide key={index}>
-                        <img
+                        <Image
                             src={getMediaUrl(image.slide.url)} 
                             alt={image.slide.name}
                             className="opportunity_img"

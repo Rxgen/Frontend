@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 
 export default function CorporateAboutData( { aboutdata } ) {
     console.log("Corporate About Data Display",aboutdata);
@@ -17,7 +18,7 @@ export default function CorporateAboutData( { aboutdata } ) {
               <React.Fragment key={index}>
                 <div className="animation_item">About Lupin U.S.</div>
                 <div className="animation_item animation_img">
-                  <img
+                  <Image
                     src="/images/icons/small-flower.webp"
                     alt=""
                     width={42}
@@ -36,9 +37,9 @@ export default function CorporateAboutData( { aboutdata } ) {
               {aboutdata.decription}
             </p>
           </div>
-          <img
+          <Image
             src={ImageUrl}
-            alt=""
+            alt="Content"
             width={851}
             height={565}
           />

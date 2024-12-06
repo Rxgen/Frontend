@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { Navigation, Thumbs } from "swiper/modules";
 import { useState } from "react";
+import Image from "next/image";
 
 
 export default function Empower( {empowerdata} ) {
@@ -42,7 +43,7 @@ export default function Empower( {empowerdata} ) {
                 </Swiper>
                 <div className="empower_button_container">
                     <div className="empower_button empower_prev">
-                        <img
+                        <Image
                             src="/images/icons/left_arrow.webp"
                             alt="Previous"
                             width="23"
@@ -50,7 +51,7 @@ export default function Empower( {empowerdata} ) {
                         />
                     </div>
                     <div className="empower_button empower_next">
-                        <img
+                        <Image
                             src="/images/icons/left_arrow.webp"
                             alt="Next"
                             width="23"
@@ -79,7 +80,7 @@ export default function Empower( {empowerdata} ) {
 
     return (
       <SwiperSlide key={item.id}>
-        <img
+        <Image
           src={imageUrl}
           width={imageWidth}
           height={imageHeight}

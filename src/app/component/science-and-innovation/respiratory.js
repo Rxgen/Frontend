@@ -1,9 +1,10 @@
 "use client";
+import Image from "next/image";
 
 export default function Respiratory (){
     return (
         <section data-section="science_respiratory" className="science_team patient_container">
-    <img src="/images/science/respiratory.webp" alt="Respiratory" className="team_img" width="602" height="655" />
+    <Image src="/images/science/respiratory.webp" alt="Respiratory" className="team_img" width="602" height="655" />
     <div className="respiratory_container">
         <h2 className="subtitle_60">Respiratory Research</h2>
         <p className="para">

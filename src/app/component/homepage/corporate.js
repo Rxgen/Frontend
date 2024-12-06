@@ -1,7 +1,6 @@
+"use client";
 import Image from "next/image" ;
 import Link from "next/link";
-
-
 
 export default function Corporate () {
     return (
@@ -23,7 +22,7 @@ export default function Corporate () {
             <a href="corporate.php" className="black_cta">
                 <div className="cta_container">
                     <span>Know more</span>
-                    <img src="/images/icons/white_arrow.webp" alt="" width="20" height="14" />
+                    <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
                 </div>
             </a>
         </div>
@@ -61,7 +60,7 @@ export default function Corporate () {
         </div>
         <div className="flower_bg_container">
             <div className="flower_bg">
-                <img src="/images/flower_bg.webp" alt="" width="895" height="851" />
+                <Image src="/images/flower_bg.webp" alt="Flower" width="895" height="851" />
             </div>
         </div>
     </section>

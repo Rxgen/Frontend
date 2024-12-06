@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export default function BrandPdf({ brandpdfdata }) {
 
@@ -27,9 +28,9 @@ export default function BrandPdf({ brandpdfdata }) {
                             target="_blank" 
                             download={item.pdf_files.name} 
                         >
-                            <img
+                            <Image
                                 src={imageUrl} 
-                                alt=""
+                                alt="Brand Name"
                                 width={item.image.width}
                                 height={item.image.height}
                             />

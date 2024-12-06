@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 
 export default function ProductDetails({ productdata }) {
   const product = productdata[0];
@@ -18,7 +19,7 @@ export default function ProductDetails({ productdata }) {
       <div className="product_detail_item">
         {/* Render product image */}
         {product.product_images && product.product_images.length > 0 && (
-          <img
+          <Image
             src={getMediaUrl(product.product_images[0].slide.url)}
             alt={product.product_name}
             width="279"

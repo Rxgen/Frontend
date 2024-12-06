@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -178,7 +179,7 @@ console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_UR
         <button type="submit" className="green_cta">
           <div className="cta_container">
             <span>Submit</span>
-            <img
+            <Image
               src="/images/icons/white_arrow.webp"
               alt="Submit"
               width="20"

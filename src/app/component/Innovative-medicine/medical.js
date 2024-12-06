@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 export default function Medical({ medicaldata }) {
   const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
@@ -11,7 +12,7 @@ export default function Medical({ medicaldata }) {
   return (
     <section data-section="innovative_patient" className="innovative_patient patient_container">
       
-      <img
+      <Image
         src={imageUrl}
         alt={medicaldata?.image?.alternativeText || "Medical Image"}
         className="patient_img"
@@ -29,7 +30,7 @@ export default function Medical({ medicaldata }) {
       <div className="flower_bg_container">
         <div className="flower_bg"> 
         
-          <img
+          <Image
             src="/images/flower_bg.webp"
             alt="Flower Background"
             width="1500"
