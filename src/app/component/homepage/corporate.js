@@ -15,7 +15,7 @@ export default function Corporate () {
                 Lupin is a global pharmaceutical company whose
                 product development pipeline includes complex
                 inhalations branded generics projects, and a specialty
-                focus on women's health. As a global pharma company,
+                focus on women&apos;s health. As a global pharma company,
                 we work towards bringing novel products to the market
                 that address unmet medical needs.
             </p>

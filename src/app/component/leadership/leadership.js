@@ -1,4 +1,5 @@
 "use client ";
+import Image from "next/image";
 
 
 export default function Leadership({ leadershipdata }) {
@@ -14,7 +15,7 @@ export default function Leadership({ leadershipdata }) {
             <div className="leader_box" key={index}>
               <div className="leader_item">
                 {/* Leader Image */}
-                <img
+                <Image
                   src={getMediaUrl(leader.image.url)}
                   alt={leader.image.alt || "Leader Image"}
                   className=""
@@ -26,7 +27,7 @@ export default function Leadership({ leadershipdata }) {
                   <h2 className="subtitle_45">{leader.name}</h2>
                   <a href={slug ? `/leadership/${slug}` : "#"} className="circle_cta">
                     <span>Know More</span>
-                    <img
+                    <Image
                       src="/images/icons/white_arrow.webp"
                       alt="Know More"
                       width="20"
@@ -41,14 +42,14 @@ export default function Leadership({ leadershipdata }) {
           ))}
         </div>
         {/* Background Images */}
-        <img
+        <Image
           src="/images/flower_bg.webp"
           alt="Background"
           className="flower_bg_img"
           width="895"
           height="851"
         />
-        <img
+        <Image
           src="/images/flower_bg.webp"
           alt="Background 2"
           className="flower_bg_img flower_bg_img_2"

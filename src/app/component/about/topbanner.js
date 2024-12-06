@@ -20,7 +20,7 @@ export default function TopBanner({ topbannerdata }) {
   
     return (
         <div>
-<section data-section="about_banner" className="about_banner inner_banner" id="about_banner">
+<section data-section="about_banner" className="about_banner inner_banner">
         <picture>
           <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
           <Image
@@ -47,7 +47,7 @@ export default function TopBanner({ topbannerdata }) {
   />
   <div className="innovation_container">
     <p className="para">
-      Lupin's journey is a testament to the potential of human imagination,
+      Lupin&apos;s journey is a testament to the potential of human imagination,
       compassion, and the unwavering pursuit of a better tomorrow. Established
       in 1968 by our visionary founder, Dr. Desh Bandhu Gupta, Lupin has
       evolved from humble beginnings to become a global healthcare leader.

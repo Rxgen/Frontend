@@ -18,7 +18,7 @@ export default function CustomImage( {imagedata} ){
             <h2 className="subtitle_60">Current Openings</h2>
             <p className="para">
                 Looking for your next role? Explore our current openings. If
-                you don't see a job that fits your skill set, send your resume to
+                you don&apos;t see a job that fits your skill set, send your resume to
                 <a href="usacareers@lupin.com">usacareers@lupin.com</a> and get added to our talent pool for
                 future job opportunities.
             </p>

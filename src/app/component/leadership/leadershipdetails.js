@@ -1,5 +1,6 @@
 "use client";
 import Topbanner from "@/app/component/leadership/topbanner";
+import Image from "next/image";
 
 export default function Leadershipdetails ({ leadershipdetaildata }) {
     console.log( "Leadesrhip Details data check ", leadershipdetaildata[0].leadership_details );
@@ -14,7 +15,7 @@ export default function Leadershipdetails ({ leadershipdetaildata }) {
     return (
         <section data-section="leader_detail_section" className="leader_detail_section">
     <div className="leader_detail_container">
-        <img src={
+        <Image src={
     leadership[0]?.image?.formats?.small?.url
       ? getMediaUrl(leadership[0].image.formats.small.url)
       : "/asset/images/leadesrship/image.webp" 
@@ -26,10 +27,10 @@ export default function Leadershipdetails ({ leadershipdetaildata }) {
             <p className="para">
                 {leadership[0].description }
             </p>
-            <a href={leadership[0].social_link} target="_blank" rel="noopener noreferrer" className="linked_in"><img src="/images/icons/linked_in_logo.webp" alt="" width="40" height="40" /></a>
+            <a href={leadership[0].social_link} target="_blank" rel="noopener noreferrer" className="linked_in"><Image src="/images/icons/linked_in_logo.webp" alt="Linkdin" width="40" height="40" /></a>
         </div>
     </div>
-    <img src="/images/flower_bg.webp" alt="" className="flower_bg_img" width="895" height="851" />
+    <Image src="/images/flower_bg.webp" alt="" className="flower_bg_img" width="895" height="851" />
 </section>
         
        
