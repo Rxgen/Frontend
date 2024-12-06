@@ -4,7 +4,7 @@ import Topbanner from "../component/science-and-innovation/topbanner";
 import Respiratory from "../component/science-and-innovation/respiratory";
 import MedicalTech from "../component/science-and-innovation/medicaltech";
 
-export default async function (){
+export default async function scienceInnovationPge(){
 
     const data = await fetchSciencInnovationData("top_banner");
     const topbannerdata=data.top_banner;

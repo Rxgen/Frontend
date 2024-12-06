@@ -6,7 +6,7 @@ import Innovation from "../component/corporate/innovative";
 import Sustainable from "../component/corporate/sustainable";
 
 
-export default async function () {
+export default async function CorporatePge() {
   const data = await fetchCorporatetData("top_banner");
   const topbannerdata=data.top_banner;
   const about = await fetchCorporatetData("section_content_1");
