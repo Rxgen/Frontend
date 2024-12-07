@@ -66,19 +66,19 @@ export async function fetchContactData(segment) {
     }
 }
 
-/* export async function fetchLeadershiptData(segment) {
+ export async function fetchLeadershiptData(segment) {
     
 
     try {
-        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?populate[${segment}][populate]=*`;
-        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?populate[${segment}][populate]=*`, {
+        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?populate=*`;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?populate=*`, {
             method: "GET",
         });
 
         console.log("Leadrship",url);
 
         if (!response.ok) {
-            console.error(`Failed to fetch banner data: ${response.status} ${response.statusText}`);
+            console.error(`Failed to fetch Leadershp data: ${response.status} ${response.statusText}`);
             return [];
         }
 
@@ -96,11 +96,11 @@ export async function fetchContactData(segment) {
         console.error("Error fetching banner data:", error);
         return [];
     }
-} */
+} 
 
-/* export async function fetchLeadershipdetails(slug) {
+ export async function fetchLeadershipdetails(slug) {
     try {
-      const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?filters[slug][$eq]=${slug}&populate[0]=leadership_details.image&populate[1]=top_banner.desktop_image&populate[2]=top_banner.mobile_image`;
+      const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?filters[name_slug][$eq]=${slug}&populate=*`;
 
 
 
@@ -118,7 +118,7 @@ export async function fetchContactData(segment) {
       console.error("Error fetching product data:", error);
       return [];
     }
-  } */
+  } 
 
   export async function fetchCorporatetData(segment) {
     try {
@@ -421,6 +421,38 @@ export async function fetchOurCultureData(segment) {
         return [];
     }
 }
+
+export async function fetchOurHistoryData(segment) {
+    try {
+        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/histories?populate=*`;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/histories?populate=*`, {
+            method: "GET",
+        });
+
+        console.log("Our History",url);
+
+        if (!response.ok) {
+            console.error(`Failed to fetch Our History data: ${response.status} ${response.statusText}`);
+            return [];
+        }
+
+        const data = await response.json();
+        console.log("Full Response:", data);
+
+        if (data && data.data) {
+            console.log("Response Data: For API CAll Leadrship Data", data.data);
+            return data.data;
+        } else {
+            console.error("API response does not contain expected `data` property. Received:", data);
+            return [];
+        }
+    } catch (error) {
+        console.error("Error fetching banner data:", error);
+        return [];
+    }
+}
+
+
 
 
 
