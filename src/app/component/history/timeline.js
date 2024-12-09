@@ -23,11 +23,6 @@ export default function HistorySlider({historydata}) {
         setActiveIndex(index);  
       };
 
-    const timelinedata= [
-        { year: "2003", content: "Lupin Pharmaceuticals Inc. U.S. was formed for commercialization activities in the U.S." },
-        { year: "2004", content: "Another milestone description..." },
-        // More items...
-      ];
   return (
     <section data-section="timelines" className="timelines">
       <div className="timeline_container">
@@ -68,7 +63,9 @@ export default function HistorySlider({historydata}) {
                   <div className="history_content">
                     <div className="history_year">{item.year}</div>
                     <ul className="list_container">
-                    <li className="history_list" dangerouslySetInnerHTML={{ __html: item.Content }}></li>
+                    {item.Content.split('<br>').map((part, index) => (
+                     <li className="history_list" key={index} dangerouslySetInnerHTML={{ __html: part }}></li>
+                      ))}
                     </ul>
                   </div>
                 </SwiperSlide>

@@ -18,10 +18,12 @@ const SmartGuide = () => {
   const router = useRouter();
 
 
-  const populateFields = ["brand","product_images.slide", "pdf_files.pdf"]; // Populate fields array
+  //const populateFields = ["brand","product_images.slide", "pdf_files.pdf"]; // Populate fields array
 
   // Fetch products based on productName, NDC, and brand
   useEffect(() => {
+
+    const populateFields = ["brand","product_images.slide", "pdf_files.pdf"];
     const fetchProducts = async () => {
       setLoading(true);
 
@@ -71,7 +73,7 @@ const SmartGuide = () => {
     } else {
       setProducts([]);
     }
-  }, [productName, ndc, brandName, populateFields]);
+  }, [productName, ndc, brandName]);
 
   const togglePopup = () => {
     setIsPopupActive((prevState) => !prevState);

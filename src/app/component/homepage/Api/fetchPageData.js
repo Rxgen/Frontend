@@ -449,8 +449,40 @@ export async function fetchOurHistoryData(segment) {
     } catch (error) {
         console.error("Error fetching banner data:", error);
         return [];
+    }compliance
+}
+
+export async function fetchComplianceData(segment) {
+    try {
+        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/compliance?populate[${segment}][populate]=*`;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/compliance?populate[${segment}][populate]=*`, {
+            method: "GET",
+        });
+
+        console.log("Our Culture",url);
+
+        if (!response.ok) {
+            console.error(`Failed to fetch Our Compliance data: ${response.status} ${response.statusText}`);
+            return [];
+        }
+
+        const data = await response.json();
+        console.log("Full Response:", data);
+
+        if (data && data.data) {
+            console.log("Response Data: For API CAll Leadrship Data", data.data);
+            return data.data;
+        } else {
+            console.error("API response does not contain expected `data` property. Received:", data);
+            return [];
+        }
+    } catch (error) {
+        console.error("Error fetching banner data:", error);
+        return [];
     }
 }
+
+
 
 
 
