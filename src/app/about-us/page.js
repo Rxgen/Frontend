@@ -16,4 +16,5 @@ export default async function aboutpage() {
             <ContentImage contentdata={contentimage} />
         </div>
     )
+    
 }
