@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 
 export default function ContentImage({ contentdata }) {
+  console.log("About data" , contentdata)
   const [activeLink, setActiveLink] = React.useState(0);
 
   const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
@@ -20,10 +21,10 @@ export default function ContentImage({ contentdata }) {
           >
             <source
               media="(max-width:540px)"
-              srcSet={getMediaUrl(item.mobile_image.formats.small.url)}
+              srcSet={getMediaUrl(item.mobile_image.url)}
             />
             <Image
-              src={getMediaUrl(item.desktop_image.formats.large.url)}
+              src={getMediaUrl(item.desktop_image.url)}
               alt={item.desktop_image.alternativeText || ""}
               width={item.desktop_image.width}
               height={item.desktop_image.height}
