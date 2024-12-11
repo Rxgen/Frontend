@@ -21,8 +21,11 @@ export default function Work({workdata} ){
           </div>
       </Link>
     </div>
-    <Image src={imageUrl} alt={workdata.image.alternativeText} className="people_img" width={workdata.image.width} height={workdata.image.height} />
+    <Image src={imageUrl} alt={workdata.image.alternativeText || "Banner Image"} className="people_img" width={workdata.image.width} height={workdata.image.height} />
+    <div className="flower_bg" >
     <Image src="/images/flower_bg.webp" alt="Big Flower" className="flower_bg_img" width="895" height="851" />
+    </div>
+    
 </section>
     )
 }

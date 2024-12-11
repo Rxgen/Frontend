@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ContentImage({ contentdata }) {
   console.log("About data" , contentdata)
@@ -54,7 +55,7 @@ export default function ContentImage({ contentdata }) {
                 </h2>
                 <div className="about_inner_content">
                   <p className="para">{item.description}</p>
-                  <a href={item.cta.cta_url} className="green_cta">
+                  <a href={item.cta.cta_url} className="green_cta" target="_blank">
                     <div className="cta_container">
                       <span>{item.cta.cta_text}</span>
                       <Image
@@ -75,14 +76,19 @@ export default function ContentImage({ contentdata }) {
     
     <section data-section="about_brand" className="innovative_brand about_brand">
       <div className="brand_container">
-        <a href="">
+      <Link
+        href="/compliance-and-ethics" 
+        target="_blank"
+      >
+        <div>
           <Image
-            src="/images/about/declaration.webp" 
+            src="/images/about/declaration.webp"
             alt="Brand Declaration"
             width={589}
             height={320}
           />
-        </a>
+        </div>
+      </Link>
       </div>
     </section>
     </div>

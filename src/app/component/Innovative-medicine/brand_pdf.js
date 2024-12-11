@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function BrandPdf({ brandpdfdata }) {
 
@@ -37,6 +38,16 @@ export default function BrandPdf({ brandpdfdata }) {
                         </a>
                     );
                 })}
+                <Link href="/products" target="_blank">
+        <div>
+          <Image
+            src="/images/innovation/brands/img_3.webp"
+            alt="Brand Image"
+            width={463}
+            height={273}
+          />
+        </div>
+      </Link>
             </div>
         </section>
     );

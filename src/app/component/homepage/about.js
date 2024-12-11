@@ -30,7 +30,7 @@ export default function About ({ aboutData }){
           {/* Dynamic Links */}
           <div className="about_internal_links scroll_content">
             {aboutData.About_Us.About_Us_Link?.map((link) => (
-              <Link href={link.url} key={link.id} className="internal_links">
+              <Link href={link.url} key={link.id} className="internal_links" target="_blank">
                 {link.name}
               </Link>
             ))}

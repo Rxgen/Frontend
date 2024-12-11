@@ -10,7 +10,6 @@ const Mainmenu = ({ isMenuOpen, toggleMenu }) => {
     setActiveLink(linkIndex);
   };
 
-  
 
   return (
     <div className={`inner_menu ${isMenuOpen ? "active" : ""}`}>
@@ -19,17 +18,16 @@ const Mainmenu = ({ isMenuOpen, toggleMenu }) => {
           <span
             className={`nav_link ${activeLink === 1 ? "active" : ""}`}
             onMouseEnter={() => handleMouseEnter(1)}
-            
-          >
+             >
             <Link href="#" className="link_item">About Us</Link>
             <div className="menu_sub_nav">
               <div className={`sub_menu ${activeLink === 1 ? "active" : ""}`}>
                 <span className="sub_menu_link"><Link href="/corporate-overview">Corporate Overview</Link></span>
                 <span className="sub_menu_link"><Link href="/leadership">Our Leadership</Link></span>
-                <span className="sub_menu_link"><Link href="#">Our History</Link></span>
+                <span className="sub_menu_link"><Link href="/our-history">Our History</Link></span>
                 <span className="sub_menu_link"><Link href="/core-value" >Our Values</Link></span>
                 <span className="sub_menu_link"><Link href="/science-and-innovation" >Science & Innovation</Link></span>
-                <span className="sub_menu_link"><Link href="#">Compliance & Ethics Program</Link></span>
+                <span className="sub_menu_link"><Link href="/compliance-and-ethics">Compliance & Ethics Program</Link></span>
               </div>
             </div>
           </span>
@@ -71,7 +69,7 @@ const Mainmenu = ({ isMenuOpen, toggleMenu }) => {
             <Link href="#" className="link_item">People</Link>
             <div className="menu_sub_nav">
               <div className={`sub_menu ${activeLink === 1 ? "active" : ""}`}>
-                <span className="sub_menu_link"><Link href="#" >Our Culture</Link></span>
+                <span className="sub_menu_link"><Link href="/our-culture" >Our Culture</Link></span>
                 <span className="sub_menu_link"><Link href="/career" >Career</Link></span>
               </div>
             </div>

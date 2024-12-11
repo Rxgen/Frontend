@@ -34,7 +34,7 @@ export default function CorporateAboutData( { aboutdata } ) {
           <div className="corporate_detail">
             <h2 className="subtitle_60">{aboutdata.heading}</h2>
             <p className="para">
-              {aboutdata.decription}
+              {aboutdata.description}
             </p>
           </div>
           <Image

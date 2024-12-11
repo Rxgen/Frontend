@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CustomImage( {imagedata} ){
     console.log("Carrer Page Image Data " ,imagedata)
@@ -22,12 +23,16 @@ export default function CustomImage( {imagedata} ){
                 <a href="usacareers@lupin.com">usacareers@lupin.com</a> and get added to our talent pool for
                 future job opportunities.
             </p>
-            <a href="corporate.php" className="black_cta">
-                <div className="cta_container">
-                    <span>See current role openings</span>
-                    <Image src="/images/icons/white_arrow.webp" alt="" width="20" height="14" />
-                </div>
-            </a>
+            <Link 
+        href="https://careers-lupinpharmaceuticals.icims.com/jobs/intro?hashed=-435710719&mobile=false&width=1020&height=500&bga=true&needsRedirect=false&jan1offset=-300&jun1offset=-240" target="_blank"
+      >
+        <div className="black_cta"  rel="noopener noreferrer">
+          <div className="cta_container">
+            <span>See current role openings</span>
+            <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
+          </div>
+        </div>
+      </Link>
         </div>
         <div className="career_text">
             Stay connected by following us on

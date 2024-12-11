@@ -31,10 +31,10 @@ export default function ProductDetails({ productdata }) {
       <div className="product_detail_container">
         <div className="subtitle_4692">{product.product_name}</div>
         <div className="product_info">
-        <div class="info_item">
-                <div class="info_title">Strength</div>
+        <div className="info_item">
+                <div className="info_title">Strength</div>
                 <span>:</span>
-                <div class="info_detail">{product.strength && product.strength ? product.strength : "N/A"}</div>
+                <div className="info_detail">{product.strength && product.strength ? product.strength : "N/A"}</div>
             </div>
 
           <div className="info_item">

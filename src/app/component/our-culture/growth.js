@@ -8,9 +8,9 @@ export default function Growth ({growthdata}){
 
     return (
         <section data-section="opportunity_growth" className="opportunity_growth culture_growth">
-    <div class="culture_content">
-        <h2 class="subtitle_60">{growthdata.heading}</h2>
-        <p class="para">
+    <div className="culture_content">
+        <h2 className="subtitle_60">{growthdata.heading}</h2>
+        <p className="para">
             {growthdata.description}
         </p>
     </div>

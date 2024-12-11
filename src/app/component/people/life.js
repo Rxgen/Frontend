@@ -4,9 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
  
-export default function Life({lifedata}){
-    
-
+export default function Life( { lifedata }){
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
     const imageUrl = getMediaUrl(lifedata.image.url);
 
@@ -18,14 +16,16 @@ export default function Life({lifedata}){
         <p className="para">
             {lifedata.description}
         </p>
-        <Link href="" className="green_cta">
+        <Link href="/our-culture" className="green_cta">
               <div className="cta_container">
                <span>Know more</span>
-               <Image src="/images/icons/white_arrow.webp" alt="Know More" width="20" height="14" />
+               <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
           </div>
       </Link>
     </div>
+    <div className="flower_bg">
     <Image src="/images/flower_bg.webp" alt="Flower Big" className="flower_bg_img" width="895" height="851" />
+    </div>    
 </section>
     )
 }
