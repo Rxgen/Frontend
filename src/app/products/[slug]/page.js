@@ -1,6 +1,6 @@
 import { fetchProductBySlug } from "@/app/component/homepage/Api/fetchProduct";
 import ProductDetails  from "@/app/component/product/productdetails";
-import ProductBanner from "@/app/component/product/productbanner";
+import DetailBanner from "@/app/component/product/productdetailbanner";
 import Filter from "@/app/component/product/filter";
 
 
@@ -10,7 +10,7 @@ export default async function fetchproductdetails({ params }){
 
   return (
     <div>
-      <ProductBanner />
+      <DetailBanner />
       <Filter /> 
       <ProductDetails productdata={productdetails } />  
     </div>

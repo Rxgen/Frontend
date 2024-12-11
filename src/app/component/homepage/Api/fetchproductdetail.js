@@ -6,6 +6,7 @@ export async function fetchProductslug() {
        
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[slug][$eq]=amlodipine-besylate-tablets-usp&populate=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         if (!response.ok) {

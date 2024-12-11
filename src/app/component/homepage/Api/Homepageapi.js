@@ -21,6 +21,7 @@ export async function fetchHomepageData(segment) {
 
        const response = await fetch(url, {
            method: "GET",
+           cache: 'no-cache',
        });
 
         

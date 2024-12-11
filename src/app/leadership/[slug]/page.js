@@ -6,9 +6,7 @@ export default async function leadrshipdetails({params}) {
     
     const { slug } = params;
     const leadershipdetaildata = await fetchLeadershipdetails(slug);
-    
 
-    //console.log("Leadesrhip single Details data" , topbannerdata );
     return (
         <div>
             <Topbanner  />

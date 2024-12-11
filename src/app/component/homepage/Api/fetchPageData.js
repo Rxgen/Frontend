@@ -7,6 +7,7 @@ export async function fetchpageData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/about?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/about?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log(url);
@@ -41,6 +42,7 @@ export async function fetchContactData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/contact?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/contact?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log(url);
@@ -73,6 +75,7 @@ export async function fetchContactData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?populate=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?populate=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Leadrship",url);
@@ -102,9 +105,7 @@ export async function fetchContactData(segment) {
     try {
       const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?filters[name_slug][$eq]=${slug}&populate=*`;
 
-
-
-      const response = await fetch(url, { method: "GET" });
+      const response = await fetch(url, { method: "GET",cache: 'no-cache', });
       console.log(url);
   
       if (!response.ok) {
@@ -125,6 +126,7 @@ export async function fetchContactData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/corporate?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/corporate?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Corporate",url);
@@ -155,6 +157,7 @@ export async function fetchSustainabletData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/sustainability?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/sustainability?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Corporate",url);
@@ -185,6 +188,7 @@ export async function fetchInnovativeMedicineData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/innovative-medicine?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/innovative-medicine?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Innovative Medicine",url);
@@ -215,6 +219,7 @@ export async function fetchCoreValueData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/core-value?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/core-value?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Innovative Medicine",url);
@@ -246,6 +251,7 @@ export async function fetchCareerData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/career?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/career?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Career",url);
@@ -276,6 +282,7 @@ export async function fetchPeopleData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/people-page?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/people-page?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("People",url);
@@ -306,6 +313,7 @@ export async function fetchOurOfferingData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/our-offering?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/our-offering?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Our offering",url);
@@ -336,6 +344,7 @@ export async function fetchSciencInnovationData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/science-innovation?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/science-innovation?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Science Innovation",url);
@@ -367,6 +376,7 @@ export async function fetchGenericMedicineData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/generic-medicine?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/generic-medicine?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Science Innovation",url);
@@ -397,6 +407,7 @@ export async function fetchOurCultureData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/our-culture?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/our-culture?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Our Culture",url);
@@ -427,6 +438,7 @@ export async function fetchOurHistoryData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/histories?populate=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/histories?populate=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Our History",url);
@@ -457,6 +469,7 @@ export async function fetchComplianceData(segment) {
         const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/compliance?populate[${segment}][populate]=*`;
         const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/compliance?populate[${segment}][populate]=*`, {
             method: "GET",
+            cache: 'no-cache',
         });
 
         console.log("Our Culture",url);
