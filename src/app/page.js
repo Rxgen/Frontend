@@ -7,7 +7,8 @@ export default async function HomePage() {
   
   const data = await fetchHomepageData("Banner");
   const bannersData=data.Banner;
-  const corporateData = await fetchHomepageData("Corporate");
+  const corporate = await fetchHomepageData("Corporate");
+  const corporatedata=corporate.Corporate;
   const aboutData = await fetchHomepageData("About_Us");
   const newscontent = await fetchHomepageData("News");
   const newsData=newscontent.News;
@@ -16,18 +17,19 @@ export default async function HomePage() {
 
   const offering= await fetchHomepageData("our_offering");
   const offeringData =offering.our_offering;
-  //const sustainable= await fetchHomepageData("sustainability");
-  //const sustainabilityData =sustainable.sustainability;
+  const sustainable= await fetchHomepageData("sustainability");
+  const sustainabilityData =sustainable.sustainability;
 
   return (
     <div>
       <HomePageClient
         bannersData={bannersData}
-        corporateData={corporateData}
+        corporateData={corporatedata}
         aboutData={aboutData}
         newsData ={newsData}
         peopleData={peopleData}
-       offeringData={offeringData}
+        offeringData={offeringData}
+        sustainabilityData={sustainabilityData}
        
       />
     </div>

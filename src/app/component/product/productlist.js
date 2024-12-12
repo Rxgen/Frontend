@@ -1,19 +1,28 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Products({ productdata = [], totalPages, currentPage }) {
-  const [products, setProducts] = useState(productdata); // Initial products from props
+  const [products, setProducts] = useState(productdata); 
   //const [filteredProducts, setFilteredProducts] = useState(productdata); // Filtered products
   const [loading, setLoading] = useState(false);
-  const [gridView, setGridView] = useState("two_grid"); // Default grid view is 2-grid
+  const [gridView, setGridView] = useState("two_grid"); 
+  const router = useRouter();
 
   const handlePageChange = (page) => {
     const params = new URLSearchParams(window.location.search);
     params.set("page", page);
-    window.location.search = params.toString(); // This triggers a page reload with updated searchParams
+    window.location.search = params.toString(); 
+  };
+
+  const CategoryClick = (event) => {
+    const category = event.target.value;
+    if (category) {
+      router.push(`/products?category=${category}`);
+    }
   };
 
   console.log("Products data ", productdata);
@@ -23,8 +32,6 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
     return `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
   };
 
-
-  // Handle grid view toggle
   const handleGridView = (viewType) => {
     setGridView(viewType);
   };
@@ -85,7 +92,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
 
         {/* Category Filter */}
         <div className="product_select">
-          <select name="category" id="category-select">
+          <select name="category" id="category-select" onChange={CategoryClick}>
             <option value="">Select Category</option>
             {productdata.map((product) =>
               product.category?.name ? (

@@ -158,9 +158,12 @@ console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_UR
               <option value="" disabled defaultValue>
                 SELECT SUBJECT LINE
               </option>
-              <option value="subject1">Subject Line 1</option>
-              <option value="subject2">Subject Line 2</option>
-              <option value="subject3">Subject Line 3</option>
+              <option value="Active">Active Pharmaceutical Ingredients (API) Related Enquiry</option>
+              <option value="medicine">Medicine Availability Related Enquiry</option>
+              <option value="drug">Drug Adverse Effect/Adverse Event Related/Product Complaint/Medical Information Enquiry</option>
+              <option value="careers">Careers</option>
+              <option value="suppliers">For Suppliers</option>
+              <option value="Other"> Other Enquiry</option>
             </select>
             {errors.subject && <span className="form_error">{errors.subject}</span>}
           </label>

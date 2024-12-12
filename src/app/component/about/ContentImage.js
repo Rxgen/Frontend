@@ -55,7 +55,7 @@ export default function ContentImage({ contentdata }) {
                 </h2>
                 <div className="about_inner_content">
                   <p className="para">{item.description}</p>
-                  <a href={item.cta.cta_url} className="green_cta" target="_blank">
+                  <a href={item.cta.cta_url} className="green_cta">
                     <div className="cta_container">
                       <span>{item.cta.cta_text}</span>
                       <Image
@@ -78,7 +78,6 @@ export default function ContentImage({ contentdata }) {
       <div className="brand_container">
       <Link
         href="/compliance-and-ethics" 
-        target="_blank"
       >
         <div>
           <Image

@@ -4,9 +4,9 @@ import Filter from "../component/product/filter";
 import Productbanner from "../component/product/productbanner";
 
 export default async function ProductsPage({ searchParams }) {
-  const { letter = "", page = "1" , category = "" , brand = "" , ndc= "", productName= ""} = searchParams; 
+  const { letter = "", page = "1" , category = "" , new_products="",brand = "" , ndc= "", productName= ""} = searchParams; 
   console.log("Category api call " , category);
-  const { products, totalPages} = await fetchProducts(letter || "", page, category || "" , brand || "", productName || "" , ndc || "");
+  const { products, totalPages} = await fetchProducts(letter || "", page, category || "" , new_products || "" ,brand || "", productName || "" , ndc || "");
 
   console.log("Server" , products );
  

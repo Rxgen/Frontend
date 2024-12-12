@@ -6,7 +6,7 @@ import Offering from "./homepage/offering";
 import Sustainable from "./homepage/sustainable";
 import People from "./homepage/people";
 
-export default function HomePageClient({ bannersData, corporateData, aboutData ,newsData, peopleData, offeringData}) {
+export default function HomePageClient({ bannersData, corporateData, aboutData ,newsData, peopleData, offeringData,sustainabilityData}) {
   
   return (
     <div>
@@ -17,7 +17,7 @@ export default function HomePageClient({ bannersData, corporateData, aboutData ,
       <News  newsData={newsData}/>
       <People peopleData={peopleData} />
       <Offering offeringData={offeringData} />
-      <Sustainable  />
+      <Sustainable sustainabilityData={sustainabilityData} />
      
     </div>
   );

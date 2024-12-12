@@ -20,6 +20,14 @@ export default function Filter({ selectedLetter,selectedCategory }) {
     router.push(`/products?category=${category}`);
   };
 
+  const handleNewproductClick = (category) => {
+    router.push(`/products?${category}`);
+  };
+
+  const handleAllproductClick = (category) => {
+    router.push(`/products`);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const queryParams = new URLSearchParams();
@@ -100,30 +108,30 @@ export default function Filter({ selectedLetter,selectedCategory }) {
             <a
               href="#"
               className="tab_link"
-              onClick={() => handleCategoryClick("ALL_PRODUCTS")}
+              onClick={() => handleAllproductClick("ALL_PRODUCTS")}
             >
               ALL PRODUCTS
             </a>
             <a
               href="#"
               className="tab_link"
-              onClick={() => handleCategoryClick("NEW_PRODUCTS")}
+              onClick={() => handleNewproductClick("new_products")}
             >
               NEW PRODUCTS
             </a>
             <a
               href="#"
               className="tab_link"
-              onClick={() => handleCategoryClick("INHALATIONS")}
+              onClick={() => handleCategoryClick("Bronchodilator")}
             >
               INHALATIONS
             </a>
             <a
               href="#"
               className="tab_link"
-              onClick={() => handleCategoryClick("INJECTABLES")}
+              onClick={() => handleCategoryClick("Antibiotic")}
             >
-              INJECTABLES
+              ANTIBIOTIC
             </a>
           </div>
         </div>

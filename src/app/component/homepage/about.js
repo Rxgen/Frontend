@@ -30,18 +30,16 @@ export default function About ({ aboutData }){
           {/* Dynamic Links */}
           <div className="about_internal_links scroll_content">
             {aboutData.About_Us.About_Us_Link?.map((link) => (
-              <Link href={link.url} key={link.id} className="internal_links" target="_blank">
+              <Link href={link.url} key={link.id} className="internal_links">
                 {link.name}
               </Link>
             ))}
           </div>
-
-          {/* Dynamic CTA */}
-          
-            <a href={aboutData.About_Us.cta.cta_url} className="circle_cta" target="_blank" rel="noopener noreferrer">
-              <span>{aboutData.About_Us.cta.cta_text}</span>
-              <Image src="/images/icons/white_arrow.webp" alt="" width="20" height="14" />
-            </a>
+  
+          <Link href="/about-us" rel="noopener noreferrer" className="circle_cta">
+            <span>Know More</span>
+            <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
+          </Link>
           
         </div>
       </div>
