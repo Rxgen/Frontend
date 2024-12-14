@@ -44,15 +44,16 @@ export default function Homebanner({ banners }) {
                   loop
                   className="banner_video"
                 >
-                  <source
-                    src={getMediaUrl(banner.banner_desktop_image.url)}
-                    type="video/mp4"
-                  />
-                  <source
+                   <source
                     src={getMediaUrl(banner.banner_mobile_image.url)}
                     type="video/mp4"
                     media="(max-width: 767px)"
                   />
+                  <source
+                    src={getMediaUrl(banner.banner_desktop_image.url)}
+                    type="video/mp4"
+                  />
+                 
                   Your browser does not support the video tag.
                 </video>
               ) : (
