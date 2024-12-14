@@ -76,7 +76,7 @@ export default function ContactForm() {
     console.log('Form is valid');
 
     
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/contact-forms`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/contact-forms`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_UR
               value={formData.name}
               onChange={handleChange}
             />
-            {errors.name && <span className="form_error">{errors.name}</span>}
+            {errors.name && <span className="error_message">{errors.name}</span>}
           </label>
           <label className="form_label">
             <input
@@ -127,7 +127,7 @@ console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_UR
               value={formData.organization}
               onChange={handleChange}
             />
-            {errors.organization && <span className="form_error">{errors.organization}</span>}
+            {errors.organization && <span className="error_message">{errors.organization}</span>}
           </label>
           <label className="form_label">
             <input
@@ -137,7 +137,7 @@ console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_UR
               value={formData.email}
               onChange={handleChange}
             />
-            {errors.email && <span className="form_error">{errors.email}</span>}
+            {errors.email && <span className="error_message">{errors.email}</span>}
           </label>
           <label className="form_label">
             <input
@@ -147,7 +147,7 @@ console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_UR
               value={formData.contact}
               onChange={handleChange}
             />
-            {errors.contact && <span className="form_error">{errors.contact}</span>}
+            {errors.contact && <span className="error_message">{errors.contact}</span>}
           </label>
           <label className="form_label form_select">
             <select
@@ -165,7 +165,7 @@ console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_UR
               <option value="suppliers">For Suppliers</option>
               <option value="Other"> Other Enquiry</option>
             </select>
-            {errors.subject && <span className="form_error">{errors.subject}</span>}
+            {errors.subject && <span className="error_message">{errors.subject}</span>}
           </label>
           <label className="form_label form_textarea">
             <textarea
@@ -176,7 +176,7 @@ console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_UR
               rows="10"
               placeholder="POST YOUR QUERY"
             ></textarea>
-          {errors.query && <span className="form_error">{errors.query}</span>}
+          {errors.query && <span className="error_message">{errors.query}</span>}
           </label>
         </div>
         <button type="submit" className="green_cta">
@@ -201,9 +201,9 @@ console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_UR
             checked={formData.acceptedTerms}
             onChange={handleChange}
           />
-          {errors.acceptedTerms && <span className="form_error">{errors.acceptedTerms}</span>}
+          {errors.acceptedTerms && <span className="error_message">{errors.acceptedTerms}</span>}
         </div>
-        {errors.form && <p className="form_error">{errors.form}</p>}
+        {errors.form && <p className="error_message">{errors.form}</p>}
         {success && <p className="form_success">Thank you! Your message has been sent successfully.</p>}
       </form>
     </section>
