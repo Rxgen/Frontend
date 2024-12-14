@@ -18,7 +18,7 @@ export default function TopBanner({ topbannerdata }) {
   
     return (
         
-<section data-section="contact_banner" className="product_listing_banner inner_banner">
+<section data-section="contact_banner" className="product_listing_banner inner_banner banner_section">
         <picture>
           <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
           <Image

@@ -18,7 +18,7 @@ export default function Topbanner( {topbannerdata}) {
     const bannerText = topbannerdata?.banner_text || "Sustainability";
 
     return (
-        <section data-section="sustainability_banner" className="sustainability_banner inner_banner">
+        <section data-section="sustainability_banner" className="sustainability_banner inner_banner banner_section">
         <picture>
           <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
           <Image

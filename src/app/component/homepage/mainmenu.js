@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Mainmenu = () => {
   const [activeLink, setActiveLink] = useState(null);
@@ -115,6 +116,15 @@ const Mainmenu = () => {
               </div>
             </div>
           </span>
+          <span className="nav_link">
+                    <Link href="/contact-us" className="link_item" >Contact Us </Link>
+                </span>
+                <div className="nav_social">
+                    <Link href=""><Image src="/images/icons/linked_in_black.webp" alt="Linkdin profile" width="79" height="79" />
+                    
+                    </Link>
+                    
+                </div>
         </div>
       </div>
     </div>

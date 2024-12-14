@@ -20,7 +20,7 @@ export default function TopBanner({ topbannerdata }) {
   
     return (
         <div>
-<section data-section="about_banner" className="about_banner inner_banner">
+<section data-section="about_banner" className="about_banner inner_banner banner_section">
         <picture>
           <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
           <Image

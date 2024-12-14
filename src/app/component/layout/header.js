@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Mainmenu from "../homepage/mainmenu";
@@ -7,6 +7,30 @@ import Mainmenu from "../homepage/mainmenu";
 const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [innerMenuActive, setInnerMenuActive] = useState(false);
+
+
+  useEffect(() => {
+    const adjustInnerMenuHeight = () => {
+      const bannerElement = document.querySelector(".banner_section");
+      const innerMenuElement = document.querySelector(".inner_menu");
+
+      if (bannerElement && innerMenuElement) {
+        const bannerHeight = bannerElement.offsetHeight;
+        const vwRatio = bannerHeight / window.innerWidth;
+        innerMenuElement.style.height = `${vwRatio * 100}vw`;
+        if (innerMenuElement.offsetHeight < window.innerWidth * 0.45) {
+          innerMenuElement.classList.add("internal_menu");
+        } else {
+          innerMenuElement.classList.remove("internal_menu");
+        }
+      }
+    };
+    adjustInnerMenuHeight();
+    window.addEventListener("resize", adjustInnerMenuHeight);
+    return () => {
+      window.removeEventListener("resize", adjustInnerMenuHeight);
+    };
+  }, []);
 
   const handleMenuClick = () => {
     setMenuActive(!menuActive);

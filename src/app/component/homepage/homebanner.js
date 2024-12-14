@@ -18,7 +18,7 @@ export default function Homebanner({ banners }) {
   console.log("Image url ",getMediaUrl);
 
   return (
-    <section data-section="home_banner" className="home_banner" id="home_banner">
+    <section data-section="home_banner" className="home_banner banner_section" id="home_banner">
       <Swiper
         modules={[Navigation, Pagination, Autoplay, A11y]}
         slidesPerView={1}

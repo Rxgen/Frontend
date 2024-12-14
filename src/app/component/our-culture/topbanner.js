@@ -15,7 +15,7 @@ export default function Topbanner ({topbannerdata}){
 
       const bannerText = topbannerdata?.banner_text;
     return (
-        <section data-section="culture_banner" className="culture_banner inner_banner">
+        <section data-section="culture_banner" className="culture_banner inner_banner banner_section">
     <picture>
         <source media="(max-width: 540px)" srcSet={mobileImageUrl}/>
         <Image src={desktopImageUrl} alt="Banner" className="banner_img" width="1920" height="770" />
