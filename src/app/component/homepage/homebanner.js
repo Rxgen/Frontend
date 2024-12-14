@@ -60,14 +60,12 @@ export default function Homebanner({ banners }) {
                   <source
                     media="(max-width: 540px)"
                     srcSet={getMediaUrl(
-                      banner.banner_mobile_image.formats?.small?.url ||
-                        banner.banner_mobile_image.url
+                      banner.banner_mobile_image.url
                     )}
                   />
                   <Image
                     src={getMediaUrl(
-                      banner.banner_desktop_image.formats?.large?.url ||
-                        banner.banner_desktop_image.url
+                     banner.banner_desktop_image.url
                     )}
                     alt={
                       banner.banner_desktop_image.alternativeText || "Banner"

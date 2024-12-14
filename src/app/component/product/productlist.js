@@ -1,16 +1,37 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Products({ productdata = [], totalPages, currentPage }) {
-  const [products, setProducts] = useState(productdata); 
+  const [products, setProducts] = useState(productdata);
+  const [isActive, setIsActive] = useState(false); 
+  const [selectedCategory, setSelectedCategory] = useState("Select Category");
   //const [filteredProducts, setFilteredProducts] = useState(productdata); // Filtered products
   const [loading, setLoading] = useState(false);
   const [gridView, setGridView] = useState("two_grid"); 
   const router = useRouter();
+
+  useLayoutEffect(() => {
+    // Ensure that the element exists before trying to scroll
+    const productListSection = document.getElementById("product_listing");
+    if (productListSection) {
+      productListSection.scrollIntoView({
+        behavior: "smooth", // Adds smooth scrolling
+        block: "start", // Scrolls to the top of the section
+      });
+    }
+  }, [router.pathname]);
+
+  const handleToggle = () => {
+    setIsActive(true); // Show dropdown
+};
+
+const handleMouseLeave = () => {
+    setIsActive(false); // Hide dropdown
+};
 
   const handlePageChange = (page) => {
     const params = new URLSearchParams(window.location.search);
@@ -18,12 +39,11 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
     window.location.search = params.toString(); 
   };
 
-  const CategoryClick = (event) => {
-    const category = event.target.value;
-    if (category) {
-      router.push(`/products?category=${category}`);
-    }
-  };
+  const CategoryClick = (category) => {
+    setSelectedCategory(category); 
+    setIsActive(false);
+    router.push(`/products?category=${category}`); 
+};
 
   console.log("Products data ", productdata);
   console.log("length",productdata.length);
@@ -92,18 +112,20 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
 
         {/* Category Filter */}
         <div className="product_select">
-          <select name="category" id="category-select" onChange={CategoryClick}>
-            <option value="">Select Category</option>
-            {productdata.map((product) =>
-              product.category?.name ? (
-                <option key={product.category.id} value={product.category.name}>
-                  {product.category.name}
-                </option>
-              ) : null
-              
-            )}
-          </select>
-        </div>
+    <div className="select_detail" onClick={handleToggle} >{selectedCategory}</div>
+    <ul className={`select_box ${isActive ? "active" : ""}`} onMouseLeave={handleMouseLeave}>
+    {productdata.map((product) =>
+                        product.category?.name ? (
+                            <li
+                                key={product.category.id}
+                                onClick={() => CategoryClick(product.category.name)}
+                            >
+                                {product.category.name}
+                            </li>
+                        ) : null
+                    )}
+    </ul>
+</div>
       </div>
 
       {/* Loading State */}

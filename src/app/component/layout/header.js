@@ -33,10 +33,86 @@ const Header = () => {
         </ul>
 
         <div className="menu_icons">
-          <Link href="/" className="language_icon">
-            <Image src="/images/icons/language.webp" alt="Language Icon" width={32} height={32} />
-          </Link>
-        </div>
+    <div className="language_icon">
+        <Image src="/images/icons/language.webp" alt="Language" width="32" height="32" />
+        <ul className="global_links">
+            <li>
+                <a href="https://generichealth.com.au/" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_1.webp" alt="AU Country" width="38" height="26" />
+                    <span>AU</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://medquimica.ind.br/en/" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_2.webp" alt="BR Country" width="38" height="26" />
+                    <span>BR</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.lupinpharma.ca/#welcome" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_3.webp" alt="CA Country" width="38" height="26" />
+                    <span>CA</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.hormosan.com/" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_4.webp" alt="GE Country" width="38" height="26" />
+                    <span>GE</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.lupin.com/" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_5.webp" alt="India Country" width="38" height="26" />
+                    <span>IN</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://laboratoriosgrin.com/" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_6.webp" alt="MX Country" width="38" height="26" />
+                    <span>MX</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.multicare.com.ph/" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_7.webp" alt="PH Country" width="38" height="26" />
+                    <span>PH</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_8.webp" alt="RU Country" width="38" height="26" />
+                    <span>RU</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://pharmadynamics.co.za/" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_9.webp" alt="SA Country" width="38" height="26" />
+                    <span>SA</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_10.webp" alt="CH Country" width="38" height="26" />
+                    <span>CH</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.nanomi.com/" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_11.webp" alt="NL Country" width="38" height="26" />
+                    <span>NL</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" target="_blank" className="global_link">
+                    <Image src="/images/globe/img_12.webp" alt="US Country" width="38" height="26" />
+                    <span>US</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
       </header>
 
       
@@ -52,7 +128,8 @@ const Header = () => {
         <span className="menu_text">{menuActive ? 'Close' : 'Menu'}</span>
       </Link>
 
-      
+
+    
       <div
         className={`inner_menu ${innerMenuActive ? 'active' : ''}`}
         onMouseLeave={handleMouseLeave} 

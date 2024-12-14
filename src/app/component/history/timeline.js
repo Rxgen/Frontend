@@ -10,7 +10,7 @@ import Image from "next/image";
 
 export default function HistorySlider({historydata}) {
 
-    console.log(" History Data ", historydata)
+    console.log(" History Data 2", historydata)
     const [activeIndex, setActiveIndex] = useState(0);
     const swiperRef = useRef(null);
 
