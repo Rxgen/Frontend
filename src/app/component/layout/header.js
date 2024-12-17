@@ -158,7 +158,11 @@ const Header = () => {
         className={`inner_menu ${innerMenuActive ? 'active' : ''}`}
         onMouseLeave={handleMouseLeave} 
       >
-        <Mainmenu />
+        <Mainmenu
+          menuActive={menuActive}
+          setMenuActive={setMenuActive}
+          setInnerMenuActive={setInnerMenuActive}
+        />
       </div>
     </div>
   );

@@ -1,12 +1,27 @@
 "use client";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-const Mainmenu = () => {
+const Mainmenu = ({ menuActive, setMenuActive, setInnerMenuActive }) => {
   const [activeLink, setActiveLink] = useState(null);
   const [locked, setLocked] = useState(false); 
   const [delayed, setDelayed] = useState(false); 
+
+  const closeMenu = () => {
+    setMenuActive(false);
+    setInnerMenuActive(false);
+  };
+
+
+  useEffect(() => {
+    if (!menuActive) {
+      const innerMenuElement = document.querySelector(".inner_menu");
+      if (innerMenuElement) {
+        innerMenuElement.classList.remove("active");
+      }
+    }
+  }, [menuActive]);
 
   const handleLinkEnter = (linkId) => {
     setActiveLink(linkId); 
@@ -23,14 +38,14 @@ const Mainmenu = () => {
   };
 
   const handleSubmenuEnter = () => {
-    setLocked(true); 
+    //setLocked(true); 
   };
 
   const handleSubmenuLeave = () => {
-    if (!delayed) {
-      setLocked(false);
+    
+      
       setActiveLink(null); 
-    }
+    
   };
 
   return (
@@ -43,19 +58,19 @@ const Mainmenu = () => {
             onMouseEnter={() => handleLinkEnter("aboutUs")}
             onMouseLeave={handleLinkLeave}
           >
-            <Link href="/about-us" className="link_item">About Us</Link>
+            <Link href="/about-us" className="link_item" onClick={closeMenu} >About Us</Link>
             <div
               className={`menu_sub_nav ${activeLink === "aboutUs" ? "active" : ""}`}
               onMouseEnter={handleSubmenuEnter} 
               onMouseLeave={handleSubmenuLeave} 
             >
               <div className={`sub_menu ${activeLink === "aboutUs" ? "active" : ""}`}>
-                <span className="sub_menu_link"><Link href="/corporate-overview">Corporate Overview</Link></span>
-                <span className="sub_menu_link"><Link href="/leadership">Our Leadership</Link></span>
-                <span className="sub_menu_link"><Link href="/our-history">Our History</Link></span>
-                <span className="sub_menu_link"><Link href="/core-values">Our Values</Link></span>
-                <span className="sub_menu_link"><Link href="/science-and-innovation">Science & Innovation</Link></span>
-                <span className="sub_menu_link"><Link href="/compliance-and-ethics">Compliance & Ethics Program</Link></span>
+                <span className="sub_menu_link"><Link href="/corporate-overview" onClick={closeMenu} >Corporate Overview</Link></span>
+                <span className="sub_menu_link"><Link href="/leadership" onClick={closeMenu}>Our Leadership</Link></span>
+                <span className="sub_menu_link"><Link href="/our-history" onClick={closeMenu}>Our History</Link></span>
+                <span className="sub_menu_link"><Link href="/core-values" onClick={closeMenu}>Our Values</Link></span>
+                <span className="sub_menu_link"><Link href="/science-and-innovation" onClick={closeMenu}>Science & Innovation</Link></span>
+                <span className="sub_menu_link"><Link href="/compliance-and-ethics" onClick={closeMenu}>Compliance & Ethics Program</Link></span>
               </div>
             </div>
           </span>
@@ -66,14 +81,14 @@ const Mainmenu = () => {
             onMouseEnter={() => handleLinkEnter("ourImpact")}
             onMouseLeave={handleLinkLeave}
           >
-            <Link href="/sustainability" className="link_item">Our Impact</Link>
+            <Link href="/sustainability" className="link_item" onClick={closeMenu}>Our Impact</Link>
             <div
               className={`menu_sub_nav ${activeLink === "ourImpact" ? "active" : ""}`}
               onMouseEnter={handleSubmenuEnter} 
               onMouseLeave={handleSubmenuLeave} 
             >
               <div className={`sub_menu ${activeLink === "ourImpact" ? "active" : ""}`}>
-                <span className="sub_menu_link"><Link href="/sustainability">Sustainability</Link></span>
+                <span className="sub_menu_link"><Link href="/sustainability" onClick={closeMenu}>Sustainability</Link></span>
               </div>
             </div>
           </span>
@@ -84,16 +99,16 @@ const Mainmenu = () => {
             onMouseEnter={() => handleLinkEnter("ourOffering")}
             onMouseLeave={handleLinkLeave}
           >
-            <Link href="/our-offering" className="link_item">Our Offering</Link>
+            <Link href="/our-offering" className="link_item" onClick={closeMenu}>Our Offering</Link>
             <div
               className={`menu_sub_nav ${activeLink === "ourOffering" ? "active" : ""}`}
               onMouseEnter={handleSubmenuEnter} // Lock submenu on hover
               onMouseLeave={handleSubmenuLeave} // Unlock submenu on leave
             >
               <div className={`sub_menu ${activeLink === "ourOffering" ? "active" : ""}`}>
-                <span className="sub_menu_link"><Link href="/generic-medicine">Generic / Complex Generics</Link></span>
-                <span className="sub_menu_link"><Link href="/innovative-medicine">Innovative Medicines</Link></span>
-                <span className="sub_menu_link"><Link href="/products">Product</Link></span>
+                <span className="sub_menu_link"><Link href="/generic-medicine" onClick={closeMenu}>Generic / Complex Generics</Link></span>
+                <span className="sub_menu_link"><Link href="/innovative-medicine" onClick={closeMenu}>Innovative Medicines</Link></span>
+                <span className="sub_menu_link"><Link href="/products" onClick={closeMenu}>Product</Link></span>
               </div>
             </div>
           </span>
@@ -104,29 +119,29 @@ const Mainmenu = () => {
             onMouseEnter={() => handleLinkEnter("people")}
             onMouseLeave={handleLinkLeave}
           >
-            <Link href="/people" className="link_item">People</Link>
+            <Link href="/people" className="link_item" onClick={closeMenu}>People</Link>
             <div
               className={`menu_sub_nav ${activeLink === "people" ? "active" : ""}`}
               onMouseEnter={handleSubmenuEnter} 
               onMouseLeave={handleSubmenuLeave}
             >
               <div className={`sub_menu ${activeLink === "people" ? "active" : ""}`}>
-                <span className="sub_menu_link"><Link href="/our-culture">Our Culture</Link></span>
-                <span className="sub_menu_link"><Link href="/career">Career</Link></span>
+                <span className="sub_menu_link"><Link href="/our-culture" onClick={closeMenu}>Our Culture</Link></span>
+                <span className="sub_menu_link"><Link href="/career" onClick={closeMenu}>Career</Link></span>
               </div>
             </div>
           </span>
           <span className="nav_link">
-                    <Link href="/contact-us" className="link_item" >Contact Us </Link>
+                    <Link href="/contact-us" className="link_item" onClick={closeMenu}> Contact Us </Link>
                 </span>
                 <div className="nav_social">
                     <Link href=""><Image src="/images/icons/linked_in_black.webp" alt="Linkdin profile" width="79" height="79" />
                     </Link>
                 </div>
         </div>
-        <a href="" className="close_menu">
+        <Link href="" className="close_menu" onClick={closeMenu}>
             <Image src="/images/icons/close.webp" alt="Close" width="32" height="32"/> 
-        </a>
+        </Link>
       </div>
     </div>
   );
