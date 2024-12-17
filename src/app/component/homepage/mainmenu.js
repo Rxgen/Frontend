@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Mainmenu = ({ menuActive, setMenuActive, setInnerMenuActive }) => {
-  const [activeLink, setActiveLink] = useState(null);
+  const [activeLink, setActiveLink] = useState("aboutUs");
   const [locked, setLocked] = useState(false); 
   const [delayed, setDelayed] = useState(false); 
 
