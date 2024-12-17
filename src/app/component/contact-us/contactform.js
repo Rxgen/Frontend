@@ -107,7 +107,7 @@ console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_UR
 
   return (
     <section data-section="contact_form" className="contact_form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form_detail">
         <div className="form_container">
           <label className="form_label">
             <input

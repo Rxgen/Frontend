@@ -113,12 +113,12 @@ const Footer = ({}) => {
                   </div>
                   <div className="footer_nav">
                   <span>
-        <Link href="/do-not-sell-share-my-personal-information" className="border_link">
+        <Link href="/your-privacy-choices" className="border_link">
           DO NOT SELL/SHARE MY PERSONAL INFORMATION
         </Link>
       </span>
       <span>
-        <Link href="/privacy" className="border_link">
+        <Link href="/privacy-policy" className="border_link">
           PRIVACY
         </Link>
       </span>
@@ -128,7 +128,7 @@ const Footer = ({}) => {
         </Link>
       </span>
       <span>
-        <Link href="/consumer-health-privacy-statement" className="border_link">
+        <Link href="/consumer-health" className="border_link">
           CONSUMER HEALTH PRIVACY STATEMENT
         </Link>
       </span>
@@ -143,7 +143,7 @@ const Footer = ({}) => {
         </Link>
       </span>
       <span>
-        <Link href="/notice-at-collection" className="border_link">
+        <Link href="/notice" className="border_link">
           NOTICE AT COLLECTION
         </Link>
       </span>

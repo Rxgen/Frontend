@@ -121,11 +121,12 @@ const Mainmenu = () => {
                 </span>
                 <div className="nav_social">
                     <Link href=""><Image src="/images/icons/linked_in_black.webp" alt="Linkdin profile" width="79" height="79" />
-                    
                     </Link>
-                    
                 </div>
         </div>
+        <a href="" className="close_menu">
+            <Image src="/images/icons/close.webp" alt="Close" width="32" height="32"/> 
+        </a>
       </div>
     </div>
   );
