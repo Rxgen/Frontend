@@ -10,7 +10,7 @@ export default function Generic({genericdata}) {
 
     return (
 <section data-section="generic_offer" className="generic_offer">
-    <Image src={imageUrl} alt={genericdata.image.alternativeText} className="generic_img" width={genericdata.image.width} height={genericdata.image.height} />
+    <Image src={imageUrl} alt={genericdata.image.alternativeText || "Generic image"} className="generic_img" width={genericdata.image.width} height={genericdata.image.height} />
     <div className="generic_offer_container">
         <div className="generic_offer_content">
             <h2 className="subtitle_60">{genericdata.heading}</h2>

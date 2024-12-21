@@ -2,9 +2,9 @@ export default async function ConsumerHealthPage() {
     try {
       // Fetch the content from the API
       const response = await fetch(
-        'https://lupinus-cms.devmaffia.in/api/consumer-health?populate=*',
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/consumer-health?populate=*`,
         {
-          next: { revalidate: 60 }, // Optional: revalidate every 60 seconds
+          next: { revalidate: 60 }, // revalidate every 60 seconds
         }
       );
   

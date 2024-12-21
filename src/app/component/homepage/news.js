@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function News({ newsData }) {
   console.log("news data" ,newsData);
@@ -14,9 +15,10 @@ export default function News({ newsData }) {
       </div>
       <div className="news_internal_links">
         {newsData.news_link.map((news, index) => (
-          <a
+          <Link
             key={news.id}
             href={news.news_link}
+            target="_blank"
             className="internal_links"
             data-news={`0${index + 1}`}
           >
@@ -38,21 +40,21 @@ export default function News({ newsData }) {
                 />
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
       <div className="news_cta">
-        <a href="/all-news" className="black_cta">
-          <div className="cta_container">
-            <span>View All</span>
-            <Image
-              src="/images/icons/white_arrow.webp"
-              alt=""
-              width="20"
-              height="14"
-            />
-          </div>
-        </a>
+      <Link href="https://www.lupin.com/media/" className="black_cta" target="_blank">
+        <div className="cta_container">
+          <span>View All</span>
+          <Image
+            src="/images/icons/white_arrow.webp"
+            alt=""
+            width={20}
+            height={14}
+          />
+        </div>
+      </Link>
       </div>
     </section>
   );

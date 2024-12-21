@@ -1,9 +1,8 @@
 
 export default async function NoticePage() {
     try {
-      // Fetch the content from the API
       const response = await fetch(
-        'https://lupinus-cms.devmaffia.in/api/notice?populate=*',
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/notice?populate=*`,
         {
           next: { revalidate: 60 }, 
         }

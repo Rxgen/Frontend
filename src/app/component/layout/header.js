@@ -13,6 +13,7 @@ const Header = () => {
     const adjustInnerMenuHeight = () => {
       const bannerElement = document.querySelector(".banner_section");
       const innerMenuElement = document.querySelector(".inner_menu");
+      console.log("Banner height");
 
       if (bannerElement && innerMenuElement) {
         const bannerHeight = bannerElement.offsetHeight;
@@ -57,82 +58,131 @@ const Header = () => {
         </ul>
 
         <div className="menu_icons">
-    <div className="language_icon">
+      <div className="language_icon">
         <Image src="/images/icons/language.webp" alt="Language" width="32" height="32" />
         <ul className="global_links">
-            <li>
-                <a href="https://generichealth.com.au/" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_1.webp" alt="AU Country" width="38" height="26" />
-                    <span>AU</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://medquimica.ind.br/en/" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_2.webp" alt="BR Country" width="38" height="26" />
-                    <span>BR</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.lupinpharma.ca/#welcome" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_3.webp" alt="CA Country" width="38" height="26" />
-                    <span>CA</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.hormosan.com/" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_4.webp" alt="GE Country" width="38" height="26" />
-                    <span>GE</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.lupin.com/" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_5.webp" alt="India Country" width="38" height="26" />
-                    <span>IN</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://laboratoriosgrin.com/" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_6.webp" alt="MX Country" width="38" height="26" />
-                    <span>MX</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.multicare.com.ph/" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_7.webp" alt="PH Country" width="38" height="26" />
-                    <span>PH</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_8.webp" alt="RU Country" width="38" height="26" />
-                    <span>RU</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://pharmadynamics.co.za/" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_9.webp" alt="SA Country" width="38" height="26" />
-                    <span>SA</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_10.webp" alt="CH Country" width="38" height="26" />
-                    <span>CH</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.nanomi.com/" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_11.webp" alt="NL Country" width="38" height="26" />
-                    <span>NL</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" target="_blank" className="global_link">
-                    <Image src="/images/globe/img_12.webp" alt="US Country" width="38" height="26" />
-                    <span>US</span>
-                </a>
-            </li>
-        </ul>
+      <li>
+        <Link href="https://www.lupin.com/" target="_blank" className="global_link">
+          <Image
+            src="/images/globe/img_1.webp"
+            alt="IIndia "
+            width={38}
+            height={26}
+          />
+          <span>IN</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="https://www.lupin.com/US/" target="_blank" className="global_link">
+          <Image
+            src="/images/globe/img_2.webp"
+            alt="US Country"
+            width={38}
+            height={26}
+          />
+          <span>US</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="https://www.lupinhealthcare.co.uk/" target="_blank" className="global_link">
+          <Image
+            src="/images/globe/img_3.webp"
+            alt="UK Country"
+            width={38}
+            height={26}
+          />
+          <span>UK</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="https://pharmadynamics.co.za/" target="_blank" className="global_link">
+          <Image
+            src="/images/globe/img_4.webp"
+            alt="SA Country"
+            width={38}
+            height={26}
+          />
+          <span>SA</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="https://generichealth.com.au/" target="_blank" className="global_link">
+          <Image
+            src="/images/globe/img_5.webp"
+            alt="AU Country"
+            width={38}
+            height={26}
+          />
+          <span>AU</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="https://www.multicare.com.ph/" target="_blank" className="global_link">
+          <Image
+            src="/images/globe/img_6.webp"
+            alt="PH country"
+            width={38}
+            height={26}
+          />
+          <span>PH</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="https://www.hormosan.com/" target="_blank" className="global_link">
+          <Image
+            src="/images/globe/img_7.webp"
+            alt="GE Country"
+            width={38}
+            height={26}
+          />
+          <span>GE</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="https://www.nanomi.com/" target="_blank" className="global_link">
+          <Image
+            src="/images/globe/img_8.webp"
+            alt="NL Country"
+            width={38}
+            height={26}
+          />
+          <span>NL</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="https://laboratoriosgrin.com/" target="_blank" className="global_link">
+          <Image
+            src="/images/globe/img_9.webp"
+            alt="MX Country"
+            width={38}
+            height={26}
+          />
+          <span>MX</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="https://medquimica.ind.br/en/" target="_blank" className="global_link">
+          <Image
+            src="/images/globe/img_10.webp"
+            alt="BR Country"
+            width={38}
+            height={26}
+          />
+          <span>BR</span>
+        </Link>
+      </li>
+      <li>
+        <Link href="https://www.lupinpharma.ca/#welcome" target="_blank" className="global_link">
+          <Image
+            src="/images/globe/img_11.webp"
+            alt="CA Country"
+            width={38}
+            height={26}
+          />
+          <span>CA</span>
+        </Link>
+      </li>
+    </ul>
     </div>
 </div>
 
@@ -151,9 +201,6 @@ const Header = () => {
         </div>
         <span className="menu_text">{menuActive ? 'Close' : 'Menu'}</span>
       </Link>
-
-
-    
       <div
         className={`inner_menu ${innerMenuActive ? 'active' : ''}`}
         onMouseLeave={handleMouseLeave} 

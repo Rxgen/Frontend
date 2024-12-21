@@ -6,6 +6,7 @@ import SmartGuide from "./component/layout/smartguide";
 
 
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -21,7 +22,8 @@ export default function RootLayout({ children }) {
     
         {children}
         <SmartGuide />
-        
+
+       
         <Footer />
         </body>
     </html>

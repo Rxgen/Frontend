@@ -10,7 +10,7 @@ export default function Life( { lifedata }){
 
     return (
         <section data-section="people_growth" className="people_growth growth_work">
-    <Image src={imageUrl} alt={lifedata.image.alternativeText} className="people_img" width={lifedata.image.width} height={lifedata.image.height} />
+    <Image src={imageUrl} alt={lifedata.image.alternativeText || "People Image"} className="people_img" width={lifedata.image.width} height={lifedata.image.height} />
     <div className="people_content">
         <h2 className="subtitle_60">{lifedata.heading}</h2>
         <p className="para">

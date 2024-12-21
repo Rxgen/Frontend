@@ -3,7 +3,7 @@ export default async function PharmacovigilancePage() {
     try {
       // Fetch the content from the API
       const response = await fetch(
-        'https://lupinus-cms.devmaffia.in/api/pharmacovigilance?populate=*',
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/pharmacovigilance?populate=*`,
         {
           next: { revalidate: 60 }, // Optional: revalidate every 60 seconds
         }

@@ -24,11 +24,12 @@ export default function Offer() {
         <div className="culture_link">Operational Excellence</div>
         <div className="culture_link">Environmental&apos; Health&apos; and Safety</div>
     </div>
-    <div className="flower_section">
-    <div className="flower_bg">
+    
+     <div className="flower_bg_container" >
+     <div className="flower_bg">
         <Image src="/images/flower_bg.webp" alt="BIg Flower " width="1500" height="1500" />
     </div>
-</div>
+        </div>  
 </section>
     )
 }

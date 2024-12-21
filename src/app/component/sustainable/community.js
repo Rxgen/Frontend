@@ -17,9 +17,11 @@ export default function Community( {communitydata}){
            {communitydata.description}
         </p>
     </div>
+<div className="flower_bg_container" >
     <div className="flower_bg">
         <Image src="/images/flower_bg.webp" alt="Big flower " width="1500" height="1500" />
     </div>
+</div>
 </section>
     )
 

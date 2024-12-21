@@ -2,10 +2,25 @@
 "use client";
 import Link  from "next/link";
 import Image from "next/image";
+import DisclaimerPopup from "./disclaimer";
+import { useState } from "react";
 
 
 
 const Footer = ({}) => {
+  const [isDisclaimerOpen, setDisclaimerOpen] = useState(false);
+
+  const openDisclaimerPopup = (e) => {
+    console.log("Disclaimer Popup")
+    e.preventDefault();
+    setDisclaimerOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeDisclaimerPopup = () => {
+    setDisclaimerOpen(false);
+    document.body.style.overflow = "auto";
+  };
     return (
       <footer>
       <Image src="/images/flower_bg_footer.webp" alt="" className="flower_bg_footer" width="893" height="914" />
@@ -39,7 +54,7 @@ const Footer = ({}) => {
               <div className="lupin_footer_navigation">
                   <div className="footer_nav">
                   <span>
-        <Link href="/about-us" >
+        <Link href="/about-us" className="border_link">
          ABOUT US
         </Link>
       </span>
@@ -69,7 +84,7 @@ const Footer = ({}) => {
         </Link>
       </span>
       <span>
-        <Link href="/life-at-lupin">
+        <Link href="/life-at-lupin" className="border_link">
           LIFE AT LUPIN
         </Link>
       </span>
@@ -133,7 +148,7 @@ const Footer = ({}) => {
         </Link>
       </span>
       <span>
-        <Link href="/disclaimer" className="border_link">
+        <Link href=" #" className="border_link" onClick={openDisclaimerPopup}>
           DISCLAIMER
         </Link>
       </span>
@@ -152,7 +167,10 @@ const Footer = ({}) => {
           </div>
       </div>
       <div className="copyright">Copywrite @ 2024 Lupin Phamaceuticals„ All Rights Reserved.</div>
+      
+      <DisclaimerPopup isDisclaimerOpen={isDisclaimerOpen} closePopup={closeDisclaimerPopup} />  
   </footer>
+  
     );
   };
   

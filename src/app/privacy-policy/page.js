@@ -2,11 +2,11 @@
 
 export default async function PrivacyPolicyPage() {
     try {
-      // Fetch the content from the API
+      
       const response = await fetch(
-        'https://lupinus-cms.devmaffia.in/api/privacy-policy?populate=*',
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/privacy-policy?populate=*`,
         {
-          next: { revalidate: 60 }, // Optional: revalidate every 60 seconds
+          next: { revalidate: 60 }, // revalidate every 60 seconds
         }
       );
   

@@ -10,7 +10,7 @@ export default function Product ( {productdata}){
 
     return (
         <section data-section="generic_offer" className="generic_offer">
-        <Image src={imageUrl} alt={productdata.image.alternativeText} className="generic_img" width={productdata.image.width} height={productdata.image.height} />
+        <Image src={imageUrl} alt={productdata.image.alternativeText || "Product Image"} className="generic_img" width={productdata.image.width} height={productdata.image.height} />
         <div className="generic_offer_container">
             <div className="generic_offer_content">
                 <h2 className="subtitle_60">{productdata.heading}</h2>
