@@ -1,211 +1,198 @@
-"use client";
-import { useState } from "react";
-import Image from "next/image";
+'use client';
 
-export default function ContactForm() {
+import { useState } from 'react';
+import axios from 'axios';
+
+const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    organization: "",
-    email: "",
-    contact: "",
-    subject: "",
-    query: "",
-    acceptedTerms: false,
+    name: '',
+    organization: '',
+    email: '',
+    number: '',
+    subject: '',
+    query: '',
+    agree: false,
   });
 
   const [errors, setErrors] = useState({});
-  const [success, setSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
-  // Validation function
   const validateForm = () => {
     const newErrors = {};
-
-    if (!formData.name.trim()) {
-        newErrors.name = ' Name is required';
+  
+    if (!formData.name) newErrors.name = 'This field is required';
+    if (!formData.organization) newErrors.organization = 'This field is required';
+    if (!formData.email) {
+      newErrors.email = 'This field is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Invalid email address';
     }
+    if (!formData.number) newErrors.number = 'This field is required';
+    if (!formData.subject) newErrors.subject = 'This field is required';
+    if (!formData.query) newErrors.query = 'This field is required';
+    if (!formData.agree) newErrors.agree = 'You must agree to continue';
+  
+    return newErrors;
+  };
+  
 
-    if (!formData.organization.trim()) {
-        newErrors.organization = 'Organization is required';
-    }
-
-    if (!formData.contact.trim()) {
-        newErrors.contact = 'Contact Number is required';
-    } else if (!/^\d{10}$/.test(formData.contact)) {
-        newErrors.contact = 'Contact Number must be 10 digits';
-    }
-
-    if (!formData.email.trim()) {
-        newErrors.email = 'Email is required';
-    } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email)) {
-        newErrors.email = 'Invalid email format';
-    }
-
-    if (!formData.subject.trim()) {
-        newErrors.subject = 'Subject is required';
-    }
-
-    if (!formData.query.trim()) {
-        newErrors.query = 'Message is required';
-    }
-
-    if (!formData.acceptedTerms) {
-      newErrors.acceptedTerms = 'You must accept the terms and conditions';
-    }
-
-    setErrors(newErrors);
-    console.log('Validation Errors:', newErrors); 
-    return Object.keys(newErrors).length === 0;
-};
-
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSuccess(false);
-
-    if (!validateForm()) {
-      console.log('Form is invalid'); 
-      return; 
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
     }
-    console.log('Form is valid');
 
-    
-    const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/contact-forms`, {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ data: formData }),
-      });
-
-console.log("API URL for Form Submting",`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/contact-forms`)
-      if (response.ok) {
-        console.log("responce is okay");
-        setSuccess(true);
+    setErrors({});
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leads`,
+        { data: formData },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      if (response.status === 200 || response.status === 201) {
+        setSuccessMessage('Thanks for contacting us!');
         setFormData({
-          name: "",
-          organization: "",
-          email: "",
-          contact: "",
-          subject: "",
-          query: "",
-          acceptedTerms: false,
+          name: '',
+          organization: '',
+          email: '',
+          number: '',
+          subject: '',
+          query: '',
+          agree: false,
         });
-        setErrors({});
-    } else {
-      const result = await response.json();
-       console.error('Error response:', result);
-       setErrors({ form: result?.error?.message || 'Submission failed' });
       }
-    };  
+    } catch (error) {
+      console.error('Error submitting the form:', error);
+      setSuccessMessage('Failed to submit. Please try again later.');
+    }
+  };
 
   return (
     <section data-section="contact_form" className="contact_form">
+      <h2 className="subtitle_60">Contact Us</h2>
       <form onSubmit={handleSubmit} className="form_detail">
         <div className="form_container">
           <label className="form_label">
             <input
               type="text"
-              placeholder="NAME"
               name="name"
+              placeholder="NAME"
               value={formData.name}
-              onChange={handleChange}
+              onChange={handleInputChange}
             />
             {errors.name && <span className="error_message">{errors.name}</span>}
           </label>
+
           <label className="form_label">
             <input
               type="text"
-              placeholder="ORGANIZATION"
               name="organization"
+              placeholder="ORGANIZATION"
               value={formData.organization}
-              onChange={handleChange}
+              onChange={handleInputChange}
             />
             {errors.organization && <span className="error_message">{errors.organization}</span>}
           </label>
+
           <label className="form_label">
             <input
               type="email"
-              placeholder="EMAIL"
               name="email"
+              placeholder="EMAIL"
               value={formData.email}
-              onChange={handleChange}
+              onChange={handleInputChange}
             />
             {errors.email && <span className="error_message">{errors.email}</span>}
           </label>
+
           <label className="form_label">
             <input
               type="number"
+              name="number"
               placeholder="CONTACT"
-              name="contact"
-              value={formData.contact}
-              onChange={handleChange}
+              value={formData.number}
+              onChange={handleInputChange}
             />
-            {errors.contact && <span className="error_message">{errors.contact}</span>}
+            {errors.number && <span className="error_message">{errors.number}</span>}
           </label>
+
           <label className="form_label form_select">
+
+            
             <select
               name="subject"
               value={formData.subject}
-              onChange={handleChange}
+              onChange={handleInputChange}
             >
-              <option value="" disabled defaultValue>
+              <option value="" disabled>
                 SELECT SUBJECT LINE
               </option>
-              <option value="Active">Active Pharmaceutical Ingredients (API) Related Enquiry</option>
-              <option value="medicine">Medicine Availability Related Enquiry</option>
-              <option value="drug">Drug Adverse Effect/Adverse Event Related/Product Complaint/Medical Information Enquiry</option>
-              <option value="careers">Careers</option>
-              <option value="suppliers">For Suppliers</option>
-              <option value="Other"> Other Enquiry</option>
+                <option value="Active">Active Pharmaceutical Ingredients (API) Related Enquiry</option>
+                <option value="medicine">Medicine Availability Related Enquiry</option>
+                <option value="drug">Drug Adverse Effect/Adverse Event Related/Product Complaint/Medical Information Enquiry</option>
+                <option value="careers">Careers</option>
+                <option value="suppliers">For Suppliers</option>
+                <option value="Other"> Other Enquiry</option>
             </select>
             {errors.subject && <span className="error_message">{errors.subject}</span>}
           </label>
+
           <label className="form_label form_textarea">
             <textarea
               name="query"
-              value={formData.query}
-              onChange={handleChange}
-              cols="30"
               rows="10"
               placeholder="POST YOUR QUERY"
+              value={formData.query}
+              onChange={handleInputChange}
             ></textarea>
-          {errors.query && <span className="error_message">{errors.query}</span>}
+            {errors.query && <span className="error_message">{errors.query}</span>}
           </label>
         </div>
+
+        <div className="contact_terms">
+        {errors.agree && <span className="error_message">{errors.agree}</span>}
+          <label>
+            <input
+              type="checkbox"
+              name="agree"
+              checked={formData.agree}
+              onChange={handleInputChange}
+            />
+            I agree and accept the Privacy Policy and the Terms of use of this website
+          </label>
+          
+        </div>
+
         <button type="submit" className="green_cta">
           <div className="cta_container">
             <span>Submit</span>
-            <Image
+            <img
               src="/images/icons/white_arrow.webp"
-              alt="Submit"
+              alt=""
               width="20"
               height="14"
             />
           </div>
         </button>
-        <div className="contact_terms">
-          <label htmlFor="term_check">
-            I agree and accept the Privacy Policy and the Terms of use of this website
-          </label>
-          <input
-            type="checkbox"
-            name="acceptedTerms"
-            id="term_check"
-            checked={formData.acceptedTerms}
-            onChange={handleChange}
-          />
-          {errors.acceptedTerms && <span className="error_message">{errors.acceptedTerms}</span>}
-        </div>
-        {errors.form && <p className="error_message">{errors.form}</p>}
-        {success && <p className="form_success">Thank you! Your message has been sent successfully.</p>}
+
+        {successMessage && <div className="success_message">{successMessage}</div>}
       </form>
     </section>
   );
-}
+};
+
+export default ContactForm;
