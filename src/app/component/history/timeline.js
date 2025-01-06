@@ -14,6 +14,9 @@ export default function HistorySlider({historydata}) {
     const [activeIndex, setActiveIndex] = useState(0);
     const swiperRef = useRef(null);
 
+     // Sort historydata by year in ascending order
+  const sortedHistoryData = [...historydata].sort((a, b) => a.year - b.year);
+
     const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
       };
@@ -34,7 +37,7 @@ export default function HistorySlider({historydata}) {
       <div className="history_navigation">
         <div className="nav_history">
           <ul>
-          {historydata.map((item, index) => (
+          {sortedHistoryData.map((item, index) => (
               <li key={index} data-index={index} className={index === activeIndex ? "active" : ""}
               onClick={() => handleYearClick(index)} 
               >
@@ -58,7 +61,7 @@ export default function HistorySlider({historydata}) {
             onSlideChange={handleSlideChange}
             ref={swiperRef}
             >
-              {historydata.map((item, index) => (
+              {sortedHistoryData.map((item, index) => (
                 <SwiperSlide key={index}>
                   <div className="history_content">
                     <div className="history_year">{item.year}</div>
