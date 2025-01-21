@@ -10,7 +10,7 @@ export default function Generic( { genericdata } ){
     : "/assets/images/about/banner.webp";
 
   const mobileImageUrl = genericdata?.mobile_image?.url
-    ? getMediaUrl(genericdata.mobile_image.formats.small.url)
+    ? getMediaUrl(genericdata.mobile_image.url)
     : "/assets/images/about/mob_banner.webp";
 
     return (

@@ -68,7 +68,7 @@ const Mainmenu = ({ menuActive, setMenuActive, setInnerMenuActive }) => {
                 <span className="sub_menu_link"><Link href="/corporate-overview" onClick={closeMenu} >Corporate Overview</Link></span>
                 <span className="sub_menu_link"><Link href="/leadership" onClick={closeMenu}>Our Leadership</Link></span>
                 <span className="sub_menu_link"><Link href="/our-history" onClick={closeMenu}>Our History</Link></span>
-                <span className="sub_menu_link"><Link href="/core-values" onClick={closeMenu}>Our Values</Link></span>
+                <span className="sub_menu_link"><Link href="/core-value" onClick={closeMenu}>Our Values</Link></span>
                 <span className="sub_menu_link"><Link href="/science-and-innovation" onClick={closeMenu}>Science & Innovation</Link></span>
                 <span className="sub_menu_link"><Link href="/compliance-and-ethics" onClick={closeMenu}>Compliance & Ethics Program</Link></span>
               </div>
