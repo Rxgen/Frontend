@@ -15,7 +15,8 @@ export default function ProductDetails({ productdata }) {
   const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
   return (
-    <section className="product_detail_section">
+    <div>
+<section className="product_detail_section">
       <div className="product_detail_item">
         {/* Render product image */}
         {product.product_images && product.product_images.length > 0 && (
@@ -102,6 +103,20 @@ export default function ProductDetails({ productdata }) {
         </div>
       </div>
     </section>
+    {product.product_description && (
+          
+          <div
+            dangerouslySetInnerHTML={{ __html: product.product_description }}
+          />
+        )}
+    </div>
+    
+
+
+    
+
   );
 }
+
+
 
