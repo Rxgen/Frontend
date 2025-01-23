@@ -7,11 +7,11 @@ export default function Topbanner( {topbannerdata}) {
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
   
     const desktopImageUrl = topbannerdata?.desktop_image?.url
-      ? getMediaUrl(topbannerdata.desktop_image.formats.large.url)
+      ? getMediaUrl(topbannerdata.desktop_image.url)
       : "assets/images/about/banner.webp";
   
     const mobileImageUrl = topbannerdata?.mobile_image?.url
-      ? getMediaUrl(topbannerdata.mobile_image.formats.small.url)
+      ? getMediaUrl(topbannerdata.mobile_image.url)
       : "assets/images/about/mob_banner.webp";
   
       
@@ -19,7 +19,31 @@ export default function Topbanner( {topbannerdata}) {
 
     return (
         <section data-section="sustainability_banner" className="sustainability_banner inner_banner banner_section">
-        <picture>
+        
+
+             {topbannerdata.desktop_image.mime === "video/mp4" ? (
+                <video
+                  width="1920"
+                  height="968"
+                  autoPlay
+                  muted
+                  loop
+                  className="banner_video"
+                >
+                   <source
+                    src={mobileImageUrl}
+                    type="video/mp4"
+                    media="(max-width: 767px)"
+                  />
+                  <source
+                    src={desktopImageUrl}
+                    type="video/mp4"
+                  />
+                 
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <picture>
           <source media="(max-width: 540px)" srcSet={mobileImageUrl} />
           <Image
             src={desktopImageUrl}
@@ -29,6 +53,9 @@ export default function Topbanner( {topbannerdata}) {
             height="771"
           />
         </picture>
+              )}
+
+
         <h1 className="subtitle_66">{bannerText}</h1>
       </section>
      

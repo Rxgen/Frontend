@@ -1,177 +1,140 @@
-
 "use client";
-import Link  from "next/link";
 import Image from "next/image";
-import DisclaimerPopup from "./disclaimer";
-import { useState } from "react";
+import Link from "next/link";
 
-
-
-const Footer = ({}) => {
-  const [isDisclaimerOpen, setDisclaimerOpen] = useState(false);
-
-  const openDisclaimerPopup = (e) => {
-    console.log("Disclaimer Popup")
-    e.preventDefault();
-    setDisclaimerOpen(true);
-    document.body.style.overflow = "hidden";
-  };
-
-  const closeDisclaimerPopup = () => {
-    setDisclaimerOpen(false);
-    document.body.style.overflow = "auto";
-  };
-    return (
-      <footer>
-      <Image src="/images/flower_bg_footer.webp" alt="" className="flower_bg_footer" width="893" height="914" />
-      <a href="#home_banner" className="up_arrow"><Image src="/images/icons/chervon_up.webp" alt="" width="37" height="37" />
-      </a>
+const Footer = () => {
+  return (
+    <footer>
+      <Image 
+        src="/images/flower_bg_footer.webp" 
+        alt="Flower background footer" 
+        className="flower_bg_footer" 
+        width={935} 
+        height={956} 
+      />
+      <Link href="#wrapper" className="up_arrow">
+        <Image 
+          src="/images/icons/chervon_up.webp" 
+          alt="Up Arrow" 
+          width={37} 
+          height={37} 
+        />
+      </Link>
       <div className="footer_container">
-          <a href="" className="lupin_footer_logo">
-              <Image src="/images/lupin_logo.webp" alt="" width="134" height="49" />
-              </a>
-          
-          <div className="lupin_footer_container">
-              <div className="lupin_address">
-                  <address>
-                      Harborplace Tower 111 S.
-                      Calvert Street, 21 st Floor,
-                      Baltimore, MD 21202
-                  </address>
-                  <div className="lupin_contact">
-                      <span>
-                          <a href="tel:+8665874617" className="border_link">866-587-4617 </a>
-                      </span>
-                      <span>
-                          <a href="mailto:CustomerService-lpi@lupin.com" className="border_link">CustomerService-lpi@lupin.com </a>
-                      </span>
-                      <span>
-                          <a href="mailto:dsrm@lupin.com" className="border_link">dsrm@lupin.com </a>
-                      </span>
-                  </div>
-                  <a href="" className="linked_in"><Image src="/images/icons/linked_in.webp" alt="" width="94" height="94" /> </a>
-              </div>
-              <div className="lupin_footer_navigation">
-                  <div className="footer_nav">
-                  <span>
-        <Link href="/about-us" className="border_link">
-         ABOUT US
+        <Link href="/" className="lupin_footer_logo">
+          <Image 
+            src="/images/lupin_logo.webp" 
+            alt="Lupin Logo" 
+            width={134} 
+            height={49} 
+          />
         </Link>
-      </span>
-      <span>
-        <Link href="/patient-education" className="border_link">
-          PATIENT EDUCATION
-        </Link>
-      </span>
-      <span>
-        <Link href="/specialty" className="border_link">
-          SPECIALTY
-        </Link>
-      </span>
-      <span>
-        <Link href="/generics" className="border_link">
-          GENERICS
-        </Link>
-      </span>
-      <span>
-        <Link href="/medical-affairs" className="border_link">
-          MEDICAL AFFAIRS
-        </Link>
-      </span>
-      <span>
-        <Link href="/product-development" className="border_link">
-          PRODUCT DEVELOPMENT
-        </Link>
-      </span>
-      <span>
-        <Link href="/life-at-lupin" className="border_link">
-          LIFE AT LUPIN
-        </Link>
-      </span>
-                  </div>
-                  <div className="footer_nav">
-                  <span>
-        <Link href="/resources" className="border_link">
-          RESOURCES
-        </Link>
-      </span>
-      <span>
-        <Link href="/people" className="border_link">
-          PEOPLE
-        </Link>
-      </span>
-      <span>
-        <Link href="/media" className="border_link">
-          MEDIA
-        </Link>
-      </span>
-      <span>
-        <Link href="/articles" className="border_link">
-          ARTICLES
-        </Link>
-      </span>
-      <span>
-        <Link href="/privacy-policy" className="border_link">
-          PRIVACY POLICY
-        </Link>
-      </span>
-      <span>
-        <Link href="/important-notice" className="border_link">
-          IMPORTANT NOTICE
-        </Link>
-      </span>
-      <span>
-        <Link href="/product-development" className="border_link">
-          PRODUCT DEVELOPMENT
-        </Link>
-      </span>
-                  </div>
-                  <div className="footer_nav">
-                  <span>
-        <Link href="/your-privacy-choices" className="border_link">
-          DO NOT SELL/SHARE MY PERSONAL INFORMATION
-        </Link>
-      </span>
-      <span>
-        <Link href="/privacy-policy" className="border_link">
-          PRIVACY
-        </Link>
-      </span>
-      <span>
-        <Link href="/pharmacovigilance" className="border_link">
-          PHARMACOVIGILANCE
-        </Link>
-      </span>
-      <span>
-        <Link href="/consumer-health" className="border_link">
-          CONSUMER HEALTH PRIVACY STATEMENT
-        </Link>
-      </span>
-      <span>
-        <Link href=" #" className="border_link" onClick={openDisclaimerPopup}>
-          DISCLAIMER
-        </Link>
-      </span>
-      <span>
-        <Link href="/sitemap" className="border_link">
-          SITEMAP
-        </Link>
-      </span>
-      <span>
-        <Link href="/notice" className="border_link">
-          NOTICE AT COLLECTION
-        </Link>
-      </span>
-                  </div>
-              </div>
+        <div className="lupin_footer_container">
+          <div className="lupin_address">
+            <address>
+              <span>Address</span> :
+              Harborplace Tower 111 S. Calvert Street, 21st Floor, Baltimore, MD 21202
+            </address>
+            <div className="lupin_contact">
+              <span>
+                Phone :
+                <Link href="tel:+8665874617" className="border_link">
+                  866-587-4617
+                </Link>
+              </span>
+              <span>
+                <Link href="mailto:CustomerService-lpi@lupin.com" className="border_link">
+                  CustomerService-lpi@lupin.com
+                </Link>
+                <div className="contact_text">(for U.S. marketed products only)</div>
+              </span>
+              <span>
+                <Link href="mailto:dsrm@lupin.com" className="border_link">
+                  dsrm@lupin.com
+                </Link>
+                <div className="contact_text">(for products marketed in India)</div>
+              </span>
+            </div>
+            <Link href="#" className="linked_in">
+              <Image 
+                src="/images/icons/linked_in.webp" 
+                alt="LinkedIn" 
+                width={94} 
+                height={94} 
+              />
+            </Link>
           </div>
+          <div className="lupin_footer_navigation">
+            <div className="nav_footer_container">
+              <div className="footer_nav">
+                <span>
+                  <Link href="/about-us" className="border_link">ABOUT US</Link>
+                </span>
+                <ul className="sub_footer">
+                  <li><Link href="/corporate-overview" className="border_link">CORPORATE OVERVIEW</Link></li>
+                  <li><Link href="/leadership" className="border_link">OUR LEADERSHIP</Link></li>
+                  <li><Link href="/our-history" className="border_link">OUR HISTORY</Link></li>
+                  <li><Link href="/core-value" className="border_link">OUR VALUES</Link></li>
+                  <li><Link href="/science-and-innovation" className="border_link">SCIENCE & INNOVATION</Link></li>
+                  <li><Link href="#" className="border_link">COMPLIANCE & ETHICS PROGRAM</Link></li>
+                </ul>
+              </div>
+              <div className="footer_nav">
+                <span>
+                  <Link href="/people" className="border_link">PEOPLE</Link>
+                </span>
+                <ul className="sub_footer">
+                  <li><Link href="/our-culture" className="border_link">OUR CULTURE</Link></li>
+                  <li><Link href="/career" className="border_link">CAREER</Link></li>
+                </ul>
+              </div>
+            </div>
+            <div className="nav_footer_container">
+              <div className="footer_nav">
+                <span>
+                  <Link href="/our-offering" className="border_link">OUR OFFERINGS</Link>
+                </span>
+                <ul className="sub_footer">
+                  <li><Link href="/generic-medicine" className="border_link">GENERIC / COMPLEX GENERICS</Link></li>
+                  <li><Link href="/innovative-medicine" className="border_link">INNOVATIVE MEDICINES</Link></li>
+                  <li><Link href="/products" className="border_link">PRODUCT</Link></li>
+                </ul>
+              </div>
+              <div className="footer_nav">
+                <span>
+                  <Link href="/sustainability" className="border_link">OUR IMPACT</Link>
+                </span>
+              </div>
+              <div className="footer_nav">
+                <span>
+                  <Link href="#" className="border_link">MEDIA</Link>
+                </span>
+              </div>
+              <div className="footer_nav">
+                <span>
+                  <Link href="#" className="border_link">CONTACT US</Link>
+                </span>
+              </div>
+            </div>
+            <div className="footer_nav">
+              <span>PRIVACY</span>
+              <ul className="sub_footer">
+                <li><Link href="/your-privacy-choices" className="border_link inner_links">DO NOT SELL/SHARE MY PERSONAL INFORMATION</Link></li>
+                <li><Link href="/privacy-policy" className="border_link inner_links">PRIVACY POLICY</Link></li>
+                <li><Link href="/pharmacovigilance" className="border_link inner_links">PHARMACOVIGILANCE</Link></li>
+                <li><Link href="/consumer-health" className="border_link inner_links">CONSUMER HEALTH PRIVACY STATEMENT</Link></li>
+                <li><Link href="#" className="border_link">SITEMAP</Link></li>
+                <li><Link href="/notice" className="border_link inner_links">NOTICE AT COLLECTION</Link></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="copyright">Copywrite @ 2024 Lupin Phamaceuticals„ All Rights Reserved.</div>
-      
-      <DisclaimerPopup isDisclaimerOpen={isDisclaimerOpen} closePopup={closeDisclaimerPopup} />  
-  </footer>
-  
-    );
-  };
-  
-  export default Footer;
+      <div className="copyright">
+        Copywrite @ 2024 Lupin Pharmaceuticals. All Rights Reserved.
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

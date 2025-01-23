@@ -7,13 +7,13 @@ import Mainmenu from "../homepage/mainmenu";
 const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [innerMenuActive, setInnerMenuActive] = useState(false);
+  const [scrolled, setScrolled] = useState(false); 
 
 
   useEffect(() => {
     const adjustInnerMenuHeight = () => {
       const bannerElement = document.querySelector(".banner_section");
       const innerMenuElement = document.querySelector(".inner_menu");
-      console.log("Banner height");
 
       if (bannerElement && innerMenuElement) {
         const bannerHeight = bannerElement.offsetHeight;
@@ -26,12 +26,24 @@ const Header = () => {
         }
       }
     };
+
+
     adjustInnerMenuHeight();
     window.addEventListener("resize", adjustInnerMenuHeight);
+    window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("resize", adjustInnerMenuHeight);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleScroll = () => {
+    if (window.scrollY >= 180) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
 
   const handleMenuClick = () => {
     setMenuActive(!menuActive);
@@ -45,7 +57,7 @@ const Header = () => {
 
   return (
     <div>
-      <header>
+      <header className={scrolled ? "header_bg" : ""}>
         <Link href="/" className="lupin_logo">
           <Image src="/images/lupin_logo.webp" alt="Lupin Logo" width={134} height={49} />
         </Link>
