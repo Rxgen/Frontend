@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Topbanner( {topbannerdata}) {
 
-    console.log("Banner Data Display",topbannerdata);
+    console.log(" Sustainability Banner Data Display",topbannerdata);
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
   
     const desktopImageUrl = topbannerdata?.desktop_image?.url

@@ -180,7 +180,7 @@ const ContactForm = () => {
         <button type="submit" className="green_cta">
           <div className="cta_container">
             <span>Submit</span>
-            <img
+            <Image
               src="/images/icons/white_arrow.webp"
               alt=""
               width="20"
