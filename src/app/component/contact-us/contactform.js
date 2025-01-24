@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import axios from 'axios';
+import Image from 'next/image';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
