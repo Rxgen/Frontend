@@ -25,7 +25,7 @@ export default function Mediacontact (){
             </div>
             <div className="media_contact_Links">
                 <div className="subtitle_40">Enquiries</div>
-                <a href="mailto:customerService-lpi@lupin.com" className="contact_links">CustomerService-lpi@lupin.com</a>
+                <a href="mailto:customerService-lpi@lupin.com" className="contact_links">customerservice-lpi@lupin.com</a>
             </div>
         </div>
         <div className="cta_contact">

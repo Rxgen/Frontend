@@ -77,7 +77,7 @@ export default function ContentImage({ contentdata }) {
     <section data-section="about_brand" className="innovative_brand about_brand">
       <div className="brand_container">
       <Link
-        href="/compliance-and-ethics" 
+        href="/images/about/lupin-2023-compliance-declaration-for-website-final.pdf" target="_blank"
       >
         <div>
           <Image

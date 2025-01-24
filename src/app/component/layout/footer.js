@@ -44,7 +44,7 @@ const Footer = () => {
               </span>
               <span>
                 <Link href="mailto:CustomerService-lpi@lupin.com" className="border_link">
-                  CustomerService-lpi@lupin.com
+                  customerservice-lpi@lupin.com
                 </Link>
                 <div className="contact_text">(for U.S. marketed products only)</div>
               </span>
@@ -107,12 +107,12 @@ const Footer = () => {
               </div>
               <div className="footer_nav">
                 <span>
-                  <Link href="#" className="border_link">MEDIA</Link>
+                  <Link href="https://www.lupin.com/" target="_blank"className="border_link">MEDIA</Link>
                 </span>
               </div>
               <div className="footer_nav">
                 <span>
-                  <Link href="#" className="border_link">CONTACT US</Link>
+                  <Link href="/contact-us" className="border_link">CONTACT US</Link>
                 </span>
               </div>
             </div>

@@ -1,6 +1,7 @@
 "use client" ;
 
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function Offer() {
@@ -24,6 +25,13 @@ export default function Offer() {
         <div className="culture_link">Operational Excellence</div>
         <div className="culture_link">Environmental&apos; Health&apos; and Safety</div>
     </div>
+
+    <Link href="/career" class="black_cta">
+        <div className="cta_container">
+            <span>See current role openings</span>
+            <Image src="/images/icons/white_arrow.webp" alt=" White Arrow" width="20" height="14" />
+        </div>
+    </Link>
     
      <div className="flower_bg_container" >
      <div className="flower_bg">

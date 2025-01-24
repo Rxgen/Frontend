@@ -20,7 +20,7 @@ export default function Patient ({ patientdata}) {
         
         <Image
           src={desktopImageUrl}
-          alt={patientdata?.desktop_image?.alternativeText}
+          alt={patientdata?.desktop_image?.alternativeText || "DesktopImage"}
           className="generic_img"
           width="1920"
           height="969"
