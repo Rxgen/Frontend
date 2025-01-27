@@ -2,6 +2,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Filter({ selectedLetter,selectedCategory }) {
   const [brandName, setBrandName] = useState("");
