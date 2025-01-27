@@ -26,8 +26,8 @@ export default function Transparency( { transparencydata } ) {
       >
         {transparencydata.map((item) => {
           const image = item.slide;
-          const imageUrl = image?.formats?.small?.url
-            ? getMediaUrl(image.formats.small.url)
+          const imageUrl = image?.url
+            ? getMediaUrl(image.url)
             : "assets/images/sustainable/transparency/img_1.webp";
 
           if (!image) {
@@ -39,8 +39,8 @@ export default function Transparency( { transparencydata } ) {
               <Image
                 src={imageUrl}
                 className="transparency_img"
-                width={image.formats?.thumbnail?.width || 718}
-                height={image.formats?.thumbnail?.height || 723}
+                width={image.width || 718}
+                height={image.height || 723}
                 alt={image.alternativeText || "Transparency Image"}
               />
             </SwiperSlide>
