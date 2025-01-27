@@ -40,10 +40,10 @@ export default function TopBanner({ topbannerdata }) {
 >
   <Image
     src="/images/about/founder.webp"
-    alt=""
+    alt="Founder "
     className="founder_img"
-    width="851"
-    height="565"
+    width="777"
+    height="621"
   />
   <div className="innovation_container">
     <p className="para">
