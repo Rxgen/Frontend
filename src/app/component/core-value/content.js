@@ -22,7 +22,7 @@ export default function Content({contentdata}){
               <div className="value_detail">
                 <div className="front_value">
                   <Image
-                    src={getMediaUrl(value.image.formats.thumbnail.url)} 
+                    src={getMediaUrl(value.image.url)} 
                     alt={value.image.alt || "Core value image"}
                     className="value_img"
                     width={value.image.width}
