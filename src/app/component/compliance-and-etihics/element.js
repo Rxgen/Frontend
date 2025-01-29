@@ -61,7 +61,7 @@ export default function Element({ elementdata }) {
                     <div className="black_cta">
                       <div className="cta_container">
                         <span>Know more</span>
-                        <img
+                        <Image
                           src="/images/icons/white_arrow.webp"
                           alt="arrow"
                           width="20"
