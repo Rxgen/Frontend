@@ -464,15 +464,14 @@ export async function fetchOurHistoryData(segment) {
     }compliance
 }
 
-export async function fetchComplianceData(segment) {
+export async function fetchComplianceData() {
     try {
-        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/compliance?populate[${segment}][populate]=*`;
-        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/compliance?populate[${segment}][populate]=*`, {
+        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/compliance-ethics?populate=*`;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/compliance-ethics?populate=*`, {
             method: "GET",
             cache: 'no-cache',
         });
 
-        console.log("Our Culture",url);
 
         if (!response.ok) {
             console.error(`Failed to fetch Our Compliance data: ${response.status} ${response.statusText}`);

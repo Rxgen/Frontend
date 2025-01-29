@@ -37,9 +37,9 @@ const Footer = () => {
             </address>
             <div className="lupin_contact">
               <span>
-                Phone :
+                Phone : 
                 <Link href="tel:+8665874617" className="border_link">
-                  866-587-4617
+                   &nbsp;866-587-4617
                 </Link>
               </span>
               <span>
