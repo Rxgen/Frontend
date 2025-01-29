@@ -102,7 +102,12 @@ export default function Element({ elementdata }) {
                 </div>
                 
               ))}
-              <a href="#" className="back_btn" onClick={handleBackButtonClick}>
+              <a href="#" className="back_btn" 
+              onClick={(e) => {
+                e.preventDefault();
+                handleBackButtonClick();
+              }}
+              >
               Back
             </a>
             </div>

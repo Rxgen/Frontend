@@ -15,17 +15,15 @@ export default function Corporate({ corporateData }) {
     if (description.includes("pharma")) {
       return <><span className="number_span"></span>rd</>;
     }
-    if (description.includes("number of patient")) {
-      return <><span className="number_span"></span>M</>;
+    if (description.includes("Patients")) {
+      return <><span className="number_span"></span>Mn</>;
     }
 
     if (description.includes("manufacturing facilities")) {
         return <span className="number_span"></span>;
       }
-      if (description.includes("centers")) {
-        return <><span className="number_span"></span> R&D</>;
-      }
-      if (description.includes("countries")) {
+      
+      if (description.includes("Countries")) {
         return <><span className="number_span"></span>+</>;
       }
     return <span className="number_span"></span>;
@@ -47,7 +45,7 @@ export default function Corporate({ corporateData }) {
 
       <div className="corporate_numbers_container">
         <div className="corporate_numbers_column">
-          <div className="subtitle_40">In the US</div>
+        <div className="subtitle_40">Well established <span>In the US</span></div>
           {usNumbers.map((item, index) => (
             <div key={index} className="corporate_number_detail">
               <div className="corporate_number">
@@ -60,7 +58,7 @@ export default function Corporate({ corporateData }) {
         </div>
 
         <div className="corporate_numbers_column">
-          <div className="subtitle_40">In the World</div>
+        <div className="subtitle_40">And <span>In the World</span></div>
           {worldNumbers.map((item, index) => (
             <div key={index} className="corporate_number_detail">
               <div className="corporate_number">

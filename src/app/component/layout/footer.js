@@ -76,7 +76,7 @@ const Footer = () => {
                   <li><Link href="/our-history" className="border_link">OUR HISTORY</Link></li>
                   <li><Link href="/core-value" className="border_link">OUR VALUES</Link></li>
                   <li><Link href="/science-and-innovation" className="border_link">SCIENCE & INNOVATION</Link></li>
-                  <li><Link href="#" className="border_link">COMPLIANCE & ETHICS PROGRAM</Link></li>
+                  <li><Link href="/compliance-and-ethics" className="border_link">COMPLIANCE & ETHICS PROGRAM</Link></li>
                 </ul>
               </div>
               <div className="footer_nav">
@@ -123,7 +123,7 @@ const Footer = () => {
                 <li><Link href="/privacy-policy" className="border_link inner_links">PRIVACY POLICY</Link></li>
                 <li><Link href="/pharmacovigilance" className="border_link inner_links">PHARMACOVIGILANCE</Link></li>
                 <li><Link href="/consumer-health" className="border_link inner_links">CONSUMER HEALTH PRIVACY STATEMENT</Link></li>
-                <li><Link href="#" className="border_link">SITEMAP</Link></li>
+                <li><Link href="/sitemap" className="border_link">SITEMAP</Link></li>
                 <li><Link href="/notice" className="border_link inner_links">NOTICE AT COLLECTION</Link></li>
               </ul>
             </div>
