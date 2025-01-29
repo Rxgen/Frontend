@@ -34,7 +34,7 @@ export default function Element({ elementdata }) {
     <div>
       <section data-section="compliance_ethics" className="compliance_ethics">
         <div className="h2_title">COMPLIANCE AND ETHICS PROGRAM</div>
-        <h2 className="subtitle_60">Core Elements of Lupin's Program</h2>
+        <h2 className="subtitle_60">Core Elements of Lupin&apos;s Program</h2>
 
         <div className="ethics_container">
           <div className="ethics_left">
