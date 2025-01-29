@@ -9,7 +9,7 @@ export default function Corporate({ corporateData }) {
   const worldNumbers = corporate_numbers.filter(item => item.region_name === "In the World");
 
   const formatNumber = (number, description) => {
-    if (description.includes("commercialized products")) {
+    if (description.includes("Commercialized products")) {
       return <><span className="number_span"></span>+</>;
     }
     if (description.includes("pharma")) {
