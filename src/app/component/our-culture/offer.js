@@ -23,10 +23,10 @@ export default function Offer() {
         <div className="culture_link">Legal and Compliance</div>
         <div className="culture_link">Procurement</div>
         <div className="culture_link">Operational Excellence</div>
-        <div className="culture_link">Environmental&apos; Health&apos; and Safety</div>
+        <div className="culture_link">Environmental Health and Safety</div>
     </div>
 
-    <Link href="/career" class="black_cta">
+    <Link href="/career" className="black_cta">
         <div className="cta_container">
             <span>See current role openings</span>
             <Image src="/images/icons/white_arrow.webp" alt=" White Arrow" width="20" height="14" />
