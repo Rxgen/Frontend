@@ -6,7 +6,7 @@ export default function Medical({ medicaldata }) {
 
   
   const imageUrl = medicaldata?.image?.url
-    ? getMediaUrl(medicaldata.image.formats.small.url)
+    ? getMediaUrl(medicaldata.image.url)
     : "assets/images/about/banner.webp";
 
   return (

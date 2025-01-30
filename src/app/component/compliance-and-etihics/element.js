@@ -87,17 +87,7 @@ export default function Element({ elementdata }) {
                   <div className="subtitle_5217">{item.title}</div>
                   <div className="ethics_content">
                     <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
-                    <button className="green_cta">
-                      <div className="cta_container">
-                        <span>Know more</span>
-                        <img
-                          src="/images/icons/white_arrow.webp"
-                          alt="arrow"
-                          width="20"
-                          height="14"
-                        />
-                      </div>
-                    </button>
+                    
                   </div>
                 </div>
                 

@@ -8,9 +8,8 @@ export default function Offer() {
     return (
         <section data-section="culture_offer" className="culture_offer">
     <h2 className="subtitle_60">
-        Lupin&apos;s U.S. offering <br />
-        career opportunities across <br />
-        diverse fields
+        Lupin&apos;s U.S. operations <br /> truly span from “A-to-Z,” <br />offering career opportunities <br />across diverse fields:
+
     </h2>
     <div className="culture_links_container">
         <div className="culture_link">Research and Development</div>
@@ -23,7 +22,7 @@ export default function Offer() {
         <div className="culture_link">Legal and Compliance</div>
         <div className="culture_link">Procurement</div>
         <div className="culture_link">Operational Excellence</div>
-        <div className="culture_link">Environmental Health and Safety</div>
+        <div className="culture_link">Environmental, Health and Safety</div>
     </div>
 
     <Link href="/career" className="black_cta">

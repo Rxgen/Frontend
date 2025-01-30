@@ -6,11 +6,11 @@ export default function Patient ({ patientdata}) {
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
   
     const desktopImageUrl = patientdata?.desktop_image?.url
-    ? getMediaUrl(patientdata.desktop_image.formats.large.url)
+    ? getMediaUrl(patientdata.desktop_image.url)
     : "/assets/images/about/banner.webp";
 
   const mobileImageUrl = patientdata?.mobile_image?.url
-    ? getMediaUrl(patientdata.mobile_image.formats.small.url)
+    ? getMediaUrl(patientdata.mobile_image.url)
     : "/assets/images/about/mob_banner.webp";
 
     return (

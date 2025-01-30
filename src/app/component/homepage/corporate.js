@@ -45,7 +45,7 @@ export default function Corporate({ corporateData }) {
 
       <div className="corporate_numbers_container">
         <div className="corporate_numbers_column">
-        <div className="subtitle_40">Well established <span>In the US</span></div>
+        <div className="subtitle_40">Well established <span>in the U.S. ...</span></div>
           {usNumbers.map((item, index) => (
             <div key={index} className="corporate_number_detail">
               <div className="corporate_number">
@@ -58,7 +58,7 @@ export default function Corporate({ corporateData }) {
         </div>
 
         <div className="corporate_numbers_column">
-        <div className="subtitle_40">And <span>In the World</span></div>
+        <div className="subtitle_40">... and <span>across the globe</span></div>
           {worldNumbers.map((item, index) => (
             <div key={index} className="corporate_number_detail">
               <div className="corporate_number">

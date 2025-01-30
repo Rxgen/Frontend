@@ -49,13 +49,8 @@ export default function MedicalTech({Medicaldata}) {
     <div className="medical_tech_container">
         <h2 className="subtitle_60">Nanomi-Microsieve Technology</h2>
         <p className="para">
-            Nanomiis Microsieve technology is a proprietary, highly scalable
-            process that enables us to manufacture highly uniform microspheres
-            and nanoparticles, ideal for long-acting injectable medicines, This
-            innovative platform enhances the precision, consistency, and
-            injectability of controlled-release products. Our technology makes
-            producing microspheres and nanoparticles more cost-effective,
-            reproducible, and adaptable to various therapeutic needs.
+        Nanomi’s Microsieve technology is a proprietary, highly scalable process that enables us to manufacture highly uniform microspheres and nanoparticles, ideal for long-acting injectable medicines. This innovative platform enhances the precision, consistency, and injectability of controlled-release products. Our technology makes producing microspheres and nanoparticles more cost-effective, reproducible, and adaptable to various therapeutic needs.
+
         </p>
     </div>
 </section>
