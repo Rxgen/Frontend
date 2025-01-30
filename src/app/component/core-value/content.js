@@ -9,11 +9,9 @@ export default function Content({contentdata}){
     return (
         <section data-section="core_value" className="core_value">
         <div className="core_value_content">
-          <h2 className="subtitle_60">At Lupin, we pride ourselves</h2>
+          <h2 className="subtitle_60">Core values that define us</h2>
           <p className="para">
-            On our promise of caring for our customers, our commitment to
-            employees, our focus on quality, and the spirit of innovation that drives
-            each of us. Our culture is shaped and driven by a set of core values.
+          At Lupin, we pride ourselves on our promise of caring for our customers, our commitment to our employees’ growth and welfare, our continuous quality focus, and the spirit of innovation that drives each of us to discover better ways of working. This culture is shaped and driven by our values.
           </p>
         </div>
         <div className="core_value_container">

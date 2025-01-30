@@ -72,8 +72,8 @@ export async function fetchContactData(segment) {
     
 
     try {
-        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?populate=*`;
-        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?populate=*`, {
+        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?populate=*&sort[0]=id:asc`;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/leaderships?populate=*&sort[0]=order:asc`, {
             method: "GET",
             cache: 'no-cache',
         });
