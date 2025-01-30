@@ -42,10 +42,10 @@ export default function TopBanner({ topbannerdata }) {
     src="/images/about/founder.webp"
     alt="Founder "
     className="founder_img"
-    width="777"
-    height="621"
+    width="886" height="814"
   />
   <div className="innovation_container">
+  <h2 className="subtitle_60">Driven by Science, Inspired by Patients</h2>
     <p className="para">
       Lupin&apos;s journey is a testament to the potential of human imagination,
       compassion, and the unwavering pursuit of a better tomorrow. Established
