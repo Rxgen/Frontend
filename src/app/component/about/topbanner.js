@@ -39,7 +39,7 @@ export default function TopBanner({ topbannerdata }) {
   className="about_founder patient_container"
 >
   <Image
-    src="/images/about/founder.webp"
+    src="/images/about/lupinfounder-1.webp"
     alt="Founder "
     className="founder_img"
     width="886" height="814"
