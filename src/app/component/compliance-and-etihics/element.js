@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from 'react';
+import Link from "next/link";
 
 export default function Element({ elementdata }) {
   const [activeLink, setActiveLink] = useState(null);
@@ -89,6 +90,11 @@ export default function Element({ elementdata }) {
                     <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
                     
                   </div>
+                  <Link href="https://www.lupin.com/investors/policies/" className="black_cta">
+                     <div className="cta_container">
+                         <span>Click Here</span>
+                    </div>
+                  </Link>
                 </div>
                 
               ))}
