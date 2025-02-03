@@ -16,7 +16,7 @@ export default function Corporate({ corporateData }) {
       return <><span className="number_span"></span>rd</>;
     }
     if (description.includes("Patients")) {
-      return <><span className="number_span"></span>Mn</>;
+      return <><span className="number_span">~</span>Mn</>;
     }
 
     if (description.includes("manufacturing facilities")) {

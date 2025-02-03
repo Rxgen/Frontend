@@ -93,7 +93,7 @@ const Header = () => {
     </li>
     <li>
       <Link href="https://www.lupinpharma.ca/#welcome" target="_blank" className="global_link">
-        <Image src="/images/globe/img_11.webp" alt="CH - LAHSA" width={38} height={26} />
+        <Image src="/images/globe/img_2_new.webp" alt="CH - LAHSA" width={38} height={26} />
         <span>CH - LAHSA</span>
       </Link>
     </li>

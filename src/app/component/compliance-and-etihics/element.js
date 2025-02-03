@@ -90,11 +90,16 @@ export default function Element({ elementdata }) {
                     <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
                     
                   </div>
-                  <Link href="https://www.lupin.com/investors/policies/" className="black_cta">
-                     <div className="cta_container">
-                         <span>Click Here</span>
+                  {item.title.includes("Policies & Procedures") && (
+                    <div className="ethics_cta">
+                       <Link href="https://www.lupin.com/investors/policies/" className="black_cta" target="_blank">
+                      <div className="cta_container">
+                      <span>To Learn More Click here </span>
+                     <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
                     </div>
-                  </Link>
+                   </Link>
+              </div>
+             )}
                 </div>
                 
               ))}
@@ -111,7 +116,17 @@ export default function Element({ elementdata }) {
           </div>
         </div>
       </section>
+      <section data-section="ethic_brand" className="innovative_brand ethic_brand">
+    <div className="brand_container">
+        <Link href="/images/about/lupin-2023-compliance-declaration-for-website-final.pdf" target="_blank">
+            <Image src="/images/about/declaration.webp" alt="Declaration" width="589" height="320" />
+        </Link>
+    </div>
+  </section>
     </div>
   );
 }
+
+
+
 

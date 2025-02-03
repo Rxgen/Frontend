@@ -21,9 +21,8 @@ export default function Leadershipdetails ({ leadershipdetaildata }) {
         <div className="leader_detail_content">
             <h2 className="subtitle_45">{leadershipdetaildata[0].leader_name }</h2>
             <div className="para detail_para">{leadershipdetaildata[0].designation }</div>
-            <p className="para">
-                {leadershipdetaildata[0].description }
-            </p>
+            <div className="para_container" dangerouslySetInnerHTML={{ __html: leadershipdetaildata[0].description }} />
+            
             <div className="pdf_detail">
             {pdfUrl && (
                 <a href={pdfUrl} className="pdf_btn" target="_blank" download>
