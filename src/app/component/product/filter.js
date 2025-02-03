@@ -134,6 +134,14 @@ export default function Filter({ selectedLetter,selectedCategory }) {
             >
               ANTIBIOTIC
             </a>
+            <a
+              href="/images/product-listing/Lupin-Product-Catalog.pdf"
+              className="tab_link"
+              target="_blank"
+              download
+            >
+              Download Product Catalog
+            </a>
           </div>
         </div>
 
