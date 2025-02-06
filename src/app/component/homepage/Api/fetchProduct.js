@@ -4,25 +4,25 @@ export async function fetchProducts(letter = "", page = 1,category = "", new_pro
     try {
       let url;
     if(category){
-      url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[category][name][$eq]=${category}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+      url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[category][name][$eq]=${category}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=product_name:asc`;
       }else if (new_products) {
     console.log("Case: NEW_PRODUCTS");
-    url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?sort[0]=createdAt:desc&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+    url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?sort[0]=createdAt:desc&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=product_name:asc`;
   } else if (ndc) {
     console.log("Case: NDC", ndc);
-    url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[ndc][$contains]=${ndc}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+    url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[ndc][$contains]=${ndc}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=product_name:asc`;
   } else if (brand) {
     console.log("Case: BRAND", brand);
-    url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[brand][name][$startsWith]=${brand}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+    url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[brand][name][$startsWith]=${brand}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=product_name:asc`;
   } else if (productName) {
     console.log("Case: PRODUCT_NAME", productName);
-    url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[product_name][$startsWith]=${productName}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+    url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[product_name][$startsWith]=${productName}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=product_name:asc`;
   } else if (letter) {
     console.log("Case: LETTER", letter);
-    url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[product_name][$startsWith]=${letter}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+    url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[product_name][$startsWith]=${letter}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=product_name:asc`;
   } else {
     console.log("Case: DEFAULT");
-    url=`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+    url=`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=product_name:asc`;
    
   }
 

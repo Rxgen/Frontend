@@ -123,16 +123,23 @@ export default function Filter({ selectedLetter,selectedCategory }) {
             <a
               href="#"
               className="tab_link"
-              onClick={() => handleCategoryClick("Bronchodilator")}
+              onClick={() => handleCategoryClick("Oral Contraceptive")}
+            >
+              Oral Contraceptives
+            </a>
+            <a
+              href="#"
+              className="tab_link"
+              onClick={() => handleCategoryClick("Inhalations")}
             >
               INHALATIONS
             </a>
             <a
               href="#"
               className="tab_link"
-              onClick={() => handleCategoryClick("Antibiotic")}
+              onClick={() => handleCategoryClick("Injectables")}
             >
-              ANTIBIOTIC
+              Injectables
             </a>
             <a
               href="/images/product-listing/Lupin-Product-Catalog.pdf"
