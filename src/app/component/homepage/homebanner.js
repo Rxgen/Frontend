@@ -23,8 +23,9 @@ export default function Homebanner({ banners }) {
         modules={[Navigation, Pagination, Autoplay, A11y]}
         slidesPerView={1}
         loop={true}
+        speed={1500}
         autoplay={{
-          delay: 3000,
+          delay: 3500,
           disableOnInteraction: false,
         }}
         navigation

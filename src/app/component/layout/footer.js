@@ -115,6 +115,11 @@ const Footer = () => {
                   <Link href="/contact-us" className="border_link">CONTACT US</Link>
                 </span>
               </div>
+              <div className="footer_nav">
+                <span>
+                  <Link href="/sitemap" className="border_link">SITEMAP</Link>
+                </span>
+              </div>
             </div>
             <div className="footer_nav">
               <span>PRIVACY</span>
@@ -123,7 +128,6 @@ const Footer = () => {
                 <li><Link href="/privacy-policy" className="border_link inner_links">PRIVACY POLICY</Link></li>
                 <li><Link href="/pharmacovigilance" className="border_link inner_links">PHARMACOVIGILANCE</Link></li>
                 <li><Link href="/consumer-health" className="border_link inner_links">CONSUMER HEALTH PRIVACY STATEMENT</Link></li>
-                <li><Link href="/sitemap" className="border_link">SITEMAP</Link></li>
                 <li><Link href="/notice" className="border_link inner_links">NOTICE AT COLLECTION</Link></li>
               </ul>
             </div>
