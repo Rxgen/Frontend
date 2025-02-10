@@ -90,7 +90,7 @@ export default function Element({ elementdata }) {
                     <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
                     
                   </div>
-                  {item.title.includes("Policies & Procedures") && (
+                  {/* {item.title.includes("Policies & Procedures") && (
                     <div className="ethics_cta">
                        <Link href="https://www.lupin.com/investors/policies/" className="black_cta" target="_blank">
                       <div className="cta_container">
@@ -99,7 +99,7 @@ export default function Element({ elementdata }) {
                     </div>
                    </Link>
               </div>
-             )}
+                    )} */}
                 </div>
                 
               ))}

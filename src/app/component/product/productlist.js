@@ -171,6 +171,7 @@ const handleMouseLeave = () => {
                   return (
                     <div className="product_item" key={id}>
                       {/* Product Image */}
+                      <Link href={`/produts/${slug}`} passHref>
                       <div className="product_box">
                         <Image
                           src={imageUrl}
@@ -182,10 +183,13 @@ const handleMouseLeave = () => {
                           VIEW MORE
                         </Link>
                       </div>
+                      </Link>
 
                       {/* Product Name */}
                       <div className="product_detail">
-                        <div className="subtitle_35">{product_name.trim()}</div>
+                      <Link href={`/products/${slug}`} passHref>
+                         <div className="subtitle_35">{product_name.trim()}</div>
+                       </Link>
 
                         {/* PDF Files */}
                         <div className="product_pdf">
