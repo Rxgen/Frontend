@@ -56,6 +56,10 @@ const handleMouseLeave = () => {
     setGridView(viewType);
   };
 
+  const uniqueCategories = [
+    ...new Set(productdata.map((product) => product.category?.name).filter(Boolean)),
+  ];
+
 
   return (
     <section
@@ -114,16 +118,11 @@ const handleMouseLeave = () => {
         <div className="product_select">
     <div className="select_detail" onClick={handleToggle} >{selectedCategory}</div>
     <ul className={`select_box ${isActive ? "active" : ""}`} onMouseLeave={handleMouseLeave}>
-    {productdata.map((product) =>
-                        product.category?.name ? (
-                            <li
-                                key={product.category.id}
-                                onClick={() => CategoryClick(product.category.name)}
-                            >
-                                {product.category.name}
-                            </li>
-                        ) : null
-                    )}
+    {uniqueCategories.map((category, index) => (
+              <li key={index} onClick={() => CategoryClick(category)}>
+                {category}
+              </li>
+            ))}
     </ul>
 </div>
       </div>
