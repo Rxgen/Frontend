@@ -18,7 +18,7 @@ export default function News({News}){
     <div className="news_container">
     {News.map((newsItem, index) => (
      newsItem.boolean && (
-    <Link key={index} href={`/${newsItem.slug}`} className="news_content">
+    <Link key={index} href={`media/${newsItem.slug}`} className="news_content">
       <div className="news_date">{formatDate(newsItem.date)}</div>
       <p className="para">{newsItem.news_title}</p>
     </Link>
@@ -32,7 +32,7 @@ export default function News({News}){
                 <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
             </div>
         </Link>
-        <Link href="press-releases.php" className="green_cta">
+        <Link href="/media/press-releases" className="green_cta">
             <div className="cta_container">
                 <span>Explore All US News</span>
                 <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
