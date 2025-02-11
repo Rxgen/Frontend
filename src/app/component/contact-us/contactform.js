@@ -4,6 +4,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 
+//import { MailService } from '@sendgrid/mail';
+
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -45,6 +47,8 @@ const ContactForm = () => {
     });
   };
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validateForm();
@@ -65,6 +69,7 @@ const ContactForm = () => {
         }
       );
       if (response.status === 200 || response.status === 201) {
+        
         setSuccessMessage('Thanks for contacting us!');
         setFormData({
           name: '',

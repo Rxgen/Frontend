@@ -74,13 +74,13 @@ const Header = () => {
   <Image src="/images/icons/language.webp" alt="Language" width={32} height={32} />
   <ul className="global_links">
     <li>
-      <Link href="https://www.lupinpharma.ca/#welcome" target="_blank" className="global_link">
+      <Link href="https://www.lupin.com/" target="_blank" className="global_link">
         <Image src="/images/globe/img_1.webp" alt="Corporate" width={38} height={26} />
         <span>Corporate</span>
       </Link>
     </li>
     <li>
-      <Link href="https://www.lupinpharma.ca/#welcome" target="_blank" className="global_link">
+      <Link href="https://www.lupinpharma.ca/" target="_blank" className="global_link">
         <Image src="/images/globe/img_11.webp" alt="CA - Lupin Pharma Canada" width={38} height={26} />
         <span>CA - Lupin Pharma Canada</span>
       </Link>
@@ -92,7 +92,7 @@ const Header = () => {
       </Link>
     </li>
     <li>
-      <Link href="https://www.lupinpharma.ca/#welcome" target="_blank" className="global_link">
+      <Link href="https://lupin-neurosciences.com/our-world/" target="_blank" className="global_link">
         <Image src="/images/globe/img_2_new.webp" alt="CH - LAHSA" width={38} height={26} />
         <span>CH - LAHSA</span>
       </Link>
@@ -104,7 +104,7 @@ const Header = () => {
       </Link>
     </li>
     <li>
-      <Link href="https://www.nanomi.com/" target="_blank" className="global_link">
+      <Link href="https://www.mydynamics.co.za/" target="_blank" className="global_link">
         <Image src="/images/globe/img_8.webp" alt="NL - Nanomi" width={38} height={26} />
         <span>NL - Nanomi</span>
       </Link>
@@ -116,7 +116,7 @@ const Header = () => {
       </Link>
     </li>
     <li>
-      <Link href="#" target="_blank" className="global_link">
+      <Link href="https://www.lupinhealthcare.co.uk/" target="_blank" className="global_link">
         <Image src="/images/globe/img_3.webp" alt="UK - Lupin Healthcare" width={38} height={26} />
         <span>UK - Lupin Healthcare</span>
       </Link>
