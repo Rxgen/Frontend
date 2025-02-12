@@ -107,7 +107,7 @@ const Footer = () => {
               </div>
               <div className="footer_nav">
                 <span>
-                  <Link href="https://www.lupin.com/" target="_blank"className="border_link">MEDIA</Link>
+                  <Link href="/media" target="_blank"className="border_link">MEDIA</Link>
                 </span>
               </div>
               <div className="footer_nav">

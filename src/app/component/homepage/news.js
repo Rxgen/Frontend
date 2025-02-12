@@ -44,7 +44,7 @@ export default function News({ newsData }) {
         ))}
       </div>
       <div className="news_cta">
-      <Link href="https://www.lupin.com/media/" className="black_cta" target="_blank">
+      <Link href="/media" className="black_cta" target="_blank">
         <div className="cta_container">
           <span>View All</span>
           <Image

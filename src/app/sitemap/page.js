@@ -75,7 +75,13 @@ export default function Sitemap() {
           <h2 className="subtitle_24">Contact</h2>
           <div className="site_content">
             <Link href="/contact-us">CONTACT US</Link>
+          </div>
         </div>
+        <div className="site_container">
+          <h2 className="subtitle_24">Media</h2>
+          <div className="site_content">
+            <Link href="/media">Media</Link>
+          </div>
         </div>
       </section>
     </main>
