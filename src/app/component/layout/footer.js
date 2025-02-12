@@ -33,7 +33,7 @@ const Footer = () => {
           <div className="lupin_address">
             <address>
               <span>Address</span> :
-              Harborplace Tower 111 S. Calvert Street, 21st Floor, Baltimore, MD 21202
+              5801 Pelican Bay Blvd, Suite 500
             </address>
             <div className="lupin_contact">
               <span>
