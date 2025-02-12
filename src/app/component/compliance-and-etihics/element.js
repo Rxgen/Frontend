@@ -117,9 +117,14 @@ export default function Element({ elementdata }) {
         </div>
       </section>
       <section data-section="ethic_brand" className="innovative_brand ethic_brand">
-    <div className="brand_container">
-        <Link href="/images/about/lupin-2023-compliance-declaration-for-website-final.pdf" target="_blank">
-            <Image src="/images/about/declaration.webp" alt="Declaration" width="589" height="320" />
+      <div className="brand_container">
+        <Link href="/images/about/lupin-2023-compliance-declaration-for-website-final.pdf" target="_blank" className="brand_box">
+            <Image src="/images/icons/up_arrow.webp" alt="Up Arrow" width="57" height="62" class="brand_arrow" />
+            <span className="subtitle_30">
+                Declaration of  Compliance &
+                Ethics Program
+                for California
+            </span>
         </Link>
     </div>
   </section>
