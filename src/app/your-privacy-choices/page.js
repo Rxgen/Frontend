@@ -39,7 +39,7 @@ export default function Privacychoices(){
                             <span className="strong">Opt-out Preference Signal:</span>California residents may opt out of third-party 
                             Cookies on the Lupin Website or the Solosec Website by sending an Opt-Out Preference Signal, such as the 
                             Global Privacy Control (GPC) on the browsers or extensions that support such a signal. To download and use 
-                            a browser supporting the GPC browser signal, click here: <a href="https://globalprivacycontrol.org/orgs." className="light_link">https://globalprivacycontrol.org/orgs</a>
+                            a browser supporting the GPC browser signal, click here: <a href="https://globalprivacycontrol.org/orgs" target="_blank"className="light_link">https://globalprivacycontrol.org/orgs</a>
                         </p>
                         <div className="para_content">
                             <p className="para">If you choose to use the GPC signal, you will need to turn it on for each supported browser or browser you use.</p>

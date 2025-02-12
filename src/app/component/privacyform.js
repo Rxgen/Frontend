@@ -41,7 +41,7 @@ export default function PrivacyChoiceform() {
                                     <label htmlFor="" className="form_label form_select">
                                         <select name="" id="">
                                             <option value="" disabled defaultValue>Select Your Right</option>
-                                            <option value="">Revoke Consent htmlFor Processing Personal Information</option>
+                                            <option value="">Revoke Consent For Processing Personal Information</option>
                                             <option value="">Opt Out of the Sale/Sharing of My Personal Information</option>
                                             <option value="">Update or Correct My Personal Information</option>
                                             <option value="">Delete My Personal Information</option>
