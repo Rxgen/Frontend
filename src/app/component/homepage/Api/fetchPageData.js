@@ -435,8 +435,8 @@ export async function fetchOurCultureData(segment) {
 
 export async function fetchOurHistoryData(segment) {
     try {
-        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/histories?populate=*`;
-        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/histories?populate=*`, {
+        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/histories?populate[0]=country_pin.slide`;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/histories?populate[0]=country_pin.slide`, {
             method: "GET",
             cache: 'no-cache',
         });

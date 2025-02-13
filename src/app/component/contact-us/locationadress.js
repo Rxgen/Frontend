@@ -45,7 +45,7 @@ export default function LocationAddress({ locationaddress = [] }) {
 
   return (
     <section data-section="contact_location" className="contact_location">
-      <h2 className="subtitle_60">Lupin US. Locations</h2>
+      <h2 className="subtitle_60">Lupin U.S. Locations</h2>
       <p className="para">
         Lupin U.S. Corporate Headquarters is located in Baltimore MD, with four
         additional pharmaceutical research and manufacturing offices located in

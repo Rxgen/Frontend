@@ -12,7 +12,7 @@ const ContactForm = () => {
     organization: '',
     email: '',
     number: '',
-    subject: '',
+    subject: 'Product | Quality',
     query: '',
     agree: false,
   });
@@ -144,15 +144,14 @@ const ContactForm = () => {
               value={formData.subject}
               onChange={handleInputChange}
             >
-              <option value="" disabled>
-                SELECT SUBJECT LINE
-              </option>
-                <option value="Active">Active Pharmaceutical Ingredients (API) Related Enquiry</option>
-                <option value="medicine">Medicine Availability Related Enquiry</option>
-                <option value="drug">Drug Adverse Effect/Adverse Event Related/Product Complaint/Medical Information Enquiry</option>
-                <option value="careers">Careers</option>
-                <option value="suppliers">For Suppliers</option>
-                <option value="Other"> Other Enquiry</option>
+              
+                <option value="Active">Product | Quality</option>
+                <option value="medicine">Product | Adverse events</option>
+                <option value="drug">Product | Customer service</option>
+                <option value="careers">Product | Patient assistance</option>
+                <option value="suppliers">Product | Clinical trials</option>
+                <option value="Other"> Partner with Lupin in the U.S. | Business development</option>
+                <option value="suppliers">Media Contact</option>
             </select>
             {errors.subject && <span className="error_message">{errors.subject}</span>}
           </label>
