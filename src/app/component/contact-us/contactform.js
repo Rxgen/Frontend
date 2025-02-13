@@ -4,8 +4,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 
-//import { MailService } from '@sendgrid/mail';
-
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -71,6 +69,9 @@ const ContactForm = () => {
       if (response.status === 200 || response.status === 201) {
         
         setSuccessMessage('Thanks for contacting us!');
+
+        await sendEmail(formData);
+
         setFormData({
           name: '',
           organization: '',
@@ -84,6 +85,29 @@ const ContactForm = () => {
     } catch (error) {
       console.error('Error submitting the form:', error);
       setSuccessMessage('Failed to submit. Please try again later.');
+    }
+  };
+
+  const sendEmail = async (formData) => {
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ formData }),
+      });
+  
+      const result = await response.json();
+  
+      if (response.ok) {
+        setSuccessMessage(result.message); // Success message
+      } else {
+        setSuccessMessage(result.message || 'Failed to send email. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSuccessMessage('Failed to send email. Please try again later.');
     }
   };
 
@@ -144,14 +168,13 @@ const ContactForm = () => {
               value={formData.subject}
               onChange={handleInputChange}
             >
-              
-                <option value="Active">Product | Quality</option>
-                <option value="medicine">Product | Adverse events</option>
-                <option value="drug">Product | Customer service</option>
-                <option value="careers">Product | Patient assistance</option>
-                <option value="suppliers">Product | Clinical trials</option>
-                <option value="Other"> Partner with Lupin in the U.S. | Business development</option>
-                <option value="suppliers">Media Contact</option>
+             <option value="Product | Quality">Product | Quality</option>
+                <option value="Product | Adverse events">Product | Adverse events</option>
+                <option value="Product | Customer service">Product | Customer service</option>
+                <option value="Product | Patient assistance">Product | Patient assistance</option>
+                <option value="Product | Clinical trials">Product | Clinical trials</option>
+                <option value="Partner with Lupin in the U.S. | Business development"> Partner with Lupin in the U.S. | Business development</option>
+                <option value="Media Contact">Media Contact</option>
             </select>
             {errors.subject && <span className="error_message">{errors.subject}</span>}
           </label>
