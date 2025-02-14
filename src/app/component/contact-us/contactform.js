@@ -175,6 +175,8 @@ const ContactForm = () => {
                 <option value="Product | Clinical trials">Product | Clinical trials</option>
                 <option value="Partner with Lupin in the U.S. | Business development"> Partner with Lupin in the U.S. | Business development</option>
                 <option value="Media Contact">Media Contact</option>
+                <option value="Other Enquiry">Other Enquiry</option>
+                
             </select>
             {errors.subject && <span className="error_message">{errors.subject}</span>}
           </label>

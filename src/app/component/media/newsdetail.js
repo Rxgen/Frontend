@@ -31,17 +31,6 @@ export default function Newsdetail ({ Newsdetaildata }) {
 
       <div dangerouslySetInnerHTML={{ __html: Newsdetaildata[0].news_detail }}  ></div>
 
-      {/* If you'd like to add an image */}
-      <div className="para_container">
-        <p className="para"><span>For further information or queries please contact –</span></p>
-        <div className="news_detail">
-            <div className="name">Rajalakshmi Azariah</div>
-            <p className="para">Vice President & Global Head – Corporate Communications, Lupin</p>
-            <Link href="mailto:rajalakshmiazariah@lupin.com">rajalakshmiazariah@lupin.com</Link>
-        </div>
-        <div className="safe_text">*Safe Harbor Statement</div>
-       </div> 
-    
     </section>
 
 

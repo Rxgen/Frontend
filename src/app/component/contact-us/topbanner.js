@@ -14,6 +14,7 @@ export default function TopBanner() {
       companyLogoHeight: 33,
       flagSrc: "/images/globe/img_11.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"https://www.lupinpharma.ca/",
     },
     {
       countryCode: "US",
@@ -23,6 +24,7 @@ export default function TopBanner() {
       companyLogoHeight: 35,
       flagSrc: "/images/globe/img_12.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"#",
     },
     {
       countryCode: "MX",
@@ -32,6 +34,7 @@ export default function TopBanner() {
       companyLogoHeight: 65,
       flagSrc: "/images/globe/img_9.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"https://laboratoriosgrin.com/",
     },
     {
       countryCode: "BR",
@@ -41,6 +44,7 @@ export default function TopBanner() {
       companyLogoHeight: 28,
       flagSrc: "/images/globe/img_10.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"https://medquimica.ind.br/",
     },
     {
       countryCode: "UK",
@@ -50,6 +54,7 @@ export default function TopBanner() {
       companyLogoHeight: 35,
       flagSrc: "/images/globe/img_3.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"https://www.lupinhealthcare.co.uk/",
     },
     {
       countryCode: "NL",
@@ -59,6 +64,7 @@ export default function TopBanner() {
       companyLogoHeight: 22,
       flagSrc: "/images/globe/img_8.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"https://www.nanomi.com/",
     },
     {
       countryCode: "GE",
@@ -68,6 +74,7 @@ export default function TopBanner() {
       companyLogoHeight: 12,
       flagSrc: "/images/globe/img_7.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"https://www.hormosan.com/",
     },
     {
       countryCode: "CH",
@@ -77,6 +84,17 @@ export default function TopBanner() {
       companyLogoHeight: 100,
       flagSrc: "/images/globe/img_2.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"https://lupin-neurosciences.com/our-world/",
+    },
+    {
+      countryCode: "FR",
+      countryClass: "france",
+      companyLogoSrc: "/images/contact/icons/med-france.webp",
+      companyLogoWidth: 144,
+      companyLogoHeight: 43,
+      flagSrc: "/images/globe/img_13.webp",
+      pinSrc: "/images/contact/pin_img.webp",
+      country_link:"#",
     },
     {
       countryCode: "SA",
@@ -86,6 +104,7 @@ export default function TopBanner() {
       companyLogoHeight: 38,
       flagSrc: "/images/globe/img_4.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"https://www.mydynamics.co.za/",
     },
     {
       countryCode: "IN",
@@ -95,6 +114,7 @@ export default function TopBanner() {
       companyLogoHeight: 54,
       flagSrc: "/images/globe/img_1.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"https://www.lupin.com/",
     },
     {
       countryCode: "PH",
@@ -104,6 +124,7 @@ export default function TopBanner() {
       companyLogoHeight: 26,
       flagSrc: "/images/globe/img_6.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"https://www.multicare.com.ph/",
     },
     {
       countryCode: "AU",
@@ -113,7 +134,9 @@ export default function TopBanner() {
       companyLogoHeight: 43,
       flagSrc: "/images/globe/img_5.webp",
       pinSrc: "/images/contact/pin_img.webp",
+      country_link:"https://generichealth.com.au/",
     },
+    
   ];
   const [activeCountryCode, setActiveCountryCode] = useState(null);
   let interval;
@@ -174,9 +197,9 @@ export default function TopBanner() {
         <div className="map_container">
         <SvgMap />
     {countries.map((country, index) => (
-            <a
+            <Link
               key={country.countryCode}
-              href="#"
+              href={country.country_link}
               data-map=""
               data-country={country.countryCode}
               className={`country ${country.countryClass} ${index === countries.findIndex(c => c.countryCode === activeCountryCode) ? 'active' : ''}`}
@@ -207,7 +230,7 @@ export default function TopBanner() {
                   className="pin_logo"
                 />
               </div>
-            </a>
+            </Link>
           ))}
         </div>
         <h1 className="subtitle_66">Contact Us</h1>
