@@ -70,7 +70,8 @@ export default function LocationAddress({ locationaddress = [] }) {
               className="location_address"
               style={{ height: maxAddressHeightVw === "auto" ? "auto" : `${maxAddressHeightVw}vw` }}
             >
-              {location.location_address}
+
+              <div className="address_content"dangerouslySetInnerHTML={{ __html: location.location_address }} />
             </div>
           </div>
         ))}
@@ -78,5 +79,6 @@ export default function LocationAddress({ locationaddress = [] }) {
     </section>
   );
 }
+
 
 
