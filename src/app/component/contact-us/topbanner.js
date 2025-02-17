@@ -82,7 +82,7 @@ export default function TopBanner() {
       companyLogoSrc: "/images/contact/icons/lahsal.webp",
       companyLogoWidth: 100,
       companyLogoHeight: 100,
-      flagSrc: "/images/globe/img_2.webp",
+      flagSrc: "/images/globe/img_2_new.webp",
       pinSrc: "/images/contact/pin_img.webp",
       country_link:"https://lupin-neurosciences.com/our-world/",
     },
