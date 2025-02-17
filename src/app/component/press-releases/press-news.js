@@ -1,8 +1,18 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
+import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function PressNews({PressNewsData}){
+  const [currentPage, setCurrentPage] = useState(1);
+  const newsPerPage = 9;
+  const sortedNews = PressNewsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const indexOfLastNews = currentPage * newsPerPage;
+  const indexOfFirstNews = indexOfLastNews - newsPerPage;
+  const currentNews = sortedNews.slice(indexOfFirstNews, indexOfLastNews);
+
+  
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -15,22 +25,38 @@ export default function PressNews({PressNewsData}){
     return(
         <div>
 <section data-section="news_section" className="news_section press_section">
-        <h2 className="subtitle_60">Press Releases</h2>
-        <div className="news_search_container">
-          <input type="text" placeholder="Search News" />
-          <button type="submit">Search</button>
-        </div>
-        <div className="news_container">
-          {PressNewsData.map((newsItem, index) => (
-            newsItem.boolean && (
-              <Link key={index} href={`/media/${newsItem.slug}`} className="news_content">
-                <div className="news_date">{formatDate(newsItem.date)}</div>
-                <p className="para">{newsItem.news_title}</p>
-              </Link>
-            )
-          ))}
-        </div>
-      </section>
+      <h2 className="subtitle_60">Press Releases</h2>
+      <div className="news_search_container">
+        <input type="text" placeholder="Search News" />
+        <button type="submit">Search</button>
+      </div>
+      <div className="news_container">
+        {currentNews.map((newsItem, index) => (
+          newsItem && (
+            <Link key={index} href={`/media/${newsItem.slug}`} className="news_content">
+              <div className="news_date">{formatDate(newsItem.date)}</div>
+              <p className="para">{newsItem.news_title}</p>
+            </Link>
+          )
+        ))}
+      </div>
+
+      {/* Pagination */}
+      <div className="product_pagination">
+      {Array.from({ length: Math.ceil(sortedNews.length / newsPerPage) }, (_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => paginate(index + 1)}
+            className="pagination_number"
+          >
+            {index + 1}
+          </button>
+        ))}
+      </div>
+        
+       
+      
+    </section>
 
 <section data-section="news_contact" className="media_contact news_contact">
 <div className="media_contact_container">

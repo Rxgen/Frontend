@@ -32,8 +32,8 @@ const Footer = () => {
         <div className="lupin_footer_container">
           <div className="lupin_address">
             <address>
-              <span>Address</span> :
-              5801 Pelican Bay Blvd., Ste.
+              <span>Address</span>:
+              <br />5801 Pelican Bay Blvd, Suite 
               500 <br />
               Naples, FL 34018
             </address>
