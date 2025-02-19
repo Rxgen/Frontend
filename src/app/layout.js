@@ -19,12 +19,13 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
        <Header />
-    
+       <main id="wrapper" className="wrapper">
         {children}
         <SmartGuide />
 
-       
+        </main>
         <Footer />
+        
         </body>
     </html>
   );
