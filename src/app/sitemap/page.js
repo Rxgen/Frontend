@@ -40,7 +40,7 @@ export default function Sitemap() {
             <Link href="/our-offering">OUR OFFERINGS</Link>
             <Link href="/generic-medicine">GENERIC / COMPLEX GENERICS</Link>
             <Link href="/innovative-medicine">INNOVATIVE MEDICINES</Link>
-            <Link href="/products">PRODUCT</Link>
+            <Link href="/products">OUR PRODUCTS</Link>
           </div>
         </div>
 

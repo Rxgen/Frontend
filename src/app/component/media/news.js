@@ -41,7 +41,7 @@ export default function News({News}){
         </Link>
         <Link href="/media/press-releases" className="green_cta">
             <div className="cta_container">
-                <span>Explore All US News</span>
+                <span>Explore All U.S. News</span>
                 <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />
             </div>
         </Link>

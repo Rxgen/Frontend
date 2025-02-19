@@ -20,7 +20,7 @@ export default function CustomImage( {imagedata} ){
             <p className="para">
                 Looking for your next role? Explore our current openings. If
                 you don&apos;t see a job that fits your skill set, send your resume to
-                <a href="usacareers@lupin.com">usacareers@lupin.com</a> and get added to our talent pool for
+                <a href="mailto:usacareers@lupin.com"> usacareers@lupin.com</a> and get added to our talent pool for
                 future job opportunities.
             </p>
             <Link 

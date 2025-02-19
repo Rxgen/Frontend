@@ -39,7 +39,7 @@ const Footer = () => {
             </address>
             <div className="lupin_contact">
               <span>
-                Phone : 
+                Phone: 
                 <Link href="tel:+8665874617" className="border_link">
                    &nbsp;866-587-4617
                 </Link>
@@ -57,7 +57,7 @@ const Footer = () => {
                 <div className="contact_text">(for products marketed in India)</div>
               </span>
             </div>
-            <Link href="#" className="linked_in">
+            <Link href="https://www.linkedin.com/company/lupin-pharmaceuticals/" target="_blank" className="linked_in">
               <Image 
                 src="/images/icons/linked_in.webp" 
                 alt="LinkedIn" 
@@ -99,7 +99,7 @@ const Footer = () => {
                 <ul className="sub_footer">
                   <li><Link href="/generic-medicine" className="border_link">GENERIC / COMPLEX GENERICS</Link></li>
                   <li><Link href="/innovative-medicine" className="border_link">INNOVATIVE MEDICINES</Link></li>
-                  <li><Link href="/products" className="border_link">PRODUCT</Link></li>
+                  <li><Link href="/products" className="border_link">OUR PRODUCTS</Link></li>
                 </ul>
               </div>
               <div className="footer_nav">
@@ -137,7 +137,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="copyright">
-        Copywrite @ 2024 Lupin Pharmaceuticals. All Rights Reserved.
+        Copywrite @ 2025 Lupin Pharmaceuticals. All Rights Reserved.
       </div>
     </footer>
   );

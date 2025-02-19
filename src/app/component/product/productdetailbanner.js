@@ -8,7 +8,7 @@ export default function DetailBanner (){
         <source media="(max-width: 540px)" srcSet="/images/product-detail/product_detail_mob_banner.png"/>
         <Image src="/images/product-detail/banner.webp" alt="Desktop Banenr" className="banner_img" width="1920" height="771" />
     </picture>
-    <h1 className="subtitle_66">Generics / Products</h1>
+    <h1 className="subtitle_66">Our Products</h1>
 </section>
     )
 }

@@ -9,9 +9,7 @@ export default function BrandPdf({ brandpdfdata }) {
     return (
         <section data-section="innovative_brand" className="innovative_brand">
             <h2 className="subtitle_48">
-                To learn more about our
-                branded products, please
-                click on the links below.
+            Learn more about our branded products
             </h2>
             <div className="brand_container">
                 {brandpdfdata && brandpdfdata.map((item, index) => {

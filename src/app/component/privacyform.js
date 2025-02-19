@@ -52,7 +52,7 @@ export default function PrivacyChoiceform() {
                                     </label>
                                     
                                     <label htmlFor="" className="form_label form_textarea">
-                                        <textarea name="" id="" cols="30" rows="10" placeholder="POST YOUR QUERY"></textarea>
+                                        <textarea name="" id="" cols="30" rows="10" placeholder="Post Your Query"></textarea>
                                     </label>
 
                                     <label htmlFor="" className="form_label form_select">
