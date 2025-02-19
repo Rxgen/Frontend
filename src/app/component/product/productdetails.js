@@ -71,7 +71,7 @@ export default function ProductDetails({ productdata }) {
           <div className="info_item">
             <div className="info_title">TE Rating</div>
             <span>:</span>
-            <div className="info_detail">{product.te_rating || "N/A"}</div>
+            <div className="info_detail">{(product.te_rating || "N/A").toUpperCase()}</div>
           </div>
 
           <div className="info_item">
