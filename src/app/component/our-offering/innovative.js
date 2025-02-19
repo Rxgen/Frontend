@@ -6,11 +6,11 @@ export default function Innovative({innovativedata}){
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
   
     const desktopImageUrl = innovativedata?.desktop_image?.url
-    ? getMediaUrl(innovativedata.desktop_image.formats.large.url)
+    ? getMediaUrl(innovativedata.desktop_image.url)
     : "/assets/images/about/banner.webp";
 
   const mobileImageUrl = innovativedata?.mobile_image?.url
-    ? getMediaUrl(innovativedata.mobile_image.formats.small.url)
+    ? getMediaUrl(innovativedata.mobile_image.url)
     : "/assets/images/about/mob_banner.webp";
     return (
 
