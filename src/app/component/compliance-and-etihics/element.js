@@ -77,8 +77,13 @@ export default function Element({ elementdata }) {
           </div>
 
           
-          <div className={`ethics_right ${isRightSectionVisible ? 'active' : ''}`}>
-            <div className="ethics_right_container">
+          <div className={`ethics_right ${isRightSectionVisible ? 'active' : ''}`}
+          onClick={(e) => {
+            e.preventDefault();
+            handleBackButtonClick();
+          }}
+          ></div>
+            <div className={`ethics_right_container ${isRightSectionVisible ? 'active' : ''}`}>
               {elementdata.map((item, index) => (
                 <div
                   className={`ethics_box ${activeLink === index ? 'active' : ''}`}
@@ -113,7 +118,7 @@ export default function Element({ elementdata }) {
             </a>
             </div>
             
-          </div>
+          
         </div>
       </section>
       <section data-section="ethic_brand" className="innovative_brand ethic_brand">
