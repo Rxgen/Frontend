@@ -66,10 +66,7 @@ export default function Transparency( { transparencydata } ) {
             environmental and social objectives are collectively pursued.
         </p>
         <p className="para">
-            At Lupin, we are driven by our Purpose — &apos;To improve our patients&apos; lives.&apos; guiding us as
-            we strive to create lasting value for our patients, communities, and the planet. Through
-            our sustainability efforts, we are committed to building a future where healthcare is not
-            only innovative and affordable but also environmentally and socially responsible.
+            At Lupin, we strive to create lasting value for our patients, communities, and the planet. Through our sustainability efforts, we are committed to building a future where healthcare is not only innovative and affordable but also environmentally and socially responsible.
         </p>
     </div>
     </section>

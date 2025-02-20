@@ -36,7 +36,7 @@ export default function CustomImage( {imagedata} ){
         </div>
         <div className="career_text">
             Stay connected by following us on
-            LinkedIn for business updates and
+            <a href="https://www.linkedin.com/company/lupin-pharmaceuticals/" target="_blank"> LinkedIn</a>  for business updates and
             career opportunities.
         </div>
     </div>
