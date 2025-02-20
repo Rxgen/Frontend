@@ -30,7 +30,7 @@ export default function ProductDetails({ productdata }) {
       </div>
 
       <div className="product_detail_container">
-        <div className="subtitle_4692">{product.product_name}</div>
+        <h1 className="subtitle_4692">{product.product_name}</h1>
         <div className="product_info">
         <div className="info_item">
                 <div className="info_title">Strength</div>

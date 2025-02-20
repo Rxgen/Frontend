@@ -38,7 +38,7 @@ export default function Sitemap() {
           <h2 className="subtitle_24">Our Offering</h2>
           <div className="site_content">
             <Link href="/our-offering">OUR OFFERINGS</Link>
-            <Link href="/generic-medicine">GENERICS & COMPLEX GENERICS </Link>
+            <Link href="/generics-complex-generics">GENERICS & COMPLEX GENERICS </Link>
             <Link href="/innovative-medicine">INNOVATIVE MEDICINES</Link>
             <Link href="/products">OUR PRODUCTS</Link>
           </div>

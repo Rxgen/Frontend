@@ -97,7 +97,7 @@ const Footer = () => {
                   <Link href="/our-offering" className="border_link">OUR OFFERINGS</Link>
                 </span>
                 <ul className="sub_footer">
-                  <li><Link href="/generic-medicine" className="border_link">GENERICS & COMPLEX GENERICS </Link></li>
+                  <li><Link href="/generics-complex-generics" className="border_link">GENERICS & COMPLEX GENERICS </Link></li>
                   <li><Link href="/innovative-medicine" className="border_link">INNOVATIVE MEDICINES</Link></li>
                   <li><Link href="/products" className="border_link">OUR PRODUCTS</Link></li>
                 </ul>

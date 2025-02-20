@@ -17,7 +17,7 @@ export default function Generic({genericdata}) {
             <p className="para">
             {genericdata.description}
             </p>
-            <Link href="/generic-medicine" className="black_cta">
+            <Link href="/generics-complex-generics" className="black_cta">
             <div className="cta_container">
                 <span>Know more</span>
                 <Image src="/images/icons/white_arrow.webp" alt="White Arrow" width="20" height="14" />

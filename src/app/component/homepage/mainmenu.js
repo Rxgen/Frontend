@@ -106,7 +106,7 @@ const Mainmenu = ({ menuActive, setMenuActive, setInnerMenuActive }) => {
               onMouseLeave={handleSubmenuLeave} // Unlock submenu on leave
             >
               <div className={`sub_menu ${activeLink === "ourOffering" ? "active" : ""}`}>
-                <span className="sub_menu_link"><Link href="/generic-medicine" onClick={closeMenu}>Generics & Complex Generics</Link></span>
+                <span className="sub_menu_link"><Link href="/generics-complex-generics" onClick={closeMenu}>Generics & Complex Generics</Link></span>
                 <span className="sub_menu_link"><Link href="/innovative-medicine" onClick={closeMenu}>Innovative Medicines</Link></span>
                 <span className="sub_menu_link"><Link href="/products" onClick={closeMenu}>Our Products</Link></span>
               </div>

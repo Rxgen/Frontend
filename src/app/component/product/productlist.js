@@ -170,18 +170,16 @@ const handleMouseLeave = () => {
                   return (
                     <div className="product_item" key={id}>
                       {/* Product Image */}
-                      <Link href={`/products/${slug}`} passHref>
-                      <div className="product_box">
+                      <Link href={`/products/${slug}`} passHref className="product_box">
                         <Image
                           src={imageUrl}
                           alt={product_name.trim() || "Product image"}
                           width="543"
                           height="460"
                         />
-                        <Link href={`/products/${slug}`} className="view_cta">
+                        <span className="view_cta">
                           VIEW MORE
-                        </Link>
-                      </div>
+                        </span>
                       </Link>
 
                       {/* Product Name */}
