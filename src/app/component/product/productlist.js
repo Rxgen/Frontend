@@ -148,11 +148,11 @@ const handleMouseLeave = () => {
           ) : (
             <>
               {/* Product Items */}
-              <div className={`product_item_container ${
+      <div className={`product_item_container ${
           gridView === "three_grid" ? "active" : " "
         } ${gridView}`}>
                 {productdata.map((product) => {
-                  // Safe access for product fields
+                  
                   const {
                     id,
                     product_name = "Unnamed Product",
@@ -161,11 +161,11 @@ const handleMouseLeave = () => {
                     product_images = [],
                   } = product;
 
-                  // Get image URL or fallback image
+                  
                   const imageUrl =
                     product_images[0]?.slide?.url
                       ? getMediaUrl(product_images[0].slide.url)
-                      : "/assets/images/placeholder.webp"; // Fallback image
+                      : "/assets/images/placeholder.webp"; 
 
                   return (
                     <div className="product_item" key={id}>
@@ -211,6 +211,7 @@ const handleMouseLeave = () => {
                   );
                 })}
               </div>
+              
             </>
           )}
         </>
