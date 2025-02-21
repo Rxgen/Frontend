@@ -137,7 +137,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="copyright">
-        Copywrite @ 2025 Lupin Pharmaceuticals. All Rights Reserved.
+          © 2025 Lupin Pharmaceuticals. All Rights Reserved.
       </div>
     </footer>
   );

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function PressNews({PressNewsData}){
+  console.log("Press News all Data" , PressNewsData);
   const [currentPage, setCurrentPage] = useState(1);
   const newsPerPage = 9;
   const sortedNews = PressNewsData.sort((a, b) => new Date(b.date) - new Date(a.date));
