@@ -64,9 +64,9 @@ export default function Sitemap() {
           <h2 className="subtitle_24">Privacy</h2>
           <div className="site_content">
             <Link href="/your-privacy-choices">DO NOT SELL/SHARE MY PERSONAL INFORMATION</Link>
-            <Link href="/privacy-policy">PRIVACY POLICY</Link>
-            <Link href="/pharmacovigilance">PHARMACOVIGILANCE</Link>
-            <Link href="/consumer-health">CONSUMER HEALTH PRIVACY STATEMENT</Link>
+            <Link href="/privacy-policy">PRIVACY STATEMENT</Link>
+            <Link href="/pharmacovigilance">PHARMACOVIGILANCE PRIVACY STATEMENT</Link>
+            <Link href="/consumer-health">CONSUMER HEALTH DATA PRIVACY STATEMENT</Link>
             <Link href="/notice">NOTICE AT COLLECTION</Link>
           </div>
         </div>

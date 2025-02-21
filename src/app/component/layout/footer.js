@@ -126,10 +126,10 @@ const Footer = () => {
             <div className="footer_nav">
               <span>PRIVACY</span>
               <ul className="sub_footer">
-                <li><Link href="/your-privacy-choices" className="border_link inner_links">DO NOT SELL/SHARE MY PERSONAL INFORMATION</Link></li>
-                <li><Link href="/privacy-policy" className="border_link inner_links">PRIVACY POLICY</Link></li>
-                <li><Link href="/pharmacovigilance" className="border_link inner_links">PHARMACOVIGILANCE</Link></li>
-                <li><Link href="/consumer-health" className="border_link inner_links">CONSUMER HEALTH PRIVACY STATEMENT</Link></li>
+                <li><Link href="/your-privacy-choices" className="border_link inner_links">DO NOT SELL/ SHARE MY PERSONAL INFORMATION</Link></li>
+                <li><Link href="/privacy-policy" className="border_link inner_links">PRIVACY STATEMENT</Link></li>
+                <li><Link href="/pharmacovigilance" className="border_link inner_links">PHARMACOVIGILANCE PRIVACY STATEMENT</Link></li>
+                <li><Link href="/consumer-health" className="border_link inner_links">CONSUMER HEALTH DATA PRIVACY STATEMENT</Link></li>
                 <li><Link href="/notice" className="border_link inner_links">NOTICE AT COLLECTION</Link></li>
               </ul>
             </div>
@@ -137,7 +137,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="copyright">
-          © 2025 Lupin Pharmaceuticals. All Rights Reserved.
+      © 2025 Lupin Pharmaceuticals, Inc. All Rights Reserved.
+
       </div>
     </footer>
   );
