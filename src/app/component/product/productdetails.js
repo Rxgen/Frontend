@@ -110,11 +110,6 @@ export default function ProductDetails({ productdata }) {
           />
         )}
     </div>
-    
-
-
-    
-
   );
 }
 

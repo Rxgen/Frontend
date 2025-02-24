@@ -210,8 +210,7 @@ const handleMouseLeave = () => {
                     </div>
                   );
                 })}
-              </div>
-              
+              </div>   
             </>
           )}
         </>
@@ -246,6 +245,23 @@ const handleMouseLeave = () => {
   >
    <Image src="/images/icons/green_arrow.webp" alt="Green Arrow for pagination" width={8} height={13} />
   </button>
+</div>
+<div className="product_brand_container">
+    <h2 className="subtitle_30">EXPLORE PATIENT EDUCATION</h2>
+    <div className="brand_container">
+        <Link href="/products/albuterol-sulfate-inhalation-aerosol#albuterol" className="brand_box">
+            <Image src="/images/icons/up_arrow.webp" alt="albuterol" width={57} height={62} className="brand_arrow" />
+            <span className="subtitle_20">
+                Albuterol Sulfate Inhalation
+            </span>
+        </Link>
+        <Link href="products/tiotropium-bromide-inhalation-powder-capsules#tiotropium" className="brand_box">
+            <Image src="/images/icons/up_arrow.webp" alt="tiotropium" width={57} height={62} className="brand_arrow" />
+            <span className="subtitle_20">
+                Tiotropium Bromide Inhalation Powder Capsule
+            </span>
+        </Link>
+    </div>
 </div>
 </section>
     

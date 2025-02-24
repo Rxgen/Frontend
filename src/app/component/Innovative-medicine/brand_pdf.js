@@ -13,8 +13,8 @@ export default function BrandPdf({ brandpdfdata }) {
             </h2>
             <div className="brand_container">
                 {brandpdfdata && brandpdfdata.map((item, index) => {
-                    const imageUrl = item.image?.formats?.thumbnail?.url
-                        ? getMediaUrl(item.image.formats.thumbnail.url)
+                    const imageUrl = item.image?.url
+                        ? getMediaUrl(item.image?.url)
                         : "assets/images/about/banner.webp";
                     const pdfUrl = item.pdf_files?.url
                         ? getMediaUrl(item.pdf_files.url)
