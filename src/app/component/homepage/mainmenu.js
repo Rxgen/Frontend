@@ -109,6 +109,7 @@ const Mainmenu = ({ menuActive, setMenuActive, setInnerMenuActive }) => {
                 <span className="sub_menu_link"><Link href="/generics-complex-generics" onClick={closeMenu}>Generics & Complex Generics</Link></span>
                 <span className="sub_menu_link"><Link href="/innovative-medicine" onClick={closeMenu}>Innovative Medicines</Link></span>
                 <span className="sub_menu_link"><Link href="/products" onClick={closeMenu}>Our Products</Link></span>
+                <span className="sub_menu_link"><Link href="/products#patient-education" onClick={closeMenu}>Product Education</Link></span>
               </div>
             </div>
           </span>

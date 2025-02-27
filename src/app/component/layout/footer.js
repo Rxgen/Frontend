@@ -21,14 +21,6 @@ const Footer = () => {
         />
       </Link>
       <div className="footer_container">
-        <Link href="/" className="lupin_footer_logo">
-          <Image 
-            src="/images/lupin_logo.webp" 
-            alt="Lupin Logo" 
-            width={134} 
-            height={49} 
-          />
-        </Link>
         <div className="lupin_footer_container">
           <div className="lupin_address">
             <address>

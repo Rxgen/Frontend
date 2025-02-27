@@ -14,6 +14,18 @@ export default function ProductDetails({ productdata }) {
   // Utility function to generate media URLs
   const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
+  const cleanContent = (content) => {
+    return content
+      .replace(/<p>\s*<img([^>]+)>\s*<\/p>/g, '<img$1>') 
+      .replace(/<p>(\s|&nbsp;)*<\/p>/g, '') 
+      .replace(/\s+/g, ' ') 
+      .trim(); 
+  };
+
+  const cleanedDescription = product.product_description
+    ? cleanContent(product.product_description)
+    : null;
+
   return (
     <div>
 <section className="product_detail_section">
@@ -103,10 +115,10 @@ export default function ProductDetails({ productdata }) {
         </div>
       </div>
     </section>
-    {product.product_description && (
+    {cleanedDescription && (
           
           <div
-            dangerouslySetInnerHTML={{ __html: product.product_description }}
+            dangerouslySetInnerHTML={{ __html: cleanedDescription }}
           />
         )}
     </div>
