@@ -9,10 +9,7 @@ import SmartGuide from "./component/layout/smartguide";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Lupin U.S. | Branded + Generic Pharmaceutical Company",
-  description: "We are an innovative, transnational pharmaceutical company with a legacy of excellence in the U.S. and extensive experience in product development and R&D.",
-};
+
 
 export default function RootLayout({ children }) {
   return (

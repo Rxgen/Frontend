@@ -75,7 +75,7 @@ const Footer = () => {
               </div>
               <div className="footer_nav">
                 <span>
-                  <Link href="/people" className="border_link">PEOPLE</Link>
+                  <Link href="/our-people" className="border_link">OUR PEOPLE</Link>
                 </span>
                 <ul className="sub_footer">
                   <li><Link href="/our-culture" className="border_link">OUR CULTURE</Link></li>
@@ -86,12 +86,13 @@ const Footer = () => {
             <div className="nav_footer_container">
               <div className="footer_nav">
                 <span>
-                  <Link href="/our-offering" className="border_link">OUR OFFERINGS</Link>
+                  <Link href="/our-offerings" className="border_link">OUR OFFERINGS</Link>
                 </span>
                 <ul className="sub_footer">
                   <li><Link href="/generics-complex-generics" className="border_link">GENERICS & COMPLEX GENERICS </Link></li>
                   <li><Link href="/innovative-medicine" className="border_link">INNOVATIVE MEDICINES</Link></li>
                   <li><Link href="/products" className="border_link">OUR PRODUCTS</Link></li>
+                  <li><Link href="/products#patient-education" className="border_link">PRODUCT EDUCATION</Link></li>
                 </ul>
               </div>
               <div className="footer_nav">

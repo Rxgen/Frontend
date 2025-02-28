@@ -35,7 +35,7 @@ export default function Offering({ offeringData }) {
                         </div>
                     ))}
                 </div>
-                <Link href="/our-offering" className="circle_cta">
+                <Link href="/our-offerings" className="circle_cta">
                              <span>Know More</span>
                         <Image
                             src="/images/icons/white_arrow.webp"

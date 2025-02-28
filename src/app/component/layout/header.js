@@ -65,8 +65,8 @@ const Header = () => {
         <ul className="menu_list">
           <li><Link href="/about-us">About Us</Link></li>
           <li><Link href="/sustainability">Our Impact</Link></li>
-          <li><Link href="/our-offering">Our Offerings</Link></li>
-          <li><Link href="/people">People</Link></li>
+          <li><Link href="/our-offerings">Our Offerings</Link></li>
+          <li><Link href="/our-people">Our People</Link></li>
         </ul>
 
         <div className="menu_icons">

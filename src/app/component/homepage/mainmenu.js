@@ -99,7 +99,7 @@ const Mainmenu = ({ menuActive, setMenuActive, setInnerMenuActive }) => {
             onMouseEnter={() => handleLinkEnter("ourOffering")}
             onMouseLeave={handleLinkLeave}
           >
-            <Link href="/our-offering" className="link_item" onClick={closeMenu}>Our Offering</Link>
+            <Link href="/our-offerings" className="link_item" onClick={closeMenu}>Our Offerings</Link>
             <div
               className={`menu_sub_nav ${activeLink === "ourOffering" ? "active" : ""}`}
               onMouseEnter={handleSubmenuEnter} // Lock submenu on hover
@@ -120,7 +120,7 @@ const Mainmenu = ({ menuActive, setMenuActive, setInnerMenuActive }) => {
             onMouseEnter={() => handleLinkEnter("people")}
             onMouseLeave={handleLinkLeave}
           >
-            <Link href="/people" className="link_item" onClick={closeMenu}>People</Link>
+            <Link href="/our-people" className="link_item" onClick={closeMenu}>Our People</Link>
             <div
               className={`menu_sub_nav ${activeLink === "people" ? "active" : ""}`}
               onMouseEnter={handleSubmenuEnter} 

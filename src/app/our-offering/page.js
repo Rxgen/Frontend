@@ -1,8 +1,8 @@
 import { fetchOurOfferingData } from "../component/homepage/Api/fetchPageData";
-import Topbanner from "../component/our-offering/topbanner";
-import Generic from "../component/our-offering/generic";
-import Product from "../component/our-offering/product";
-import Innovative from "../component/our-offering/innovative";
+import Topbanner from "../component/our-offerings/topbanner";
+import Generic from "../component/our-offerings/generic";
+import Product from "../component/our-offerings/product";
+import Innovative from "../component/our-offerings/innovative";
 
 
 export default async function OurOfferingPage( ){

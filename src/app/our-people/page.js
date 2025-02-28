@@ -1,7 +1,7 @@
 import { fetchPeopleData } from "../component/homepage/Api/fetchPageData";
-import Topbanner from "../component/people/topbanner";
-import Life from "../component/people/life";
-import Work from "../component/people/work";
+import Topbanner from "../component/our-people/topbanner";
+import Life from "../component/our-people/life";
+import Work from "../component/our-people/work";
 
 export default async function PeoplePage () {
     const data = await fetchPeopleData("top_banner");

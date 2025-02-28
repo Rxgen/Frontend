@@ -32,7 +32,7 @@ export default function People( {peopleData} ) {
           </div>
         ))}
     </div>
-    <Link href="/people" className="circle_cta" target="_blank">
+    <Link href="/our-people" className="circle_cta" target="_blank">
         <span>Look</span>
         <Image src="/images/icons/white_arrow.webp" alt="Arrow" width="20" height="14" />
       </Link>

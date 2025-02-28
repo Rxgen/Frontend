@@ -245,7 +245,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
                               </td>
                               <td>{product.pack_size || "Unknown Size"}</td>
                               <td>{product.ndc}</td>
-                              <td>{product.brand.name}</td>
+                              <td>{product.brand?.name}</td>
                               <td>{(product.te_rating || "N/A").toUpperCase()}</td>
                               <td>{product.category?.name}</td>
                             </tr>

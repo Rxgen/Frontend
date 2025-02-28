@@ -2,21 +2,21 @@ export async function fetchNewstData(segment) {
     
 
     try {
-        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/news-collections?populate=*&sort[0]=order:asc`;
-        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/news-collections?populate=*&sort[0]=order:asc`, {
+        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/news-collections?populate=*`;
+        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/news-collections?populate=*`, {
             method: "GET",
             cache: 'no-cache',
         });
 
-        console.log("Leadrship",url);
+        console.log("News API Url",url);
 
         if (!response.ok) {
-            console.error(`Failed to fetch Leadershp data: ${response.status} ${response.statusText}`);
+            console.error(`Failed to fetch News  data: ${response.status} ${response.statusText}`);
             return [];
         }
 
         const data = await response.json();
-        console.log("Full Response:", data);
+        console.log("Full Response: News Data ", data);
 
         if (data && data.data) {
             console.log("Response Data: For API CAll News Data", data.data);

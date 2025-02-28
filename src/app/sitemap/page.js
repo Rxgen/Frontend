@@ -35,12 +35,13 @@ export default function Sitemap() {
         </div>
 
         <div className="site_container">
-          <h2 className="subtitle_24">Our Offering</h2>
+          <h2 className="subtitle_24">Our Offerings</h2>
           <div className="site_content">
-            <Link href="/our-offering">OUR OFFERINGS</Link>
+            <Link href="/our-offerings">OUR OFFERINGS</Link>
             <Link href="/generics-complex-generics">GENERICS & COMPLEX GENERICS </Link>
             <Link href="/innovative-medicine">INNOVATIVE MEDICINES</Link>
             <Link href="/products">OUR PRODUCTS</Link>
+            <Link href="/products#patient-education">PRODUCT EDUCATION</Link>
           </div>
         </div>
 
@@ -52,9 +53,9 @@ export default function Sitemap() {
         </div>
 
         <div className="site_container">
-          <h2 className="subtitle_24">People</h2>
+          <h2 className="subtitle_24">Our People</h2>
           <div className="site_content">
-            <Link href="/people">PEOPLE</Link>
+            <Link href="/our-people">OUR PEOPLE</Link>
             <Link href="/our-culture">OUR CULTURE</Link>
             <Link href="/career">CAREER</Link>
           </div>

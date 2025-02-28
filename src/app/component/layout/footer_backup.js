@@ -96,8 +96,8 @@ const Footer = ({}) => {
         </Link>
       </span>
       <span>
-        <Link href="/people" className="border_link">
-          PEOPLE
+        <Link href="/our-people" className="border_link">
+          OUR PEOPLE
         </Link>
       </span>
       <span>
