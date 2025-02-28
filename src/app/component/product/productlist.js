@@ -241,7 +241,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
                               </td>
                               <td>{strength}</td>
                               <td>
-                                <img src={imageUrl} alt={product_name.trim() || "Product image"} width="100" height="100" />
+                                <Image src={imageUrl} alt={product_name.trim() || "Product image"} width="100" height="100" />
                               </td>
                               <td>{product.pack_size || "Unknown Size"}</td>
                               <td>{product.ndc}</td>
@@ -255,7 +255,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
                     </table>
                   </div>
                 </div>
-                
+
               </>
             )}
           </>
