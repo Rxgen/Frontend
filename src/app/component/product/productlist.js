@@ -255,7 +255,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
                     </table>
                   </div>
                 </div>
-
+                
               </>
             )}
           </>
@@ -324,6 +324,8 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
             <Image src="/images/icons/green_arrow.webp" alt="Green Arrow for pagination" width={8} height={13} />
           </button>
         </div>
+
+        <p className="para product_para">*All registered trademarks are the property of their respective owners. These products are intended for U.S. residents only.</p>
 
 
       </section>
