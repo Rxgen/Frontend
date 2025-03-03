@@ -8,7 +8,7 @@ export async function fetchNewstData(segment) {
             cache: 'no-cache',
         });
 
-        console.log("News API Url",url);
+        console.log("News Data From Api",url);
 
         if (!response.ok) {
             console.error(`Failed to fetch News  data: ${response.status} ${response.statusText}`);

@@ -77,28 +77,18 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
 
           {/* Grid View Options */}
           <div className="product_grid">
-            <div className="grid_text">GRID</div>
+            
             <button
-              className={`grid_button two_grid ${gridView === "two_grid" ? "active" : ""}`}
+              className={`grid_text two_grid ${gridView === "two_grid" ? "active" : ""}`}
               onClick={() => handleGridView("two_grid")}
             >
-              <Image
-                src="/images/icons/grid_1.webp"
-                alt="Two Grid View"
-                width="16"
-                height="16"
-              />
+             GRID
             </button>
             <button
-              className={`grid_button three_grid ${gridView === "three_grid" ? "active" : ""}`}
+              className={`grid_text three_grid ${gridView === "three_grid" ? "active" : ""}`}
               onClick={() => handleGridView("three_grid")}
             >
-              <Image
-                src="/images/icons/grid_2.webp"
-                alt="Three Grid View"
-                width="25"
-                height="16"
-              />
+              LIST
             </button>
           </div>
 
@@ -244,7 +234,15 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
                                 <Image src={imageUrl} alt={product_name.trim() || "Product image"} width="100" height="100" />
                               </td>
                               <td>{product.pack_size || "Unknown Size"}</td>
-                              <td>{product.ndc}</td>
+                              <td>
+    
+                                  {product.ndc ? product.ndc.split(',').map((ndc, index) => (
+                                    <span key={index}>
+                                      {ndc.trim()}
+                                      {index < product.ndc.split(',').length - 1 && <br />} 
+                                    </span>
+                                  )) : "N/A"}
+                                </td>
                               <td>{product.brand?.name}</td>
                               <td>{(product.te_rating || "N/A").toUpperCase()}</td>
                               <td>{product.category?.name}</td>
