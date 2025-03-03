@@ -138,15 +138,7 @@ export default function ProductDetails({ productdata }) {
                 <div className="info_title">NDC#</div>
                 <span>:</span>
                 <div className="info_detail">
-                  {ndcList.length > 0 ? (
-                    <ul>
-                      {ndcList.map((ndc) => (
-                        <li key={ndc}>{ndc}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    'N/A'
-                  )}
+                {product.ndc && product.ndc ? product.ndc : 'N/A'}
                 </div>
               </div>
 
@@ -183,11 +175,37 @@ export default function ProductDetails({ productdata }) {
               )}
             </div>
             {product.saving_card_popup_content && (
+            <div className="btn_container">
+             <div className="product_pdf">
+              {/* Render PDF links */}
+              {product.pdf_files && product.pdf_files.length > 0 ? (
+                product.pdf_files.map((file, index) => (
+                  <a
+                    key={index}
+                    href={getMediaUrl(file.pdf.url)}
+                    className="pdf_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {file.name}
+                  </a>
+                ))
+              ) : (
+                <div>No PDF files available</div>
+              )}
+            </div>
+
+            {product.saving_card_popup_content && (
             <div className="popup_pdf">
               <Link href="#" className="pdf_link product_btn" onClick={openPopup}>Download Co-pay Savings Card</Link>
-              <div class="para">General Terms & Conditions</div>
+              <div className="para">General Terms & Conditions</div>
             </div>
             )}
+              
+            </div>
+            )}
+
+            {!product.saving_card_popup_content && (
             <div className="product_pdf">
               {/* Render PDF links */}
               {product.pdf_files && product.pdf_files.length > 0 ? (
@@ -206,6 +224,7 @@ export default function ProductDetails({ productdata }) {
                 <div>No PDF files available</div>
               )}
             </div>
+             )}
           </div>
         </div>
         <p className="para product_para">*All registered trademarks are the property of their respective owners. These products are intended for U.S. residents only.</p>
@@ -228,14 +247,11 @@ export default function ProductDetails({ productdata }) {
               <input type="checkbox" name="" id="check_term" />
               I agree and accept the Privacy Policy and the Terms of use of this website
             </label>
-          </div>
-
-          {error && <div className="error-message">{error}</div>}
-          <div className="popup_pdf">
+            {error && <div className="error">{error}</div>}
             <Link 
               href={product.download_saving_card_link}
               target="_blank" 
-              className="pdf_link product_btn" 
+              className="pdf_link" 
               onClick={handleDownloadClick} 
               >
               Download Co-pay Savings Card
