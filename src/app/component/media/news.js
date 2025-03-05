@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function News({News}){
+  console.log("Press News Data " , News)
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
