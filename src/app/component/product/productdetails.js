@@ -9,12 +9,14 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { EffectFade } from "swiper/modules";
 import Link from "next/link";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 export default function ProductDetails({ productdata }) {
   const product = productdata[0];
   console.log("Product after Destructuring:", productdata);
   console.log("Product Brand after Destructuring:", product.brand);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [iframeSrc, setIframeSrc] = useState("");
 
   const [PopupActive, setPopupActive] = useState(false);
   const [error, setError] = useState("");
@@ -22,6 +24,53 @@ export default function ProductDetails({ productdata }) {
   const ndcList = product.ndc && typeof product.ndc === "string"
     ? product.ndc.split(",").map((ndc) => ndc.trim())
     : [];
+
+    const handlePlayButtonClick = (videoUrl) => {
+      setIframeSrc(`${videoUrl}?autoplay=1`);
+      setIsVideoPlaying(true);
+    };
+
+
+    useEffect(() => {
+      console.log("test");
+      // Select all the elements with the 'poster_img' class
+      const videoImages = document.querySelectorAll('.inhaler_video .poster_img');
+  
+      // Function to handle video play when poster image is clicked
+      const handleImageClick = (event) => {
+        // Get the video URL from the 'data-video-url' attribute
+        const videoUrl = event.target.dataset.videoUrl;
+        console.log("Hii");
+  
+        // Find the iframe element inside the clicked inhaler video container
+        const iframeToPlay = event.target.closest('.inhaler_video').querySelector('iframe');
+  
+        // Check if the iframe exists and if autoplay isn't already added to the URL
+        if (iframeToPlay && iframeToPlay.src && !iframeToPlay.src.includes('autoplay=1')) {
+          // Add the autoplay query string to the video URL
+          iframeToPlay.src = `${videoUrl}?autoplay=1`;
+        }
+  
+        // Add active class to the parent div for styling
+        event.target.closest('.inhaler_video').classList.add('active');
+  
+        // Set video as playing
+        setIsVideoPlaying(true);
+        setIframeSrc(`${videoUrl}?autoplay=1`);
+      };
+  
+      // Attach the click event to each video poster image
+      videoImages.forEach((image) => {
+        image.addEventListener('click', handleImageClick);
+      });
+  
+      // Cleanup event listeners when the component is unmounted
+      return () => {
+        videoImages.forEach((image) => {
+          image.removeEventListener('click', handleImageClick);
+        });
+      };
+    }, []);
 
     const openPopup = (e) => {
       e.preventDefault();
@@ -245,7 +294,7 @@ export default function ProductDetails({ productdata }) {
           <div className="contact_terms">
             <label htmlFor="check_term">
               <input type="checkbox" name="" id="check_term" />
-              I agree and accept the Privacy Policy and the Terms of use of this website
+              I am over the age of 18 and I agree to the Terms and Conditions.
             </label>
             {error && <div className="error">{error}</div>}
             <Link 

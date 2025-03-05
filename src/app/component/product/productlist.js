@@ -8,10 +8,12 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
   const [products, setProducts] = useState(productdata);
   const [isActive, setIsActive] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Select Category");
-  //const [filteredProducts, setFilteredProducts] = useState(productdata); // Filtered products
   const [loading, setLoading] = useState(false);
   const [gridView, setGridView] = useState("two_grid");
   const router = useRouter();
+
+
+  
 
   /* useLayoutEffect(() => {
     // Ensure that the element exists before trying to scroll

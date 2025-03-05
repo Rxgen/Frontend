@@ -1,9 +1,14 @@
-export async function fetchNewstData(segment) {
+export async function fetchNewstData(page = 1, pageSize = 9, search = "") {
     
 
     try {
-        const url =`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/news-collections?populate=*`;
-        const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/news-collections?populate=*`, {
+      let url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/news-collections`;
+      if (search) {
+        url += `?filters[news_title][$contains]=${search}&filters[news_detail][$contains]=${search}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+      } else {
+        url += `?pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+      }
+        const response = await fetch(url, {
             method: "GET",
             cache: 'no-cache',
         });
@@ -18,13 +23,10 @@ export async function fetchNewstData(segment) {
         const data = await response.json();
         console.log("Full Response: News Data ", data);
 
-        if (data && data.data) {
-            console.log("Response Data: For API CAll News Data", data.data);
-            return data.data;
-        } else {
-            console.error("API response does not contain expected `data` property. Received:", data);
-            return [];
-        }
+        return {
+          pressnews: data.data || [],
+          totalPages:  data.meta.pagination.pageCount || 1,
+        };
     } catch (error) {
         console.error("Error fetching banner data:", error);
         return [];

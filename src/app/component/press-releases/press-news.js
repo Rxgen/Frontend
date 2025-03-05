@@ -1,19 +1,34 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
-export default function PressNews({PressNewsData}){
-  console.log("Press News all Data" , PressNewsData);
-  const [currentPage, setCurrentPage] = useState(1);
-  const newsPerPage = 9;
+export default function PressNews({PressNewsData, totalPages, currentPage=2  }){
+  console.log("Press News all Data", PressNewsData);
+  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
   const sortedNews = PressNewsData.sort((a, b) => new Date(b.date) - new Date(a.date));
-  const indexOfLastNews = currentPage * newsPerPage;
+  /* const indexOfLastNews = currentPage * newsPerPage;
   const indexOfFirstNews = indexOfLastNews - newsPerPage;
   const currentNews = sortedNews.slice(indexOfFirstNews, indexOfLastNews);
 
-  
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const totalPages = Math.ceil(sortedNews.length / newsPerPage); 
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);  */
+
+  const handlePageChange = (page) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("page", page);
+    window.location.search = params.toString();
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/media/press-releases?search=${searchQuery}`);
+    }
+  };
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -28,11 +43,18 @@ export default function PressNews({PressNewsData}){
 <section data-section="news_section" className="news_section press_section">
       <h2 className="subtitle_60">Press Releases</h2>
       <div className="news_search_container">
-        <input type="text" placeholder="Search News" />
-        <button type="submit">Search</button>
+      
+        <input
+          type="text"
+          placeholder="Search News"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button type="submit" onClick={handleSearch}>Search</button>
+      
       </div>
       <div className="news_container">
-        {currentNews.map((newsItem, index) => (
+        {sortedNews.map((newsItem, index) => (
           newsItem && (
             <Link key={index} href={`/media/${newsItem.slug}`} className="news_content">
               <div className="news_date">{formatDate(newsItem.date)}</div>
@@ -44,16 +66,70 @@ export default function PressNews({PressNewsData}){
 
       {/* Pagination */}
       <div className="product_pagination">
-      {Array.from({ length: Math.ceil(sortedNews.length / newsPerPage) }, (_, index) => (
-          <button
-            key={index + 1}
-            onClick={() => paginate(index + 1)}
-            className="pagination_number"
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
+                {/* Previous Button */}
+                <button
+                  type="button"
+                  className="keyboard_btn product_prev"
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  <Image src="/images/icons/green_arrow.webp" alt="Green Arrow" width={8} height={13} />
+                </button>
+      
+                {/* Pagination Numbers */}
+                {[...Array(totalPages)].map((_, index) => {
+                  const page = index + 1;
+      
+                  // Logic to display the first 5 pages, current page and last page, and ellipsis where necessary
+                  if (
+                    page <= 5 ||  // Always show the first 5 pages
+                    page === totalPages ||  // Always show the last page
+                    (page >= currentPage - 2 && page <= currentPage + 2) // Show pages within a range of ±2 from current page
+                  ) {
+                    return (
+                      <button
+                        key={page}
+                        type="button"
+                        onClick={() => handlePageChange(page)}
+                        className={`pagination_number ${currentPage === page ? 'active' : ''}`}
+                        disabled={currentPage === page}
+                      >
+                        <span>{page}</span>
+                      </button>
+                    );
+                  }
+      
+                  // Add ellipsis where necessary
+                  if (page === 6 && currentPage > 4) {
+                    return (
+                      <button key="ellipsis-start" type="button" className="pagination_ellipsis" disabled>
+                        <span>...</span>
+                      </button>
+                    );
+                  }
+      
+                  if (page === totalPages - 1 && currentPage < totalPages - 3) {
+                    return (
+                      <button key="ellipsis-end" type="button" className="pagination_ellipsis" disabled>
+                        <span>...</span>
+                      </button>
+                    );
+                  }
+      
+                  return null;
+                })}
+      
+                {/* Next Button */}
+                <button
+                  type="button"
+                  className="keyboard_btn product_next"
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                >
+                  <Image src="/images/icons/green_arrow.webp" alt="Green Arrow for pagination" width={8} height={13} />
+                </button>
+              </div>
+     
         
        
       
