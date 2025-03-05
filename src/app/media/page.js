@@ -3,11 +3,11 @@ import NewsBanner from "../component/media/newsbanner";
 import News from "../component/media/news";
 
 export default async function Newsdata() {
-  const newsdata = await fetchNewstData();
+  const { pressnews} = await fetchNewstData();
     return (
         <div>
           <NewsBanner />
-          <News  News={newsdata}/>
+          <News  News={pressnews}/>
         </div>
       )
 }
