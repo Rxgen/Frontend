@@ -14,17 +14,17 @@ export default function News({News}){
     });
   };
 
-  /* const sortedNews = News
+   const sortedNews = News
   .filter((newsItem) => newsItem) 
   .sort((a, b) => new Date(b.date) - new Date(a.date)) 
-  .slice(0, 4);  */
+  .slice(0, 4);  
 
 
     return(
       <section data-section="news_section" className="news_section">
     <h2 className="subtitle_60">Press Releases</h2>
     <div className="news_container">
-    {News.map((newsItem, index) => (
+    {sortedNews.map((newsItem, index) => (
      newsItem.boolean && (
     <Link key={index} href={`media/${newsItem.slug}`} className="news_content">
       <div className="news_date">{formatDate(newsItem.date)}</div>

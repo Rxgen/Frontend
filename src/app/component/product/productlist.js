@@ -231,21 +231,45 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
                                   {product_name.trim() || "Unnamed Product"}
                                 </a>
                               </td>
-                              <td>{product.strength ? product.strength.split(',').map((strength, index) => (
-                                  <span key={index}>
-                                  {strength.trim()}
-                                 {index < product.strength.split(',').length - 1 && <br />}
-                                </span>
-                                )) : "Unknown Strength"}</td>
+                              <td>
+                                    {product.custom_strength_list_view && product.custom_strength_list_view.length > 0 
+                                      ? product.custom_strength_list_view.split(',').map((strength, index) => (
+                                          <span key={index}>
+                                            {strength.trim()}
+                                            {index < product.custom_strength_list_view.split(',').length - 1 && <br />}
+                                          </span>
+                                        ))
+                                      : product.strength 
+                                        ? product.strength.split(',').map((strength, index) => (
+                                            <span key={index}>
+                                              {strength.trim()}
+                                              {index < product.strength.split(',').length - 1 && <br />}
+                                            </span>
+                                          ))
+                                        : "Unknown Strength"
+                                    }
+                                  </td>
                               <td>
                                 <Image src={imageUrl} alt={product_name.trim() || "Product image"} width="100" height="100" />
                               </td>
-                              <td>{product.pack_size ? product.pack_size.split(',').map((size, index) => (
-                                   <span key={index}>
-                                   {size.trim()}
-                                  {index < product.pack_size.split(',').length - 1 && <br />}
-                                </span>
-                                )) : "Unknown Size"}</td>
+                              <td>
+                                  {product.custom_pack_size_list_view && product.custom_pack_size_list_view.length > 0
+                                    ? product.custom_pack_size_list_view.split(',').map((size, index) => (
+                                        <span key={index}>
+                                          {size.trim()}
+                                          {index < product.custom_pack_size_list_view.split(',').length - 1 && <br />}
+                                        </span>
+                                      ))
+                                    : product.pack_size
+                                      ? product.pack_size.split(',').map((size, index) => (
+                                          <span key={index}>
+                                            {size.trim()}
+                                            {index < product.pack_size.split(',').length - 1 && <br />}
+                                          </span>
+                                        ))
+                                      : "Unknown Size"
+                                  }
+                                  </td>
                               <td>
     
                                   {product.ndc ? product.ndc.split(',').map((ndc, index) => (
