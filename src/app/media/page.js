@@ -4,6 +4,7 @@ import News from "../component/media/news";
 
 export default async function Newsdata() {
   const { pressnews} = await fetchNewstData();
+  console.log("Server component data", pressnews)
     return (
         <div>
           <NewsBanner />
