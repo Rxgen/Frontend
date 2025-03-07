@@ -28,8 +28,9 @@ export default function ProductDetails({ productdata }) {
    
     // Youtube Video Play Functionalty
     useEffect(() => {
-      const posterElement = document.querySelector('.play_btn');
-      if (posterElement) {
+      const posterElements = document.querySelectorAll('.play_btn'); // Get all play buttons
+      
+      posterElements.forEach((posterElement) => {
         const handleImageClick = (event) => {
           console.log("Direct click on poster image!");
           const inhalerVideoElement = event.target.closest('.inhaler_video');
@@ -37,20 +38,18 @@ export default function ProductDetails({ productdata }) {
             inhalerVideoElement.classList.add('active'); 
             const iframe = inhalerVideoElement.querySelector('iframe');
             if (iframe) {
-              const iframeSrc = iframe.src;
-              if (!iframeSrc.includes('autoplay=1')) {
-                iframe.src = iframeSrc.includes('?') ? `${iframeSrc}&autoplay=1` : `${iframeSrc}?autoplay=1`;
-                console.log('Updated iframe src with autoplay');
-              }
+              const iframeSrc = iframe.dataset.originalSrc || iframe.src;
+              iframe.src = iframeSrc.includes('?') ? `${iframeSrc}&autoplay=1` : `${iframeSrc}?autoplay=1`;
+              iframe.dataset.originalSrc = iframeSrc;
+              console.log('Updated iframe src with autoplay');
             }
           }
-    
         };
         posterElement.addEventListener('click', handleImageClick);
         return () => {
           posterElement.removeEventListener('click', handleImageClick);
         };
-      }
+      });
     }, []);
 
     const openPopup = (e) => {

@@ -34,53 +34,83 @@ export async function POST(request) {
         Query: ${query}
       `,
       html: `
-
-      <table style="width: 650px; margin: 0 auto; font-size: 16px; background: #f6fcf8; color: #000; font-family: Arial, Helvetica, sans-serif;">
-    <tr>
-        <td>
-            <table style="margin: 15px;">
+        <table style="width: 650px; margin: 0 auto; font-size: 16px; background: #f6fcf8; color: #000; font-family: Arial, Helvetica, sans-serif;">
+          <tr>
+            <td>
+              <table style="margin: 15px;">
                 <tr>
-                    <td><a href="" target="blank"><img src="assets/images/contact/icons/pharma.webp" alt="" width="95" height="35" style="margin-bottom: 30px;"></a></td>
+                  <td><a href="" target="blank"><img src="assets/images/contact/icons/pharma.webp" alt="" width="95" height="35" style="margin-bottom: 30px;"></a></td>
                 </tr>
                 <tr>
-                    <td>
-                        <table style="border-collapse: collapse;">
-                            <tr>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Name :</div></td>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Ravi Chauhan</div></td>
-                            </tr>
-                            <tr>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Organization :</div></td>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Webmaffia</div></td>
-                            </tr>
-                            <tr>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Email :</div></td>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;"><a href="mailto:ravi.chauhan@webmaffia.com" style="color: #000;">ravi.chauhan@webmaffia.com</a></div></td>
-                            </tr>
-                            <tr>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Tel No :</div></td>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;"><a href="tel:+9629021021" style="color: #000">9629021021</a></div></td>
-                            </tr>
-                            <tr>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Select Subject Lines :</div></td>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Other Enquiry</div></td>
-                            </tr>
-                            <tr>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Post your query :</div></td>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Test</div></td>
-                            </tr>
-                            <tr>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">I agree and accept the <a href="https://www.lupin.com/privacy-policy/" target="_blank" style="color: #000;">Privacy Policy</a> and the <a href="" target="_blank" style="color: #000;">Terms of use</a> of this website :</div></td>
-                                <td style="border: 1px solid #d2d2d2;"><div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Checked</div></td>
-                            </tr>
-                        </table>
-                    </td>
+                  <td>
+                    <table style="border-collapse: collapse;">
+                      <tr>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Name :</div>
+                        </td>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">${name}</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Organization :</div>
+                        </td>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">${organization}</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Email :</div>
+                        </td>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">
+                            <a href="mailto:${email}" style="color: #000;">${email}</a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Tel No :</div>
+                        </td>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">
+                            <a href="tel:+${number}" style="color: #000">${number}</a>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Select Subject Lines :</div>
+                        </td>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">${subject}</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Post your query :</div>
+                        </td>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">${query}</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">I agree and accept the <a href="https://www.lupin.com/privacy-policy/" target="_blank" style="color: #000;">Privacy Policy</a> and the <a href="" target="_blank" style="color: #000;">Terms of use</a> of this website :</div>
+                        </td>
+                        <td style="border: 1px solid #d2d2d2;">
+                          <div style="margin: 10px 15px; line-height: 1.5; letter-spacing: .5px;">Checked</div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
                 </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-        
+              </table>
+            </td>
+          </tr>
+        </table>
       `,
     };
 

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+
 const Footer = () => {
   return (
     <footer>
@@ -116,15 +117,24 @@ const Footer = () => {
                 </span>
               </div>
             </div>
-            <div className="footer_nav">
-              <span>PRIVACY</span>
-              <ul className="sub_footer">
-                <li><Link href="/your-privacy-choices" className="border_link inner_links">DO NOT SELL/ SHARE MY PERSONAL INFORMATION</Link></li>
-                <li><Link href="/privacy-policy" className="border_link inner_links">PRIVACY STATEMENT</Link></li>
-                <li><Link href="/pharmacovigilance" className="border_link inner_links">PHARMACOVIGILANCE PRIVACY STATEMENT</Link></li>
-                <li><Link href="/consumer-health" className="border_link inner_links">CONSUMER HEALTH DATA PRIVACY STATEMENT</Link></li>
-                <li><Link href="/notice" className="border_link inner_links">NOTICE AT COLLECTION</Link></li>
-              </ul>
+            <div className="nav_footer_container">
+              <div className="footer_nav">
+                <span>PRIVACY</span>
+                <ul className="sub_footer">
+                  <li><Link href="/your-privacy-choices" className="border_link inner_links">DO NOT SELL/ SHARE MY PERSONAL INFORMATION</Link></li>
+                  <li><Link href="/privacy-policy" className="border_link inner_links">PRIVACY STATEMENT</Link></li>
+                  <li><Link href="/pharmacovigilance" className="border_link inner_links">PHARMACOVIGILANCE PRIVACY STATEMENT</Link></li>
+                  <li><Link href="/consumer-health" className="border_link inner_links">CONSUMER HEALTH DATA PRIVACY STATEMENT</Link></li>
+                  <li><Link href="/notice" className="border_link inner_links">NOTICE AT COLLECTION</Link></li>
+                </ul>
+              </div>
+              <div className="footer_nav">
+                <span>LEGAL</span>
+                <ul className="sub_footer">
+                  <li><Link href="/images/dummy.pdf" target="_blank" className="border_link inner_links">TERMS OF USE</Link></li>
+                  
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -134,6 +144,7 @@ const Footer = () => {
 
       </div>
     </footer>
+    
   );
 };
 
