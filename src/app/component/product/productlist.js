@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Products({ productdata = [], totalPages, currentPage }) {
+export default function Products({ productdata = [], totalPages, currentPage ,totalproduct }) {
   const [products, setProducts] = useState(productdata);
   const [isActive, setIsActive] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("Select Category");
@@ -72,7 +72,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
         <div className="product_nav">
           <div className="product_text">
             <span id="product_number" className="product_number">
-              {productdata.length * totalPages}
+              {totalproduct}
             </span>{" "}
             ITEMS FOUND
           </div>
@@ -165,7 +165,7 @@ export default function Products({ productdata = [], totalPages, currentPage }) 
                           {/* Product Name */}
                           <div className="product_detail">
                             <Link href={`/products/${slug}`} passHref>
-                              <div className="subtitle_35">{product_name.trim()}</div>
+                              <div className="subtitle_30">{product_name.trim()}</div>
                             </Link>
 
                             {/* PDF Files */}

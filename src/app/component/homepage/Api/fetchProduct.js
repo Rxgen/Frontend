@@ -50,6 +50,7 @@ export async function fetchProducts(letter = "", page = 1,category = "", new_pro
       return {
         products: data.data || [],
         totalPages:  data.meta.pagination.pageCount || 1, // Default to 1 if not provided 
+        totalproduct:data.meta.pagination.total || 1,
       };
       
 

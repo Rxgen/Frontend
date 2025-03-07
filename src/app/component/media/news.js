@@ -21,6 +21,7 @@ export default function News({News}){
 
 
     return(
+      <div>
       <section data-section="news_section" className="news_section">
     <h2 className="subtitle_60">Press Releases</h2>
     <div className="news_container">
@@ -48,5 +49,21 @@ export default function News({News}){
         </Link>
     </div>
 </section>
+<section data-section="news_contact" className="media_contact news_contact">
+<div className="media_contact_container">
+  <div className="media_contact_Links">
+    <h2 className="subtitle_40">Media</h2>
+    <div className="subtitle_395">Rajalakshmi Azariah</div>
+    <div className="media_detail">
+      Vice President & Global Head -
+      Corporate Communications
+    </div>
+    <span className="contact_mail">
+      <Link href="mailto:rajalakshmiazariah@lupin.com">rajalakshmiazariah@lupin.com</Link>
+    </span>
+  </div>
+</div>
+</section>
+</div>
     )
 }

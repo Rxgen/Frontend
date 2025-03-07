@@ -25,51 +25,32 @@ export default function ProductDetails({ productdata }) {
     ? product.ndc.split(",").map((ndc) => ndc.trim())
     : [];
 
-    const handlePlayButtonClick = (videoUrl) => {
-      setIframeSrc(`${videoUrl}?autoplay=1`);
-      setIsVideoPlaying(true);
-    };
-
-
+   
+    // Youtube Video Play Functionalty
     useEffect(() => {
-      console.log("test");
-      // Select all the elements with the 'poster_img' class
-      const videoImages = document.querySelectorAll('.inhaler_video .poster_img');
-  
-      // Function to handle video play when poster image is clicked
-      const handleImageClick = (event) => {
-        // Get the video URL from the 'data-video-url' attribute
-        const videoUrl = event.target.dataset.videoUrl;
-        console.log("Hii");
-  
-        // Find the iframe element inside the clicked inhaler video container
-        const iframeToPlay = event.target.closest('.inhaler_video').querySelector('iframe');
-  
-        // Check if the iframe exists and if autoplay isn't already added to the URL
-        if (iframeToPlay && iframeToPlay.src && !iframeToPlay.src.includes('autoplay=1')) {
-          // Add the autoplay query string to the video URL
-          iframeToPlay.src = `${videoUrl}?autoplay=1`;
-        }
-  
-        // Add active class to the parent div for styling
-        event.target.closest('.inhaler_video').classList.add('active');
-  
-        // Set video as playing
-        setIsVideoPlaying(true);
-        setIframeSrc(`${videoUrl}?autoplay=1`);
-      };
-  
-      // Attach the click event to each video poster image
-      videoImages.forEach((image) => {
-        image.addEventListener('click', handleImageClick);
-      });
-  
-      // Cleanup event listeners when the component is unmounted
-      return () => {
-        videoImages.forEach((image) => {
-          image.removeEventListener('click', handleImageClick);
-        });
-      };
+      const posterElement = document.querySelector('.play_btn');
+      if (posterElement) {
+        const handleImageClick = (event) => {
+          console.log("Direct click on poster image!");
+          const inhalerVideoElement = event.target.closest('.inhaler_video');
+          if (inhalerVideoElement) {
+            inhalerVideoElement.classList.add('active'); 
+            const iframe = inhalerVideoElement.querySelector('iframe');
+            if (iframe) {
+              const iframeSrc = iframe.src;
+              if (!iframeSrc.includes('autoplay=1')) {
+                iframe.src = iframeSrc.includes('?') ? `${iframeSrc}&autoplay=1` : `${iframeSrc}?autoplay=1`;
+                console.log('Updated iframe src with autoplay');
+              }
+            }
+          }
+    
+        };
+        posterElement.addEventListener('click', handleImageClick);
+        return () => {
+          posterElement.removeEventListener('click', handleImageClick);
+        };
+      }
     }, []);
 
     const openPopup = (e) => {
