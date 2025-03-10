@@ -56,9 +56,9 @@ const SmartGuide = () => {
 
       try {
         const response = await fetch(
-          `https://lupinus-cms.devmaffia.in/api/products?${queryString}`
+          `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?${queryString}`
         );
-        console.log("APi Url For Serach Filter ",`https://lupinus-cms.devmaffia.in/api/products?${queryString}`)
+        console.log("APi Url For Serach Filter ",`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?${queryString}`)
         const data = await response.json();
         setProducts(data.data || []);
       } catch (error) {
@@ -66,6 +66,10 @@ const SmartGuide = () => {
       }
       setLoading(false);
     };
+
+    
+
+    
 
     // Only fetch products if there is any input (productName, NDC, or brand)
     if (productName || ndc || brandName) {

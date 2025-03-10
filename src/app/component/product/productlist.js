@@ -1,5 +1,5 @@
 "use client";
-import { useState, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -13,18 +13,35 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
   const router = useRouter();
 
 
-  
-
-  /* useLayoutEffect(() => {
-    // Ensure that the element exists before trying to scroll
-    const productListSection = document.getElementById("product_listing");
-    if (productListSection) {
-      productListSection.scrollIntoView({
-        behavior: "smooth", // Adds smooth scrolling
-        block: "start", // Scrolls to the top of the section
-      });
+  useEffect(() => {
+    const storedGridView = localStorage.getItem('gridView');
+    if (storedGridView) {
+      setGridView(storedGridView); 
+    } else {
+      setGridView("two_grid"); 
     }
-  }, [router.pathname]); */
+  }, []); 
+
+  
+  const handleGridView = (viewType) => {
+    setGridView(viewType); 
+    localStorage.setItem('gridView', viewType); 
+
+    
+    const params = new URLSearchParams(window.location.search);
+    params.set("grid", viewType); 
+    params.set("page", currentPage); 
+    window.history.replaceState(null, '', `?${params.toString()}`); 
+  };
+
+  
+  const handlePageChange = (page) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("page", page); 
+    params.set("grid", gridView); 
+    window.location.search = params.toString(); 
+  };
+
 
   const handleToggle = () => {
     setIsActive(true); // Show dropdown
@@ -34,11 +51,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
     setIsActive(false); // Hide dropdown
   };
 
-  const handlePageChange = (page) => {
-    const params = new URLSearchParams(window.location.search);
-    params.set("page", page);
-    window.location.search = params.toString();
-  };
+  
 
   const CategoryClick = (category) => {
     setSelectedCategory(category);
@@ -52,9 +65,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
     return `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
   };
 
-  const handleGridView = (viewType) => {
-    setGridView(viewType);
-  };
+ 
 
   const uniqueCategories = [
     ...new Set(productdata.map((product) => product.category?.name).filter(Boolean)),
@@ -128,8 +139,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
             ) : (
               <>
                 {/* Product Items */}
-                <div className={`product_main_container ${gridView === "three_grid" ? "active" : " "
-                  } ${gridView}`}>
+                <div className={`product_main_container ${gridView === "three_grid" ? "active" : ""} ${gridView}`}>
                   <div className={`product_item_container`}>
                     {productdata.map((product) => {
 
@@ -308,12 +318,10 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
           {/* Pagination Numbers */}
           {[...Array(totalPages)].map((_, index) => {
             const page = index + 1;
-
-            // Logic to display the first 5 pages, current page and last page, and ellipsis where necessary
             if (
-              page <= 5 ||  // Always show the first 5 pages
-              page === totalPages ||  // Always show the last page
-              (page >= currentPage - 2 && page <= currentPage + 2) // Show pages within a range of ±2 from current page
+              page <= 5 ||  
+              page === totalPages ||  
+              (page >= currentPage - 2 && page <= currentPage + 2) 
             ) {
               return (
                 <button
@@ -328,7 +336,6 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
               );
             }
 
-            // Add ellipsis where necessary
             if (page === 6 && currentPage > 4) {
               return (
                 <button key="ellipsis-start" type="button" className="pagination_ellipsis" disabled>

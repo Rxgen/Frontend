@@ -39,7 +39,7 @@ export async function POST(request) {
             <td>
               <table style="margin: 15px;">
                 <tr>
-                  <td><a href="" target="blank"><img src="assets/images/contact/icons/pharma.webp" alt="" width="95" height="35" style="margin-bottom: 30px;"></a></td>
+                  <td><a href="" target="blank"><img src="https://lupinus-c2cwazd8b2hggzh9.southindia-01.azurewebsites.net/images/contact/icons/pharma.webp" alt="" width="95" height="35" style="margin-bottom: 30px;"></a></td>
                 </tr>
                 <tr>
                   <td>
