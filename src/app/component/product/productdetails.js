@@ -284,6 +284,7 @@ export default function ProductDetails({ productdata }) {
               onClick={handleDownloadClick} 
               >
               Download Co-pay Savings Card
+              
             </Link>
           </div>
         </div>
