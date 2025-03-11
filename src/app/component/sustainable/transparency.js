@@ -3,7 +3,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Autoplay } from "swiper/modules";
+import "swiper/css/effect-fade";
+import { Autoplay, EffectFade } from "swiper/modules";
 import Image from "next/image";
 
 
@@ -17,11 +18,14 @@ export default function Transparency( { transparencydata } ) {
         loop={true}
         slidesPerView={1}
         spaceBetween={10}
-        modules={[Autoplay]}
+        modules={[Autoplay, EffectFade]}
+        speed={1000}
         autoplay={{
           delay: 3000,
           disableOnInteraction: false,
         }}
+        effect="fade"
+        allowTouchMove={false}
         
       >
         {transparencydata.map((item) => {

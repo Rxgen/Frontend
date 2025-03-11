@@ -4,7 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { Navigation, Thumbs } from "swiper/modules";
+import "swiper/css/effect-fade";
+import { Navigation, Thumbs, EffectFade } from "swiper/modules";
 import { useState } from "react";
 import Image from "next/image";
 
@@ -21,7 +22,8 @@ export default function Empower( {empowerdata} ) {
                     Empowering Communities and Upholding Human Rights
                 </h2>
                 <Swiper
-                    modules={[Navigation,Thumbs]}
+                    modules={[Navigation,Thumbs, EffectFade]}
+                    effect="fade"
                     navigation={{
                         prevEl: '.empower_prev',
                         nextEl: '.empower_next',
@@ -67,7 +69,9 @@ export default function Empower( {empowerdata} ) {
             loop={true} 
             speed={1000}
             watchSlidesProgress={true}
-            modules={[Thumbs]}>
+            effect="fade"
+            allowTouchMove={false}
+            modules={[Thumbs, EffectFade]}>
   {empowerdata.map((item) => {
     const imageUrl =
       item.image?.formats?.small?.url

@@ -78,6 +78,7 @@ export default function HistorySlider({ historydata }) {
                 prevEl: ".history_prev",
               }}
               loop={true}
+              allowTouchMove={false}
               slidesPerView={1}
               onSlideChange={handleSlideChange}
               ref={swiperRef}
@@ -103,10 +104,12 @@ export default function HistorySlider({ historydata }) {
           {/* Map Swiper with Thumbs functionality */}
           <Swiper
             className="mapSwiper"
-            modules={[Thumbs]}
+            modules={[Thumbs, EffectFade]}
+            effect="fade"
             loop={true}
             slidesPerView={1}
             watchSlidesProgress={true}
+            allowTouchMove={false}
             onSwiper={setThumbsSwiper} 
           >
             {sortedHistoryData.map((item, index) => (
