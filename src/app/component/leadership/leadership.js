@@ -18,7 +18,7 @@ export default function Leadership({ leadershipdata }) {
               <div className="leader_item">
                 {/* Leader Image */}
                 <Image
-                  src={getMediaUrl(leader.image.url)}
+                  src={getMediaUrl(leader.image?.url)}
                   alt={leader.image.alt || "Leader Image"}
                   className=""
                   width="450"

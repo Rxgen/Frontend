@@ -17,7 +17,7 @@ export default function Environmental ( { environmentaldata}){
         <div className="environment_container">
           {environmentaldata.map((item, index) => {
             const imageUrl = item?.image?.url
-              ? getMediaUrl(item.image.formats.small.url)
+              ? getMediaUrl(item.image?.url)
               : "assets/images/sustainable/environment/default.webp";
   
             return (

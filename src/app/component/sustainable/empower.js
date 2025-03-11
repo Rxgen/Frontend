@@ -74,8 +74,8 @@ export default function Empower( {empowerdata} ) {
             modules={[Thumbs, EffectFade]}>
   {empowerdata.map((item) => {
     const imageUrl =
-      item.image?.formats?.small?.url
-        ? getMediaUrl(item.image.formats.small.url)
+      item.image?.url
+        ? getMediaUrl(item.image.url)
         : "assets/images/about/banner.webp";
 
     const imageWidth = item.image?.width || 155; 

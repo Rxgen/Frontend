@@ -28,8 +28,8 @@ export default function ProductDetails({ productdata }) {
    
     // Youtube Video Play Functionalty
     useEffect(() => {
-      const posterElements = document.querySelectorAll('.play_btn'); // Get all play buttons
-      
+      const posterElements = document.querySelectorAll('.play_btn'); 
+         
       posterElements.forEach((posterElement) => {
         const handleImageClick = (event) => {
           console.log("Direct click on poster image!");
@@ -49,7 +49,56 @@ export default function ProductDetails({ productdata }) {
         return () => {
           posterElement.removeEventListener('click', handleImageClick);
         };
+        
       });
+
+      const audioElement = document.getElementById("audioElement");
+      const audioContainer = document.querySelector(".audio_container");
+      const playIcon = document.querySelector(".audio_play");
+      const pauseIcon = document.querySelector(".audio_pause");
+      const progressLine = document.querySelector(".progress_line");
+      const cursorLine = document.querySelector(".cursor_line");
+      const audioText = document.querySelector(".audio_text");
+  
+      const playAudio = () => {
+        audioText.classList.add("hidden");
+        audioContainer.classList.remove("hidden");
+  
+        if (audioElement.paused) {
+          audioElement.play();
+          playIcon.classList.add("hidden");
+          pauseIcon.classList.remove("hidden");
+        } else {
+          audioElement.pause();
+          playIcon.classList.remove("hidden");
+          pauseIcon.classList.add("hidden");
+        }
+  
+        audioElement.addEventListener("timeupdate", () => {
+          const progress = (audioElement.currentTime / audioElement.duration) * 100;
+          progressLine.style.width = `${progress}%`;
+          cursorLine.style.left = `${progress}%`;
+        });
+  
+        audioElement.addEventListener("ended", () => {
+          progressLine.style.width = "0%";
+          cursorLine.style.left = "0%";
+          playIcon.classList.remove("hidden");
+          pauseIcon.classList.add("hidden");
+          audioText.classList.remove("hidden");
+          audioContainer.classList.add("hidden");
+        });
+      };
+  
+      playIcon.addEventListener("click", playAudio);
+      pauseIcon.addEventListener("click", playAudio);
+  
+      // Cleanup the event listeners when the component is unmounted
+      return () => {
+        playIcon.removeEventListener("click", playAudio);
+        pauseIcon.removeEventListener("click", playAudio);
+      };
+
     }, []);
 
     const openPopup = (e) => {

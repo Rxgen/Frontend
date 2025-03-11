@@ -6,7 +6,7 @@ export default function Community( {communitydata}){
     const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
     const ImageUrl = communitydata?.image?.url
-    ? getMediaUrl(communitydata.image.formats.small.url)
+    ? getMediaUrl(communitydata.image?.url)
     : "assets/images/about/banner.webp";
     return (
         <section data-section="community_section" className="community_section">
