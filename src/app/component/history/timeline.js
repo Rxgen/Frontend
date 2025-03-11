@@ -116,10 +116,10 @@ export default function HistorySlider({ historydata }) {
               <SwiperSlide key={index} className="swiper-slide">
                 {item.country_pin.map((pin, pinIndex) => (
                   <Image
-                    key={pinIndex}
+                    key={pin.pinlocation}
                     src={getMediaUrl(pin.slide.url)}
-                    alt={`Pin ${pinIndex + 1}`}
-                    className={`history_pin pin_${pinIndex + 1}`}
+                    alt={pin.pinlocation}
+                    className={`history_pin ${pin.pinlocation}`}
                     width="37"
                     height="57"
                   />

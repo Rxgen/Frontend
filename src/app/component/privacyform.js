@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -13,7 +13,7 @@ export default function PrivacyChoiceform() {
       agent_email: '',
       state: '',
       right: '',
-      request: '',
+      query: '',
       relationship: '',
       });
 
@@ -42,7 +42,7 @@ export default function PrivacyChoiceform() {
     if (!formData.agent_email) newErrors.agent_email = 'This field is required';
     if (!formData.state) newErrors.state = 'This field is required';
     if (!formData.right) newErrors.right = 'This field is required';
-    if (!formData.request) newErrors.request = 'This field is required';
+    if (!formData.query) newErrors.query = 'This field is required';
     if (!formData.relationship) newErrors.relationship = 'This field is required';
     return newErrors;
   };
@@ -79,6 +79,7 @@ export default function PrivacyChoiceform() {
 
       if (response.status === 200 || response.status === 201) {
         setSuccessMessage('Thanks for contacting us!');
+        await sendEmail(formData);
         setFormData({
           first_name: '',  // Ensure default value is an empty string
           last_name: '',
@@ -88,13 +89,36 @@ export default function PrivacyChoiceform() {
           agent_email: '',
           state: '',
           right: '',
-          request: '',
+          query: '',
           relationship: '',
         });
       }
     } catch (error) {
       console.error('Error submitting the form:', error);
       setSuccessMessage('Failed to submit. Please try again later.');
+    }
+  };
+
+  const sendEmail = async (formData) => {
+    try {
+      const response = await fetch('/api/send-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ formData }),
+      });
+  
+      const result = await response.json();
+  
+      if (response.ok) {
+        setSuccessMessage(result.message); // Success message
+      } else {
+        setSuccessMessage(result.message || 'Failed to send email. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setSuccessMessage('Failed to send email. Please try again later.');
     }
   };
 
@@ -217,12 +241,12 @@ return(
     
     <label className="form_label form_textarea">
       <textarea
-        name="request"  
+        name="query"  
         placeholder="Elaborate On Your Request"
-        value={formData.request}
+        value={formData.query}
         onChange={handleInputChange}
       ></textarea>
-      {errors.request && <span className="error_message">{errors.request}</span>}
+      {errors.query && <span className="error_message">{errors.query}</span>}
     </label>
 
     
