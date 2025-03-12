@@ -53,7 +53,7 @@ export default function News({News}){
 <div className="media_contact_container">
   <div className="media_contact_Links">
     <h2 className="subtitle_40">Media</h2>
-    <div className="subtitle_395">Rajalakshmi Azariah</div>
+    <div className="subtitle_34">Rajalakshmi Azariah</div>
     <div className="media_detail">
       Vice President & Global Head -
       Corporate Communications

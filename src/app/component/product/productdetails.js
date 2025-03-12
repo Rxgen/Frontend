@@ -27,31 +27,81 @@ export default function ProductDetails({ productdata }) {
 
    
     // Youtube Video Play Functionalty
-    useEffect(() => {
-      const posterElements = document.querySelectorAll('.play_btn'); 
+    // useEffect(() => {
+    //   const posterElements = document.querySelectorAll('.play_btn'); 
          
-      posterElements.forEach((posterElement) => {
-        const handleImageClick = (event) => {
-          console.log("Direct click on poster image!");
-          const inhalerVideoElement = event.target.closest('.inhaler_video');
-          if (inhalerVideoElement) {
-            inhalerVideoElement.classList.add('active'); 
-            const iframe = inhalerVideoElement.querySelector('iframe');
-            if (iframe) {
-              const iframeSrc = iframe.dataset.originalSrc || iframe.src;
-              iframe.src = iframeSrc.includes('?') ? `${iframeSrc}&autoplay=1` : `${iframeSrc}?autoplay=1`;
-              iframe.dataset.originalSrc = iframeSrc;
-              console.log('Updated iframe src with autoplay');
-            }
-          }
-        };
-        posterElement.addEventListener('click', handleImageClick);
-        return () => {
-          posterElement.removeEventListener('click', handleImageClick);
-        };
+    //   posterElements.forEach((posterElement) => {
+    //     const handleImageClick = (event) => {
+    //       console.log("Direct click on poster image!");
+    //       const inhalerVideoElement = event.target.closest('.inhaler_video');
+    //       if (inhalerVideoElement) {
+    //         inhalerVideoElement.classList.add('active'); 
+    //         const iframe = inhalerVideoElement.querySelector('iframe');
+    //         if (iframe) {
+    //           const iframeSrc = iframe.dataset.originalSrc || iframe.src;
+    //           iframe.src = iframeSrc.includes('?') ? `${iframeSrc}&autoplay=1` : `${iframeSrc}?autoplay=1`;
+    //           iframe.dataset.originalSrc = iframeSrc;
+    //           console.log('Updated iframe src with autoplay');
+    //         }
+    //       }
+    //     };
+    //     posterElement.addEventListener('click', handleImageClick);
+    //     return () => {
+    //       posterElement.removeEventListener('click', handleImageClick);
+    //     };
         
-      });
+    //   });
 
+    //   const audioElement = document.getElementById("audioElement");
+    //   const audioContainer = document.querySelector(".audio_container");
+    //   const playIcon = document.querySelector(".audio_play");
+    //   const pauseIcon = document.querySelector(".audio_pause");
+    //   const progressLine = document.querySelector(".progress_line");
+    //   const cursorLine = document.querySelector(".cursor_line");
+    //   const audioText = document.querySelector(".audio_text");
+  
+    //   const playAudio = () => {
+    //     audioText.classList.add("hidden");
+    //     audioContainer.classList.remove("hidden");
+  
+    //     if (audioElement.paused) {
+    //       audioElement.play();
+    //       playIcon.classList.add("hidden");
+    //       pauseIcon.classList.remove("hidden");
+    //     } else {
+    //       audioElement.pause();
+    //       playIcon.classList.remove("hidden");
+    //       pauseIcon.classList.add("hidden");
+    //     }
+  
+    //     audioElement.addEventListener("timeupdate", () => {
+    //       const progress = (audioElement.currentTime / audioElement.duration) * 100;
+    //       progressLine.style.width = `${progress}%`;
+    //       cursorLine.style.left = `${progress}%`;
+    //     });
+  
+    //     audioElement.addEventListener("ended", () => {
+    //       progressLine.style.width = "0%";
+    //       cursorLine.style.left = "0%";
+    //       playIcon.classList.remove("hidden");
+    //       pauseIcon.classList.add("hidden");
+    //       audioText.classList.remove("hidden");
+    //       audioContainer.classList.add("hidden");
+    //     });
+    //   };
+  
+    //   playIcon.addEventListener("click", playAudio);
+    //   pauseIcon.addEventListener("click", playAudio);
+  
+    //   // Cleanup the event listeners when the component is unmounted
+    //   return () => {
+    //     playIcon.removeEventListener("click", playAudio);
+    //     pauseIcon.removeEventListener("click", playAudio);
+    //   };
+
+    // }, []);
+    useEffect(() => {
+      // Check if the product has audio elements
       const audioElement = document.getElementById("audioElement");
       const audioContainer = document.querySelector(".audio_container");
       const playIcon = document.querySelector(".audio_play");
@@ -59,48 +109,54 @@ export default function ProductDetails({ productdata }) {
       const progressLine = document.querySelector(".progress_line");
       const cursorLine = document.querySelector(".cursor_line");
       const audioText = document.querySelector(".audio_text");
-  
-      const playAudio = () => {
-        audioText.classList.add("hidden");
-        audioContainer.classList.remove("hidden");
-  
-        if (audioElement.paused) {
-          audioElement.play();
-          playIcon.classList.add("hidden");
-          pauseIcon.classList.remove("hidden");
-        } else {
-          audioElement.pause();
-          playIcon.classList.remove("hidden");
-          pauseIcon.classList.add("hidden");
-        }
-  
-        audioElement.addEventListener("timeupdate", () => {
-          const progress = (audioElement.currentTime / audioElement.duration) * 100;
-          progressLine.style.width = `${progress}%`;
-          cursorLine.style.left = `${progress}%`;
-        });
-  
-        audioElement.addEventListener("ended", () => {
-          progressLine.style.width = "0%";
-          cursorLine.style.left = "0%";
-          playIcon.classList.remove("hidden");
-          pauseIcon.classList.add("hidden");
-          audioText.classList.remove("hidden");
-          audioContainer.classList.add("hidden");
-        });
-      };
-  
-      playIcon.addEventListener("click", playAudio);
-      pauseIcon.addEventListener("click", playAudio);
-  
-      // Cleanup the event listeners when the component is unmounted
-      return () => {
-        playIcon.removeEventListener("click", playAudio);
-        pauseIcon.removeEventListener("click", playAudio);
-      };
-
-    }, []);
-
+    
+      if (audioElement && playIcon && pauseIcon && audioContainer && progressLine && cursorLine && audioText) {
+        // Audio play functionality
+        const playAudio = () => {
+          audioText.classList.add("hidden");
+          audioContainer.classList.remove("hidden");
+    
+          if (audioElement.paused) {
+            audioElement.play();
+            playIcon.classList.add("hidden");
+            pauseIcon.classList.remove("hidden");
+          } else {
+            audioElement.pause();
+            playIcon.classList.remove("hidden");
+            pauseIcon.classList.add("hidden");
+          }
+    
+          audioElement.addEventListener("timeupdate", () => {
+            const progress = (audioElement.currentTime / audioElement.duration) * 100;
+            progressLine.style.width = `${progress}%`;
+            cursorLine.style.left = `${progress}%`;
+          });
+    
+          audioElement.addEventListener("ended", () => {
+            progressLine.style.width = "0%";
+            cursorLine.style.left = "0%";
+            playIcon.classList.remove("hidden");
+            pauseIcon.classList.add("hidden");
+            audioText.classList.remove("hidden");
+            audioContainer.classList.add("hidden");
+          });
+        };
+    
+        // Attach event listeners to play and pause icons
+        playIcon.addEventListener("click", playAudio);
+        pauseIcon.addEventListener("click", playAudio);
+    
+        // Cleanup the event listeners when the component is unmounted
+        return () => {
+          playIcon.removeEventListener("click", playAudio);
+          pauseIcon.removeEventListener("click", playAudio);
+        };
+      } else {
+        console.log("Audio elements are not available for this product");
+      }
+    
+    }, [productdata]); // Adding `productdata` as a dependency to re-run when the product changes
+    
     const openPopup = (e) => {
       e.preventDefault();
       setPopupActive(true);
