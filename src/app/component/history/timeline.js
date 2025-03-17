@@ -38,7 +38,7 @@ export default function HistorySlider({ historydata }) {
       <div className="timeline_container">
         <h2 className="subtitle_60">Major Milestones</h2>
         <p className="para">
-          Since establishing its US presence, Lupin has recorded steady growth
+          Since establishing its U.S. presence, Lupin has recorded steady growth
           and consolidated its presence in the local market as the third major
           pharmaceutical company, measured by number of filled prescriptions.
         </p>
