@@ -202,7 +202,9 @@ const ContactForm = () => {
               checked={formData.agree}
               onChange={handleInputChange}
             />
-            I agree and accept the Privacy Policy and the Terms of use of this website
+            <span>
+            I agree and accept the <a href="/privacy-policy"target="_blank"> Privacy Statement</a> and the <a href="/images/terms-of-use-lupin-us-website.pdf" target="_blank"> Terms of use</a> of this website
+            </span>
           </label>
           
         </div>

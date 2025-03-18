@@ -209,6 +209,7 @@ return(
         <option value="California">California</option>
         <option value="Connecticut">Connecticut</option>
         <option value="Nevada">Nevada</option>
+        <option value="Texas">Texas</option>
         <option value="Washington">Washington</option>
       </select>
       {errors.state && <span className="error_message">{errors.state}</span>}

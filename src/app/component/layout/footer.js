@@ -131,7 +131,7 @@ const Footer = () => {
               <div className="footer_nav">
                 <span>LEGAL</span>
                 <ul className="sub_footer">
-                  <li><Link href="/images/Terms-of-Use_Lupin US-website-March-2025.pdf" target="_blank" className="border_link inner_links">TERMS OF USE</Link></li>
+                  <li><Link href="/images/terms-of-use-lupin-us-website.pdf" target="_blank" className="border_link inner_links">TERMS OF USE</Link></li>
                   
                 </ul>
               </div>
