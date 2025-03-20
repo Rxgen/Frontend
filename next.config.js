@@ -13,6 +13,8 @@
 //   };
 
 // next.config.js
+
+
 module.exports = {
   images: {
     remotePatterns: [
@@ -52,8 +54,21 @@ module.exports = {
             key: "Referrer-Policy",
             value: "strict-origin-when-cross-origin",
           },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*", // Allow all domains, change to specific origin if needed
+          },
+          {
+            key: "Access-Control-Allow-Methods",
+            value: "GET, POST, OPTIONS, PUT, DELETE, PATCH",
+          },
+          {
+            key: "Access-Control-Allow-Headers",
+            value: "X-Requested-With, Content-Type, Authorization",
+          },
         ],
       },
     ];
   },
 };
+
