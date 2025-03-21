@@ -5,6 +5,12 @@ import Environmental from "../component/sustainable/environmental";
 import Empower from "../component/sustainable/empower";
 import Transparency from "../component/sustainable/transparency";
 
+export const generateMetadata = () => {
+    return {
+      title: 'Sustainability at Lupin US | Our Commitment to a Greener Future',
+      description: "Explore Lupin's sustainability efforts, focusing on environmental responsibility, social impact, and sustainable healthcare solutions",
+    };
+  }; 
 
 export default async function SustainablePage() {
     const data = await fetchSustainabletData("top_banner");

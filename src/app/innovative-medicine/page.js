@@ -4,6 +4,13 @@ import Medical from "../component/Innovative-medicine/medical";
 import Patient from "../component/Innovative-medicine/patient";
 import BrandPdf from "../component/Innovative-medicine/brand_pdf";
 
+export const generateMetadata = () => {
+  return {
+    title: 'Innovative Medicines: Advancing Healthcare with Cutting-Edge Solutions',
+    description: "Discover innovative medicines designed to advance healthcare and improve patient outcomes.",
+  };
+}; 
+
 export default async function InnovativeMedicinePage(){
     const data = await fetchInnovativeMedicineData("top_banner");
     const topbannerdata=data.top_banner;

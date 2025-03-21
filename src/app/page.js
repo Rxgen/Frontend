@@ -2,7 +2,6 @@
 import { fetchHomepageData } from './component/homepage/Api/Homepageapi';
 import HomePageClient from './component/homepageClient';
 
-
 export default async function HomePage() {
   
   const data = await fetchHomepageData("Banner");

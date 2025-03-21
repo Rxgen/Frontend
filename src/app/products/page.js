@@ -3,6 +3,13 @@ import Products from "../component/product/productlist";
 import Filter from "../component/product/filter";
 import Productbanner from "../component/product/productbanner";
 
+export const generateMetadata = () => {
+  return {
+    title: 'Explore Our Products | Quality Medicines for Better Health',
+    description: "Browse our range of high-quality medicines focused on better patient outcomes",
+  };
+};
+
 export default async function ProductsPage({ searchParams }) {
   const { letter = "", page = "1" , category = "" , new_products="",brand = "" , ndc= "", productName= ""} = searchParams; 
   console.log("Category api call " , category);

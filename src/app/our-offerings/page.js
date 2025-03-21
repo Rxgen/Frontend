@@ -4,6 +4,12 @@ import Generic from "../component/our-offerings/generic";
 import Product from "../component/our-offerings/product";
 import Innovative from "../component/our-offerings/innovative";
 
+export const generateMetadata = () => {
+    return {
+      title: 'Our Offerings at Lupin US | Innovative Healthcare Solutions',
+      description: "Discover Lupin US' diverse healthcare offerings, providing innovative solutions across generics, complex generics and specialty to improve patient outcomes.Explore Lupin's sustainability efforts, focusing on environmental responsibility, social impact, and sustainable healthcare solutions",
+    };
+  }; 
 
 export default async function OurOfferingPage( ){
     const data = await fetchOurOfferingData("top_banner");

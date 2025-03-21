@@ -203,7 +203,7 @@ const ContactForm = () => {
               onChange={handleInputChange}
             />
             <span>
-            I agree and accept the <a href="/privacy-policy"target="_blank"> Privacy Statement</a> and the <a href="/images/terms-of-use-lupin-us-website.pdf" target="_blank"> Terms of use</a> of this website
+            I agree and accept the <a href="/privacy-policy"target="_blank"> Privacy Statement</a> and the <a href="/images/terms-of-use-lupin-us-website.pdf" target="_blank"> Terms of Use</a> of this website
             </span>
           </label>
           
