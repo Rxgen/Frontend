@@ -2,6 +2,13 @@
 import { fetchHomepageData } from './component/homepage/Api/Homepageapi';
 import HomePageClient from './component/homepageClient';
 
+export const generateMetadata = () => {
+  return {
+    title: 'Leading Pharmaceutical Company in the US | Lupin',
+    description: "Lupin, a leading US pharmaceutical company, delivers innovative healthcare solutions. Dive in to explore more about one of the largest pharma company.",
+  };
+};
+
 export default async function HomePage() {
   
   const data = await fetchHomepageData("Banner");

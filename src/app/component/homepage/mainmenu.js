@@ -136,7 +136,7 @@ const Mainmenu = ({ menuActive, setMenuActive, setInnerMenuActive }) => {
                     <Link href="/contact-us" className="link_item" onClick={closeMenu}> Contact Us </Link>
                 </span>
                 <div className="nav_social">
-                    <Link href=""><Image src="/images/icons/linked_in_black.webp" alt="Linkdin profile" width="79" height="79" />
+                    <Link href="https://www.linkedin.com/company/lupin-pharmaceuticals/" target="_blank"><Image src="/images/icons/linked_in_black.webp" alt="Linkdin profile" width="79" height="79" />
                     </Link>
                 </div>
         </div>

@@ -19,7 +19,7 @@ export default function Product ( {productdata}){
                 </p>
                 <Link href="/products" className="black_cta">
                    <div className="cta_container">
-                     <span>Our Product</span>
+                     <span>Our Products</span>
                       <Image src="/images/icons/white_arrow.webp" alt="White Arrow " width="20" height="14" />
                  </div>
                 </Link>

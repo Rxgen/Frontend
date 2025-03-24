@@ -43,6 +43,7 @@ export default function Homebanner({ banners }) {
                   autoPlay
                   muted
                   loop
+                  playsInline
                   className="banner_video"
                 >
                    <source

@@ -7,7 +7,7 @@ import Product from "../component/generics-complex-generics/product";
 export const generateMetadata = () => {
   return {
     title: 'Generics & Complex Generics: Innovation by Lupin US',
-    description: "Explore Lupin US' range of generics and complex generics, providing affordable and innovative pharmaceutical solutions for better healthcare worldwide. Lupin US' diverse healthcare offerings, providing innovative solutions across generics, complex generics and specialty to improve patient outcomes.Explore Lupin's sustainability efforts, focusing on environmental responsibility, social impact, and sustainable healthcare solutions",
+    description: "Explore Lupin US' range of generics and complex generics, providing affordable and innovative pharmaceutical solutions for better healthcare worldwide.",
   };
 }; 
 

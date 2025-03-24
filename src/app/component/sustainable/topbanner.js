@@ -33,6 +33,7 @@ export default function Topbanner({ topbannerdata }) {
                     autoPlay
                     muted
                     loop
+                    playsInline
                     className="banner_video"
                 >
                     <source

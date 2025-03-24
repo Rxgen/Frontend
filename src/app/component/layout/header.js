@@ -8,6 +8,7 @@ const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
   const [innerMenuActive, setInnerMenuActive] = useState(false);
   const [scrolled, setScrolled] = useState(false); 
+  const [globeActive , setGlobeActive] = useState(false);
 
 
   useEffect(() => {
@@ -55,6 +56,10 @@ const Header = () => {
     setInnerMenuActive(false);
   };
 
+  const globeclick = () => {
+    setGlobeActive(prevState => !prevState);
+  }
+
   return (
     <div>
       <header className={scrolled ? "header_bg" : ""}>
@@ -71,8 +76,8 @@ const Header = () => {
 
         <div className="menu_icons">
         <div className="language_icon">
-  <Image src="/images/icons/language.webp" alt="Language" width={32} height={32} />
-  <ul className="global_links">
+  <Image src="/images/icons/language.webp" alt="Language" width={32} height={32} className="globe_icon" onClick={globeclick} />
+  <ul className={`global_links ${globeActive ? 'active' : ''}`}>
     <li>
       <Link href="https://www.lupin.com/" target="_blank" className="global_link">
         <Image src="/images/globe/img_1.webp" alt="Corporate" width={38} height={26} />

@@ -4,9 +4,9 @@ export async function fetchNewstData(page = 1, pageSize = 9, search = "") {
     try {
       let url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/news-collections`;
       if (search) {
-        url += `?filters[news_title][$contains]=${search}&filters[news_detail][$contains]=${search}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+        url += `?filters[news_title][$contains]=${search}&filters[news_detail][$contains]=${search}&pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=id:desc`;
       } else {
-        url += `?pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+        url += `?pagination[page]=${page}&pagination[pageSize]=${pageSize}&sort[0]=id:desc`;
       }
         const response = await fetch(url, {
             method: "GET",
