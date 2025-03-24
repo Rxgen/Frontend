@@ -23,7 +23,7 @@ export default function Product ( {productdata}){
                       <Image src="/images/icons/white_arrow.webp" alt="White Arrow " width="20" height="14" />
                  </div>
                 </Link>
-                <Link href="/products#patient-education" className="black_cta">
+                <Link href="/products#patient-education" className="black_cta" style={{ marginLeft: '3vw' }}>
                    <div className="cta_container">
                      <span>Product Education</span>
                       <Image src="/images/icons/white_arrow.webp" alt="White Arrow " width="20" height="14" />
