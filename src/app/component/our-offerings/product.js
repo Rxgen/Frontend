@@ -19,14 +19,21 @@ export default function Product ( {productdata}){
                 </p>
                 <Link href="/products" className="black_cta">
                    <div className="cta_container">
-                     <span>Know more</span>
+                     <span>Our Product</span>
+                      <Image src="/images/icons/white_arrow.webp" alt="White Arrow " width="20" height="14" />
+                 </div>
+                </Link>
+                <Link href="/products#patient-education" className="black_cta">
+                   <div className="cta_container">
+                     <span>Product Education</span>
                       <Image src="/images/icons/white_arrow.webp" alt="White Arrow " width="20" height="14" />
                  </div>
                 </Link>
             </div>
             <Image src="/images/flower_bg.webp" alt="White Arrow" className="flower_offer" width="1500" height="1500" />
         </div>
-    </section>
+        </section>
+
 
     )
 

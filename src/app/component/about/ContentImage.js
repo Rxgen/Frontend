@@ -45,13 +45,9 @@ export default function ContentImage({ contentdata }) {
               onMouseEnter={() => setActiveLink(index)}
             >
               <div className="about_inner_detail">
-                <h2 className="subtitle_40">
-                  {item.heading.split(" ").map((line, index) => (
-                    <React.Fragment key={index}>
-                      {line}
-                      {index < item.heading.split(" ").length - 1 && <br />}
-                    </React.Fragment>
-                  ))}
+                <h2 className="subtitle_40" dangerouslySetInnerHTML={{ __html: item.custom_heading }}>
+                 
+
                 </h2>
                 <div className="about_inner_content">
                   <p className="para">{item.description}</p>

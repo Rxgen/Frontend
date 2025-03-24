@@ -142,7 +142,7 @@ export default function Filter({ selectedLetter,selectedCategory }) {
               Injectables
             </a>
             <a
-              href="/images/product-listing/Lupin-Product-Catalog.pdf"
+              href="/images/product-listing/Lupin-Product-Catalog_3-21-2025.pdf"
               className="tab_link"
               target="_blank"
               download

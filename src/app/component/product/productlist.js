@@ -374,7 +374,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
         <h2 className="subtitle_30">EXPLORE PATIENT EDUCATION</h2>
         <div className="brand_container">
           <Link href="/products/albuterol-sulfate-inhalation-aerosol#albuterol" className="brand_box" style={{ height: '9.0882vw' }}>
-            <Image src="/images/icons/up_arrow.webp" alt="albuterol" width={57} height={62} className="brand_arrow" />
+            <Image src="/images/icons/up_arrow.webp" alt="albuterol " width={57} height={62} className="brand_arrow" />
             <span className="subtitle_20">
               Albuterol Sulfate Inhalation
             </span>
