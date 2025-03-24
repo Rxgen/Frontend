@@ -45,7 +45,7 @@ export default function ContentImage({ contentdata }) {
               onMouseEnter={() => setActiveLink(index)}
             >
               <div className="about_inner_detail">
-                <h2 className="subtitle_40" dangerouslySetInnerHTML={{ __html: item.custom_heading }}>
+                <h2 className="subtitle_40" id="custom_heading" dangerouslySetInnerHTML={{ __html: item.custom_heading }}>
                  
 
                 </h2>
