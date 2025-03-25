@@ -24,3 +24,11 @@
         gap: 4vw;
     }
 }
+
+@media (max-width: 540px) {
+    .product_table_container th:nth-child(5) {
+        width: 125px !important;
+      }
+}
+
+

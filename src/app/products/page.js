@@ -5,7 +5,7 @@ import Productbanner from "../component/product/productbanner";
 
 export const generateMetadata = () => {
   return {
-    title: 'Explore Our Products | Quality Medicines for Better Health',
+    title: 'Explore Our Products | Quality Medicines for Better Health.',
     description: "Browse our range of high-quality medicines focused on better patient outcomes",
   };
 };
