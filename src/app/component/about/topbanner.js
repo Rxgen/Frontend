@@ -9,11 +9,11 @@ export default function TopBanner({ topbannerdata }) {
   
     const desktopImageUrl = topbannerdata?.desktop_image?.url
       ? getMediaUrl(topbannerdata.desktop_image.url)
-      : "assets/images/about/banner.webp";
+      : "/assets/images/about/banner.webp";
   
     const mobileImageUrl = topbannerdata?.mobile_image?.url
       ? getMediaUrl(topbannerdata.mobile_image.url)
-      : "assets/images/about/mob_banner.webp";
+      : "/assets/images/about/mob_banner.webp";
   
       
     const bannerText = topbannerdata?.banner_text || "About Us";
