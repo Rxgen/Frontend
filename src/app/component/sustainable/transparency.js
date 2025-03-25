@@ -61,9 +61,9 @@ export default function Transparency( { transparencydata } ) {
         <p className="para">
             As we continue our ESG journey, governance remains a cornerstone of our sustainability
             efforts. By upholding the highest standards of ethical conduct, we aim to build trust with
-            our stakeholders and ensure the long-term success of our organization.We are proud to
+            our stakeholders and ensure the long-term success of our organization. We are proud to
             be a company that does not patent or enforce intellectual property (IP) rights on
-            diseases covered by the Access to Medicine Index (ATMI),2021 ,especially in LMlCs. This
+            diseases covered by the Access to Medicine Index (ATMI), 2021, especially in LMlCs. This
             approach reflects our belief that life-saving treatments should be accessible to all,
             regardless of geographic location or economic circumstances. We actively collaborate
             with suppliers, partners, and stakeholders to share best practices and ensure our
