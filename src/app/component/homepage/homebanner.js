@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Navigation, Pagination, Autoplay, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,23 +8,46 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-
 export default function Homebanner({ banners }) {
+  const [isMobile, setIsMobile] = useState(false);
+  const [key, setKey] = useState(0);
+
+  // Detect screen size on mount and page navigation
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 767);
+    };
+
+    handleResize(); // Check size initially
+    window.addEventListener("resize", handleResize);
+    
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Force re-render on page navigation (Fix iPhone caching issue)
+  useEffect(() => {
+    const handlePageShow = (event) => {
+      if (event.persisted) {
+        setKey((prevKey) => prevKey + 1);
+      }
+    };
+    window.addEventListener("pageshow", handlePageShow);
+    
+    return () => {
+      window.removeEventListener("pageshow", handlePageShow);
+    };
+  }, []);
+
   if (!banners || banners.length === 0) {
-    return null; 
+    return null;
   }
 
-  
-
- 
-
-  const getMediaUrl = (url) =>
-    `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
-
-  console.log("Image url ",getMediaUrl);
+  const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
   return (
-    <section  data-section="home_banner" className="home_banner banner_section" id="home_banner">
+    <section key={key} data-section="home_banner" className="home_banner banner_section" id="home_banner">
       <Swiper
         modules={[Navigation, Pagination, Autoplay, A11y]}
         slidesPerView={1}
@@ -40,7 +64,7 @@ export default function Homebanner({ banners }) {
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
             <div className="banner">
-              {/* Conditionally render an image or a video */}
+              {/* Conditionally render an image or a video based on media type */}
               {banner.banner_desktop_image.mime === "video/mp4" ? (
                 <video
                   width="1920"
@@ -50,34 +74,19 @@ export default function Homebanner({ banners }) {
                   loop
                   playsInline
                   className="banner_video"
+                  src={isMobile ? getMediaUrl(banner.banner_mobile_image.url) : getMediaUrl(banner.banner_desktop_image.url)}
                 >
-                   <source
-                    src={getMediaUrl(banner.banner_mobile_image.url)}
-                    type="video/mp4"
-                    media="(max-width: 767px)"
-                  />
-                  <source
-                    src={getMediaUrl(banner.banner_desktop_image.url)}
-                    type="video/mp4"
-                  />
-                 
                   Your browser does not support the video tag.
                 </video>
               ) : (
                 <picture>
                   <source
                     media="(max-width: 540px)"
-                    srcSet={getMediaUrl(
-                      banner.banner_mobile_image.url
-                    )}
+                    srcSet={getMediaUrl(banner.banner_mobile_image.url)}
                   />
                   <Image
-                    src={getMediaUrl(
-                     banner.banner_desktop_image.url
-                    )}
-                    alt={
-                      banner.banner_desktop_image.alternativeText || "Banner"
-                    }
+                    src={getMediaUrl(banner.banner_desktop_image.url)}
+                    alt={banner.banner_desktop_image.alternativeText || "Banner"}
                     className="banner_img"
                     width={1920}
                     height={943}
