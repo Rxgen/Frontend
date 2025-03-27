@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { headers } from "next/headers";
 import Image from "next/image";
 import { Navigation, Pagination, Autoplay, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,21 +13,22 @@ export default function Homebanner({ banners }) {
   const [isMobile, setIsMobile] = useState(false);
   const [key, setKey] = useState(0);
 
-  // Detect screen size on mount and page navigation
   useEffect(() => {
+    const userAgent = headers().get("user-agent") || "";
+    setIsMobile(/Mobi|Android/i.test(userAgent));
+
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 767);
     };
-
-    handleResize(); // Check size initially
+    handleResize();
     window.addEventListener("resize", handleResize);
-    
+
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  // Force re-render on page navigation (Fix iPhone caching issue)
+  
   useEffect(() => {
     const handlePageShow = (event) => {
       if (event.persisted) {
@@ -34,7 +36,7 @@ export default function Homebanner({ banners }) {
       }
     };
     window.addEventListener("pageshow", handlePageShow);
-    
+
     return () => {
       window.removeEventListener("pageshow", handlePageShow);
     };
@@ -64,11 +66,10 @@ export default function Homebanner({ banners }) {
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
             <div className="banner">
-              {/* Conditionally render an image or a video based on media type */}
+              {/* Video Handling */}
               {banner.banner_desktop_image.mime === "video/mp4" ? (
                 <video
-                  width="1920"
-                  height="968"
+                  width="100%"
                   autoPlay
                   muted
                   loop
