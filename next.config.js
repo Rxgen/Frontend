@@ -12,7 +12,7 @@
 //     },
 //   };
 
-// next.config.js
+ //next.config.js
 
 
 module.exports = {
@@ -27,23 +27,23 @@ module.exports = {
     ],
   },
 
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [
-          {
-            type: "header",
-            key: "x-forwarded-proto",
-            value: "http", // Detects HTTP request
-          },
-        ],
-        destination:
-          "https://lupinus-c2cwazd8b2hggzh9.southindia-01.azurewebsites.net/:path*", // Replace with your domain
-        permanent: true,
-      },
-    ];
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: "/:path*",
+  //       has: [
+  //         {
+  //           type: "header",
+  //           key: "x-forwarded-proto",
+  //           value: "http", // Detects HTTP request
+  //         },
+  //       ],
+  //       destination:
+  //         "https://lupinus-c2cwazd8b2hggzh9.southindia-01.azurewebsites.net/:path*", // Replace with your domain
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 
   async headers() {
     return [
@@ -56,7 +56,7 @@ module.exports = {
           },
           {
             key: "Access-Control-Allow-Origin",
-            value: "*", // Allow all domains, change to specific origin if needed
+            value: "*", 
           },
           {
             key: "Access-Control-Allow-Methods",

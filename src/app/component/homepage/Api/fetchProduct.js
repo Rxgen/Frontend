@@ -62,7 +62,7 @@ export async function fetchProducts(letter = "", page = 1,category = "", new_pro
 
   export async function fetchProductBySlug(slug) {
     try {
-      const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[slug][$eq]=${slug}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category`;
+      const url = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products?filters[slug][$eq]=${slug}&populate[0]=product_images.slide&populate[1]=pdf_files.pdf&populate[2]=brand&populate[3]=category&populate[4]=seo`;
 
 
       const response = await fetch(url, { method: "GET" });
