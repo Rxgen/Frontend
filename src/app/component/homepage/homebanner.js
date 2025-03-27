@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { headers } from "next/headers";
 import Image from "next/image";
 import { Navigation, Pagination, Autoplay, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,37 +13,17 @@ export default function Homebanner({ banners }) {
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    const userAgent = headers().get("user-agent") || "";
-    setIsMobile(/Mobi|Android/i.test(userAgent));
+    // Detect mobile based on screen width
+    setIsMobile(window.innerWidth <= 767);
 
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 767);
+    // Fix issue on iPhone where wrong video loads when navigating back
+    const handlePageShow = () => {
+      setKey((prevKey) => prevKey + 1); // Forces re-render
     };
-    handleResize();
-    window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  
-  useEffect(() => {
-    const handlePageShow = (event) => {
-      if (event.persisted) {
-        setKey((prevKey) => prevKey + 1);
-      }
-    };
     window.addEventListener("pageshow", handlePageShow);
-
-    return () => {
-      window.removeEventListener("pageshow", handlePageShow);
-    };
+    return () => window.removeEventListener("pageshow", handlePageShow);
   }, []);
-
-  if (!banners || banners.length === 0) {
-    return null;
-  }
 
   const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
