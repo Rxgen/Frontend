@@ -20,8 +20,6 @@ export default function HomeBanner({ banners, isServerMobile }) {
     setVideoSrc(isClientMobile ? "/videos/mobile-video.mp4" : "/videos/desktop-video.mp4");
   }, []);
 
-  
-
   return (
     <section  data-section="home_banner" className="home_banner banner_section" id="home_banner">
       <Swiper
@@ -45,7 +43,6 @@ export default function HomeBanner({ banners, isServerMobile }) {
                   loop
                   playsInline
                   className="banner_video"
-                  
                 >
                   <source
                     src={isServerMobile ? getMediaUrl(banner.banner_mobile_image.url) : getMediaUrl(banner.banner_desktop_image.url)}
