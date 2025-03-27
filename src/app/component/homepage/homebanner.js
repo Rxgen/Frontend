@@ -9,36 +9,21 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export default function HomeBanner({ banners, isServerMobile }) {
-  const [isMobile, setIsMobile] = useState(isServerMobile);
-  const [key, setKey] = useState(0);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    const handlePageShow = (event) => {
-      if (event.persisted) {
-        setKey((prevKey) => prevKey + 1);
-      }
-    };
-    window.addEventListener("pageshow", handlePageShow);
-    return () => window.removeEventListener("pageshow", handlePageShow);
-  }, []);
-
-  if (!banners || banners.length === 0) {
-    return null;
-  }
-
+  console.log("which device is " ,isServerMobile);
   const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
+  const [videoSrc, setVideoSrc] = useState(
+    isServerMobile ? "/videos/mobile-video.mp4" : "/videos/desktop-video.mp4"
+  );
+
+  useEffect(() => {
+    const isClientMobile = window.innerWidth < 768;
+    setVideoSrc(isClientMobile ? "/videos/mobile-video.mp4" : "/videos/desktop-video.mp4");
+  }, []);
+
+  
 
   return (
-    <section key={key} data-section="home_banner" className="home_banner banner_section" id="home_banner">
+    <section  data-section="home_banner" className="home_banner banner_section" id="home_banner">
       <Swiper
         modules={[Navigation, Pagination, Autoplay, A11y]}
         slidesPerView={1}
@@ -60,8 +45,12 @@ export default function HomeBanner({ banners, isServerMobile }) {
                   loop
                   playsInline
                   className="banner_video"
-                  src={isMobile ? getMediaUrl(banner.banner_mobile_image.url) : getMediaUrl(banner.banner_desktop_image.url)}
+                  
                 >
+                  <source
+                    src={isServerMobile ? getMediaUrl(banner.banner_mobile_image.url) : getMediaUrl(banner.banner_desktop_image.url)}
+                    type="video/mp4"
+                  />
                   Your browser does not support the video tag.
                 </video>
               ) : (
