@@ -28,7 +28,13 @@
 @media (max-width: 540px) {
     .product_table_container th:nth-child(5) {
         width: 150px !important;
+
+      }
+      .home_about .about_internal_links .internal_links{
+        padding-top: 1vw;
       }
 }
+
+
 
 

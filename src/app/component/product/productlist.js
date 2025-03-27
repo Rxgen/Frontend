@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect , useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,6 +12,9 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
   const [gridView, setGridView] = useState("two_grid");
   const router = useRouter();
 
+  const imageRefs = useRef([]);
+  const [maxHeight, setMaxHeight] = useState(0);
+
 
   useEffect(() => {
     const storedGridView = localStorage.getItem('gridView');
@@ -21,6 +24,32 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
       setGridView("two_grid"); 
     }
   }, []); 
+
+
+  useEffect(() => {
+    const adjustImageHeights = () => {
+      const images = document.querySelectorAll(".product_box img");
+      let maxHeight = 0;
+
+      images.forEach((img) => {
+        if (img.complete) {
+          maxHeight = Math.max(maxHeight, img.clientHeight);
+        } else {
+          img.onload = () => {
+            maxHeight = Math.max(maxHeight, img.clientHeight);
+            images.forEach((img) => (img.style.height = `${maxHeight}px`));
+          };
+        }
+      });
+
+      images.forEach((img) => (img.style.height = `${maxHeight}px`));
+    };
+
+    adjustImageHeights();
+    window.addEventListener("resize", adjustImageHeights);
+
+    return () => window.removeEventListener("resize", adjustImageHeights);
+  }, [products]);
 
   
   const handleGridView = (viewType) => {
@@ -141,7 +170,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
                 {/* Product Items */}
                 <div className={`product_main_container ${gridView === "three_grid" ? "active" : ""} ${gridView}`}>
                   <div className={`product_item_container`}>
-                    {productdata.map((product) => {
+                    {productdata.map((product,index) => {
 
                       const {
                         id,
@@ -158,14 +187,18 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
                           : "/assets/images/placeholder.webp";
 
                       return (
-                        <div className="product_item" key={id}>
+                        <div className="product_item" key={id}
+                        >
                           {/* Product Image */}
-                          <Link href={`/products/${slug}`} passHref className="product_box">
+                          <Link href={`/products/${slug}`} passHref className="product_box"
+                          
+                          >
                             <Image
                               src={imageUrl}
                               alt={product_name.trim() || "Product image"}
                               width="543"
                               height="460"
+                               
                             />
                             <span className="view_cta">
                               VIEW MORE
