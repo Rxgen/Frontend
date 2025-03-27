@@ -8,22 +8,32 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-export default function Homebanner({ banners }) {
-  const [isMobile, setIsMobile] = useState(false);
+export default function HomeBanner({ banners, isServerMobile }) {
+  const [isMobile, setIsMobile] = useState(isServerMobile);
   const [key, setKey] = useState(0);
 
   useEffect(() => {
-    // Detect mobile based on screen width
-    setIsMobile(window.innerWidth <= 767);
-
-    // Fix issue on iPhone where wrong video loads when navigating back
-    const handlePageShow = () => {
-      setKey((prevKey) => prevKey + 1); // Forces re-render
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
+  useEffect(() => {
+    const handlePageShow = (event) => {
+      if (event.persisted) {
+        setKey((prevKey) => prevKey + 1);
+      }
+    };
     window.addEventListener("pageshow", handlePageShow);
     return () => window.removeEventListener("pageshow", handlePageShow);
   }, []);
+
+  if (!banners || banners.length === 0) {
+    return null;
+  }
 
   const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
 
@@ -34,10 +44,7 @@ export default function Homebanner({ banners }) {
         slidesPerView={1}
         loop={true}
         speed={1500}
-        autoplay={{
-          delay: 3500,
-          disableOnInteraction: false,
-        }}
+        autoplay={{ delay: 3500, disableOnInteraction: false }}
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
@@ -45,7 +52,6 @@ export default function Homebanner({ banners }) {
         {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
             <div className="banner">
-              {/* Video Handling */}
               {banner.banner_desktop_image.mime === "video/mp4" ? (
                 <video
                   width="100%"
@@ -60,10 +66,7 @@ export default function Homebanner({ banners }) {
                 </video>
               ) : (
                 <picture>
-                  <source
-                    media="(max-width: 540px)"
-                    srcSet={getMediaUrl(banner.banner_mobile_image.url)}
-                  />
+                  <source media="(max-width: 540px)" srcSet={getMediaUrl(banner.banner_mobile_image.url)} />
                   <Image
                     src={getMediaUrl(banner.banner_desktop_image.url)}
                     alt={banner.banner_desktop_image.alternativeText || "Banner"}
@@ -81,12 +84,7 @@ export default function Homebanner({ banners }) {
                   {banner.cta && (
                     <a href={banner.cta.cta_url} className="circle_cta">
                       <span>{banner.cta.cta_text}</span>
-                      <Image
-                        src="/images/icons/white_arrow.webp"
-                        alt="arrow"
-                        width="20"
-                        height="14"
-                      />
+                      <Image src="/images/icons/white_arrow.webp" alt="arrow" width="20" height="14" />
                     </a>
                   )}
                 </div>
@@ -100,3 +98,5 @@ export default function Homebanner({ banners }) {
     </section>
   );
 }
+
+

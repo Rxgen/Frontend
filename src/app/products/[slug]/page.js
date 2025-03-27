@@ -5,7 +5,7 @@ import Filter from "@/app/component/product/filter";
 
 
 
-export async function generateMetadata({ params }) {
+/* export async function generateMetadata({ params }) {
   const { slug } = params;
 
   try {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
       description: "An error occurred while fetching product details.",
     };
   }
-}
+} */
 
 export default async function fetchproductdetails({ params }){
   const { slug } = params;
