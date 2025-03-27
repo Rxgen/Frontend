@@ -6,18 +6,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useEffect, useState } from "react";
+
 
 export default function Homebanner({ banners }) {
   if (!banners || banners.length === 0) {
     return null; 
   }
 
-  const [key, setKey] = useState(0);
+  
 
-  useEffect(() => {
-    setKey((prevKey) => prevKey + 1);
-  }, []);
+ 
 
   const getMediaUrl = (url) =>
     `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
@@ -25,7 +23,7 @@ export default function Homebanner({ banners }) {
   console.log("Image url ",getMediaUrl);
 
   return (
-    <section key={key} data-section="home_banner" className="home_banner banner_section" id="home_banner">
+    <section  data-section="home_banner" className="home_banner banner_section" id="home_banner">
       <Swiper
         modules={[Navigation, Pagination, Autoplay, A11y]}
         slidesPerView={1}
