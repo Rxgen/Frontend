@@ -6,16 +6,26 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useEffect, useState } from "react";
 
 
-export default function Homebanner({ banners }) {
+export default function Homebanner({ banners , isServerMobile }) {
+  console.log("which device is " ,isServerMobile);
+  //const getMediaUrl = (url) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
+  const [videoSrc, setVideoSrc] = useState(
+    isServerMobile ? "/videos/mobile-video.mp4" : "/videos/desktop-video.mp4"
+  );
+
+  useEffect(() => {
+    const isClientMobile = window.innerWidth < 768;
+    setVideoSrc(isClientMobile ? "/videos/mobile-video.mp4" : "/videos/desktop-video.mp4");
+  }, []);
+
+
   if (!banners || banners.length === 0) {
     return null; 
   }
 
-  
-
- 
 
   const getMediaUrl = (url) =>
     `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${url}`;
@@ -51,13 +61,8 @@ export default function Homebanner({ banners }) {
                   playsInline
                   className="banner_video"
                 >
-                   <source
-                    src={getMediaUrl(banner.banner_mobile_image.url)}
-                    type="video/mp4"
-                    media="(max-width: 767px)"
-                  />
                   <source
-                    src={getMediaUrl(banner.banner_desktop_image.url)}
+                    src={isServerMobile ? getMediaUrl(banner.banner_mobile_image.url) : getMediaUrl(banner.banner_desktop_image.url)}
                     type="video/mp4"
                   />
                  
