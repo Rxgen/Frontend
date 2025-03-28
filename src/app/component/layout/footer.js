@@ -94,6 +94,7 @@ const Footer = () => {
                   <li><Link href="/innovative-medicine" className="border_link">INNOVATIVE MEDICINES</Link></li>
                   <li><Link href="/products" className="border_link">OUR PRODUCTS</Link></li>
                   <li><Link href="/products#patient-education" className="border_link">PRODUCT EDUCATION</Link></li>
+                  <li><Link href="/return-good-policy" className="border_link">RETURN GOODS POLICY</Link></li>
                 </ul>
               </div>
               <div className="footer_nav">
