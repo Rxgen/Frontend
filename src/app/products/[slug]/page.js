@@ -5,16 +5,17 @@ import Filter from "@/app/component/product/filter";
 
 
 
-/* export async function generateMetadata({ params }) {
+ export async function generateMetadata({ params }) {
   const { slug } = params;
 
   try {
     const productSeoDetails = await fetchProductBySlug(slug);
+    console.log("Meta title and escription details",productSeoDetails)
 
     if (!productSeoDetails || productSeoDetails.length === 0) {
       return {
-        title: "Product Not Found",
-        description: "The product you are looking for does not exist.",
+        title: productSeoDetails[0].product_name,
+        description: " ",
       };
     }
 
@@ -22,8 +23,8 @@ import Filter from "@/app/component/product/filter";
     const { metaTitle, metaDescription } = seo || {};
 
     return {
-      title: metaTitle || "Default Title",
-      description: metaDescription || "Default Description",
+      title: metaTitle || productSeoDetails[0].product_name,
+      description: metaDescription || " ",
       canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/products/${slug}`,
     };
   } catch (error) {
@@ -33,7 +34,7 @@ import Filter from "@/app/component/product/filter";
       description: "An error occurred while fetching product details.",
     };
   }
-} */
+} 
 
 export default async function fetchproductdetails({ params }){
   const { slug } = params;

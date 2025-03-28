@@ -10,6 +10,68 @@
 }
 
 /* Ravi */
+/* Accordion for Page */
+
+/* Initially hide the accordion content */
+.accordion {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .accordion-item {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .accordion-button {
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    background-color: #f8f9fa;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .accordion-button:hover {
+    background-color: #e9ecef;
+  }
+  
+  .accordion-button.active {
+    background-color: #e9ecef;
+  }
+  
+  .accordion-button::after {
+    content: '+';
+    font-size: 20px;
+  }
+  
+  .accordion-button.active::after {
+    content: '-';
+  }
+  
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding: 0 15px;
+    background-color: white;
+  }
+  
+  .accordion-content.show {
+    max-height: 5000px; /* Adjust based on your content */
+    padding: 15px;
+  }
+  
+
+
 @media (max-width: 540px) {
     #custom_heading br {
          display: block; 
