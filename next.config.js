@@ -15,7 +15,7 @@
  //next.config.js
 
 
-module.exports = {
+ module.exports = {
   images: {
     remotePatterns: [
       {
@@ -27,23 +27,32 @@ module.exports = {
     ],
   },
 
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: "/:path*",
-  //       has: [
-  //         {
-  //           type: "header",
-  //           key: "x-forwarded-proto",
-  //           value: "http", // Detects HTTP request
-  //         },
-  //       ],
-  //       destination:
-  //         "https://lupinus-c2cwazd8b2hggzh9.southindia-01.azurewebsites.net/:path*", // Replace with your domain
-  //       permanent: true,
-  //     },
-  //   ];
-  // },
+  async redirects() {
+    return [
+      {
+        source: "/US/:path*", 
+        has: [
+          {
+            type: "header",
+            key: "x-forwarded-proto",
+            value: "http",
+          },
+        ],
+        destination: "https://www.lupin.com/US/:path*",
+        permanent: true,
+      },
+      {
+        source: "/albuterol-sulfate-inhalation/",
+        destination: "/products/albuterol-sulfate-inhalation-aerosol",
+        permanent: true,
+      },
+      {
+        source: "/tiotropium-bromide-inhalation-powder-capsule",
+        destination: "/products/tiotropium-bromide-inhalation-powder-capsules",
+        permanent: true,
+      },
+    ];
+  },
 
   async headers() {
     return [
