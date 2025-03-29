@@ -28,26 +28,31 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
 
   useEffect(() => {
     const adjustImageHeights = () => {
-      const images = document.querySelectorAll(".product_box img");
+      const images = Array.from(document.querySelectorAll(".product_box img"));
       let maxHeight = 0;
-
-      images.forEach((img) => {
-        if (img.complete) {
+      Promise.all(
+        images.map(
+          (img) =>
+            new Promise((resolve) => {
+              if (img.complete) {
+                resolve();
+              } else {
+                img.onload = resolve;
+              }
+            })
+        )
+      ).then(() => {
+        images.forEach((img) => {
           maxHeight = Math.max(maxHeight, img.clientHeight);
-        } else {
-          img.onload = () => {
-            maxHeight = Math.max(maxHeight, img.clientHeight);
-            images.forEach((img) => (img.style.height = `${maxHeight}px`));
-          };
-        }
+        });
+  
+        images.forEach((img) => (img.style.height = `${maxHeight}px`));
       });
-
-      images.forEach((img) => (img.style.height = `${maxHeight}px`));
     };
-
+  
     adjustImageHeights();
     window.addEventListener("resize", adjustImageHeights);
-
+  
     return () => window.removeEventListener("resize", adjustImageHeights);
   }, [products]);
 
