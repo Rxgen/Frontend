@@ -30,7 +30,7 @@
   async redirects() {
     return [
       {
-        source: "/US/:path*", 
+        source: "/:path*", 
         has: [
           {
             type: "header",
@@ -38,17 +38,12 @@
             value: "http",
           },
         ],
-        destination: "https://www.lupin.com/US/:path*",
+        destination: "https://frontend-six-rust-75.vercel.app/:path*",
         permanent: true,
       },
       {
-        source: "/albuterol-sulfate-inhalation/",
-        destination: "/products/albuterol-sulfate-inhalation-aerosol",
-        permanent: true,
-      },
-      {
-        source: "/tiotropium-bromide-inhalation-powder-capsule",
-        destination: "/products/tiotropium-bromide-inhalation-powder-capsules",
+        source: "/about-us/",
+        destination: "/corporate-overview",
         permanent: true,
       },
     ];
