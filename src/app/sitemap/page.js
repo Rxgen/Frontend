@@ -42,6 +42,7 @@ export default function Sitemap() {
             <Link href="/innovative-medicine">INNOVATIVE MEDICINES</Link>
             <Link href="/products">OUR PRODUCTS</Link>
             <Link href="/products#patient-education">PRODUCT EDUCATION</Link>
+            <Link href="/return-good-policy">RETURN GOODS POLICY</Link>
           </div>
         </div>
 
