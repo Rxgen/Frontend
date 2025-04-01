@@ -30,26 +30,14 @@
   async redirects() {
     return [
       {
-        source: "/:path*", 
-        has: [
-          {
-            type: "header",
-            key: "x-forwarded-proto",
-            value: "http",
-          },
-        ],
-        destination: "https://frontend-six-rust-75.vercel.app/:path*",
-        permanent: true,
-      },
-      {
-        source: "/about-us/",
-        destination: "/corporate-overview",
+        source: "/xyz", 
+        destination: "/about-us",
         permanent: true,
       },
     ];
   },
 
-  async headers() {
+  /* async headers() {
     return [
       {
         source: "/(.*)",
@@ -73,6 +61,6 @@
         ],
       },
     ];
-  },
+  }, */
 };
 
