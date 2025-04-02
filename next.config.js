@@ -28,13 +28,7 @@
   },
 
   async redirects() {
-    return [
-      {
-        source: "/xyz", 
-        destination: "/about-us",
-        permanent: true,
-      },
-    ];
+     return await fetchRedirects();
   },
 
   /* async headers() {
@@ -63,4 +57,66 @@
     ];
   }, */
 };
+
+
+// next.config.js
+// module.exports = {
+//     images: {
+//       remotePatterns: [
+//         {
+//           protocol: 'http',
+//           hostname: '127.0.0.1',
+//           port: '1337', // Leave empty if there's no specific port
+//           pathname: '/**', // Match all paths
+//         },
+//       ],
+//     },
+//   };
+  
+
+  // Staging
+
+  // module.exports = {
+  //   images: {
+  //     remotePatterns: [
+  //       {
+  //         protocol: 'https',
+  //         hostname: 'staging-cms.welspunflooring.com',
+  //         port: '', // Leave empty if there's no specific port
+  //         pathname: '/**', // Match all paths
+  //       },
+  //     ],
+  //   },
+  // };
+
+
+
+  // Live
+
+
+  async function fetchRedirects() {
+    try {
+        const res = await fetch("https://lupinus-cms.devmaffia.in/api/redirects");
+        const jsonResponse = await res.json();
+        
+        const redirects = jsonResponse.data || [];
+        console.log("Redirects API response:", redirects);
+
+        if (!Array.isArray(redirects)) {
+            console.error("Redirects API response is not an array:", redirects);
+            return [];
+        }
+
+        return redirects.map(redirect => ({
+            source: redirect.source,
+            destination: redirect.destination,
+            permanent: redirect.permanent ?? true 
+        }));
+    } catch (error) {
+        console.error("Error fetching redirects:", error);
+        return [];
+    }
+}
+
+  
 
