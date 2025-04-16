@@ -10,6 +10,8 @@ export default function TermsPopup() {
   const handlePopupClick = (e) => {
     e.preventDefault(); 
     setIsActive(false); 
+    localStorage.setItem('triggerCookies', 'true');
+    window.dispatchEvent(new Event('storage'));
     
   };
   return (
@@ -21,7 +23,7 @@ export default function TermsPopup() {
       We encourage you to review our updated <Link href="/images/terms-of-use-lupin-us-website.pdf" target="_blank">Terms of Use.</Link> <br />By continuing, you agree to the updated Terms listed here.
       </div>
       <div className="product_pdf">
-        <Link href="/" className="pdf_link" onClick={handlePopupClick}>Continue</Link>
+        <Link href="/" className="pdf_link" onClick={handlePopupClick} >Continue</Link>
       </div>
     </div>
     <Image src="/images/guide_bg.webp" alt="Guide " className="guide_bg" width="1574" height="658" />
