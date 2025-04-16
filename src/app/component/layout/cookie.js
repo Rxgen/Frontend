@@ -73,7 +73,7 @@ export default function CookiePopup() {
           </p>
   
           <p className="para">
-            By clicking "Accept All" you consent to the collection of your personal information (which may include your Consumer Health Data)
+            By clicking &quot;Accept All&quot; you consent to the collection of your personal information (which may include your Consumer Health Data)
             through 1st and 3rd party cookies (or similar). To edit your cookie preferences, use the options below.
           </p>
   

@@ -79,7 +79,7 @@ export const CookieAccordion = ({ preferences, setPreferences }) => {
       {COOKIE_DATA.map((item, index) => (
         <div key={item.category} className="accordion_item">
           <div className="accordion_header" onClick={() => toggleAccordion(index)}>
-            <h4 className='subtitle_20'>{item.category}</h4>
+            <h4 className='subtitle_18'>{item.category}</h4>
             <label className="switch">
               <input
                 type="checkbox"

@@ -57,7 +57,7 @@ const CookieConsentPopup = ({ isActive, onClose }) => {
           This website uses cookies to enhance your overall web browsing experience, provide you with ads tailored to your interests, and allow us to measure our audience and collect other analytical data about the use of our website.
         </p>
         <p className="para">
-          By clicking "Accept All" you consent to the collection of your personal information (which may include your Consumer Health Data) through 1st and 3rd party cookies (or similar). To edit your cookie preferences, use the options below.
+          By clicking &quot;Accept All&quot; you consent to the collection of your personal information (which may include your Consumer Health Data) through 1st and 3rd party cookies (or similar). To edit your cookie preferences, use the options below.
         </p>
         <p className="para">
           For more information, please visit our <Link href="/privacy-policy" className="light_link border_link">Privacy Statement</Link>.

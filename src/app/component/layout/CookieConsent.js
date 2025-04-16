@@ -1,6 +1,7 @@
 'use client'; 
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function CookieConsentPopup() {
   const [showPopup, setShowPopup] = useState(false);
@@ -60,7 +61,7 @@ export default function CookieConsentPopup() {
           us to measure our audience and collect other analytical data about the use of our website.
         </p>
         <p className="para">
-          By clicking "Accept All" you consent to the collection of your personal information (which may include your Consumer Health Data)
+          By clicking &quot;Accept All&quot; you consent to the collection of your personal information (which may include your Consumer Health Data)
           through 1st and 3rd party cookies (or similar). To edit your cookie preferences, use the options below.
         </p>
         <p className="para">
@@ -78,7 +79,7 @@ export default function CookieConsentPopup() {
           </button>
         </div>
         <p className="para">
-          Depending on where you live, you may also be able to exercise your right to opt out or withdraw your consent.{' '}
+          Depending on where you live, you may also be able to exercise your right to opt out or withdraw your consent.
           <Link href="/your-privacy-choices" className="light_link border_link">Do Not Sell/Share My Personal Information</Link>.
         </p>
       </div>
