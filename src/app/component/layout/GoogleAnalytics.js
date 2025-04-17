@@ -1,7 +1,12 @@
+"use client" ;
 import Script from "next/script";
+import { usePathname } from 'next/navigation';
 
 export function GoogleTagManager() {
-  const gtmId = "G-Z65NXZ560J";
+  const pathname = usePathname();
+  const isAlbuterolPage = pathname === "/product/albuterol-sulfate-inhalation-aerosol";
+  const gtmId = isAlbuterolPage ? "GTM-WFD9MZW" : "G-Z65NXZ560J";
+  
 
   return (
     <>
@@ -28,3 +33,6 @@ export function GoogleTagManager() {
     </>
   );
 }
+
+
+

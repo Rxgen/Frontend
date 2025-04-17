@@ -12,7 +12,7 @@ export async function POST(request) {
       'Product | Adverse events': 'drugsafety@lupin.com',
       'Product | Customer service': 'CustomerService-LPI@lupin.com',
       'Product | Patient assistance': 'drugsafety@lupin.com',
-      'Product | Clinical trials': 'Being created', 
+      'Product | Clinical trials': 'info@lupin.com', 
       'Partner with Lupin in the U.S. | Business development': 'businessdevelopment@lupin.com',
       'Media Contact': 'info@lupin.com',
       'Other Enquiry': 'info@lupin.com',
