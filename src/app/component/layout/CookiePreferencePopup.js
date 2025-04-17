@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { setCookie, getCookie } from './utils/cookieUtils';
 import { CookieAccordion } from './CookieAccordion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const COOKIE_CATEGORIES = [
   'necessary',
@@ -75,6 +76,13 @@ const CookieConsentPopup = ({ isActive, onClose }) => {
             Save & Accept
           </Link>
         </div>
+       <Link href="#" className="close_cookies"
+       onClick={(e) => {
+        e.preventDefault(); 
+         setVisible(false); 
+         onClose?.(); 
+      }}
+       ><Image src="/images/icons/close_popup.webp"  alt="Close Popup" width={14} height={14} /></Link> 
       </div>
     </div>
   );

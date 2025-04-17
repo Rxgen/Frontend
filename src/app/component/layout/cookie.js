@@ -11,13 +11,16 @@ export default function CookiePopup() {
   
   useEffect(() => {
     const checkConsent = () => {
-      const show = localStorage.getItem('triggerCookies');
-      if (show === 'true') {
+      const trigger = localStorage.getItem('triggerCookies') === 'true';
+      const hasPreferences = localStorage.getItem('cookiePreferences');
+
+      if (trigger && !hasPreferences) {
         setIsMainPopupVisible(true);
         document.body.classList.add('overflow');
-        localStorage.removeItem('triggerCookies');
+        localStorage.removeItem('triggerCookies'); 
       }
     };
+
     checkConsent();
     window.addEventListener('storage', checkConsent);
 
