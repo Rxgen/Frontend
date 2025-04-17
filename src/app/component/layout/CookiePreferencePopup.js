@@ -76,7 +76,13 @@ const CookieConsentPopup = ({ isActive, onClose }) => {
             Save & Accept
           </Link>
         </div>
-       <Link href="#" className="close_cookies"><Image src="/images/icons/close_popup.webp"  alt="Close Popup" width={14} height={14} /></Link> 
+       <Link href="#" className="close_cookies"
+       onClick={(e) => {
+        e.preventDefault(); 
+         setVisible(false); 
+         onClose?.(); 
+      }}
+       ><Image src="/images/icons/close_popup.webp"  alt="Close Popup" width={14} height={14} /></Link> 
       </div>
     </div>
   );

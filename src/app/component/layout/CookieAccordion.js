@@ -101,7 +101,8 @@ export const CookieAccordion = ({ preferences, setPreferences }) => {
                <p>{item.description}</p>
 
     {item.cookies && item.cookies.length > 0 && (
-      <table>
+      <div className="cookies_table">
+         <table>
         <thead>
           <tr>
             <th>Cookie</th>
@@ -119,6 +120,8 @@ export const CookieAccordion = ({ preferences, setPreferences }) => {
           ))}
         </tbody>
       </table>
+      </div>
+     
     )}
   </div>
 )}
