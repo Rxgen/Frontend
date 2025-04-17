@@ -24,6 +24,6 @@ export default async function NoticePage() {
       );
     } catch (error) {
       console.error('Error fetching privacy policy:', error);
-      return <div>Error loading content. Please try again later.</div>;
+      return <div>Error loading content. Please try again later</div>;
     }
   }
