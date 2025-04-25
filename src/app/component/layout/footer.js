@@ -38,7 +38,7 @@ const Footer = () => {
                 </Link>
               </span>
               <span>
-                <Link href="mailto:CustomerService-lpi@lupin.com" className="border_link">
+                <Link href="mailto:customerservice-lpi@lupin.com" className="border_link">
                   customerservice-lpi@lupin.com
                 </Link>
                 <div className="contact_text">(for U.S. marketed products only)</div>
@@ -47,7 +47,7 @@ const Footer = () => {
                 <Link href="mailto:dsrm@lupin.com" className="border_link">
                   dsrm@lupin.com
                 </Link>
-                <div className="contact_text">(for products marketed in India)</div>
+                <div className="contact_text">(for products marketed in U.S.)</div>
               </span>
             </div>
             <Link href="https://www.linkedin.com/company/lupin-pharmaceuticals/" target="_blank" className="linked_in">

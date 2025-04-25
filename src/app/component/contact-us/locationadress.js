@@ -1,5 +1,6 @@
 "use client";
 import  {useEffect,useState} from "react";
+import Link from "next/link";
 
 export default function LocationAddress({ locationaddress = [] }) {
   const [maxBoxHeightVw, setMaxBoxHeightVw] = useState('auto');
@@ -44,6 +45,28 @@ export default function LocationAddress({ locationaddress = [] }) {
   }, []);
 
   return (
+<div>
+
+    <section className="contact_address">
+    <h2 className="subtitle_60">For Customer Service</h2>
+    <div className="lupin_address">
+        <div className="lupin_contact">
+            <span>
+                Phone :
+                <Link href="tel:+8665874617" className="border_link">&nbsp;866-587-4617</Link>
+            </span>
+            <span>
+                <Link href="mailto:customerservice-lpi@lupin.com" className="border_link">customerservice-lpi@lupin.com</Link>
+                <div className="contact_text">(for U.S. marketed products only)</div>
+            </span>
+            <span>
+                <Link href="mailto:dsrm@lupin.com" className="border_link">dsrm@lupin.com</Link>
+                <div className="contact_text">(for products marketed in U.S.)</div>
+            </span>
+        </div>
+    </div>
+    </section>
+
     <section data-section="contact_location" className="contact_location">
       <h2 className="subtitle_60">Lupin U.S. Locations</h2>
       <p className="para">
@@ -77,6 +100,7 @@ export default function LocationAddress({ locationaddress = [] }) {
         ))}
       </div>
     </section>
+</div>
   );
 }
 
