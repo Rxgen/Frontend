@@ -92,7 +92,7 @@ export default function CookiePopup() {
             <p className="para">Thank you for consenting to the use of cookies on our website.</p>
             <p className="para">We use cookies to enhance your overall web browsing experience, provide you with ads tailored to your interests, allow us to measure our audience, and collect other analytical data about the use of our website.</p>
             <p className="para">We share personal information (including Consumer Health Data) collected through cookies with our advertising and analytics partners.</p>
-            <p className="para">By clicking "Accept All" you consent to the sharing of your personal information (including Consumer Health Data) through 1st and 3rd party cookies (or similar). To edit your cookie preferences, use the options below.</p>
+            <p className="para">By clicking &quot;Accept All&quot; you consent to the sharing of your personal information (including Consumer Health Data) through 1st and 3rd party cookies (or similar). To edit your cookie preferences, use the options below.</p>
             <p className="para">For more information, please visit our <Link href="/privacy-policy" className="light_link border_link">Privacy Statement</Link>.</p>
           </div>
 
