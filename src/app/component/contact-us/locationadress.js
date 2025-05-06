@@ -1,5 +1,5 @@
 "use client";
-import  {useEffect,useState} from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export default function LocationAddress({ locationaddress = [] }) {
@@ -45,62 +45,71 @@ export default function LocationAddress({ locationaddress = [] }) {
   }, []);
 
   return (
-<div>
+    <div>
 
-    <section className="contact_address">
-    <h2 className="subtitle_60">For Customer Service</h2>
-    <div className="lupin_address">
-        <div className="lupin_contact">
-            <span>
+      <section className="contact_address">
+        <div className="address_content">
+          <h2 className="subtitle_40">For Customer Service or  <br />Patient Assistance</h2>
+          <div className="lupin_address">
+            <div className="lupin_contact">
+              <span>
                 Phone :
-                <Link href="tel:+8665874617" className="border_link">&nbsp;866-587-4617</Link>
-            </span>
-            <span>
-                <Link href="mailto:customerservice-lpi@lupin.com" className="border_link">customerservice-lpi@lupin.com</Link>
-                <div className="contact_text">(for U.S. marketed products only)</div>
-            </span>
-            <span>
-                <Link href="mailto:dsrm@lupin.com" className="border_link">dsrm@lupin.com</Link>
-                <div className="contact_text">(for products marketed in U.S.)</div>
-            </span>
-        </div>
-    </div>
-    </section>
-
-    <section data-section="contact_location" className="contact_location">
-      <h2 className="subtitle_60">Lupin U.S. Locations</h2>
-      <p className="para">
-        Lupin U.S. Corporate Headquarters is located in Baltimore MD, with four
-        additional pharmaceutical research and manufacturing offices located in
-        New Jersey, Pennsylvania and Florida.
-      </p>
-      <div className="contact_location_container">
-        {locationaddress.map((location, index) => (
-          <div
-            key={index}
-            className="location_box"
-            style={{ height: maxBoxHeightVw === "auto" ? "auto" : `${maxBoxHeightVw}vw` }}
-          >
-            <h3 className="subtitle_30">{location.name}</h3>
-            <div className="subtitle_15">{location.location_detail}</div>
-            <p
-              className="para"
-              style={{ height: maxParaHeightVw === "auto" ? "auto" : `${maxParaHeightVw}vw` }}
-            >
-              {location.description}
-            </p>
-            <div
-              className="location_address"
-              style={{ height: maxAddressHeightVw === "auto" ? "auto" : `${maxAddressHeightVw}vw` }}
-            >
-
-              <div className="address_content"dangerouslySetInnerHTML={{ __html: location.location_address }} />
+                <Link href="tel:+8665874617" className="border_link">&nbsp;+1 866-587-4617</Link>
+              </span>
+              <span>
+                Email :
+                <Link href="mailto:customerservice-lpi@lupin.com" className="border_link">&nbsp;customerservice-lpi@lupin.com</Link>
+              </span>
             </div>
           </div>
-        ))}
-      </div>
-    </section>
-</div>
+        </div>
+        <div className="address_content">
+          <h2 className="subtitle_40">For Product Quality and  <br />Adverse Events</h2>
+          <div className="lupin_address">
+            <div className="lupin_contact">
+              <span>
+                Email :
+                <Link href="mailto:dsrm@lupin.com" className="border_link">&nbsp;dsrm@lupin.com</Link>
+                </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-section="contact_location" className="contact_location">
+        <h2 className="subtitle_60">Lupin U.S. Locations</h2>
+        <p className="para">
+          Lupin U.S. Corporate Headquarters is located in Baltimore MD, with four
+          additional pharmaceutical research and manufacturing offices located in
+          New Jersey, Pennsylvania and Florida.
+        </p>
+        <div className="contact_location_container">
+          {locationaddress.map((location, index) => (
+            <div
+              key={index}
+              className="location_box"
+              style={{ height: maxBoxHeightVw === "auto" ? "auto" : `${maxBoxHeightVw}vw` }}
+            >
+              <h3 className="subtitle_30">{location.name}</h3>
+              <div className="subtitle_15">{location.location_detail}</div>
+              <p
+                className="para"
+                style={{ height: maxParaHeightVw === "auto" ? "auto" : `${maxParaHeightVw}vw` }}
+              >
+                {location.description}
+              </p>
+              <div
+                className="location_address"
+                style={{ height: maxAddressHeightVw === "auto" ? "auto" : `${maxAddressHeightVw}vw` }}
+              >
+
+                <div className="address_content" dangerouslySetInnerHTML={{ __html: location.location_address }} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }
 

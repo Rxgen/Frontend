@@ -31,24 +31,22 @@ const Footer = () => {
               Naples, FL 34108
             </address>
             <div className="lupin_contact">
-              <span>
-                Phone: 
-                <Link href="tel:+8665874617" className="border_link">
-                   &nbsp;866-587-4617
-                </Link>
+            <h2 className="subtitle_30">For Customer Service or  <br />Patient Assistance</h2>
+            <span>
+                Phone :
+                <Link href="tel:+8665874617" className="border_link">&nbsp;+1 866-587-4617</Link>
               </span>
               <span>
-                <Link href="mailto:customerservice-lpi@lupin.com" className="border_link">
-                  customerservice-lpi@lupin.com
-                </Link>
-                <div className="contact_text">(for U.S. marketed products only)</div>
+                Email :
+                <Link href="mailto:customerservice-lpi@lupin.com" className="border_link">&nbsp;customerservice-lpi@lupin.com</Link>
               </span>
-              <span>
-                <Link href="mailto:dsrm@lupin.com" className="border_link">
-                  dsrm@lupin.com
-                </Link>
-                <div className="contact_text">(for products marketed in U.S.)</div>
-              </span>
+            </div>
+            <div className="lupin_contact">
+            <h2 className="subtitle_30">For Product Quality and  <br />Adverse Events</h2>
+            <span>
+                Email :
+                <Link href="mailto:dsrm@lupin.com" className="border_link">&nbsp;dsrm@lupin.com</Link>
+                </span>
             </div>
             <Link href="https://www.linkedin.com/company/lupin-pharmaceuticals/" target="_blank" className="linked_in">
               <Image 
