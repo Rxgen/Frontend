@@ -34,7 +34,7 @@ const Footer = () => {
             <h2 className="subtitle_30">For Customer Service or  <br />Patient Assistance</h2>
             <span>
                 Phone :
-                <Link href="tel:+8665874617" className="border_link">&nbsp;+1 866-587-4617</Link>
+                <Link href="tel:+1 866-587-4617" className="border_link">&nbsp;+1 866-587-4617</Link>
               </span>
               <span>
                 Email :
