@@ -10,6 +10,9 @@ import "swiper/css/effect-fade";
 import { EffectFade } from "swiper/modules";
 import Link from "next/link";
 import { useState,useEffect } from "react";
+import ProductPopup from "./tolvapton/productpopup";
+import { usePathname } from 'next/navigation';
+import ProductPage from "./tolvapton/productpage";
 
 export default function ProductDetails({ productdata }) {
   const product = productdata[0];
@@ -17,9 +20,10 @@ export default function ProductDetails({ productdata }) {
   console.log("Product Brand after Destructuring:", product.brand);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [iframeSrc, setIframeSrc] = useState("");
-
   const [PopupActive, setPopupActive] = useState(false);
   const [error, setError] = useState("");
+  const [productpopup, setShowProductPopup] = useState(true);
+  const [activeTab, setActiveTab] = useState("1"); 
 
   const ndcList = product.ndc && typeof product.ndc === "string"
     ? product.ndc.split(",").map((ndc) => ndc.trim())
@@ -221,6 +225,27 @@ useEffect(() => {
     ? cleanContent(product.product_description)
     : null;
 
+
+    const handleAcceptHCP = (e) => {
+      e.preventDefault();
+      setActiveTab("2");         
+      setShowProductPopup(false);   
+    }; 
+
+    const handleRejectPatient = (e) => {
+      e.preventDefault();
+      setActiveTab("1");
+      setShowProductPopup(false); 
+    };
+
+
+
+
+    const pathname = usePathname();
+    const showPopup = pathname === '/products/tolvaptan';
+
+
+
   return (
     <div>
       <section className="product_detail_section" data-section="product_detail_section">
@@ -391,8 +416,10 @@ useEffect(() => {
           </div>
         </div>
         <p className="para product_para">*All registered trademarks are the property of their respective owners. These products are intended for U.S. residents only.</p>
+  
 
       </section>
+      {showPopup && <ProductPage activeTab={activeTab} setActiveTab={setActiveTab}/>}
       {cleanedDescription && (
 
         <div
@@ -424,7 +451,13 @@ useEffect(() => {
         </div>
       </div>
       )}
+      {showPopup && (
+        <ProductPopup
+        isActive={productpopup} onAccept={handleAcceptHCP} onReject={handleRejectPatient}
+        />
+      )}
     </div>
+    
 
     
   );
