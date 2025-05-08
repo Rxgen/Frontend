@@ -15,6 +15,7 @@
 
 
 
-
-
+.pagination_number.active {
+    background: rgba(22, 167, 76, .2) !important;
+}
 
