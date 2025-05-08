@@ -94,11 +94,11 @@ export default function ProductPage({  activeTab, setActiveTab  }) {
 
   //  Hide and Show More Button 
 
-  useEffect(() => {
+   useEffect(() => {
     const handleClick = (e) => {
       const target = e.target;
       if (target && target.classList.contains("show_button")) {
-        console.log("✅ Show button clicked");
+        console.log(" Show button clicked");
 
         const isi = document.querySelector(".isi_main_container");
         const hcp = document.querySelector(".hcp_main_container");
@@ -136,64 +136,73 @@ export default function ProductPage({  activeTab, setActiveTab  }) {
     return () => {
       document.removeEventListener("click", handleClick);
     };
-  }, []);
+  }, []); 
 
 
   // Accordion FAQ
 
   useEffect(() => {
-    let intervalId = null;
-
-    const attachAccordionEvents = () => {
-      const headers = document.querySelectorAll(".faq_accordion .faq_header");
-
-      if (headers.length === 0) {
-        console.log("⏳ Waiting for .faq_header elements...");
-        return;
+    const handleClick = (event) => {
+      const header = event.currentTarget;
+      const container = header.nextElementSibling;
+    
+      const isActive = header.classList.contains('active');
+      console.log(" Clicked:", header.textContent.trim());
+    
+      document.querySelectorAll('.faq_container').forEach((el) => {
+        el.style.display = 'none';
+      });
+      document.querySelectorAll('.faq_header').forEach((el) => {
+        el.classList.remove('active');
+      });
+    
+      
+      if (!isActive) {
+        container.style.display = 'block';
+        header.classList.add('active');
+        
+      } else {
+       
       }
-
-      console.log(`✅ Found ${headers.length} .faq_header elements`);
-
+    };
+  
+    const attachListeners = () => {
+      const headers = document.querySelectorAll('.faq_header');
+      if (headers.length === 0) return;
+  
       headers.forEach((header) => {
-        // Prevent multiple listeners
-        header.removeEventListener("click", handleClick);
-        header.addEventListener("click", handleClick);
+        header.removeEventListener('click', handleClick); // avoid duplicates
+        header.addEventListener('click', handleClick);
       });
-
-      clearInterval(intervalId); // stop checking once elements found and listeners attached
+  
+      console.log(`Event listeners attached to ${headers.length} headers`);
     };
-
-    const handleClick = (e) => {
-      const header = e.currentTarget;
-      const content = header.nextElementSibling;
-
-      console.log("🔘 Clicked:", header.textContent.trim());
-
-      // Slide up all answers
-      document.querySelectorAll(".faq_container").forEach((el) => {
-        el.style.maxHeight = "0";
-      });
-
-      // Remove active from all headers
-      document.querySelectorAll(".faq_header").forEach((h) => {
-        h.classList.remove("active");
-      });
-
-      // If not already open, expand
-      if (!content.style.maxHeight || content.style.maxHeight === "0px") {
-        content.style.maxHeight = content.scrollHeight + "px";
-        header.classList.add("active");
-        console.log("✅ Opened:", header.textContent.trim());
-      }
-    };
-
-    intervalId = setInterval(attachAccordionEvents, 300); // check every 300ms
-
+  
+    
+    const observer = new MutationObserver(() => {
+      attachListeners();
+    });
+  
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  
+    attachListeners();
+  
     return () => {
-      clearInterval(intervalId);
-      // optional: remove event listeners on unmount
+      observer.disconnect();
+      const headers = document.querySelectorAll('.faq_header');
+      headers.forEach((header) => {
+        header.removeEventListener('click', handleClick);
+      });
     };
   }, []);
+  
+  
+  
+  
+  
 
 
 

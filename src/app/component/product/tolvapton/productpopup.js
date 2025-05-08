@@ -15,11 +15,11 @@ export default function ProductPopup({ isActive, onAccept , onReject}) {
           </div>
           <div className="product_pdf w100">
             <Link href="#" className="green_cta" onClick={onAccept}>
-              I am healthcare professional
+              I am a healthcare professional
             </Link>
           </div>
           <div className="product_pdf w100">
-            <Link href="#" className="black_cta" onClick={onReject}>I am not healthcare professional</Link>
+            <Link href="#" className="black_cta" onClick={onReject}>I am not a healthcare professional</Link>
           </div>
         </div>
       </div>
