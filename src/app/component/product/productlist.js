@@ -344,14 +344,20 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
         )}
         <div className="product_pagination">
           {/* Previous Button */}
-          <button
-            type="button"
-            className="keyboard_btn product_prev"
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
+          <Link
+            href={`?page=${currentPage - 1}&grid=${gridView}`}
+            className={`keyboard_btn product_prev ${currentPage === 1 ? 'disabled' : ''}`}
+            onClick={(e) => {
+              if (currentPage === 1) {
+                e.preventDefault();
+              } else {
+                handlePageChange(currentPage - 1);
+              }
+            }}
+            aria-disabled={currentPage === 1}
           >
-            <Image src="/images/icons/green_arrow.webp" alt="Green Arrow" width={8} height={13} />
-          </button>
+            <Image src="/images/icons/green_arrow.webp" alt="Previous Page" width={8} height={13} />
+          </Link>
 
           {/* Pagination Numbers */}
           {[...Array(totalPages)].map((_, index) => {
@@ -362,31 +368,37 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
               (page >= currentPage - 2 && page <= currentPage + 2) 
             ) {
               return (
-                <button
+                <Link
                   key={page}
-                  type="button"
-                  onClick={() => handlePageChange(page)}
+                  href={`?page=${page}&grid=${gridView}`}
                   className={`pagination_number ${currentPage === page ? 'active' : ''}`}
-                  disabled={currentPage === page}
+                  onClick={(e) => {
+                    if (currentPage === page) {
+                      e.preventDefault();
+                    } else {
+                      handlePageChange(page);
+                    }
+                  }}
+                  aria-current={currentPage === page ? 'page' : undefined}
                 >
                   <span>{page}</span>
-                </button>
+                </Link>
               );
             }
 
             if (page === 6 && currentPage > 4) {
               return (
-                <button key="ellipsis-start" type="button" className="pagination_ellipsis" disabled>
+                <span key="ellipsis-start" className="pagination_ellipsis">
                   <span>...</span>
-                </button>
+                </span>
               );
             }
 
             if (page === totalPages - 1 && currentPage < totalPages - 3) {
               return (
-                <button key="ellipsis-end" type="button" className="pagination_ellipsis" disabled>
+                <span key="ellipsis-end" className="pagination_ellipsis">
                   <span>...</span>
-                </button>
+                </span>
               );
             }
 
@@ -394,14 +406,20 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
           })}
 
           {/* Next Button */}
-          <button
-            type="button"
-            className="keyboard_btn product_next"
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
+          <Link
+            href={`?page=${currentPage + 1}&grid=${gridView}`}
+            className={`keyboard_btn product_next ${currentPage === totalPages ? 'disabled' : ''}`}
+            onClick={(e) => {
+              if (currentPage === totalPages) {
+                e.preventDefault();
+              } else {
+                handlePageChange(currentPage + 1);
+              }
+            }}
+            aria-disabled={currentPage === totalPages}
           >
-            <Image src="/images/icons/green_arrow.webp" alt="Green Arrow for pagination" width={8} height={13} />
-          </button>
+            <Image src="/images/icons/green_arrow.webp" alt="Next Page" width={8} height={13} />
+          </Link>
         </div>
 
         <p className="para product_para">*All registered trademarks are the property of their respective owners. These products are intended for U.S. residents only.</p>
