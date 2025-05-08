@@ -14,12 +14,12 @@ export default function ProductPopup({ isActive, onAccept , onReject}) {
             Professionals. Please confirm:
           </div>
           <div className="product_pdf w100">
-            <Link href="#" className="green_cta" onClick={onAccept}>
+            <Link href="#" className="green_cta subtitle_20" onClick={onAccept}>
               I am a healthcare professional
             </Link>
           </div>
           <div className="product_pdf w100">
-            <Link href="#" className="black_cta" onClick={onReject}>I am not a healthcare professional</Link>
+            <Link href="#" className="black_cta subtitle_20" onClick={onReject}>I am not a healthcare professional</Link>
           </div>
         </div>
       </div>
