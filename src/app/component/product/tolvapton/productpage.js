@@ -200,7 +200,59 @@ export default function ProductPage({  activeTab, setActiveTab  }) {
   }, []);
   
   
-  
+ 
+
+useEffect(() => {
+  const container = document.querySelector('.medicine_details');
+  if (!container) return;
+
+  const setHeights = () => {
+    const brandBoxes = document.querySelectorAll('.brand_box');
+    if (brandBoxes.length === 0) return;
+
+    let brandHeightPx = 0;
+
+    brandBoxes.forEach((box) => {
+      box.style.height = 'auto'; 
+      const brandHeight = box.offsetHeight;
+      if (brandHeight > brandHeightPx) {
+        brandHeightPx = brandHeight;
+      }
+    });
+
+    const brandHeightVw = (brandHeightPx / window.innerWidth) * 100;
+
+    brandBoxes.forEach((box) => {
+      box.style.height = `${brandHeightVw}vw`;
+    });
+  };
+
+  // Run when window resizes
+  const handleResize = () => {
+    setHeights();
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        setHeights();
+      }
+    }
+  });
+
+  observer.observe(container, {
+    childList: true,
+    subtree: true,
+  });
+
+  // Clean up
+  return () => {
+    observer.disconnect();
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
   
   
 
