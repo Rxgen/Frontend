@@ -427,7 +427,8 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
 
       </section>
       <div className="product_brand_container" id="patient-education">
-        <h2 className="subtitle_30">EXPLORE PATIENT EDUCATION</h2>
+        <div className="">
+       <h2 className="subtitle_30">EXPLORE PATIENT EDUCATION</h2>
         <div className="brand_container">
           <Link href="/products/albuterol-sulfate-inhalation-aerosol#albuterol" className="brand_box" style={{ height: '9.0882vw' }}>
             <Image src="/images/icons/up_arrow.webp" alt="albuterol " width={57} height={62} className="brand_arrow" />
@@ -442,7 +443,21 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
             </span>
           </Link>
         </div>
+
+        </div>
+        <div className="">
+       <h2 className="subtitle_30">Explore HCP Information</h2>
+        <div className="brand_container">
+          <Link href="/products/tolvaptan#HCP" className="brand_box" style={{ height: '9.0882vw' }}>
+            <Image src="/images/icons/up_arrow.webp" alt="albuterol " width={57} height={62} className="brand_arrow" />
+            <span className="subtitle_20">
+              Tolvaptan
+            </span>
+          </Link>
+        </div>
+        </div>
       </div>
+
     </div>
   );
 }

@@ -208,7 +208,7 @@ export default function ProductPage({  activeTab, setActiveTab  }) {
 
 
   return (
-    <div className="tolvaptan_tab_container">
+    <div className="tolvaptan_tab_container"id ="HCP">
       <Link
         href="#"
         className="tolvaptan_tab tabActive"
