@@ -442,16 +442,22 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
               Tiotropium Bromide Inhalation Powder Capsule
             </span>
           </Link>
+          <Link href="/products/tolvaptan-tablets#HCP" className="brand_box" style={{ height: '9.0882vw' }}>
+            <Image src="/images/icons/up_arrow.webp" alt="Tolvaptan Tablets " width={57} height={62} className="brand_arrow" />
+            <span className="subtitle_20">
+              Tolvaptan Tablets
+            </span>
+          </Link>
         </div>
 
         </div>
         <div className="">
        <h2 className="subtitle_30">Explore HCP Information</h2>
         <div className="brand_container">
-          <Link href="/products/tolvaptan#HCP" className="brand_box" style={{ height: '9.0882vw' }}>
+          <Link href="/products/tolvaptan-tablets#HCP" className="brand_box" style={{ height: '9.0882vw' }}>
             <Image src="/images/icons/up_arrow.webp" alt="albuterol " width={57} height={62} className="brand_arrow" />
             <span className="subtitle_20">
-              Tolvaptan
+              Tolvaptan Tablets
             </span>
           </Link>
         </div>

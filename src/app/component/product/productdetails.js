@@ -242,7 +242,7 @@ useEffect(() => {
 
 
     const pathname = usePathname();
-    const showPopup = pathname === '/products/tolvaptan';
+    const showPopup = pathname === '/products/tolvaptan-tablets';
 
 
 
