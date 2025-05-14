@@ -20,10 +20,14 @@ export default function BrandPdf({ brandpdfdata }) {
                         ? getMediaUrl(item.pdf_files.url)
                         : null;  
 
+                        const staticUrl = index
+                            ? "https://www.brovana.com/"
+                            : "https://www.xopenexhfa.com/";
+
                     return (
                         <a
                             key={index}
-                            href={pdfUrl} 
+                            href={staticUrl}
                             target="_blank" 
                             download={item.pdf_files.name} 
                         >
