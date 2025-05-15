@@ -24,10 +24,11 @@ export default function BrandPdf({ brandpdfdata }) {
                             ? "https://www.brovana.com/"
                             : "https://www.xopenexhfa.com/";
 
+
                     return (
-                        <a
+                        <Link
                             key={index}
-                            href={staticUrl}
+                            href={staticUrl} 
                             target="_blank" 
                             download={item.pdf_files.name} 
                         >
@@ -37,7 +38,7 @@ export default function BrandPdf({ brandpdfdata }) {
                                 width={item.image.width}
                                 height={item.image.height}
                             />
-                        </a>
+                        </Link>
                     );
                 })}
                 <Link href="/products" target="_blank">
