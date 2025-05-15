@@ -14,7 +14,7 @@ export default function Growth ( {growthdata} ){
                 end={item.number} 
                 duration={3}  
                 separator="" 
-                suffix={item.number === 2 ? 'nd' : ''}
+                suffix={item.number === 3 ? 'rd' : ''}
               />
           </div>
           <p className="para">{item.description}</p>
