@@ -203,56 +203,60 @@ export default function ProductPage({  activeTab, setActiveTab  }) {
  
 
 useEffect(() => {
-  const container = document.querySelector('.medicine_details');
-  if (!container) return;
-
   const setHeights = () => {
     const brandBoxes = document.querySelectorAll('.brand_box');
     if (brandBoxes.length === 0) return;
 
-    let brandHeightPx = 0;
-
+    // Reset heights
     brandBoxes.forEach((box) => {
-      box.style.height = 'auto'; 
-      const brandHeight = box.offsetHeight;
-      if (brandHeight > brandHeightPx) {
-        brandHeightPx = brandHeight;
-      }
+      box.style.height = 'auto';
     });
 
-    const brandHeightVw = (brandHeightPx / window.innerWidth) * 100;
-
+    // Find max height
+    let maxHeightPx = 0;
     brandBoxes.forEach((box) => {
-      box.style.height = `${brandHeightVw}vw`;
+      const height = box.offsetHeight;
+      if (height > maxHeightPx) maxHeightPx = height;
     });
+
+    // Convert to vw
+    const maxHeightVw = (maxHeightPx / window.innerWidth) * 100;
+
+    // Apply max height to all
+    brandBoxes.forEach((box) => {
+      box.style.height = `${maxHeightVw}vw`;
+    });
+
+    console.log(`Set all brand_box heights to ${maxHeightVw.toFixed(2)}vw`);
   };
 
-  // Run when window resizes
-  const handleResize = () => {
+  const attachHeights = () => {
+    const boxes = document.querySelectorAll('.brand_box');
+    if (boxes.length === 0) return;
+
     setHeights();
   };
 
-  window.addEventListener('resize', handleResize);
-
-  const observer = new MutationObserver((mutationsList) => {
-    for (const mutation of mutationsList) {
-      if (mutation.type === 'childList') {
-        setHeights();
-      }
-    }
+  const observer = new MutationObserver(() => {
+    attachHeights();
   });
 
-  observer.observe(container, {
+  observer.observe(document.body, {
     childList: true,
     subtree: true,
   });
 
-  // Clean up
+  window.addEventListener('resize', setHeights);
+
+  // Initial set
+  attachHeights();
+
   return () => {
     observer.disconnect();
-    window.removeEventListener('resize', handleResize);
+    window.removeEventListener('resize', setHeights);
   };
 }, []);
+
   
   
 
