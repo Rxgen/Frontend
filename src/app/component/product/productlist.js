@@ -343,84 +343,84 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
           </>
         )}
         <div className="product_pagination">
-          {/* Previous Button */}
-          <Link
-            href={`?page=${currentPage - 1}&grid=${gridView}`}
-            className={`keyboard_btn product_prev ${currentPage === 1 ? 'disabled' : ''}`}
-            onClick={(e) => {
-              if (currentPage === 1) {
-                e.preventDefault();
-              } else {
-                handlePageChange(currentPage - 1);
-              }
-            }}
-            aria-disabled={currentPage === 1}
-          >
-            <Image src="/images/icons/green_arrow.webp" alt="Previous Page" width={8} height={13} />
-          </Link>
+  {/* Previous Button */}
+  {currentPage > 1 ? (
+    <Link
+      href={`?page=${currentPage - 1}&grid=${gridView}`}
+      className="keyboard_btn product_prev"
+      onClick={() => handlePageChange(currentPage - 1)}
+    >
+      <Image src="/images/icons/green_arrow.webp" alt="Previous Page" width={8} height={13} />
+    </Link>
+  ) : (
+    <span className="keyboard_btn product_prev disabled" aria-disabled="true">
+      <Image src="/images/icons/green_arrow.webp" alt="Previous Page" width={8} height={13} />
+    </span>
+  )}
 
-          {/* Pagination Numbers */}
-          {[...Array(totalPages)].map((_, index) => {
-            const page = index + 1;
-            if (
-              page <= 5 ||  
-              page === totalPages ||  
-              (page >= currentPage - 2 && page <= currentPage + 2) 
-            ) {
-              return (
-                <Link
-                  key={page}
-                  href={`?page=${page}&grid=${gridView}`}
-                  className={`pagination_number ${currentPage === page ? 'active' : ''}`}
-                  onClick={(e) => {
-                    if (currentPage === page) {
-                      e.preventDefault();
-                    } else {
-                      handlePageChange(page);
-                    }
-                  }}
-                  aria-current={currentPage === page ? 'page' : undefined}
-                >
-                  <span>{page}</span>
-                </Link>
-              );
+  {/* Pagination Numbers */}
+  {[...Array(totalPages)].map((_, index) => {
+    const page = index + 1;
+
+    if (
+      page <= 5 ||  
+      page === totalPages ||  
+      (page >= currentPage - 2 && page <= currentPage + 2)
+    ) {
+      return (
+        <Link
+          key={page}
+          href={`?page=${page}&grid=${gridView}`}
+          className={`pagination_number ${currentPage === page ? 'active' : ''}`}
+          onClick={(e) => {
+            if (currentPage === page) {
+              e.preventDefault();
+            } else {
+              handlePageChange(page);
             }
+          }}
+          aria-current={currentPage === page ? 'page' : undefined}
+        >
+          <span>{page}</span>
+        </Link>
+      );
+    }
 
-            if (page === 6 && currentPage > 4) {
-              return (
-                <span key="ellipsis-start" className="pagination_ellipsis">
-                  <span>...</span>
-                </span>
-              );
-            }
+    if (page === 6 && currentPage > 4) {
+      return (
+        <span key="ellipsis-start" className="pagination_ellipsis">
+          <span>...</span>
+        </span>
+      );
+    }
 
-            if (page === totalPages - 1 && currentPage < totalPages - 3) {
-              return (
-                <span key="ellipsis-end" className="pagination_ellipsis">
-                  <span>...</span>
-                </span>
-              );
-            }
+    if (page === totalPages - 1 && currentPage < totalPages - 3) {
+      return (
+        <span key="ellipsis-end" className="pagination_ellipsis">
+          <span>...</span>
+        </span>
+      );
+    }
 
-            return null;
-          })}
+    return null;
+  })}
 
-          {/* Next Button */}
-          <Link
-            href={`?page=${currentPage + 1}&grid=${gridView}`}
-            className={`keyboard_btn product_next ${currentPage === totalPages ? 'disabled' : ''}`}
-            onClick={(e) => {
-              if (currentPage === totalPages) {
-                e.preventDefault();
-              } else {
-                handlePageChange(currentPage + 1);
-              }
-            }}
-            aria-disabled={currentPage === totalPages}
-          >
-            <Image src="/images/icons/green_arrow.webp" alt="Next Page" width={8} height={13} />
-          </Link>
-        </div>
+  {/* Next Button */}
+  {currentPage < totalPages ? (
+    <Link
+      href={`?page=${currentPage + 1}&grid=${gridView}`}
+      className="keyboard_btn product_next"
+      onClick={() => handlePageChange(currentPage + 1)}
+    >
+      <Image src="/images/icons/green_arrow.webp" alt="Next Page" width={8} height={13} />
+    </Link>
+  ) : (
+    <span className="keyboard_btn product_next disabled" aria-disabled="true">
+      <Image src="/images/icons/green_arrow.webp" alt="Next Page" width={8} height={13} />
+    </span>
+  )}
+</div>
+
 
         <p className="para product_para">*All registered trademarks are the property of their respective owners. These products are intended for U.S. residents only.</p>
 
