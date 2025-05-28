@@ -4,10 +4,7 @@ import DetailBanner from "@/app/component/product/productdetailbanner";
 import Filter from "@/app/component/product/filter";
 import { redirect } from "next/navigation";
 
-const slugMappings = {
-  "amlodipine-besylate-tablets-usp": "amlodipine-besylate-and-benazepril-hcl-capsules-usp",
-  "gavilyte-n":"gavi-lyte-n",
-};
+
 
 
 
@@ -32,7 +29,9 @@ const slugMappings = {
     return {
       title: metaTitle || productSeoDetails[0].product_name,
       description: metaDescription || " ",
-      canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/products/${slug}`,
+      alternates: {
+        canonical:`${process.env.NEXT_PUBLIC_BASE_URL}/products/${slug}`,
+      }
     };
   } catch (error) {
     console.error("Error fetching product details:", error);

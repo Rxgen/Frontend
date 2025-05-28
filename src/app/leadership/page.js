@@ -4,9 +4,13 @@ import Leadership from "@/app/component/leadership/leadership";
 
 
 export const generateMetadata = () => {
+  const path="leadership"
   return {
     title: 'Meet the leaders driving Lupin US commitment to global health',
     description: 'Explore the leadership team at Lupin US, dedicated to advancing global health through innovation and excellence in the pharmaceutical industry  ',
+    alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_BASE_URL}${path}`,
+      }
   };
 };
 

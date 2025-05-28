@@ -4,9 +4,13 @@ import Filter from "../component/product/filter";
 import Productbanner from "../component/product/productbanner";
 
 export const generateMetadata = () => {
+  const path="product"
   return {
     title: 'Explore Our Products | Quality Medicines for Better Health.',
     description: "Browse our range of high-quality medicines focused on better patient outcomes",
+    alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_BASE_URL}${path}`,
+      }
   };
 };
 
