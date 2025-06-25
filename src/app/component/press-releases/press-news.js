@@ -65,74 +65,74 @@ export default function PressNews({PressNewsData, totalPages, currentPage=2  }){
       </div>
 
       {/* Pagination */}
-      <div className="product_pagination">
-                {/* Previous Button */}
-                <button
-                  type="button"
-                  className="keyboard_btn product_prev"
-                  onClick={() => handlePageChange(currentPage - 1)}
-                  disabled={currentPage === 1}
-                >
-                  <Image src="/images/icons/green_arrow.webp" alt="Green Arrow" width={8} height={13} />
-                </button>
-      
-                {/* Pagination Numbers */}
-                {[...Array(totalPages)].map((_, index) => {
-                  const page = index + 1;
-      
-                  // Logic to display the first 5 pages, current page and last page, and ellipsis where necessary
-                  if (
-                    page <= 5 ||  // Always show the first 5 pages
-                    page === totalPages ||  // Always show the last page
-                    (page >= currentPage - 2 && page <= currentPage + 2) // Show pages within a range of ±2 from current page
-                  ) {
-                    return (
-                      <button
-                        key={page}
-                        type="button"
-                        onClick={() => handlePageChange(page)}
-                        className={`pagination_number ${currentPage === page ? 'active' : ''}`}
-                        disabled={currentPage === page}
-                      >
-                        <span>{page}</span>
-                      </button>
-                    );
-                  }
-      
-                  // Add ellipsis where necessary
-                  if (page === 6 && currentPage > 4) {
-                    return (
-                      <button key="ellipsis-start" type="button" className="pagination_ellipsis" disabled>
-                        <span>...</span>
-                      </button>
-                    );
-                  }
-      
-                  if (page === totalPages - 1 && currentPage < totalPages - 3) {
-                    return (
-                      <button key="ellipsis-end" type="button" className="pagination_ellipsis" disabled>
-                        <span>...</span>
-                      </button>
-                    );
-                  }
-      
-                  return null;
-                })}
-      
-                {/* Next Button */}
-                <button
-                  type="button"
-                  className="keyboard_btn product_next"
-                  onClick={() => handlePageChange(currentPage + 1)}
-                  disabled={currentPage === totalPages}
-                >
-                  <Image src="/images/icons/green_arrow.webp" alt="Green Arrow for pagination" width={8} height={13} />
-                </button>
-              </div>
-     
-        
-       
-      
+<div className="product_pagination">
+  {/* Previous Link */}
+  <Link
+    href={`?page=${currentPage - 1}`}
+    className={`keyboard_btn product_prev ${currentPage === 1 ? 'disabled' : ''}`}
+    aria-disabled={currentPage === 1}
+    onClick={(e) => {
+      if (currentPage === 1) e.preventDefault();
+      else handlePageChange(currentPage - 1);
+    }}
+  >
+    <Image src="/images/icons/green_arrow.webp" alt="Previous Page" width={8} height={13} />
+  </Link>
+
+  {/* Pagination numbers */}
+  {[...Array(totalPages)].map((_, index) => {
+    const page = index + 1;
+
+    if (
+      page <= 5 ||
+      page === totalPages ||
+      (page >= currentPage - 2 && page <= currentPage + 2)
+    ) {
+      return (
+        <Link
+          key={page}
+          href={`?page=${page}`}
+          className={`pagination_number ${currentPage === page ? 'active' : ''}`}
+          aria-current={currentPage === page ? 'page' : undefined}
+          onClick={(e) => {
+            if (currentPage === page) e.preventDefault();
+            else handlePageChange(page);
+          }}
+        >
+          <span>{page}</span>
+        </Link>
+      );
+    }
+
+    if (page === 6 && currentPage > 4) {
+      return (
+        <span key="ellipsis-start" className="pagination_ellipsis">...</span>
+      );
+    }
+
+    if (page === totalPages - 1 && currentPage < totalPages - 3) {
+      return (
+        <span key="ellipsis-end" className="pagination_ellipsis">...</span>
+      );
+    }
+
+    return null;
+  })}
+
+  {/* Next Link */}
+  <Link
+    href={`?page=${currentPage + 1}`}
+    className={`keyboard_btn product_next ${currentPage === totalPages ? 'disabled' : ''}`}
+    aria-disabled={currentPage === totalPages}
+    onClick={(e) => {
+      if (currentPage === totalPages) e.preventDefault();
+      else handlePageChange(currentPage + 1);
+    }}
+  >
+    <Image src="/images/icons/green_arrow.webp" alt="Next Page" width={8} height={13} />
+  </Link>
+</div>
+  
     </section>
 
 <section data-section="news_contact" className="media_contact news_contact">

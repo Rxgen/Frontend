@@ -419,7 +419,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
       <Image src="/images/icons/green_arrow.webp" alt="Next Page" width={8} height={13} />
     </span>
   )}
-</div>
+       </div>
 
 
         <p className="para product_para">*All registered trademarks are the property of their respective owners. These products are intended for U.S. residents only.</p>

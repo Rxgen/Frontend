@@ -194,7 +194,6 @@ const ContactForm = () => {
         </div>
 
         <div className="contact_terms">
-        {errors.agree && <span className="error_message">{errors.agree}</span>}
           <label>
             <input
               type="checkbox"
@@ -205,16 +204,19 @@ const ContactForm = () => {
             <span>
             I agree and accept the <a href="/privacy-policy"target="_blank"> Privacy Statement</a> and the <a href="/images/terms-of-use-lupin-us-website.pdf" target="_blank"> Terms of Use</a> of this website
             </span>
+           
           </label>
           
         </div>
+         {errors.agree && <span className="error_message">{errors.agree}</span>}
+        
 
         <button type="submit" className="green_cta">
           <div className="cta_container">
             <span>Submit</span>
             <Image
               src="/images/icons/white_arrow.webp"
-              alt=""
+              alt="White Arrow"
               width="20"
               height="14"
             />
