@@ -66,20 +66,22 @@ export default function PressNews({PressNewsData, totalPages, currentPage=2  }){
 
       {/* Pagination */}
 <div className="product_pagination">
-  {/* Previous Link */}
-  <Link
-    href={`?page=${currentPage - 1}`}
-    className={`keyboard_btn product_prev ${currentPage === 1 ? 'disabled' : ''}`}
-    aria-disabled={currentPage === 1}
-    onClick={(e) => {
-      if (currentPage === 1) e.preventDefault();
-      else handlePageChange(currentPage - 1);
-    }}
-  >
-    <Image src="/images/icons/green_arrow.webp" alt="Previous Page" width={8} height={13} />
-  </Link>
+  {/* Previous Button */}
+  {currentPage > 1 ? (
+    <Link
+      href={`?page=${currentPage - 1}`}
+      className="keyboard_btn product_prev"
+      onClick={() => handlePageChange(currentPage - 1)}
+    >
+      <Image src="/images/icons/green_arrow.webp" alt="Previous Page" width={8} height={13} />
+    </Link>
+  ) : (
+    <span className="keyboard_btn product_prev disabled" aria-disabled="true">
+      <Image src="/images/icons/green_arrow.webp" alt="Previous Page" width={8} height={13} />
+    </span>
+  )}
 
-  {/* Pagination numbers */}
+  {/* Pagination Numbers */}
   {[...Array(totalPages)].map((_, index) => {
     const page = index + 1;
 
@@ -93,11 +95,14 @@ export default function PressNews({PressNewsData, totalPages, currentPage=2  }){
           key={page}
           href={`?page=${page}`}
           className={`pagination_number ${currentPage === page ? 'active' : ''}`}
-          aria-current={currentPage === page ? 'page' : undefined}
           onClick={(e) => {
-            if (currentPage === page) e.preventDefault();
-            else handlePageChange(page);
+            if (currentPage === page) {
+              e.preventDefault();
+            } else {
+              handlePageChange(page);
+            }
           }}
+          aria-current={currentPage === page ? 'page' : undefined}
         >
           <span>{page}</span>
         </Link>
@@ -119,19 +124,22 @@ export default function PressNews({PressNewsData, totalPages, currentPage=2  }){
     return null;
   })}
 
-  {/* Next Link */}
-  <Link
-    href={`?page=${currentPage + 1}`}
-    className={`keyboard_btn product_next ${currentPage === totalPages ? 'disabled' : ''}`}
-    aria-disabled={currentPage === totalPages}
-    onClick={(e) => {
-      if (currentPage === totalPages) e.preventDefault();
-      else handlePageChange(currentPage + 1);
-    }}
-  >
-    <Image src="/images/icons/green_arrow.webp" alt="Next Page" width={8} height={13} />
-  </Link>
+  {/* Next Button */}
+  {currentPage < totalPages ? (
+    <Link
+      href={`?page=${currentPage + 1}`}
+      className="keyboard_btn product_next"
+      onClick={() => handlePageChange(currentPage + 1)}
+    >
+      <Image src="/images/icons/green_arrow.webp" alt="Next Page" width={8} height={13} />
+    </Link>
+  ) : (
+    <span className="keyboard_btn product_next disabled" aria-disabled="true">
+      <Image src="/images/icons/green_arrow.webp" alt="Next Page" width={8} height={13} />
+    </span>
+  )}
 </div>
+
   
     </section>
 
