@@ -259,12 +259,12 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
                             id,
                             product_name = "Unnamed Product",
                             slug = "#",
-                            strength = "Unknown Strength",
+                            strength = "N/A",
                             product_images = [],
-                            ndc = "Unknown NDC",
-                            brand_name = "Unknown Brand",
-                            te_rating = "Unknown Rating",
-                            category = "Unknown Category",
+                            ndc = "N/A",
+                            brand_name = "N/A",
+                            te_rating = "N/A",
+                            category = "N/A",
                           } = product;
 
                           // Get image URL (default to placeholder if no image)
@@ -276,7 +276,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
                             <tr key={id}>
                               <td>
                                 <a href={`/products/${slug}`} rel="noopener noreferrer">
-                                  {product_name.trim() || "Unnamed Product"}
+                                  {product_name.trim() || "N/A"}
                                 </a>
                               </td>
                               <td>
@@ -294,7 +294,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
                                               {index < product.strength.split(',').length - 1 && <br />}
                                             </span>
                                           ))
-                                        : "Unknown Strength"
+                                        : "N/A"
                                     }
                                   </td>
                               <td>
@@ -315,7 +315,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
                                             {index < product.pack_size.split(',').length - 1 && <br />}
                                           </span>
                                         ))
-                                      : "Unknown Size"
+                                      : "N/A"
                                   }
                                   </td>
                               <td>
@@ -342,7 +342,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
             )}
           </>
         )}
-        <div className="product_pagination">
+<div className="product_pagination">
   {/* Previous Button */}
   {currentPage > 1 ? (
     <Link
@@ -419,7 +419,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
       <Image src="/images/icons/green_arrow.webp" alt="Next Page" width={8} height={13} />
     </span>
   )}
-       </div>
+</div>
 
 
         <p className="para product_para">*All registered trademarks are the property of their respective owners. These products are intended for U.S. residents only.</p>
