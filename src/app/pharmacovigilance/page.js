@@ -1,3 +1,14 @@
+export const generateMetadata = ({ params}) => {
+  const path="pharmacovigilance"
+  
+    return {
+      title: 'Pharmacovigilance',
+      description: 'Pharmacovigilance is defined by the World Health Organization (WHO) as “the science and activities relating to the detection, assessment, understanding and prevention of adverse effects or any other drug-related problem.',
+      alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_BASE_URL}${path}`,
+      }
+    };
+  };
 
 export default async function PharmacovigilancePage() {
     try {

@@ -1,4 +1,18 @@
-// page.js
+export const generateMetadata = ({ params}) => {
+  const path="privacy-policy"
+  
+    return {
+      title: 'Privacy Policy',
+      description: 'This Privacy Statement (“Statement”) applies to Personal Information Lupin collects, uses or shares,',
+      alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_BASE_URL}${path}`,
+      }
+    };
+  };
+
+
+
+
 
 export default async function PrivacyPolicyPage() {
     try {
