@@ -16,7 +16,7 @@ export default function PressNewsBanner () {
               layout="intrinsic" 
             />
           </picture>
-          <h1 className="subtitle_66">Media</h1>
+          <div className="subtitle_66">Media</div>
         </section>
     )
 }

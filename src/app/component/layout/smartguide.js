@@ -147,7 +147,7 @@ const SmartGuide = () => {
               />
               <span>Close</span>
             </a>
-            <h2 className="subtitle_4172">Search Product</h2>
+            <div className="subtitle_4172">Search Product</div>
             <form id="guide_form" onSubmit={handleSubmit}>
               <div className="guide_form_container">
                 <div className="form_group">

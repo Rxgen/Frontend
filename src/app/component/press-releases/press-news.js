@@ -41,7 +41,7 @@ export default function PressNews({PressNewsData, totalPages, currentPage=2  }){
     return(
         <div>
 <section data-section="news_section" className="news_section press_section">
-      <h2 className="subtitle_60">Press Releases</h2>
+      <h1 className="subtitle_60">Press Releases</h1>
       <div className="news_search_container">
       
         <input
@@ -58,7 +58,7 @@ export default function PressNews({PressNewsData, totalPages, currentPage=2  }){
           newsItem && (
             <Link key={index} href={`/media/${newsItem.slug}`} className="news_content">
               <div className="news_date">{formatDate(newsItem.date)}</div>
-              <p className="para">{newsItem.news_title}</p>
+              <h2 className="para">{newsItem.news_title}</h2>
             </Link>
           )
         ))}
@@ -146,7 +146,7 @@ export default function PressNews({PressNewsData, totalPages, currentPage=2  }){
 <section data-section="news_contact" className="media_contact news_contact">
 <div className="media_contact_container">
   <div className="media_contact_Links">
-    <h2 className="subtitle_40">Media</h2>
+    <div className="subtitle_40">Media</div>
     <div className="subtitle_34">Rajalakshmi Azariah</div>
     <div className="media_detail">
       Vice President & Global Head -

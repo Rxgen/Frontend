@@ -31,7 +31,7 @@ const Footer = () => {
               Naples, FL 34108
             </address>
             <div className="lupin_contact">
-            <h2 className="subtitle_30">For Customer Service or  <br />Patient Assistance</h2>
+            <div className="subtitle_30">For Customer Service or  <br />Patient Assistance</div>
             <span>
                 Phone :
                 <Link href="tel:+1 866-587-4617" className="border_link">&nbsp;+1 866-587-4617</Link>
@@ -42,7 +42,7 @@ const Footer = () => {
               </span>
             </div>
             <div className="lupin_contact">
-            <h2 className="subtitle_30">For Product Quality and  <br />Adverse Events</h2>
+            <div className="subtitle_30">For Product Quality and  <br />Adverse Events</div>
             <span>
                 Email :
                 <Link href="mailto:dsrm@lupin.com" className="border_link">&nbsp;dsrm@lupin.com</Link>

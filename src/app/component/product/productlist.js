@@ -213,7 +213,7 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
                           {/* Product Name */}
                           <div className="product_detail">
                             <Link href={`/products/${slug}`} passHref>
-                              <div className="subtitle_30">{product_name.trim()}</div>
+                              <h2 className="subtitle_30">{product_name.trim()}</h2>
                             </Link>
 
                             {/* PDF Files */}
