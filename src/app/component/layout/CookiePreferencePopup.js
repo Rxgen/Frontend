@@ -46,7 +46,7 @@ const CookieConsentPopup = ({ isActive, onClose, onSavePreferences }) => {
   return (
     <div>
       <div className={`cookies_preferences ${isActive ? 'active' : ''}`}>
-        <h3 className="subtitle_22">Consent to Collection Cookie</h3>
+        <div className="subtitle_22">Consent to Collection Cookie</div>
         <div className='para_container'>
           <p className="para">
             This website uses cookies to enhance your overall web browsing experience, provide you with ads tailored to your interests, and allow us to measure our audience and collect other analytical data about the use of our website.

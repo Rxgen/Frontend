@@ -70,7 +70,7 @@ export default function CookiePopup() {
     <div>
       <div id="cookies_popup" className={`cookies_popup ${isMainPopupVisible && !isPreferencePopupVisible ? 'active' : ''}`}>
         <div className="cookies_popup_container">
-          <div className="subtitle_20">Consent to Collection CookieTest</div>
+          <div className="subtitle_20">Consent to Collection Cookie</div>
 
           {!showSecondBanner && (
             <div className="firstBanner">
