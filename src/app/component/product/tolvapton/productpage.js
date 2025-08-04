@@ -257,9 +257,95 @@ useEffect(() => {
   };
 }, []);
 
-  
-  
 
+
+//Gram to ML conversion 
+useEffect(() => {
+  // Inject slider if missing
+  const injectSliderIfMissing = (label) => {
+    const hasSlider = label.querySelector('.slider');
+    if (!hasSlider) {
+      const slider = document.createElement('div');
+      slider.className = 'slider';
+      label.appendChild(slider);
+      console.log(`Injected .slider into`, label);
+    }
+  };
+
+  // Set up dosage logic
+  const setupConversion = (inputId, checkboxId, outputId, multiplier, label) => {
+    const input = document.getElementById(inputId);
+    const checkbox = document.getElementById(checkboxId);
+    const output = document.getElementById(outputId);
+
+    if (!input || !checkbox || !output || input.dataset.bound === 'true') return;
+
+    const calculate = () => {
+      const value = input.value.trim();
+      const grams = parseFloat(value);
+
+      // Age group detection
+      const isAboveTwo = checkbox.checked;
+      const ageGroup = isAboveTwo ? 'Above 2 years' : 'Below 2 years';
+      console.log(`[${label}] Age Group: ${ageGroup}`);
+
+      if (value !== '' && !isNaN(grams)) {
+        const ml = (grams * multiplier).toFixed(2);
+        output.textContent = `${ml} `;
+      } else {
+        output.textContent = 'XX ';
+      }
+    };
+
+    input.addEventListener('input', calculate);
+    checkbox.addEventListener('change', calculate);
+
+    input.dataset.bound = 'true'; // Prevent rebinding
+    calculate(); // Initial run
+    console.log(`Bound logic for #${inputId} (${label})`);
+  };
+
+  // Inject all missing sliders
+  const checkAllSwitchLabels = () => {
+    const switchLabels = document.querySelectorAll('label.switch');
+    switchLabels.forEach(injectSliderIfMissing);
+  };
+
+  // Setup for tablets and powder
+  const setupAllConversions = () => {
+    setupConversion('number', 'tab_checkbox', 'tab_ml', 0.86, 'Tablet');
+    setupConversion('number2', 'powder_checkbox', 'powder_ml', 0.81, 'Powder');
+  };
+
+  // Run once initially
+  checkAllSwitchLabels();
+  setupAllConversions();
+
+  // Watch DOM changes
+  const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType !== 1) return;
+
+        if (node.matches?.('label.switch')) {
+          injectSliderIfMissing(node);
+        }
+
+        const nestedLabels = node.querySelectorAll?.('label.switch');
+        nestedLabels?.forEach(injectSliderIfMissing);
+      });
+    }
+
+    setupAllConversions();
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+
+  return () => observer.disconnect();
+}, []);
 
 
 

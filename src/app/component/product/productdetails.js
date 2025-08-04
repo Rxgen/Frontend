@@ -242,7 +242,7 @@ useEffect(() => {
 
 
     const pathname = usePathname();
-    const showPopup = pathname === '/products/tolvaptan-tablets';
+    const showPopup = pathname === '/products/tolvaptan-tablets'|| pathname === '/products/glycerol';
 
 
 
@@ -424,9 +424,10 @@ useEffect(() => {
 
         <div
           dangerouslySetInnerHTML={{ __html: cleanedDescription }}
+          
         />
+        
       )}
-
       {product.saving_card_popup_content && (
       <div id="product_popup" className={`product_popup ${PopupActive ? 'active' : ''}`}>
         <div className="popup_container">
