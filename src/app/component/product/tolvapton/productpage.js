@@ -279,6 +279,15 @@ useEffect(() => {
     const output = document.getElementById(outputId);
 
     if (!input || !checkbox || !output || input.dataset.bound === 'true') return;
+    input.addEventListener('input', () => {
+    if (input.value.includes('-')) {
+      input.value = input.value.replace('-', '');
+    }
+    const match = input.value.match(/^(\d{0,3})(\.\d{0,2})?/);
+    if (match) {
+      input.value = (match[1] || '') + (match[2] || '');
+    }
+  });
 
     const calculate = () => {
       const value = input.value.trim();
