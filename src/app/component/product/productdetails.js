@@ -242,7 +242,7 @@ useEffect(() => {
 
 
     const pathname = usePathname();
-    const showPopup = pathname === '/products/tolvaptan-tablets'|| pathname === '/products/glycerol';
+    const showPopup = pathname === '/products/tolvaptan-tablets'|| pathname === '/products/glycerol-phenylbutyrate-oral-liquid';
 
 
 
