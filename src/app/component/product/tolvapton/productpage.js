@@ -273,10 +273,11 @@ useEffect(() => {
   };
 
   // Set up dosage logic
-  const setupConversion = (inputId, checkboxId, outputId, multiplier, label) => {
+  const setupConversion = (inputId, checkboxId, outputId, multiplier, label, roundedId = null) => {
     const input = document.getElementById(inputId);
     const checkbox = document.getElementById(checkboxId);
     const output = document.getElementById(outputId);
+    const roundedOutput = roundedId ? document.getElementById(roundedId) : null;
 
     if (!input || !checkbox || !output || input.dataset.bound === 'true') return;
     input.addEventListener('input', () => {
@@ -298,11 +299,28 @@ useEffect(() => {
       const ageGroup = isAboveTwo ? 'Above 2 years' : 'Below 2 years';
       console.log(`[${label}] Age Group: ${ageGroup}`);
 
-      if (value !== '' && !isNaN(grams)) {
+       if (value !== '' && !isNaN(grams)) {
         const ml = (grams * multiplier).toFixed(2);
         output.textContent = `${ml} `;
+        console.log("get the value");
+
+        // Rounded ML logic for Tablets
+        if (true) {
+          let divided = parseFloat(ml) / 3;
+          let rounded;
+          if (isAboveTwo) {
+            // Round to nearest 0.5 ml
+            rounded = Math.ceil(divided * 2) / 2;
+            console.log("Age is below 2 years", rounded);
+          } else {
+            // Round to nearest 0.1 ml
+            rounded = Math.round(divided * 10) / 10;
+          }
+          roundedOutput.textContent = `${rounded.toFixed(1)} `;
+        }
       } else {
         output.textContent = 'XX ';
+        if (roundedOutput) roundedOutput.textContent = 'XX ';
       }
     };
 
@@ -322,8 +340,8 @@ useEffect(() => {
 
   // Setup for tablets and powder
   const setupAllConversions = () => {
-    setupConversion('number', 'tab_checkbox', 'tab_ml', 0.86, 'Tablet');
-    setupConversion('number2', 'powder_checkbox', 'powder_ml', 0.81, 'Powder');
+    setupConversion('number', 'tab_checkbox', 'tab_ml', 0.86, 'Tablet', 'rounded_tab_ml');
+    setupConversion('number2', 'powder_checkbox', 'powder_ml', 0.81, 'Powder','rounded_powder_ml');
   };
 
   // Run once initially
