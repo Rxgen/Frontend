@@ -304,7 +304,7 @@ useEffect(() => {
       if (subtitleDiv) {
         subtitleDiv.innerHTML = isAboveTwo
           ? `Each dose is rounded up to the nearest 0.5 mL<br>(for patients above 2 years of age)`
-          : `Each dose is rounded up to the nearest 0.1 mL<br>(for patients 2 years and under)`;
+          : `Each dose is rounded up to the nearest 0.1 mL<br>(for patients under 2 years of age under)`;
       }
 
        if (value !== '' && !isNaN(grams)) {
@@ -332,7 +332,6 @@ useEffect(() => {
       } else {
         output.textContent = 'XX ';
         if (roundedOutput) roundedOutput.textContent = 'XX ';
-        if (subtitleDiv) subtitleDiv.innerHTML = '';
       }
     };
 
@@ -341,6 +340,7 @@ useEffect(() => {
 
     input.dataset.bound = 'true'; // Prevent rebinding
     calculate(); // Initial run
+    setTimeout(calculate, 0);
     console.log(`Bound logic for #${inputId} (${label})`);
   };
 
