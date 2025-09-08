@@ -273,11 +273,12 @@ useEffect(() => {
   };
 
   // Set up dosage logic
-  const setupConversion = (inputId, checkboxId, outputId, multiplier, label, roundedId = null) => {
+  const setupConversion = (inputId, checkboxId, outputId, multiplier, label, roundedId = null,subtitleId = null) => {
     const input = document.getElementById(inputId);
     const checkbox = document.getElementById(checkboxId);
     const output = document.getElementById(outputId);
     const roundedOutput = roundedId ? document.getElementById(roundedId) : null;
+    const subtitleDiv = subtitleId ? document.getElementById(subtitleId) : null;
 
     if (!input || !checkbox || !output || input.dataset.bound === 'true') return;
     input.addEventListener('input', () => {
@@ -299,28 +300,39 @@ useEffect(() => {
       const ageGroup = isAboveTwo ? 'Above 2 years' : 'Below 2 years';
       console.log(`[${label}] Age Group: ${ageGroup}`);
 
+      // Update subtitle text ALWAYS based on checkbox
+      if (subtitleDiv) {
+        subtitleDiv.innerHTML = isAboveTwo
+          ? `Each dose is rounded up to the nearest 0.5 mL<br>(for patients above 2 years of age)`
+          : `Each dose is rounded up to the nearest 0.1 mL<br>(for patients 2 years and under)`;
+      }
+
        if (value !== '' && !isNaN(grams)) {
         const ml = (grams * multiplier).toFixed(2);
         output.textContent = `${ml} `;
         console.log("get the value");
 
         // Rounded ML logic for Tablets
-        if (true) {
+        if (roundedOutput) {
           let divided = parseFloat(ml) / 3;
           let rounded;
           if (isAboveTwo) {
             // Round to nearest 0.5 ml
             rounded = Math.ceil(divided * 2) / 2;
-            console.log("Age is below 2 years", rounded);
+           
           } else {
             // Round to nearest 0.1 ml
             rounded = Math.round(divided * 10) / 10;
+            
           }
           roundedOutput.textContent = `${rounded.toFixed(1)} `;
+
+          
         }
       } else {
         output.textContent = 'XX ';
         if (roundedOutput) roundedOutput.textContent = 'XX ';
+        if (subtitleDiv) subtitleDiv.innerHTML = '';
       }
     };
 
@@ -340,8 +352,8 @@ useEffect(() => {
 
   // Setup for tablets and powder
   const setupAllConversions = () => {
-    setupConversion('number', 'tab_checkbox', 'tab_ml', 0.86, 'Tablet', 'rounded_tab_ml');
-    setupConversion('number2', 'powder_checkbox', 'powder_ml', 0.81, 'Powder','rounded_powder_ml');
+    setupConversion('number', 'tab_checkbox', 'tab_ml', 0.86, 'Tablet', 'rounded_tab_ml', 'tab_subtitle');
+    setupConversion('number2', 'powder_checkbox', 'powder_ml', 0.81, 'Powder','rounded_powder_ml', 'powder_subtitle');
   };
 
   // Run once initially
