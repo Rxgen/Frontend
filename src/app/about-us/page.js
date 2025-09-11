@@ -32,7 +32,7 @@ export const generateMetadata = ({ params}) => {
         "@type": "ListItem",
         position: 2,
         name: "Our People",
-        item: `${process.env.NEXT_PUBLIC_BASE_URL}${path}`,
+        item: `${process.env.NEXT_PUBLIC_BASE_URL}about-us`,
       },
     ],
 
