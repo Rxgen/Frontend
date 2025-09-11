@@ -2,6 +2,7 @@
 import { fetchpageData } from "../component/homepage/Api/fetchPageData";
 import ContentImage from "../component/about/ContentImage";
 import TopBanner from "../component/about/topbanner";
+import Script from "next/script";
 
 
 export const generateMetadata = ({ params}) => {
@@ -15,6 +16,36 @@ export const generateMetadata = ({ params}) => {
       }
     };
   };
+
+  const PageSchema = [
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Our People",
+        item: `${process.env.NEXT_PUBLIC_BASE_URL}${path}`,
+      },
+    ],
+
+
+  },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Lupin",
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
+      logo: `${process.env.NEXT_PUBLIC_BASE_URL}images/lupin_logo.webp`
+    }
+  ];
   
 
   
@@ -26,7 +57,13 @@ export default async function aboutpage() {
     const contentimage=contentdata.image_content;
 
     return (
-        <div>            
+        <div> 
+          <Script
+             id="breadcrumb-schema"
+             type="application/ld+json"
+             strategy="beforeInteractive"
+             dangerouslySetInnerHTML={{ __html: JSON.stringify(PageSchema) }}
+      />           
             <TopBanner topbannerdata={topbannerdata} />
             <ContentImage contentdata={contentimage} />
         </div>
