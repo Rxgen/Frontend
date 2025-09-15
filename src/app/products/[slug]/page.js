@@ -47,7 +47,7 @@ const ProductSchema = (product) => ({
   "description": product?.description || "",
   "brand": {
     "@type": "Brand",
-    "name": product?.brand || "N/A",
+    "name": product?.brand.name || "N/A",
   },
   "aggregateRating": {
     "@type": "AggregateRating",
@@ -73,7 +73,7 @@ const ProductSchema = (product) => ({
     {
       "@type": "PropertyValue",
       "name": "RLD/Brand Name",
-      "value": product.brand.name || "N/A"
+      "value": product?.brand?.name || "N/A",
     },
     {
       "@type": "PropertyValue",
