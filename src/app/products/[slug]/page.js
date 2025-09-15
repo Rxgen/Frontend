@@ -78,7 +78,7 @@ const ProductSchema = (product) => ({
     {
       "@type": "PropertyValue",
       "name": "TE Rating",
-      "value": product.te_rating || "N/A"
+      "value": (product.te_rating || "N/A").toUpperCase()
     },
     {
       "@type": "PropertyValue",
