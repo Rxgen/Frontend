@@ -113,13 +113,20 @@ export default async function fetchproductdetails({ params }){
         item: `${process.env.NEXT_PUBLIC_BASE_URL}`,
       },
       {
+        "@type": "ListItem", 
+        "position": 2, 
+        "name": "Products",
+        "item": "https://www.lupin.com/US/product/"  
+      },
+      {
         "@type": "ListItem",
-        position: 2,
+        position: 3,
         name: product?.product_name || "N/A",
         item: `${process.env.NEXT_PUBLIC_BASE_URL}products/${slug}`,
       },
     ],
   };
+
 
   return (
     <div>
