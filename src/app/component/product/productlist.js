@@ -448,6 +448,13 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
               Tolvaptan Tablets
             </span>
           </Link>
+
+          <Link href="/products/glycerol-phenylbutyrate-oral-liquid#HCP" className="brand_box" style={{ height: '9.0882vw' }}>
+            <Image src="/images/icons/up_arrow.webp" alt="Tolvaptan Tablets " width={57} height={62} className="brand_arrow" />
+            <span className="subtitle_20">
+              Glycerol Phenylbutyrate Oral Liquid
+            </span>
+          </Link>
         </div>
 
         </div>
@@ -458,6 +465,12 @@ export default function Products({ productdata = [], totalPages, currentPage ,to
             <Image src="/images/icons/up_arrow.webp" alt="albuterol " width={57} height={62} className="brand_arrow" />
             <span className="subtitle_20">
               Tolvaptan Tablets
+            </span>
+          </Link>
+          <Link href="/products/glycerol-phenylbutyrate-oral-liquid#HCP" className="brand_box" style={{ height: '9.0882vw' }}>
+            <Image src="/images/icons/up_arrow.webp" alt="albuterol " width={57} height={62} className="brand_arrow" />
+            <span className="subtitle_20">
+              Glycerol Phenylbutyrate Oral Liquid
             </span>
           </Link>
         </div>
