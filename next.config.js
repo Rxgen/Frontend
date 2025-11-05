@@ -1,21 +1,7 @@
-// // next.config.js
-// module.exports = {
-//     images: {
-//       remotePatterns: [
-//         {
-//           protocol: 'https',
-//           hostname: 'lupinus-cms.devmaffia.in',
-//           port: '', 
-//           pathname: '/uploads/**', 
-//         },
-//       ],
-//     },
-//   };
-
- //next.config.js
-
-
  module.exports = {
+  //basePath: '/US',
+  trailingSlash: false,
+  //assetPrefix: '/US/',
   images: {
     remotePatterns: [
       {
@@ -28,25 +14,36 @@
   },
 
   async redirects() {
+    
      return await fetchRedirects();
   },
 
-  /* async headers() {
+  async headers() {
     return [
       {
         source: "/(.*)",
         headers: [
+          // Prevent Clickjacking
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self';" },
+
+          //  Basic Security Hardening
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-XSS-Protection", value: "1; mode=block" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "geolocation=(), microphone=()" },
+
+          //  Force HTTPS
           {
-            key: "Referrer-Policy",
-            value: "strict-origin-when-cross-origin",
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
           },
-          {
-            key: "Access-Control-Allow-Origin",
-            value: "*", 
-          },
+
+          // Control Allowed Origins (CORS)
+          { key: "Access-Control-Allow-Origin", value: "*" },
           {
             key: "Access-Control-Allow-Methods",
-            value: "GET, POST, OPTIONS, PUT, DELETE, PATCH",
+            value: "GET, POST, OPTIONS", // Limit unnecessary methods
           },
           {
             key: "Access-Control-Allow-Headers",
@@ -55,7 +52,7 @@
         ],
       },
     ];
-  }, */
+  },
 };
 
 
