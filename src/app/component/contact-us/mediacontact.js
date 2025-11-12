@@ -19,7 +19,7 @@ export default function Mediacontact (){
                     Vice President & Global Head -
                     Corporate Communications
                 </div>
-                <span className="contact_mail">
+                <span className="contact_mail bordermail">
                     <Link href="mailto:rajalakshmiazariah@lupin.com">rajalakshmiazariah@lupin.com</Link>
                 </span>
                 <br/>
