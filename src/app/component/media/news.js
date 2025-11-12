@@ -61,6 +61,14 @@ export default function News({News}){
     <span className="contact_mail">
       <Link href="mailto:rajalakshmiazariah@lupin.com">rajalakshmiazariah@lupin.com</Link>
     </span>
+    <br/>
+            <div className="subtitle_34">Elise Titan</div>
+            <div className="media_detail">
+                Director, U.S. Communications
+            </div>
+            <span className="contact_mail">
+                <Link href="mailto:elisetitan@lupin.com ">elisetitan@lupin.com</Link>
+            </span>
   </div>
 </div>
 </section>
