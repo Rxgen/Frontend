@@ -44,12 +44,12 @@ export default function News({ newsData }) {
         ))}
       </div>
       <div className="news_cta">
-      <Link href="/media" className="black_cta" target="_blank">
+      <Link href="/media/press-releases" className="black_cta" target="_blank">
         <div className="cta_container">
           <span>View All</span>
           <Image
             src="/images/icons/white_arrow.webp"
-            alt=""
+            alt="White Arrow"
             width={20}
             height={14}
           />
