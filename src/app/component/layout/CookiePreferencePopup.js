@@ -37,6 +37,13 @@ const CookieConsentPopup = ({ isActive, onClose, onSavePreferences }) => {
     });
 
     setCookie('viewed_cookie_policy', true);
+    
+    // Sync preferences to localStorage for GoogleAnalytics
+    localStorage.setItem('cookiePreferences', JSON.stringify(prefs));
+    
+    // Dispatch custom event to notify GoogleAnalytics component
+    window.dispatchEvent(new Event('cookieConsentChanged'));
+    
     setVisible(false);
     onSavePreferences?.();
   };

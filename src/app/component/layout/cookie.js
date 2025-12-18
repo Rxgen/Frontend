@@ -40,6 +40,9 @@ export default function CookiePopup() {
       others: true,
     };
     localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
+    
+    // Dispatch custom event to notify GoogleAnalytics component
+    window.dispatchEvent(new Event('cookieConsentChanged'));
 
     if (showSecondBanner) {
       setIsMainPopupVisible(false);
@@ -61,6 +64,10 @@ export default function CookiePopup() {
       others: false,
     };
     localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
+    
+    // Dispatch custom event to notify GoogleAnalytics component
+    window.dispatchEvent(new Event('cookieConsentChanged'));
+    
     setIsMainPopupVisible(false);
     setShowSecondBanner(false);
     document.body.classList.remove('overflow');

@@ -39,7 +39,7 @@ export const generateMetadata = ({ params}) => {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Lupin",
+  name: "Lupin US",
   url: `${process.env.NEXT_PUBLIC_BASE_URL}`,
   logo: `${process.env.NEXT_PUBLIC_BASE_URL}images/lupin_logo.webp`,
 };
