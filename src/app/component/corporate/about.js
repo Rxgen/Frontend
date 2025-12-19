@@ -33,9 +33,10 @@ export default function CorporateAboutData( { aboutdata } ) {
         <div className="corporate_container">
           <div className="corporate_detail">
             <h2 className="subtitle_60">{aboutdata.heading}</h2>
-            <p className="para">
+            <div  dangerouslySetInnerHTML={{ __html: aboutdata?.custom_description }} />
+            {/* <p className="para">
               {aboutdata.description}
-            </p>
+            </p> */}
           </div>
           <Image
             src={ImageUrl}

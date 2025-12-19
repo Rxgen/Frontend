@@ -12,9 +12,7 @@ export default function Innovation( { innovativedata } ){
         <section data-section="innovative_coprporate" className="innovative_coprporate" id="innovative_coprporate">
       <div className="innovative_container">
         <h2 className="subtitle_60">{ innovativedata.heading }</h2>
-        <p className="para">
-        { innovativedata.description }
-        </p>
+       <div  dangerouslySetInnerHTML={{ __html: innovativedata?.custom_description }} />
       </div>
       <Image
         src={ImageUrl}

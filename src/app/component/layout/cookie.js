@@ -8,6 +8,7 @@ export default function CookiePopup() {
   const [isMainPopupVisible, setIsMainPopupVisible] = useState(false);
   const [isPreferencePopupVisible, setIsPreferencePopupVisible] = useState(false);
   const [showSecondBanner, setShowSecondBanner] = useState(false);
+  const [isPrivacyPopupVisible, setIsPrivacyPopupVisible] = useState(false);
 
   useEffect(() => {
     const checkConsent = () => {
@@ -71,6 +72,15 @@ export default function CookiePopup() {
     setIsMainPopupVisible(false);
     setShowSecondBanner(false);
     document.body.classList.remove('overflow');
+    
+    // Show privacy popup
+    setIsPrivacyPopupVisible(true);
+    document.body.classList.add('overflow');
+  };
+
+  const closePrivacyPopup = () => {
+    setIsPrivacyPopupVisible(false);
+    document.body.classList.remove('overflow');
   };
 
   return (
@@ -124,6 +134,22 @@ export default function CookiePopup() {
           setShowSecondBanner(true);
         }}
       />
+
+      {/* Privacy Popup - Shows when user rejects all non-essential cookies */}
+      <div className={`privacyPopup optpopup ${isPrivacyPopupVisible ? 'active' : ''}`} id="privacyPopup">
+        <div className="privacyPopupOverlay" onClick={closePrivacyPopup}></div>
+
+        <div className="privacyPopupContent">
+          <button className="popupClose" onClick={closePrivacyPopup} type="button">×</button>
+
+          <h3>Opt-Out Request Honored</h3>
+          <p>
+          We have respected your privacy preference. Your opt-out request through cookie settings or Global Privacy Control signal has been honored.
+          </p>
+
+          <button className="popupBtn" onClick={closePrivacyPopup} type="button">Okay</button>
+        </div>
+      </div>
     </div>
   );
 }

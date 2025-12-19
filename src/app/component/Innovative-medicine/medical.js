@@ -23,9 +23,7 @@ export default function Medical({ medicaldata }) {
         <h2 className="subtitle_60">
           {medicaldata.heading}
         </h2>
-        <p className="para">
-          {medicaldata?.description}
-        </p>
+        <div  dangerouslySetInnerHTML={{ __html: medicaldata?.custom_description }} />
       </div>
       <div className="flower_bg_container">
         <div className="flower_bg"> 

@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Team() {
     return (
@@ -11,8 +12,8 @@ export default function Team() {
             <p className="para">
                 Our R&D efforts are the cornerstone of our mission to become a frontrunner in the
                 development of medicines that address a range of unmet needs. By investing in
-                cutting-edge research, we have established ourselves as global leaders in both generics
-                and complex generics while paving the way for advances in specialty pharmaceuticals.
+                cutting-edge research, we have established ourselves as global leaders in both <Link href="https://www.lupin.com/US/generics-complex-generics" className="hrefpara">generics
+                and complex generics</Link> while paving the way for advances in specialty pharmaceuticals.
             </p>
         </div>
         <div className="team_content">
