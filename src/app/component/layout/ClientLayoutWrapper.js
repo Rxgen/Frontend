@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import TermsPopup from './terms-popup';
+// import TermsPopup from './terms-popup'; // Commented out - disabled on homepage
 
 export default function ClientLayoutWrapper({ children }) {
   const [mounted, setMounted] = useState(false);
@@ -19,7 +19,8 @@ export default function ClientLayoutWrapper({ children }) {
   return (
     <>
       {children}
-      {mounted && isHomepage && <TermsPopup />}
+      {/* TermsPopup disabled on homepage - can be re-enabled later */}
+      {/* {mounted && isHomepage && <TermsPopup />} */}
     </>
   );
 }
