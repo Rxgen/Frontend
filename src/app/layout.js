@@ -12,12 +12,9 @@ import GoogleTagManagerNoscript from './component/layout/GoogleTagManagerNoscrip
 const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({ children ,isHomepage}) {
-  
   return (
     <html lang="en">
       <head>
-        
-        
       </head>
       <body className={inter.className}>
         <Header />
