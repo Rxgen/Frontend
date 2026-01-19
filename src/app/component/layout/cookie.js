@@ -14,15 +14,20 @@ export default function CookiePopup() {
 
   // Check for GPC signal on page load
   const checkGPC = () => {
-    if (typeof window === 'undefined') return false;
+    if (typeof window === 'undefined' || typeof navigator === 'undefined') return false;
     
     // Check navigator.globalPrivacyControl
-    const navigatorGPC = navigator.globalPrivacyControl === true;
+    // Returns true → GPC is enabled and detected
+    // Returns false or undefined → GPC is not enabled
+    const gpcValue = navigator.globalPrivacyControl;
     
-    // Optional: Check Sec-GPC header (would need server-side, but we can check if available)
-    // Note: Sec-GPC header is only available server-side, but we handle it via navigator
+    // Explicitly check for true (handles false and undefined cases)
+    if (gpcValue === true) {
+      return true; // GPC enabled
+    }
     
-    return navigatorGPC;
+    // If undefined or false, GPC is not enabled
+    return false;
   };
 
   useEffect(() => {

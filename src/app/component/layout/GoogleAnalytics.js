@@ -22,7 +22,11 @@ export default function GoogleAnalytics() {
       }
 
       // STEP 1: GPC detection MUST happen FIRST (before any consent update)
-      const gpcEnabled = navigator.globalPrivacyControl === true;
+      // Check navigator.globalPrivacyControl
+      // Returns true → GPC is enabled and detected
+      // Returns false or undefined → GPC is not enabled
+      const gpcValue = navigator.globalPrivacyControl;
+      const gpcEnabled = gpcValue === true; // Explicitly check for true (handles false and undefined)
       
       // STEP 2: If GPC is enabled, ALWAYS deny (override user choice)
       if (gpcEnabled) {
