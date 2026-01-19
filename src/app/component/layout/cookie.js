@@ -26,7 +26,9 @@ export default function CookiePopup() {
   };
 
   useEffect(() => {
-    // STEP 1: GPC detection MUST happen FIRST (before any other logic)
+    // STEP 1: Page Load - User visits website
+    
+    // STEP 2: GPC Detection - MUST happen FIRST (before any other logic)
     const gpc = checkGPC();
     setGpcEnabled(gpc);
 
@@ -37,7 +39,7 @@ export default function CookiePopup() {
       const currentGPC = checkGPC();
       setGpcEnabled(currentGPC);
       
-      // Show cookie banner if no preferences exist (banner stays until user action)
+      // STEP 3: Show Cookie Consent Banner
       // Banner must always be visible until user clicks Accept/Reject/Manage Preferences
       if (!hasPreferences) {
         setIsMainPopupVisible(true);
@@ -83,7 +85,10 @@ export default function CookiePopup() {
     
     // Dispatch custom event to notify GoogleAnalytics component
     // GoogleAnalytics will check GPC and override if needed
-    window.dispatchEvent(new Event('cookieConsentChanged'));
+    // Use setTimeout to ensure localStorage is written before event fires
+    setTimeout(() => {
+      window.dispatchEvent(new Event('cookieConsentChanged'));
+    }, 0);
 
     if (showSecondBanner) {
       setIsMainPopupVisible(false);
