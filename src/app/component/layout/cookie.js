@@ -14,20 +14,23 @@ export default function CookiePopup() {
 
   // Check for GPC signal on page load
   const checkGPC = () => {
-    if (typeof window === 'undefined' || typeof navigator === 'undefined') return false;
-    
-    // Check navigator.globalPrivacyControl
-    // Returns true → GPC is enabled and detected
-    // Returns false or undefined → GPC is not enabled
-    const gpcValue = navigator.globalPrivacyControl;
-    
-    // Explicitly check for true (handles false and undefined cases)
-    if (gpcValue === true) {
-      return true; // GPC enabled
+    if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+      return false;
     }
     
-    // If undefined or false, GPC is not enabled
-    return false;
+    // Check if navigator.globalPrivacyControl property exists
+    if (!('globalPrivacyControl' in navigator)) {
+      return false; // Property doesn't exist, GPC not enabled
+    }
+    
+    // Check navigator.globalPrivacyControl value
+    // Must be explicitly true (strict equality check)
+    // Returns true → GPC is enabled and detected
+    // Returns false, undefined, or doesn't exist → GPC is not enabled
+    const gpcValue = navigator.globalPrivacyControl;
+    
+    // Strict check: only return true if value is exactly true
+    return gpcValue === true;
   };
 
   useEffect(() => {
