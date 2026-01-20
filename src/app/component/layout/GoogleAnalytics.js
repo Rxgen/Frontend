@@ -1,139 +1,154 @@
-'use client';
+"use client";
 
-import { useEffect, useCallback } from 'react';
-import { usePathname } from 'next/navigation';
+import { useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 
 export default function GoogleAnalytics() {
   const pathname = usePathname();
 
-  const updateConsent = useCallback(() => {
-    if (typeof window === 'undefined') return;
+  // -----------------------------
+  // Helpers
+  // -----------------------------
+  const isGPCEnabled = () => {
+    if (typeof window === "undefined" || typeof navigator === "undefined") return false;
+    return navigator.globalPrivacyControl === true;
+  };
 
-    // Wait for gtag to be available (scripts load asynchronously)
-    const checkAndUpdate = () => {
-      // Ensure dataLayer and gtag are initialized
-      if (!window.dataLayer) {
-        window.dataLayer = [];
-      }
-      if (!window.gtag) {
-        window.gtag = function() {
-          window.dataLayer.push(arguments);
-        };
-      }
-
-      // STEP 1: GPC detection MUST happen FIRST (before any consent update)
-      // Check if navigator.globalPrivacyControl property exists
-      let gpcEnabled = false;
-      
-      if (typeof navigator !== 'undefined' && 'globalPrivacyControl' in navigator) {
-        // Check navigator.globalPrivacyControl value
-        // Must be explicitly true (strict equality check)
-        // Returns true → GPC is enabled and detected
-        // Returns false, undefined, or doesn't exist → GPC is not enabled
-        const gpcValue = navigator.globalPrivacyControl;
-        gpcEnabled = gpcValue === true; // Strict check: only true if value is exactly true
-      }
-      
-      // STEP 2: If GPC is enabled, ALWAYS deny (override user choice)
-      if (gpcEnabled) {
-        // GPC detected - force deny all tracking
-        window.gtag('consent', 'update', {
-          'analytics_storage': 'denied',
-          'ad_storage': 'denied',
-          'ad_user_data': 'denied',
-          'ad_personalization': 'denied'
-        });
-        
-        // Also update dataLayer for GTM
-        window.dataLayer.push({
-          'event': 'consent_update',
-          'analytics_storage': 'denied',
-          'ad_storage': 'denied',
-          'ad_user_data': 'denied',
-          'ad_personalization': 'denied'
-        });
-        return;
-      }
-
-      // STEP 3: Check user consent
-      const storedPrefs = localStorage.getItem('cookiePreferences');
-      
-      if (!storedPrefs) {
-        // No consent yet - keep default denied state
-        return;
-      }
-
-      const prefs = JSON.parse(storedPrefs);
-
-      // STEP 4: Update consent based on user choice (GPC already checked above)
-      if (prefs?.analytics === true) {
-        // User accepted - grant consent (TRUE)
-        window.gtag('consent', 'update', {
-          'analytics_storage': 'granted',
-          'ad_storage': prefs?.advertisement ? 'granted' : 'denied',
-          'ad_user_data': prefs?.advertisement ? 'granted' : 'denied',
-          'ad_personalization': prefs?.advertisement ? 'granted' : 'denied'
-        });
-        
-        // Also update dataLayer for GTM
-        window.dataLayer.push({
-          'event': 'consent_update',
-          'analytics_storage': 'granted',
-          'ad_storage': prefs?.advertisement ? 'granted' : 'denied',
-          'ad_user_data': prefs?.advertisement ? 'granted' : 'denied',
-          'ad_personalization': prefs?.advertisement ? 'granted' : 'denied'
-        });
-      } else {
-        // User rejected - deny consent
-        window.gtag('consent', 'update', {
-          'analytics_storage': 'denied',
-          'ad_storage': 'denied',
-          'ad_user_data': 'denied',
-          'ad_personalization': 'denied'
-        });
-        
-        // Also update dataLayer for GTM
-        window.dataLayer.push({
-          'event': 'consent_update',
-          'analytics_storage': 'denied',
-          'ad_storage': 'denied',
-          'ad_user_data': 'denied',
-          'ad_personalization': 'denied'
-        });
-      }
-    };
-
-    // Try immediately, or wait a bit if scripts are still loading
-    if (window.gtag) {
-      checkAndUpdate();
-    } else {
-      // Wait for gtag to be available (max 2 seconds)
-      let attempts = 0;
-      const maxAttempts = 20;
-      const interval = setInterval(() => {
-        attempts++;
-        if (window.gtag || attempts >= maxAttempts) {
-          clearInterval(interval);
-          checkAndUpdate();
-        }
-      }, 100);
+  const safeParsePrefs = () => {
+    try {
+      const stored = localStorage.getItem("cookiePreferences");
+      return stored ? JSON.parse(stored) : null;
+    } catch (e) {
+      // If corrupted JSON, remove it and fallback to denied
+      localStorage.removeItem("cookiePreferences");
+      return null;
     }
+  };
+
+  const ensureGtagReady = () => {
+    // Ensure dataLayer exists
+    if (!window.dataLayer) window.dataLayer = [];
+
+    // Ensure gtag function exists
+    if (!window.gtag) {
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+    }
+  };
+
+  const setConsentDefaultDenied = () => {
+    // Consent Mode default should be denied until user accepts
+    window.gtag("consent", "default", {
+      analytics_storage: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+    });
+  };
+
+  const applyConsent = (consent) => {
+    window.gtag("consent", "update", consent);
+
+    // Optional: push to dataLayer (useful if GTM is used)
+    window.dataLayer.push({
+      event: "consent_update",
+      ...consent,
+    });
+  };
+
+  // -----------------------------
+  // Main Consent Update Logic
+  // -----------------------------
+  const updateConsent = useCallback(() => {
+    if (typeof window === "undefined") return;
+
+    ensureGtagReady();
+    setConsentDefaultDenied();
+
+    // STEP 1: If GPC is enabled -> ALWAYS deny
+    if (isGPCEnabled()) {
+      applyConsent({
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      });
+      return;
+    }
+
+    // STEP 2: Read user preferences
+    const prefs = safeParsePrefs();
+
+    // If user has not made a choice yet -> keep denied
+    if (!prefs) return;
+
+    // STEP 3: Apply user consent
+    const analyticsGranted = prefs?.analytics === true;
+    const adsGranted = prefs?.advertisement === true;
+
+    if (analyticsGranted) {
+      applyConsent({
+        analytics_storage: "granted",
+        ad_storage: adsGranted ? "granted" : "denied",
+        ad_user_data: adsGranted ? "granted" : "denied",
+        ad_personalization: adsGranted ? "granted" : "denied",
+      });
+    } else {
+      applyConsent({
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      });
+    }
+  }, []);
+
+  // -----------------------------
+  // Pageview Tracking (optional)
+  // Only track if allowed (no GPC + analytics consent true)
+  // -----------------------------
+  const trackPageView = useCallback(() => {
+    if (typeof window === "undefined") return;
+
+    // Don't track if GPC is enabled
+    if (isGPCEnabled()) return;
+
+    const prefs = safeParsePrefs();
+    if (!prefs || prefs?.analytics !== true) return;
+
+    ensureGtagReady();
+
+    // If GA4 is configured, this will work:
+    // window.gtag("event", "page_view", { page_path: pathname });
+    // (Keeping minimal to avoid config mismatch issues)
+    window.gtag("event", "page_view", {
+      page_path: pathname,
+    });
   }, [pathname]);
 
+  // -----------------------------
+  // Effects
+  // -----------------------------
   useEffect(() => {
+    // Run once on mount + whenever route changes
     updateConsent();
+    trackPageView();
 
-    // Listen for storage events (cross-tab)
-    window.addEventListener('storage', updateConsent);
+    // Cross-tab updates
+    const onStorage = () => updateConsent();
 
-    // Listen for custom consent change events (same-tab)
-    window.addEventListener('cookieConsentChanged', updateConsent);
+    // Same-tab custom event from cookie.js
+    const onConsentChanged = () => updateConsent();
+
+    window.addEventListener("storage", onStorage);
+    window.addEventListener("cookieConsentChanged", onConsentChanged);
 
     return () => {
-      window.removeEventListener('storage', updateConsent);
-      window.removeEventListener('cookieConsentChanged', updateConsent);
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener("cookieConsentChanged", onConsentChanged);
     };
-  }, [updateConsent]);
+  }, [updateConsent, trackPageView]);
 
   return null;
 }
