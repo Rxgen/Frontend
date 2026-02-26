@@ -1,86 +1,111 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
-import CookieConsentPopup from './CookiePreferencePopup';
+import { useEffect, useState, useCallback } from "react";
+import Link from "next/link";
+import CookieConsentPopup from "./CookiePreferencePopup";
 
 export default function CookiePopup() {
   const [isMainPopupVisible, setIsMainPopupVisible] = useState(false);
   const [isPreferencePopupVisible, setIsPreferencePopupVisible] = useState(false);
   const [showSecondBanner, setShowSecondBanner] = useState(false);
+
   const [isPrivacyPopupVisible, setIsPrivacyPopupVisible] = useState(false);
   const [isGPCBannerVisible, setIsGPCBannerVisible] = useState(false);
+
   const [gpcEnabled, setGpcEnabled] = useState(false);
 
-  // Check for GPC signal on page load
+  // -----------------------------
+  // Helpers
+  // -----------------------------
+  const lockBodyScroll = () => document.body.classList.add("overflow");
+  const unlockBodyScroll = () => document.body.classList.remove("overflow");
+
   const checkGPC = () => {
-    if (typeof window === 'undefined' || typeof navigator === 'undefined') {
-      return false;
-    }
-    
-    // Check if navigator.globalPrivacyControl property exists
-    if (!('globalPrivacyControl' in navigator)) {
-      return false; // Property doesn't exist, GPC not enabled
-    }
-    
-    // Check navigator.globalPrivacyControl value
-    // Must be explicitly true (strict equality check)
-    // Returns true → GPC is enabled and detected
-    // Returns false, undefined, or doesn't exist → GPC is not enabled
-    const gpcValue = navigator.globalPrivacyControl;
-    
-    // Strict check: only return true if value is exactly true
-    return gpcValue === true;
+    if (typeof window === "undefined" || typeof navigator === "undefined") return false;
+    return navigator.globalPrivacyControl === true;
   };
 
-  useEffect(() => {
-    // STEP 1: Page Load - User visits website
-    
-    // STEP 2: GPC Detection - MUST happen FIRST (before any other logic)
+  const getStoredPreferences = () => {
+    try {
+      const stored = localStorage.getItem("cookiePreferences");
+      return stored ? JSON.parse(stored) : null;
+    } catch (e) {
+      // If JSON is corrupted, remove it
+      localStorage.removeItem("cookiePreferences");
+      return null;
+    }
+  };
+
+  const dispatchConsentChange = () => {
+    // Notify GA component in same tab
+    window.dispatchEvent(new Event("cookieConsentChanged"));
+  };
+
+  // -----------------------------
+  // Main logic: Decide what to show
+  // -----------------------------
+  const syncPopupState = useCallback(() => {
+    if (typeof window === "undefined") return;
+
     const gpc = checkGPC();
     setGpcEnabled(gpc);
 
-    const checkConsent = () => {
-      const hasPreferences = localStorage.getItem('cookiePreferences');
+    const prefs = getStoredPreferences();
 
-      // Re-check GPC signal (always check first - before any GTM/GA logic)
-      const currentGPC = checkGPC();
-      setGpcEnabled(currentGPC);
-      
-      // STEP 3: Show Cookie Consent Banner
-      // Banner must always be visible until user clicks Accept/Reject/Manage Preferences
-      if (!hasPreferences) {
-        setIsMainPopupVisible(true);
-        document.body.classList.add('overflow');
+    // ✅ CASE 1: GPC enabled
+    // - Hide main cookie banner
+    // - Show GPC popup only once (optional)
+    if (gpc) {
+      setIsMainPopupVisible(false);
+      setShowSecondBanner(false);
+
+      // Show GPC banner only once per browser
+      const gpcShown = localStorage.getItem("gpc_banner_shown");
+      if (!gpcShown) {
+        setIsGPCBannerVisible(true);
+        lockBodyScroll();
+        localStorage.setItem("gpc_banner_shown", "1");
       } else {
-        // User has made a choice - hide banner
-        setIsMainPopupVisible(false);
-        document.body.classList.remove('overflow');
+        setIsGPCBannerVisible(false);
+        unlockBodyScroll();
       }
-    };
 
-    checkConsent();
-    window.addEventListener('storage', checkConsent);
-    
-    // Monitor GPC signal changes (check periodically)
-    const gpcCheckInterval = setInterval(() => {
-      const currentGPC = checkGPC();
-      if (currentGPC !== gpcEnabled) {
-        setGpcEnabled(currentGPC);
-        checkConsent();
-      }
-    }, 1000);
+      return;
+    }
+
+    // ✅ CASE 2: GPC not enabled
+    // - Show main cookie banner only if no saved preferences
+    if (!prefs) {
+      setIsMainPopupVisible(true);
+      lockBodyScroll();
+    } else {
+      setIsMainPopupVisible(false);
+      unlockBodyScroll();
+    }
+  }, []);
+
+  // -----------------------------
+  // On mount
+  // -----------------------------
+  useEffect(() => {
+    syncPopupState();
+
+    // If user changes consent in another tab
+    const onStorage = () => syncPopupState();
+    window.addEventListener("storage", onStorage);
 
     return () => {
-      window.removeEventListener('storage', checkConsent);
-      clearInterval(gpcCheckInterval);
+      window.removeEventListener("storage", onStorage);
+      unlockBodyScroll();
     };
-  }, [gpcEnabled, isMainPopupVisible]);
+  }, [syncPopupState]);
 
+  // -----------------------------
+  // Handlers
+  // -----------------------------
   const handleAcceptAll = (e) => {
     e.preventDefault();
-    
-    // User can Accept All even with GPC, but GPC will override in GoogleAnalytics component
+
     const preferences = {
       necessary: true,
       functional: true,
@@ -89,19 +114,15 @@ export default function CookiePopup() {
       advertisement: true,
       others: true,
     };
-    localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
-    
-    // Dispatch custom event to notify GoogleAnalytics component
-    // GoogleAnalytics will check GPC and override if needed
-    // Use setTimeout to ensure localStorage is written before event fires
-    setTimeout(() => {
-      window.dispatchEvent(new Event('cookieConsentChanged'));
-    }, 0);
 
+    localStorage.setItem("cookiePreferences", JSON.stringify(preferences));
+    dispatchConsentChange();
+
+    // Show your second banner as per existing UI behaviour
     if (showSecondBanner) {
       setIsMainPopupVisible(false);
       setShowSecondBanner(false);
-      document.body.classList.remove('overflow');
+      unlockBodyScroll();
     } else {
       setShowSecondBanner(true);
     }
@@ -109,6 +130,7 @@ export default function CookiePopup() {
 
   const handleRejectNonEssential = (e) => {
     e.preventDefault();
+
     const preferences = {
       necessary: true,
       functional: false,
@@ -117,126 +139,161 @@ export default function CookiePopup() {
       advertisement: false,
       others: false,
     };
-    localStorage.setItem('cookiePreferences', JSON.stringify(preferences));
-    
-    // Dispatch custom event to notify GoogleAnalytics component
-    window.dispatchEvent(new Event('cookieConsentChanged'));
-    
+
+    localStorage.setItem("cookiePreferences", JSON.stringify(preferences));
+    dispatchConsentChange();
+
     setIsMainPopupVisible(false);
     setShowSecondBanner(false);
-    document.body.classList.remove('overflow');
-    
+    unlockBodyScroll();
+
     // Show privacy popup
     setIsPrivacyPopupVisible(true);
-    document.body.classList.add('overflow');
+    lockBodyScroll();
   };
 
   const closePrivacyPopup = () => {
     setIsPrivacyPopupVisible(false);
-    document.body.classList.remove('overflow');
+    unlockBodyScroll();
   };
 
   const closeGPCBanner = () => {
     setIsGPCBannerVisible(false);
-    document.body.classList.remove('overflow');
-    // Show privacy popup after closing GPC banner
+    unlockBodyScroll();
+
+    // Optional: Show privacy popup after closing GPC popup
     setIsPrivacyPopupVisible(true);
-    document.body.classList.add('overflow');
+    lockBodyScroll();
   };
 
   return (
     <div>
-      <div id="cookies_popup" className={`cookies_popup ${isMainPopupVisible && !isPreferencePopupVisible ? 'active' : ''}`}>
+      {/* MAIN COOKIE BANNER */}
+      <div
+        id="cookies_popup"
+        className={`cookies_popup ${
+          isMainPopupVisible && !isPreferencePopupVisible ? "active" : ""
+        }`}
+      >
         <div className="cookies_popup_container">
           <div className="subtitle_20">Consent to Collection Cookie</div>
 
           {!showSecondBanner && (
             <div className="firstBanner">
-              {/* GPC Message - Show when GPC is detected */}
-              {gpcEnabled && (
-                <div style={{ 
-                  backgroundColor: '#f0f8ff', 
-                  border: '1px solid #0066cc', 
-                  borderRadius: '4px', 
-                  padding: '12px', 
-                  marginBottom: '16px' 
-                }}>
-                  <p className="para" style={{ margin: 0, fontWeight: 'bold', color: '#0066cc' }}>
-                    🔒 Global Privacy Control detected. Non-essential cookies are disabled by default.
-                  </p>
-                  <p className="para" style={{ margin: '8px 0 0 0', fontSize: '0.9em' }}>
-                    You can still choose to accept all cookies if you wish, but your GPC preference will be respected for tracking purposes.
-                  </p>
-                </div>
-              )}
-              
               <p className="para">
-                This website uses cookies to enhance your overall web browsing experience, provide you with ads tailored to your interests,
-                and allow us to measure our audience and collect other analytical data about the use of our website.
+                This website uses cookies to enhance your overall web browsing experience, provide you with ads
+                tailored to your interests, and allow us to measure our audience and collect other analytical data
+                about the use of our website.
               </p>
+
               <p className="para">
-                By clicking &quot;Accept All&quot; you consent to the collection of your personal information (which may include your Consumer Health Data)
-                through 1st and 3rd party cookies (or similar). To edit your cookie preferences, use the options below.
+                By clicking &quot;Accept All&quot; you consent to the collection of your personal information
+                (which may include your Consumer Health Data) through 1st and 3rd party cookies (or similar). To edit
+                your cookie preferences, use the options below.
               </p>
+
               <p className="para">
-                For more information, please visit our <Link href="/privacy-policy" className="light_link border_link">Privacy Statement</Link>.
+                For more information, please visit our{" "}
+                <Link href="/privacy-policy" className="light_link border_link">
+                  Privacy Statement
+                </Link>
+                .
               </p>
             </div>
           )}
 
-          <div className="Secondbanner" style={{ display: showSecondBanner ? 'inline-block' : 'none' }}>
+          <div className="Secondbanner" style={{ display: showSecondBanner ? "inline-block" : "none" }}>
             <p className="para">Thank you for consenting to the use of cookies on our website.</p>
-            <p className="para">We use cookies to enhance your overall web browsing experience, provide you with ads tailored to your interests, allow us to measure our audience, and collect other analytical data about the use of our website.</p>
-            <p className="para">We share personal information (including Consumer Health Data) collected through cookies with our advertising and analytics partners.</p>
-            <p className="para">By clicking &quot;Accept All&quot; you consent to the sharing of your personal information (including Consumer Health Data) through 1st and 3rd party cookies (or similar). To edit your cookie preferences, use the options below.</p>
-            <p className="para">For more information, please visit our <Link href="/privacy-policy" className="light_link border_link">Privacy Statement</Link>.</p>
+            <p className="para">
+              We use cookies to enhance your overall web browsing experience, provide you with ads tailored to your
+              interests, allow us to measure our audience, and collect other analytical data about the use of our
+              website.
+            </p>
+            <p className="para">
+              We share personal information (including Consumer Health Data) collected through cookies with our
+              advertising and analytics partners.
+            </p>
+            <p className="para">
+              By clicking &quot;Accept All&quot; you consent to the sharing of your personal information (including
+              Consumer Health Data) through 1st and 3rd party cookies (or similar). To edit your cookie preferences,
+              use the options below.
+            </p>
+            <p className="para">
+              For more information, please visit our{" "}
+              <Link href="/privacy-policy" className="light_link border_link">
+                Privacy Statement
+              </Link>
+              .
+            </p>
           </div>
 
           <div className="cookies_btn_container">
-            <Link href="#" onClick={handleAcceptAll} className="green_bg">Accept All Cookies</Link>
-            <Link href="#" onClick={handleRejectNonEssential} className="green_bg">Reject All Non-Essential Cookies</Link>
-            <Link href="#" className="white_bg" onClick={() => setIsPreferencePopupVisible(true)}>Cookie Preference Center</Link>
+            <Link href="#" onClick={handleAcceptAll} className="green_bg">
+              Accept All Cookies
+            </Link>
+
+            <Link href="#" onClick={handleRejectNonEssential} className="green_bg">
+              Reject All Non-Essential Cookies
+            </Link>
+
+            <Link
+              href="#"
+              className="white_bg"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsPreferencePopupVisible(true);
+              }}
+            >
+              Cookie Preference Center
+            </Link>
           </div>
 
           <p className="para">
-            Depending on where you live, you may also be able to exercise your right to opt out or withdraw your consent.
-            <Link href="/your-privacy-choices" className="light_link border_link">Do Not Sell/Share My Personal Information</Link>.
+            Depending on where you live, you may also be able to exercise your right to opt out or withdraw your
+            consent.
+            <Link href="/your-privacy-choices" className="light_link border_link">
+              Do Not Sell/Share My Personal Information
+            </Link>
+            .
           </p>
         </div>
       </div>
 
+      {/* COOKIE PREFERENCE CENTER */}
       <CookieConsentPopup
         isActive={isPreferencePopupVisible}
         onClose={() => setIsPreferencePopupVisible(false)}
         onSavePreferences={() => {
           setIsPreferencePopupVisible(false);
           setShowSecondBanner(true);
+          dispatchConsentChange();
         }}
       />
 
-      {/* GPC Signal Banner - Shows when GPC signal is detected */}
-      <div className={`privacyPopup optpopup ${isGPCBannerVisible ? 'active' : ''}`} id="gpcBanner">
+      {/* GPC POPUP (One-time) */}
+      <div className={`privacyPopup optpopup ${isGPCBannerVisible ? "active" : ""}`} id="gpcBanner">
         <div className="privacyPopupOverlay" onClick={closeGPCBanner}></div>
 
         <div className="privacyPopupContent">
-          <button className="popupClose" onClick={closeGPCBanner} type="button">×</button>
+          <button className="popupClose" onClick={closeGPCBanner} type="button">
+            ×
+          </button>
 
           <h3>Global Privacy Control Detected</h3>
           <p>
-            We have detected your Global Privacy Control (GPC) signal. In accordance with California law, 
-            we have automatically honored your privacy preference and disabled all non-essential cookies and tracking.
+            We have detected your Global Privacy Control (GPC) signal. In accordance with applicable privacy laws,
+            we have automatically honored your preference and disabled all non-essential cookies and tracking.
           </p>
-          <p>
-            Your opt-out request has been honored. Only necessary cookies required for the website to function 
-            are enabled.
-          </p>
+          <p>Only necessary cookies required for the website to function are enabled.</p>
 
-          <button className="popupBtn" onClick={closeGPCBanner} type="button">Okay</button>
+          <button className="popupBtn" onClick={closeGPCBanner} type="button">
+            Okay
+          </button>
         </div>
       </div>
 
-      {/* Privacy Popup - Shows when user rejects all non-essential cookies */}
-      <div className={`privacyPopup optpopup ${isPrivacyPopupVisible ? 'active' : ''}`} id="privacyPopup">
+      {/* PRIVACY POPUP */}
+      <div className={`privacyPopup optpopup ${isPrivacyPopupVisible ? "active" : ""}`} id="privacyPopup">
         <div className="privacyPopupOverlay" onClick={closePrivacyPopup}></div>
 
         <div className="privacyPopupContent">
@@ -244,10 +301,13 @@ export default function CookiePopup() {
 
           <h3>Opt-Out Request Honored</h3>
           <p>
-          We have respected your privacy preference. Your opt-out request through cookie settings or Global Privacy Control signal has been honored.
+            We have respected your privacy preference. Your opt-out request through cookie settings or Global Privacy
+            Control signal has been honored.
           </p>
 
-          <button className="popupBtn" onClick={closePrivacyPopup} type="button">Okay</button>
+          <button className="popupBtn" onClick={closePrivacyPopup} type="button">
+            Okay
+          </button>
         </div>
       </div>
     </div>
