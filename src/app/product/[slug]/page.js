@@ -45,10 +45,10 @@ import { redirect } from "next/navigation";
 export default async function Page({ params }) {
   const { slug } = params;
 
-  if (slugMappings[slug]) {
+/*   if (slugMappings[slug]) {
     console.log(`Redirecting from /product/${slug} to /product/${slugMappings[slug]}`);
     redirect(`/product/${slugMappings[slug]}`);
-  }
+  } */
 
   console.log(`Fetching product details for slug: ${slug}`);
  
